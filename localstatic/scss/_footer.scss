@@ -1,0 +1,173 @@
+.footer {
+    padding: 45px 0px 60px;
+    border-top: 1px solid #fff;
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+
+    @media screen and (max-width: $md1) {
+        padding: 34px 0 45px;
+    }
+
+    @media screen and (max-width: $md2) {
+        padding: 22.5px 0 30px;
+    }
+
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__block1 {
+        display: flex;
+        align-items: center;
+        gap: 170px;
+
+        @media screen and (max-width: $md1) {
+            gap: 128px;
+        }
+
+        @media screen and (max-width: $md2) {
+            gap: 85px;
+        }
+    }
+
+    &__logo {
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+
+        @media screen and (max-width: $md1) {
+            gap: 5px;
+        }
+
+        @media screen and (max-width: $md2) {
+            gap: 3.5px;
+        }
+
+        &__icon {
+            width: 90px;
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+
+            @media screen and (max-width: $md1) {
+                width: 67.5px;
+            }
+
+            @media screen and (max-width: $md2) {
+                width: 45px;
+            }
+        }
+
+        &__text {
+            max-width: 90px;
+
+            @media screen and (max-width: $md1) {
+                max-width: 67.5px;
+            }
+
+            @media screen and (max-width: $md2) {
+                max-width: 45px;
+            }
+        }
+    }
+
+    &__block2 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 34px;
+
+        @media screen and (max-width: $md1) {
+            gap: 25px;
+        }
+
+        @media screen and (max-width: $md2) {
+            gap: 17px;
+        }
+    }
+
+    &__media {
+        display: flex;
+        align-items: center;
+        gap: 35px;
+
+        @media screen and (max-width: $md1) {
+            gap: 25px;
+        }
+
+        @media screen and (max-width: $md2) {
+            gap: 17.5px;
+        }
+
+        &__item {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+
+            @media screen and (max-width: $md1) {
+                gap: 6.75px;
+            }
+
+            @media screen and (max-width: $md2) {
+                gap: 4.5px;
+            }
+        }
+
+        &__icon {
+            width: 22px;
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+
+            @media screen and (max-width: $md1) {
+                width: 16.5px;
+            }
+
+            @media screen and (max-width: 4md2) {
+                width: 11px;
+            }
+        }
+    }
+
+    &__privacy {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+
+        @media screen and (max-width: $md1) {
+            gap: 24px;
+        }
+
+        @media screen and (max-width: $md2) {
+            gap: 16px;
+        }
+
+        &__text {
+            color: #929292;
+            text-decoration: underline;
+        }
+    }
+
+    &__contact {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        text-align: right;
+
+        @media screen and (max-width: $md1) {
+            gap: 12px;
+        }
+
+        @media screen and (max-width: $md2) {
+            gap: 8px;
+        }
+    }
+}

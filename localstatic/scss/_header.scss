@@ -1,0 +1,625 @@
+.header {
+    padding: 25px 0px;
+
+    @media screen and (max-width: $md1) {
+        padding: 19px 0;
+    }
+
+    @media screen and (max-width: $md2) {
+        padding: 12.5px;
+    }
+
+    &__list {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__logo {
+        width: 99px;
+        height: 40px;
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+
+        @media screen and (max-width: $md1) {
+            width: 75px;
+            height: 30px;
+        }
+
+        @media screen and (max-width: $md2) {
+            width: 50px;
+            height: 20px;
+        }
+    }
+
+    &__content {
+        display: flex;
+        gap: 46px;
+
+        @media screen and (max-width: $md1) {
+            gap: 35px;
+        }
+
+        @media screen and (max-width: $md2) {
+            gap: 23px;
+        }
+    }
+
+    &__menu-block {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 30px;
+
+        @media screen and (max-width: $md1) {
+            gap: 22px;
+        }
+
+        @media screen and (max-width: $md2) {
+            gap: 15px;
+        }
+    }
+
+    &__menu {
+        padding: 12px 20px;
+        border-radius: 10px;
+        background-color: $orange;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        cursor: pointer;
+        transition: all 0.4s ease;
+
+        @media screen and (max-width: $md1) {
+            padding: 9px 15px;
+            border-radius: 7.5px;
+            gap: 5px;
+        }
+
+        @media screen and (max-width: $md2) {
+            padding: 6px 10px;
+            border-radius: 5px;
+            gap: 3.5px;
+        }
+
+        &:hover {
+            background-color: $orgHover;
+        }
+
+        &__burger {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            img {
+                width: 15px;
+                height: auto;
+
+                @media screen and (max-width: $md1) {
+                    width: 11px;
+                }
+
+                @media screen and (max-width: $md2) {
+                    width: 7.5px;
+                }
+            }
+        }
+
+        &__arrow {
+            display: none;
+            justify-content: center;
+            align-items: center;
+
+            img {
+                width: 15px;
+                height: auto;
+
+                @media screen and (max-width: $md1) {
+                    width: 11px;
+                }
+
+                @media screen and (max-width: $md2) {
+                    width: 7.5px;
+                }
+            }
+        }
+
+        &__text {
+            transform: translateY(-1.8px);
+
+            @media screen and (max-width: $md1) {
+                transform: translateY(-0.6px);
+            }
+
+            @media screen and (max-width: $md2) {
+                transform: translateY(0);
+            }
+        }
+    }
+
+    .menu-active {
+        background-color: #fff;
+
+        div {
+            display: flex;
+        }
+        
+        div:first-child {
+            display: none;
+        }
+
+        span {
+            color: $orange;
+        }
+    }
+
+    &__searchbar {
+        position: relative;
+        padding-left: 18px;
+        width: calc(531px - 18px);
+        border: 1px solid #fff;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        gap: 9px;
+
+        @media screen and (max-width: $md1) {
+            padding-left: 13.5px;
+            width: calc(400px - 13.5px);
+            border-radius: 7.5px;
+            gap: 7px;
+        }
+
+        @media screen and (max-width: $md2) {
+            padding-left: 9px;
+            width: calc(265px - 9px);
+            border-radius: 5px;
+            gap: 4.5px;
+        }
+
+        &__icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 15px;
+
+            @media screen and (max-width: $md1) {
+                width: 11px;
+            }
+
+            @media screen and (max-width: $md2) {
+                width: 7.5px;
+            }
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        input {
+            color: #fff;
+            background-color: transparent;
+            border: none;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 40px;
+
+            @media screen and (max-width: $md1) {
+                height: 30px;
+            }
+
+            @media screen and (max-width: $md2) {
+                height: 20px;
+            }
+
+            &:focus-visible {
+                outline: none;
+            }
+
+            &::-webkit-input-placeholder {
+                font-size: 16px;
+                font-weight: 500;
+                color: #4A4A4A;
+
+                @media screen and (max-width: $md1) {
+                    font-size: 12px;
+                }
+
+                @media screen and (max-width: $md2) {
+                    font-size: 8px;
+                }
+            }
+        }
+
+        &__cart {
+            display: flex;
+            align-items: center;
+            gap: 23px;
+
+            @media screen and (max-width: $md1) {
+                gap: 17px;
+            }
+
+            @media screen and (max-width: $md2) {
+                gap: 11.5px;
+            }
+    
+            &__item {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+
+                @media screen and (max-width: $md1) {
+                    gap: 6px;
+                }
+
+                @media screen and (max-width: $md2) {
+                    gap: 4px;
+                }
+    
+                svg {
+                    height: 19px;
+                    color: #fff;
+                    transition: all 0.4s ease;
+
+                    @media screen and (max-width: $md1) {
+                        gap: 15px;
+                    }
+
+                    @media screen and (max-width: $md2) {
+                        height: 9.5px;
+                    }
+                }
+
+                &__number {
+                    position: absolute;
+                    top: -3px;
+                    left: 35px;
+                    font-size: 8px;
+                    font-weight: 600;
+                    padding: 2px 4px;
+                    border-radius: 50%;
+                    background-color: $orange;
+
+                    @media screen and (max-width: $md1) {
+                        top: -2.25px;
+                        left: 26.25px;
+                        font-size: 6px;
+                        padding: 1.5px 3px;
+                    }
+
+                    @media screen and (max-width: $md2) {
+                        top: -1.5px;
+                        left: 17.5px;
+                        font-size: 4px;
+                        padding: 1px 2px;
+                    }
+                }
+
+                &__text {
+                    transition: all 0.4s ease;
+                }
+
+                &:hover {
+                    svg, .header__searchbar__cart__item__text {
+                        color: #929292;
+                    }
+                }
+            }
+        }
+
+        &__suggestions {
+            position: absolute;
+            z-index: 3;
+            top: 70px;
+            left: 0;
+            width: calc(100% - 40px);
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 20px;
+
+            @media screen and (max-width: $md1) {
+                top: 52.5px;
+                width: calc(100% - 30px);
+                padding: 15px;
+                border-radius: 15px;
+            }
+
+            @media screen and (max-width: $md2) {
+                top: 35px;
+                width: calc(100% - 20px);
+                padding: 10px;
+                border-radius: 10px;
+            }
+
+            &__wrapper {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                overflow-y: auto;
+                max-height: 150px;
+
+                @media screen and (max-width: $md1) {
+                    gap: 15px;
+                    max-height: 112.5px;
+                }
+
+                @media screen and (max-width: $md2) {
+                    gap: 10px;
+                    max-height: 75px;
+                }
+
+                &::-webkit-scrollbar-track-piece {
+                    background-color: transparent;
+                }
+            }
+
+            &__item {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                color: $black;
+
+                @media screen and (max-width: $md1) {
+                    gap: 8px;
+                }
+
+                @media screen and (max-width: $md2) {
+                    gap: 6px;
+                }
+
+                &__image {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 20px;
+                    background-color: #F3F3F3;
+                    border-radius: 12px;
+
+                    @media screen and (max-width: $md1) {
+                        padding: 15px;
+                        border-radius: 9px;
+                    }
+
+                    @media screen and (max-width: $md2) {
+                        padding: 10px;
+                        border-radius: 6px;
+                    }
+
+                    img {
+                        width: 50px;
+                        height: auto;
+                        object-fit: cover;
+
+                        @media screen and (max-width: $md1) {
+                            width: 37.5px;
+                        }
+
+                        @media screen and (max-width: $md2) {
+                            width: 25px;
+                        }
+                    }
+                }
+
+                &__content {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+
+                    @media screen and (max-width: $md1) {
+                        gap: 7.5px;
+                    }
+
+                    @media screen and (max-width: $md2) {
+                        gap: 5px;
+                    }
+                }
+
+                & + & {
+                    border-top: 1px solid #929292;
+                    padding-top: 20px;
+
+                    @media screen and (max-width: $md1) {
+                        padding-top: 15px;
+                    }
+
+                    @media screen and (max-width: $md2) {
+                        padding-top: 10px;
+                    }
+                }
+            }
+
+            &__text {
+                color: #929292;
+            }
+        }
+    }
+
+    &__btns {
+        display: flex;
+        align-items: center;
+        gap: 13px;
+
+        @media screen and (max-width: $md1) {
+            gap: 10px;
+        }
+
+        @media screen and (max-width: $md2) {
+            gap: 6.5px;
+        }
+    }
+
+    &__btn {
+        padding: 15px 13px;
+        border-radius: 10px;
+        background-color: $orange;
+        transition: all 0.4s ease;
+
+        @media screen and (max-width: $md1) {
+            padding: 11.25px 10px;
+            border-radius: 7.5px;
+        }
+
+        @media screen and (max-width: $md2) {
+            padding: 7.5px 6.5px;
+            border-radius: 5px;
+        }
+
+        &:hover {
+            background-color: $orgHover;
+        }
+    }
+
+    &__btn:last-child {
+        background-color: #fff;
+        color: $black;
+
+        &:hover {
+            background-color: #D9D9D9;
+        }
+    }
+
+    &__profile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 8px;
+
+        @media screen and (max-width: $md1) {
+            gap: 6px;
+        }
+
+        @media screen and (max-width: $md1) {
+            gap: 4px;
+        }
+
+        &__icon {
+            width: 19px;
+            height: 19px;
+
+            @media screen and (max-width: $md1) {
+                width: 15px;
+                height: 15px;
+            }
+
+            @media screen and (max-width: $md2) {
+                width: 10px;
+                height: 10px;
+            }
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+}
+
+
+.dropdown {
+    position: absolute;
+    z-index: 2;
+    top: 65px;
+    left: 0;
+    transition: all 0.4s ease;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+
+    @media screen and (max-width: $md1) {
+        top: 48.75px;
+    }
+
+    @media screen and (max-width: $md2) {
+        top: 32.5px;
+    }
+
+    &__wrapper {
+        padding: 25px 28px 25px 21px;
+        border-radius: 20px;
+        background-color: #fff;
+
+        @media screen and (max-width: $md1) {
+            padding: 18.75px 21px 18.75px 15.75px;
+            border-radius: 15px;
+        }
+
+        @media screen and (max-width: $md2) {
+            padding: 12.5px 14px 12.5px 10.5px;
+            border-radius: 10px;
+        }
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        @media screen and (max-width: $md1) {
+            gap: 15px;
+        }
+
+        @media screen and (max-width: $md2) {
+            gap: 10px;
+        }
+        
+        &__item {
+            display: flex;
+            align-items: center;
+            gap: 17px;
+
+            @media screen and (max-width: $md1) {
+                gap: 13px;
+            }
+
+            @media screen and (max-width: $md2) {
+                gap: 9px;
+            }
+
+            &__icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 26px;
+
+                @media screen and (max-width: $md1) {
+                    width: 20px;
+                }
+
+                @media screen and (max-width: $md2) {
+                    width: 13px;
+                }
+                
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+            }
+
+            &__text {
+                color: $black;
+                transition: all 0.35s ease;
+            }
+
+            &:hover {
+                .dropdown__list__item__text {
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+}
+
+.dropdown-active {
+    opacity: 1;
+    height: auto;
+    overflow: visible;
+}

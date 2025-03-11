@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flatpickr Date Picker</title>
+    
+    <!-- Flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <style>
+        /* Remove Chrome's native calendar */
+        input::-webkit-calendar-picker-indicator {
+            display: none !important;
+            pointer-events: none;
+        }
+        input::-webkit-datetime-edit {
+            display: none !important;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <label for="datepicker">Select Date:</label>
+    <!-- No 'readonly', no 'type="date"'; pure 'type="text"' -->
+    <input type="text" id="datepicker" placeholder="Pick a date" autocomplete="off"> 
+
+    <!-- Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <script>
+        // Prevent native picker from opening
+        document.getElementById("datepicker").addEventListener("focus", function(e) {
+            e.preventDefault(); // Disable native behavior
+            this.blur(); // Remove focus to block picker
+        });
+
+        // Force initialize Flatpickr after a slight delay to avoid conflicts
+        setTimeout(() => {
+            flatpickr("#datepicker", {
+                dateFormat: "Y-m-d",
+                altInput: true,
+                altFormat: "F j, Y", // Example: March 7, 2025
+                allowInput: true, // Allows manual input
+                defaultDate: new Date(), // Set to today's date
+            });
+        }, 500); // 500ms delay to ensure Flatpickr initializes properly
+    </script>
+
+</body>
+</html>

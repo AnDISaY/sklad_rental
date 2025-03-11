@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    {% block extra_styles %}{% endblock %}
+</head>
+<style type="text/css">
+    @font-face {
+        font-family: "Gilroy";
+        font-display: swap;
+        src: url("{% static 'fonts/regular/Gilroy-Regular.eot' %}");
+        src: url("{% static 'fonts/regular/Gilroy-Regular.eot' %}#iefix") format('embedded-opentype');
+        src: url("{% static 'fonts/regular/Gilroy-Regular.woff2' %}") format('woff2');
+        src: url("{% static 'fonts/regular/Gilroy-Regular.woff' %}") format('woff');
+        src: url("{% static 'fonts/regular/Gilroy-Regular.ttf' %}") format('truetype');
+        font-weight: 400;
+    }
+    @font-face {
+            font-family: "Gilroy";
+            font-display: swap;
+            src: url("{% static 'fonts/medium/Gilroy-Medium.eot' %}");
+            src: url("{% static 'fonts/medium/Gilroy-Medium.eot' %}#iefix") format('embedded-opentype');
+            src: url("{% static 'fonts/medium/Gilroy-Medium.woff2' %}") format('woff2');
+            src: url("{% static 'fonts/medium/Gilroy-Medium.woff' %}") format('woff');
+            src: url("{% static 'fonts/medium/Gilroy-Medium.ttf' %}") format('truetype');
+            font-weight: 500;
+        }
+        @font-face {
+            font-family: "Gilroy";
+            font-display: swap;
+            src: url("{% static 'fonts/semibold/Gilroy-Semibold.eot' %}");
+            src: url("{% static 'fonts/semibold/Gilroy-Semibold.eot' %}#iefix") format('embedded-opentype');
+            src: url("{% static 'fonts/semibold/Gilroy-Semibold.woff2' %}") format('woff2');
+            src: url("{% static 'fonts/semibold/Gilroy-Semibold.woff' %}") format('woff');
+            src: url("{% static 'fonts/semibold/Gilroy-Semibold.ttf' %}") format('truetype');
+            font-weight: 600;
+        }
+        @font-face {
+            font-family: "Gilroy";
+            font-display: swap;
+            src: url("{% static 'fonts/bold/Gilroy-Bold.eot' %}");
+            src: url("{% static 'fonts/bold/Gilroy-Bold.eot' %}#iefix") format('embedded-opentype');
+            src: url("{% static 'fonts/bold/Gilroy-Bold.woff2' %}") format('woff2');
+            src: url("{% static 'fonts/bold/Gilroy-Bold.woff' %}") format('woff');
+            src: url("{% static 'fonts/bold/Gilroy-Bold.ttf' %}") format('truetype');
+            font-weight: 700;
+        }
+</style>
+<body>
+    <header class="header">
+        <div class="header__container container">
+            <div class="header__list">
+                <a href="{% url 'home' %}" class="header__logo"><img src="{% static 'images/icon-logo.svg' %}" alt="Logo icon"></a>
+                <div class="header__content">
+                    <div class="header__menu-block">
+                        <div class="header__menu">
+                            <div class="header__menu__burger"><img src="{% static 'images/icon-burger.svg' %}" alt="Menu icon"></div>
+                            <div class="header__menu__arrow"><img src="{% static 'images/icon-menu-arrow.svg' %}" alt="Menu icon"></div>
+                            <span class="header__menu__text text-medium-big">каталог</span>
+                        </div>
+                        <div class="dropdown">
+                            <div class="dropdown__wrapper">
+                                <div class="dropdown__list">
+                                    {% for category in categories %}
+                                        <a href="{% url 'category' category.id %}" class="dropdown__list__item">
+                                            <div class="dropdown__list__item__icon"><img src="{{ category.photo.url }}" alt="Category icon"></div>
+                                            <div class="dropdown__list__item__text text-main">{{ category.name }}</div>
+                                        </a>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="header__searchbar">
+                            <div class="header__searchbar__icon"><img src="{% static 'images/icon-search.svg' %}" alt="Search icon"></div>
+                            <input type="text" class="header__searchbar__input text-main" id="search" placeholder="Поиск по каталогу">
+                        </div>
+                    </div>
+                    <div class="header__searchbar__cart">
+                        <a href="{% url 'cart' %}" class="header__searchbar__cart__item">
+                            <div class="header__searchbar__cart__item__icon">
+                                <svg width="100%" viewBox="0 0 15 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M11.0705 4.83663L10.9498 3.20935C10.8139 1.41633 9.30414 -3.8147e-06 7.49245 -3.8147e-06C5.68077 -3.8147e-06 4.15593 1.41633 4.03515 3.20935L3.91437 4.83663H2.17817C1.4686 4.83663 0.8798 5.39413 0.819411 6.1023L0.00415215 17.5385C-0.0260426 17.9151 0.109834 18.2918 0.366489 18.563C0.623145 18.8343 0.985482 19 1.36292 19H13.6371C14.0145 19 14.3769 18.8493 14.6335 18.563C14.8902 18.2918 15.026 17.9151 14.9958 17.5385L14.1806 6.20777C14.1202 5.43933 13.4861 4.8517 12.7161 4.8517H11.0705V4.83663ZM4.94099 3.26962C5.03158 1.94369 6.14879 0.904041 7.49245 0.904041C8.83612 0.904041 9.95332 1.94369 10.0439 3.26962L10.1496 4.83663H4.82022L4.94099 3.26962ZM13.2747 6.26804L14.09 17.5987C14.1051 17.7193 14.0598 17.8398 13.9692 17.9453C13.8786 18.0357 13.7579 18.096 13.6371 18.096H1.36292C1.24214 18.096 1.12136 18.0508 1.03077 17.9453C0.94019 17.8398 0.894897 17.7343 0.909995 17.5987L1.72525 6.16257C1.74035 5.92149 1.93662 5.74068 2.17817 5.74068H3.85398L3.7634 6.94607C3.7483 7.20222 3.92947 7.41316 4.18613 7.42823H4.21632C4.45788 7.42823 4.65414 7.24742 4.66924 7.00634L4.75983 5.74068H10.2251L10.3157 7.00634C10.3308 7.26249 10.5421 7.4433 10.7988 7.42823C11.0554 7.41316 11.2366 7.20222 11.2215 6.94607L11.1309 5.74068H12.7161C13.003 5.74068 13.2446 5.96669 13.2747 6.26804Z" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            {% if cart_length %}
+                            <div class="header__searchbar__cart__item__number">{{ cart_length }}</div>
+                            {% endif %}
+                            <div class="header__searchbar__cart__item__text text-semibold-mid">Корзина</div>
+                        </a>
+                        <a href="{% url 'favorites' %}" class="header__searchbar__cart__item">
+                            <div class="header__searchbar__cart__item__icon">
+                                <svg width="100%" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M16.2708 0C13.9755 0 11.8919 1.60413 11 3.77331C10.1081 1.60327 8.0245 0 5.72917 0C2.57033 0 0 2.43003 0 5.41644C0 11.2749 8.94117 17.6099 10.7332 18.8197L11 19L11.2668 18.8197C13.0598 17.6099 22 11.274 22 5.41644C22 2.43003 19.4297 0 16.2708 0ZM11 17.9332C6.28742 14.6963 0.916667 9.552 0.916667 5.41644C0.916667 2.90754 3.07542 0.86663 5.72917 0.86663C8.24817 0.86663 10.5417 3.34519 10.5417 6.06641H11.4583C11.4583 3.34519 13.7518 0.86663 16.2708 0.86663C18.9246 0.86663 21.0833 2.90754 21.0833 5.41644C21.0833 9.552 15.7126 14.6963 11 17.9332Z" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <div class="header__searchbar__cart__item__text text-semibold-mid">Избранное</div>
+                        </a>
+                    </div>
+                </div>
+                {% if user_is_authenticated %}
+                <a href="#profile-popup" class="header__profile popup-link">
+                    <div class="header__profile__icon"><img src="{% static 'images/icon-profile.svg' %}" alt="Profile icon"></div>
+                    <div class="header__profile__text text-semibold-mid">{{ user.first_name }}</div>
+                </a>
+                {% else %}
+                <div class="header__btns">
+                    <a href="#signin-popup" class="header__btn text-semibold-mid popup-link">Войти</a>
+                    <a href="#signup-popup" class="header__btn text-semibold-mid popup-link">Регистрация</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+    {% if popup_active %}
+        {% if popup_active == 'signup' %}
+            <div class="signup popup popup-active" id="signup-popup">
+        {% else %}
+            <div class="signup popup" id="signup-popup">
+        {% endif %}
+    {% else %}
+        <div class="signup popup" id="signup-popup">
+    {% endif %}
+        <div class="popup-background"></div>
+        <div class="signup__wrapper popup__wrapper">
+            <div class="signup__title title-mid">Регистрация</div>
+            <div class="signup__close popup-close"><img src="{% static 'images/icon-close.svg' %}" alt="Cross icon"></div>
+            <form method="post" class="signup__form" action="{% url 'signup' %}">{% csrf_token %}
+                <input class="signup__form__input text-main" type="text" name="last_name" placeholder="Фамилия" required>
+                <input class="signup__form__input text-main" type="text" name="first_name" placeholder="Имя" required>
+                <div class="signup__form__input__block">
+                    <span class="signup__form__input__text text-main">+7</span>
+                    <input class="signup__form__input text-main" type="text" name="phone" placeholder="Номер телефона" required>
+                </div>
+                <input class="signup__form__input text-main" type="text" name="email" placeholder="E-mail" required>
+                <input class="signup__form__input text-main" type="text" name="password" placeholder="Пароль" required>
+                <input class="signup__form__input text-main" type="text" name="password2" placeholder="Повторите пароль" required>
+                <button type="submit" class="signup__form__btn text-medium-big">Зарегистрироваться</button>
+                {% if popup_active %}
+                    {% if popup_active == 'signup' %}
+                        {% if error_message %}
+                            <div class="error">
+                            {% for message in error_message %}
+                                <div class="error__message text-regular error">{{ message }}</div>
+                            {% endfor %}
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+            </form>
+        </div>
+    </div>
+    {% if popup_active %}
+        {% if popup_active == 'signin' %}
+            <div class="signin popup popup-active" id="signin-popup">
+        {% else %}
+            <div class="signin popup" id="signin-popup">
+        {% endif %}
+    {% else %}
+        <div class="signin popup" id="signin-popup">
+    {% endif %}
+        <div class="popup-background"></div>
+        <div class="signin__wrapper popup__wrapper">
+            <div class="signin__title title-mid">Войти в профиль</div>
+            <div class="signin__close popup-close"><img src="{% static 'images/icon-close.svg' %}" alt="Cross icon"></div>
+            <form method="post" class="signin__form" action="{% url 'login' %}">{% csrf_token %}
+                <div class="signin__form__input__block">
+                    <span class="signin__form__input__text text-main">+7</span>
+                    <input class="signin__form__input text-main" type="text" name="phone" placeholder="Номер телефона" required>
+                </div>
+                <input class="signin__form__input text-main" type="text" name="password" placeholder="Пароль" required>
+                <button type="submit" class="signin__form__btn text-medium-big">Войти</button>
+                <a href="#forgot-popup" class="signin__link text-main popup-link">Забыл(а) пароль</a>
+                {% if popup_active %}
+                    {% if popup_active == 'signin' %}
+                        {% if error_message %}
+                            <div class="error">
+                            {% for message in error_message %}
+                                <div class="error__message text-regular error">{{ message }}</div>
+                            {% endfor %}
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+            </form>
+        </div>
+    </div>
+    <div class="forgot popup {% if popup_active %}popup-active{% endif %}" id="forgot-popup">
+        <div class="popup-background"></div>
+        <div class="forgot__wrapper popup__wrapper">
+            {% if popup_active %}
+                {% if popup_active == 'forgot' %}
+                    <div class="forgot__title title-mid">Введите почту привязанную к аккаунту</div>
+                    <div class="forgot__close popup-close"><img src="{% static 'images/icon-close.svg' %}" alt="Cross icon"></div>
+                    <form method="post" class="forgot__form" action="{% url 'forgot_password' %}">{% csrf_token %}
+                        <input class="forgot__form__input text-main" type="email" name="email" placeholder="Электронная почта" required>
+                        <button type="submit" class="forgot__form__btn text-medium-big">Отправить</button>
+                        {% if error_message %}
+                            <div class="error">
+                            {% for message in error_message %}
+                                <div class="error__message text-regular error">{{ message }}</div>
+                            {% endfor %}
+                            </div>
+                        {% endif %}
+                    </form>
+                {% elif popup_active == 'forgot_code' %}
+                    <div class="forgot__title title-mid">Введите код отправленный на почту</div>
+                    <div class="forgot__close popup-close"><img src="{% static 'images/icon-close.svg' %}" alt="Cross icon"></div>
+                    <form method="post" class="forgot__form" action="{% url 'forgot_password' %}">{% csrf_token %}
+                        <input class="forgot__form__input text-main" type="text" name="code" placeholder="Код" required>
+                        <button type="submit" class="forgot__form__btn text-medium-big">Отправить</button>
+                        {% if error_message %}
+                            <div class="error">
+                            {% for message in error_message %}
+                                <div class="error__message text-regular error">{{ message }}</div>
+                            {% endfor %}
+                            </div>
+                        {% endif %}
+                    </form>
+                {% else %}
+                    <div class="forgot__title title-mid">Введите новый пароль</div>
+                    <div class="forgot__close popup-close"><img src="{% static 'images/icon-close.svg' %}" alt="Cross icon"></div>
+                    <form method="post" class="forgot__form" action="{% url 'forgot_password' %}">{% csrf_token %}
+                        <input class="signin__form__input text-main" type="text" name="password" placeholder="Пароль" required>
+                        <input class="signin__form__input text-main" type="text" name="password2" placeholder="Повторите пароль" required>
+                        <button type="submit" class="forgot__form__btn text-medium-big">Отправить</button>
+                        {% if error_message %}
+                            <div class="error">
+                            {% for message in error_message %}
+                                <div class="error__message text-regular error">{{ message }}</div>
+                            {% endfor %}
+                            </div>
+                        {% endif %}
+                    </form>
+                {% endif %}
+            {% else %}
+                <div class="forgot__title title-mid">Введите почту привязанную к аккаунту</div>
+                <div class="forgot__close popup-close"><img src="{% static 'images/icon-close.svg' %}" alt="Cross icon"></div>
+                <form method="post" class="forgot__form" action="{% url 'forgot_password' %}">{% csrf_token %}
+                    <input class="forgot__form__input text-main" type="email" name="email" placeholder="Электронная почта" required>
+                    <button type="submit" class="forgot__form__btn text-medium-big">Отправить</button>
+                    {% if error_message %}
+                        <div class="error">
+                        {% for message in error_message %}
+                            <div class="error__message text-regular error">{{ message }}</div>
+                        {% endfor %}
+                        </div>
+                    {% endif %}
+                </form>
+            {% endif %}
+        </div>
+    </div>
+    <div class="profile popup" id="profile-popup">
+        <div class="popup-background"></div>
+        <div class="profile__container container">
+            <div class="profile__wrapper">
+                <div class="profile__icon"><img src="{% static 'images/icon-triangle.svg' %}" alt=""></div>
+                <div class="profile__block">
+                    <a href="{% url 'profile_edit' %}" class="profile__link">
+                        <div class="profile__link__icon"><img src="{% static 'images/profile/icon-edit.svg' %}" alt="Edit icon"></div>
+                        <div class="profile__link__text text-main">Редактировать профиль</div>
+                    </a>
+                    <!-- <a href="{% url 'profile_history' %}" class="profile__link">
+                        <div class="profile__link__icon"><img src="{% static 'images/profile/icon-history.svg' %}" alt="Order history icon"></div>
+                        <div class="profile__link__text text-main">История заказов</div>
+                    </a> -->
+                </div>
+                <a href="{% url 'logout' %}" class="profile__btn">Выйти</a>
+            </div>
+        </div>
+    </div>
+    <div class="favpopup popup" id="favorites-popup">
+        <div class="popup-background"></div>
+        <div class="favpopup__wrapper popup__wrapper">
+            <div class="favpopup__close popup-close"><img src="{% static 'images/icon-close.svg' %}" alt="Cross icon"></div>
+            <div class="favpopup__icon">
+                <svg width="100%" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11 19C10.8887 19 10.7775 18.9713 10.6778 18.9138C10.5695 18.8514 7.99691 17.3599 5.38743 15.1125C3.84082 13.7805 2.60624 12.4594 1.71808 11.1859C0.568758 9.53795 -0.00921315 7.95286 0.000111035 6.47457C0.0110251 4.75441 0.628011 3.13671 1.73755 1.91942C2.86582 0.681629 4.37152 0 5.97739 0C8.03545 0 9.91709 1.15121 11 2.97486C12.083 1.15125 13.9646 0 16.0227 0C17.5398 0 18.9873 0.615036 20.0986 1.73183C21.3183 2.9574 22.0112 4.68906 21.9999 6.48272C21.9905 7.95844 21.4017 9.54113 20.2498 11.1868C19.3589 12.4596 18.1261 13.7801 16.5855 15.1117C13.9856 17.3589 11.4315 18.8504 11.324 18.9128C11.2256 18.9699 11.1138 19 11 19Z" fill="#FF6400"/>
+                </svg>
+            </div>
+            <div class="favpopup__title title">Войдите в аккаунт</div>
+            <div class="favpopup__text text-semibold-mid">После авторизации вы сможете добавлять товары в избранное</div>
+        </div>
+    </div>
+    <div class="orderpopup popup" id="order-popup">
+        <div class="popup-background"></div>
+        <div class="orderpopup__wrapper popup__wrapper">
+            <div class="orderpopup__close popup-close"><img src="{% static 'images/icon-close.svg' %}" alt="Cross icon"></div>
+            <div class="orderpopup__title title">Войдите в аккаунт</div>
+            <div class="orderpopup__text text-semibold-mid">После авторизации вы сможете оформить заказ</div>
+        </div>
+    </div>
+    {% if success_message %}
+    <div class="temporary">
+        <div class="temporary__wrapper">
+            <div class="temporary__icon"><img src="{% static 'images/icon-success.svg' %}" alt="Success icon"></div>
+            <div class="temporary__message title-small">{{ success_message }}</div>
+            {% if success_message_subtext %}`
+            <div class="temporary__message-subtext text-main">{{ success_message_subtext }}</div>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+    {% block content %}{% endblock %}
+    <footer class="footer">
+        <div class="footer__container container">
+            <div class="footer__block1">
+                <a href="{% url 'home' %}" class="footer__logo">
+                    <div class="footer__logo__icon"><img src="{% static 'images/icon-logo.svg' %}" alt="Logo icon"></div>
+                    <div class="footer__logo__text text-medium-small">Аренда фото-<br>и видеотехники</div>
+                </a>
+            </div>
+            <div class="footer__block2">
+                <div class="footer__media">
+                    <a href="#" class="footer__media__item">
+                        <div class="footer__media__icon"><img src="{% static 'images/contact/icon-insta.svg' %}" alt="Instagram icon"></div>
+                        <div class="footer__media__text text-main">instagram</div>
+                    </a>
+                    <a href="#" class="footer__media__item">
+                        <div class="footer__media__icon"><img src="{% static 'images/contact/icon-wa.svg' %}" alt="WhastApp icon"></div>
+                        <div class="footer__media__text text-main">whatsapp</div>
+                    </a>
+                    <a href="#" class="footer__media__item">
+                        <div class="footer__media__icon"><img src="{% static 'images/contact/icon-tg.svg' %}" alt="Telegram icon"></div>
+                        <div class="footer__media__text text-main">telegram</div>
+                    </a>
+                </div>
+                <div class="footer__privacy">
+                    <a href="#" class="footer__privacy__text text-medium-small">Политика конфиденциальности</a>
+                    <a href="#faq" class="footer__privacy__text text-medium-small">F.A.Q.</a>
+                </div>
+            </div>
+            <div class="footer__contact">
+                <a href="https://maps.app.goo.gl/GBvLkJuF4KjLzjML8" class="footer__contact__text text-main">Астана, пр.Мангилик ел, 36</a>
+                <a href="tel:+77001080357" class="footer__contact__text text-main">7 700 108 0357</a>
+            </div>
+        </div>
+    </footer>
+    <!-- <script>
+        window.user_is_authenticated = `{{ user_is_authenticated|safe }}`
+        window.cartArr = {{ cartJs|safe }}
+        window.favArray = {{ favorites }}
+    </script> -->
+    <script>
+        headerProfile = document.querySelector('.header__profile__text')
+        profilePopupIcon = document.querySelector('.profile__icon')
+        profilePopupWrapper = document.querySelector('.profile__wrapper')
+        if (screen.width > 1344) {
+            profilePopupIcon.style.right = `calc(30px + 7.5px + ${parseFloat(headerProfile.getBoundingClientRect().width) / 2}px)`
+        } else if (screen.width > 1080) {
+            profilePopupIcon.style.right = `calc(22px + 5.5px + ${parseFloat(headerProfile.getBoundingClientRect().width) / 2}px)`
+        } else if (screen.width > 720) {
+            profilePopupIcon.style.right = `calc(15px + 3.75px + ${parseFloat(headerProfile.getBoundingClientRect().width) / 2}px)`
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="{% static 'js/smoothAnchor.js' %}"></script>
+    <script src="{% static 'js/searchFilter.js' %}"></script>
+    <script src="{% static 'js/dropdown.js' %}"></script>
+    <script src="{% static 'js/favorites.js' %}" id="favoritesScript"></script>
+    <script src="{% static 'js/cart.js' %}" id="cartScript"></script>
+    <script src="{% static 'js/popup.js' %}" id="popupScript"></script>
+    <script src="{% static 'js/accordion.js' %}"></script>
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,59 @@
+{% extends 'ru/base.html' %}
+{% load static %}
+
+{% block title %}Личный кабинет{% endblock %}
+
+{% block content %}
+<section class="edit">
+    <div class="edit__container container">
+        <a href="{% url 'home' %}" class="edit__return">
+            <div class="edit__return__icon"><img src="{% static 'images/profile/icon-return.svg' %}" alt="Arrow icon"></div>
+            <div class="edit__return__text text-main">Вернуться</div>
+        </a>
+        <div class="edit__title title">Редактирование профиля</div>
+        <div class="edit__block">
+            <div class="edit__column">
+                <div class="edit__text text-semibold-big">Личная информация</div>
+                <form method="post" action="{% url 'profile_edit' %}" class="edit__form">{% csrf_token %}
+                    <input type="text" class="edit__form__input text-main" name="last_name" placeholder="Фамилия" value="{{ user.last_name }}" required>
+                    <input type="text" class="edit__form__input text-main" name="first_name" placeholder="Имя" value="{{ user.first_name }}" required>
+                    <input type="text" class="edit__form__input text-main" name="email" placeholder="E-mail" value="{{ user.email }}" required>
+                    <button type="submit" class="edit__form__btn text-main">Сохранить</button>
+                </form>
+                {% if redirect == 'profile_edit' %}
+                    {% if error_message %}
+                        <div class="edit__error">
+                        {% for message in error_message %}
+                            <div class="edit__error__message text-regular error">{{ message }}</div>
+                        {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endif %}
+            </div>
+            <div class="edit__column">
+                <div class="edit__text text-semibold-big">Смена пароля</div>
+                <form method="post" action="{% url 'profile_password' %}" class="edit__form">{% csrf_token %}
+                    <div class="edit__form__input__block">
+                        <div class="edit__form__input__text text-main">+7</div>
+                        <input type="text" class="edit__form__input text-main" name="password" placeholder="Новый пароль" required>
+                    </div>
+                    <div class="edit__form__input__block">
+                        <div class="edit__form__input__text text-main">+7</div>
+                        <input type="text" class="edit__form__input text-main" name="password1" placeholder="Повторите новый пароль" required>
+                    </div>
+                    <button type="submit" class="edit__form__btn text-main">Сменить пароль</button>
+                </form>
+                {% if redirect == 'profile_new_password' %}
+                    {% if error_message %}
+                        <div class="edit__error">
+                        {% for message in error_message %}
+                            <div class="edit__error__message text-regular error">{{ message }}</div>
+                        {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

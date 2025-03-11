@@ -1,0 +1,84 @@
+//<ШРИФТЫ>
+
+//<Подключение>
+// @import "fonts";
+
+//</Подключение>
+
+//<Иконочные>
+//</Иконочные>
+
+//<Шрифты по умолчанию>
+
+//</Шрифты по умолчанию>
+
+//</ШРИФТЫ>
+
+//<ПЕРЕМЕННЫЕ>
+$minWidth: 320px;
+$maxWidth: 1440px;
+$maxWidthContainer: 1320px;
+$md1: $maxWidthContainer + 24;
+$md2: 1080px;
+$md3: 720px;
+$md4: 480px;
+$ff: "Gilroy", "sans-serif";
+$orange: #FF6400;
+$orgHover: #FF8333;
+$black: #1C1C1C;
+//</ПЕРЕМЕННЫЕ>
+
+//<ОБНУЛЕНИЕ>
+html, body {
+    height: 100%;
+}
+
+body {
+  position: relative;
+  
+    a {
+        text-decoration: none;
+        color: #fff;
+    }
+
+    button {
+        font-family: $ff;
+        border: none;
+    }
+
+    font-family: $ff;
+    color: #fff;
+    margin: 0px auto;
+    background-color: $black;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+//</ОБНУЛЕНИЕ>
+
+//<ИМПОРТЫ>
+
+//<ОБЩИЕ КЛАССЫ>
+@import "_sample";
+//</ОБЩИЕ КЛАССЫ>
+
+//<HEADER>
+@import "_header";
+@import "_popups";
+//</HEADER>
+
+//<MAIN>
+@import "_home";
+@import "_cart";
+@import "_order";
+@import "_profile";
+@import "_category";
+@import "_favorites";
+@import "_product";
+//</MAIN>
+
+//<FOOTER>
+@import "_footer";
+//</FOOTER>
+
+//</ИМПОРТЫ>

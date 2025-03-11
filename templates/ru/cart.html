@@ -1,0 +1,62 @@
+{% extends 'ru/base.html' %}
+{% load static %}
+
+{% block title %}Корзина{% endblock %}
+
+{% block content %}
+<section class="cart">
+    <div class="cart__container container">
+        <div class="cart__content">
+            <div class="cart__title-block">
+                <div class="cart__title title">Корзина</div>
+                {% if user_cart %}
+                <div class="cart__flush">
+                    <div class="cart__flush__icon"><img src="{% static 'images/icon-trash.svg' %}" alt="Trash icon"></div>
+                    <div class="cart__flush__text text-main">Очистить корзину</div>
+                </div>
+                {% endif %}
+            </div>
+            <div class="bsdfjl392dm" style="display: none;">{{ user_cart|length }}</div>
+            <div class="cart__text text-main">В вашей корзине {{ user_cart|length }} товаров:</div>
+            <div class="cart__cards">
+                {% for uc in user_cart %}
+                <div class="cart__card">
+                    <div class="fsd12mjh63" style="display: none;">{{ uc.product.id }}</div>
+                    <div class="cart__card__column">
+                        <div class="cart__card__image"><img src="{{ uc.product.photo.url }}" alt="Product photo"></div>
+                        <div class="cart__card__text-block">
+                            <div class="cart__card__title text-semibold-mid">{{ uc.product.name }}</div>
+                            <div class="cart__card__text text-medium-small">{{ uc.product.category }}</div>
+                            <div class="cart__card__price text-regular-small">{{ uc.product.price }} ₸</div>
+                        </div>
+                    </div>
+                    <div class="cart__card__column">
+                        <div class="cart__card__trash"><img src="{% static 'images/icon-trash.svg' %}" alt="Trash icon"></div>
+                        <div class="cart__card__quantity">
+                            <div class="cart__card__quantity__wrapper">
+                                <div class="cart__card__quantity__minus text-medium-big">-</div>
+                                <div class="cart__card__quantity__value text-medium-big">{{ uc.quantity }}</div>
+                                <div class="cart__card__quantity__plus text-medium-big">+</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% if user_cart %}
+        <div class="cart__buy">
+            <div class="cart__buy__block">
+                <div class="cart__buy__text text-main">Сумма заказа</div>
+                <div class="cart__buy__price"></div>
+            </div>
+            <a href="{% if user_is_authenticated %} {% url 'order' %} {% else %}#order-popup{% endif %}" class="cart__buy__btn text-semibold-mid {% if not user_is_authenticated %}popup-link{% endif %}">Перейти к оформлению</a>
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{% static 'js/cart_count.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,311 @@
+.cart {
+    margin: 80px 0px 135px;
+
+    @media screen and (max-width: $md1) {
+        margin: 60px 0 100px;
+    }
+
+    @media screen and (max-width: $md2) {
+        margin: 40px 0 67.5px;
+    }
+
+    &__container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__title-block {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 40px;
+
+        @media screen and (max-width: $md1) {
+            margin-bottom: 30px;
+        }
+
+        @media screen and (max-width: $md2) {
+            margin-bottom: 20px;
+        }
+    }
+
+    &__flush {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+
+        @media screen and (max-width: $md1) {
+            gap: 7.5px;
+        }
+
+        @media screen and (max-width: $md2) {
+            gap: 5px;
+        }
+
+        &__icon {
+            width: 10px;
+
+            @media screen and (max-width: $md1) {
+                width: 7.5px;
+            }
+
+            @media screen and (max-width: $md2) {
+                width: 5px;
+            }
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+
+    &__text {
+        margin-bottom: 23px;
+        color: #929292;
+
+        @media screen and (max-width: $md1) {
+            margin-bottom: 16px;
+        }
+
+        @media screen and (max-width: $md2) {
+            margin-bottom: 11.5px;
+        }
+    }
+
+    &__card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 0px;
+        border-bottom: 1px solid #929292;
+        width: 770px;
+
+        @media screen and (max-width: $md1) {
+            padding: 15px 0;
+            width: 577px;
+        }
+
+        @media screen and (max-width: $md2) {
+            padding: 10px 0;
+            width: 385px;
+        }
+
+        &:first-child {
+            padding-top: 0;
+        }
+
+        &:last-child {
+            padding-bottom: 0;
+            border: none;
+        }
+
+        &__column {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+
+            @media screen and (max-width: $md1) {
+                gap: 13.5px;
+            }
+
+            @media screen and (max-width: $md2) {
+                gap: 9px;
+            }
+        }
+
+        &__image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 122px;
+            height: 93px;
+            background-color: #F3F3F3;
+            border-radius: 20px;
+
+            @media screen and (max-width: $md1) {
+                width: 91.5px;
+                height: 70px;
+                border-radius: 15px;
+            }
+
+            @media screen and (max-width: $md2) {
+                width: 61px;
+                height: 46.5px;
+                border-radius: 10px;
+            }
+
+            img {
+                width: 80px;
+                height: 50px;
+
+                @media screen and (max-width: $md1) {
+                    width: 60px;
+                    height: 37.5px;
+                }
+
+                @media screen and (max-width: $md2) {
+                    width: 40px;
+                    height: 25px;
+                }
+            }
+        }
+
+        &__title {
+            margin-bottom: 10px;
+
+            @media screen and (max-width: $md1) {
+                margin-bottom: 7.5px;
+            }
+
+            @media screen and (max-width: $md2) {
+                margin-bottom: 5px;
+            }
+        }
+
+        &__text {
+            color: #929292;
+            margin-bottom: 38px;
+
+            @media screen and (max-width: $md1) {
+                margin-bottom: 28.5px;
+            }
+
+            @media screen and (max-width: $md2) {
+                margin-bottom: 19px;
+            }
+        }
+
+        &__trash {
+            width: 14px;
+            cursor: pointer;
+
+            @media screen and (max-width: $md1) {
+                width: 10.5px;
+            }
+
+            @media screen and (max-width: $md2) {
+                width: 7px;
+            }
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        &__quantity {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0px 57px;
+            border: 2px solid #fff;
+            border-radius: 12px;
+            height: 51.2px;
+            cursor: default;
+
+            @media screen and (max-width: $md1) {
+                padding: 0 43px;
+                border-width: 1.5px;
+                border-radius: 9px;
+                height: 38.4px;
+            }
+
+            @media screen and (max-width: $md2) {
+                padding: 0 28.5px;
+                border-width: 1px;
+                border-radius: 6px;
+                height: 25.6px;
+            }
+
+            &__wrapper {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 96px;
+
+                @media screen and (max-width: $md1) {
+                    width: 72px;
+                }
+
+                @media screen and (max-width: $md2) {
+                    width: 48px;
+                }
+            }
+
+            &__minus, &__plus {
+                -webkit-user-selec: none;
+                cursor: pointer;
+            }
+
+            .countOne {
+                color: #929292;
+                cursor: default;
+            }
+        }
+    }
+
+    &__buy {
+        align-self: flex-start;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        padding: 24px 21px;
+        background-color: #fff;
+        border-radius: 12px;
+
+        @media screen and (max-width: $md1) {
+            gap: 22px;
+            padding: 18px 16px;
+            border-radius: 9px;
+        }
+
+        @media screen and (max-width: $md2) {
+            gap: 15px;
+            padding: 12px 10.5px;
+            border-radius: 6px;
+        }
+
+        &__block {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            color: $black;
+        }
+
+        &__price {
+            font-size: 32px;
+            font-weight: 600;
+            line-height: 80%;
+
+            @media screen and (max-width: $md1) {
+                font-size: 24px;
+            }
+
+            @media screen and (max-width: $md2) {
+                font-size: 16px;
+            }
+        }
+
+        &__btn {
+            padding: 20px 40px;
+            background-color: $orange;
+            border-radius: 12px;
+
+            @media screen and (max-width: $md1) {
+                padding: 15px 30px;
+                border-radius: 9px;
+            }
+
+            @media screen and (max-width: $md2) {
+                padding: 10px 20px;
+                border-radius: 6px;
+            }
+
+            &:hover {
+                background-color: $orgHover;
+            }
+        }
+    }
+}
