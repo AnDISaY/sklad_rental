@@ -22,35 +22,35 @@
         font-weight: 400;
     }
     @font-face {
-            font-family: "Gilroy";
-            font-display: swap;
-            src: url("{% static 'fonts/medium/Gilroy-Medium.eot' %}");
-            src: url("{% static 'fonts/medium/Gilroy-Medium.eot' %}#iefix") format('embedded-opentype');
-            src: url("{% static 'fonts/medium/Gilroy-Medium.woff2' %}") format('woff2');
-            src: url("{% static 'fonts/medium/Gilroy-Medium.woff' %}") format('woff');
-            src: url("{% static 'fonts/medium/Gilroy-Medium.ttf' %}") format('truetype');
-            font-weight: 500;
-        }
-        @font-face {
-            font-family: "Gilroy";
-            font-display: swap;
-            src: url("{% static 'fonts/semibold/Gilroy-Semibold.eot' %}");
-            src: url("{% static 'fonts/semibold/Gilroy-Semibold.eot' %}#iefix") format('embedded-opentype');
-            src: url("{% static 'fonts/semibold/Gilroy-Semibold.woff2' %}") format('woff2');
-            src: url("{% static 'fonts/semibold/Gilroy-Semibold.woff' %}") format('woff');
-            src: url("{% static 'fonts/semibold/Gilroy-Semibold.ttf' %}") format('truetype');
-            font-weight: 600;
-        }
-        @font-face {
-            font-family: "Gilroy";
-            font-display: swap;
-            src: url("{% static 'fonts/bold/Gilroy-Bold.eot' %}");
-            src: url("{% static 'fonts/bold/Gilroy-Bold.eot' %}#iefix") format('embedded-opentype');
-            src: url("{% static 'fonts/bold/Gilroy-Bold.woff2' %}") format('woff2');
-            src: url("{% static 'fonts/bold/Gilroy-Bold.woff' %}") format('woff');
-            src: url("{% static 'fonts/bold/Gilroy-Bold.ttf' %}") format('truetype');
-            font-weight: 700;
-        }
+        font-family: "Gilroy";
+        font-display: swap;
+        src: url("{% static 'fonts/medium/Gilroy-Medium.eot' %}");
+        src: url("{% static 'fonts/medium/Gilroy-Medium.eot' %}#iefix") format('embedded-opentype');
+        src: url("{% static 'fonts/medium/Gilroy-Medium.woff2' %}") format('woff2');
+        src: url("{% static 'fonts/medium/Gilroy-Medium.woff' %}") format('woff');
+        src: url("{% static 'fonts/medium/Gilroy-Medium.ttf' %}") format('truetype');
+        font-weight: 500;
+    }
+    @font-face {
+        font-family: "Gilroy";
+        font-display: swap;
+        src: url("{% static 'fonts/semibold/Gilroy-SemiBold.eot' %}");
+        src: url("{% static 'fonts/semibold/Gilroy-SemiBold.eot' %}#iefix") format('embedded-opentype');
+        src: url("{% static 'fonts/semibold/Gilroy-SemiBold.woff2' %}") format('woff2');
+        src: url("{% static 'fonts/semibold/Gilroy-SemiBold.woff' %}") format('woff');
+        src: url("{% static 'fonts/semibold/Gilroy-SemiBold.ttf' %}") format('truetype');
+        font-weight: 600;
+    }
+    @font-face {
+        font-family: "Gilroy";
+        font-display: swap;
+        src: url("{% static 'fonts/bold/Gilroy-Bold.eot' %}");
+        src: url("{% static 'fonts/bold/Gilroy-Bold.eot' %}#iefix") format('embedded-opentype');
+        src: url("{% static 'fonts/bold/Gilroy-Bold.woff2' %}") format('woff2');
+        src: url("{% static 'fonts/bold/Gilroy-Bold.woff' %}") format('woff');
+        src: url("{% static 'fonts/bold/Gilroy-Bold.ttf' %}") format('truetype');
+        font-weight: 700;
+    }
 </style>
 <body>
     <header class="header">
@@ -341,6 +341,62 @@
             </div>
         </div>
     </footer>
+    <footer class="footer-mobile">
+        <div class="footer-mobile__wrapper">
+            <div class="footer-mobile__list">
+                <a href="{% url 'home' %}" class="footer-mobile__item">
+                    <div class="footer-mobile__item__icon"><img src="{% static 'images/footer-mobile/home.svg' %}" alt="Home icon"></div>
+                    <div class="footer-mobile__item__text footer-mobile-text">Главная</div>
+                </a>
+                <a href="#catalog-mobile" class="footer-mobile__item popup-link">
+                    <div class="footer-mobile__item__icon"><img src="{% static 'images/footer-mobile/catalog.svg' %}" alt="Catalog icon"></div>
+                    <div class="footer-mobile__item__text footer-mobile-text">Каталог</div>
+                </a>
+                <a href="{% url 'cart' %}" class="footer-mobile__item">
+                    <div class="footer-mobile__item__icon footer-mobile__item__icon-small"><img src="{% static 'images/footer-mobile/cart.svg' %}" alt="Cart icon"></div>
+                    <div class="footer-mobile__item__text footer-mobile-text">Корзина</div>
+                </a>
+                <a href="{% url 'favorites' %}" class="footer-mobile__item">
+                    <div class="footer-mobile__item__icon footer-mobile__item__icon-small"><img src="{% static 'images/footer-mobile/favorites.svg' %}" alt="Favorites icon"></div>
+                    <div class="footer-mobile__item__text footer-mobile-text">Избранное</div>
+                </a>
+                <a href="#profile-mobile" class="footer-mobile__item popup-link">
+                    <div class="footer-mobile__item__icon"><img src="{% static 'images/footer-mobile/profile.svg' %}" alt="Profile icon"></div>
+                    <div class="footer-mobile__item__text footer-mobile-text">Профиль</div>
+                </a>
+            </div>
+        </div>
+    </footer>
+    <div class="catalog-mobile popup" id="catalog-mobile">
+        <div class="catalog-mobile__container container">
+            <div class="catalog-mobile__list">
+                {% for item in categories %}
+                    <div class="catalog-mobile__item">
+                        <div class="catalog-mobile__icon"><img src="{{ item.photo_white.url }}" alt="Category photo"></div>
+                        <div class="catalog-mobile__text">{{ item.name }}</div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="profile-mobile popup" id="profile-mobile">
+        <div class="profile-mobile__container container">
+            <div class="profile-mobile__head">
+                <div class="profile-mobile__return popup-close"><img src="{% static 'images/profile/icon-return-mobile.svg' %}" alt="Arrow icon"></div>
+                <div class="profile-mobile__title title">Профиль</div>
+            </div>
+            <div class="profile-mobile__list">
+                <a href="{% url 'profile_edit' %}" class="profile-mobile__item">
+                    <div class="profile-mobile__item__icon"><img src="{% static 'images/profile/icon-edit.svg' %}" alt="Edit profile icon"></div>
+                    <div class="profile-mobile__item__text text-medium-big">Редактировать профиль</div>
+                </a>
+                <!-- <a href="{% url 'profile_history' %}" class="profile-mobile__item">
+                    <div class="profile-mobile__item__icon"><img src="{% static 'images/profile/icon-history.svg' %}" alt="Order history icon"></div>
+                    <div class="profile-mobile__item__text text-medium-big">История заказов</div>
+                </a> -->
+            </div>
+        </div>
+    </div>
     <!-- <script>
         window.user_is_authenticated = `{{ user_is_authenticated|safe }}`
         window.cartArr = {{ cartJs|safe }}

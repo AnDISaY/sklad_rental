@@ -12,7 +12,9 @@ popupLinks.forEach(link => link.addEventListener("click", (e)=> {
         href = href.slice(link.href.indexOf('#'))
     } else {
         href = `#${link.attributes[1].value}`
-        console.log(link.attributes)
+    }
+    if (href == "#profile-mobile" | href == "#catalog-mobile") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
     }
     popup = document.querySelector(href)
     popup.classList.add('popup-active')

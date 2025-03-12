@@ -10,6 +10,14 @@
     @media screen and (max-width: $md2) {
         font-size: 8px;
     }
+
+    @media screen and (max-width: $md3) {
+        font-size: 15px;
+    }
+
+    @media screen and (max-width: $md4) {
+        font-size: 10px;
+    }
 }
 
 .text-medium-big {
@@ -23,6 +31,14 @@
 
     @media screen and (max-width: $md2) {
         font-size: 10px;
+    }
+
+    @media screen and (max-width: $md3) {
+        font-size: 20px;
+    }
+
+    @media screen and (max-width: $md4) {
+        font-size: 13px;
     }
 }
 
@@ -38,6 +54,14 @@
     @media screen and (max-width: $md2) {
         font-size: 6px;
     }
+
+    @media screen and (max-width: $md3) {
+        font-size: 12px;
+    }
+
+    @media screen and (max-width: $md4) {
+        font-size: 8px;
+    }
 }
 
 .text-semibold-mid {
@@ -51,6 +75,14 @@
 
     @media screen and (max-width: $md2) {
         font-size: 8px;
+    }
+
+    @media screen and (max-width: $md3) {
+        font-size: 15px;
+    }
+
+    @media screen and (max-width: $md4) {
+        font-size: 10px;
     }
 }
 
@@ -66,6 +98,14 @@
     @media screen and (max-width: $md2) {
         font-size: 10px;
     }
+
+    @media screen and (max-width: $md3) {
+        font-size: 20px;
+    }
+
+    @media screen and (max-width: $md4) {
+        font-size: 13px;
+    }
 }
 
 .text-regular {
@@ -79,6 +119,14 @@
 
     @media screen and (max-width: $md2) {
         font-size: 9px;
+    }
+
+    @media screen and (max-width: $md3) {
+        font-size: 20px;
+    }
+
+    @media screen and (max-width: $md4) {
+        font-size: 13px;
     }
 }
 
@@ -108,6 +156,14 @@
     @media screen and (max-width: $md2) {
         font-size: 12px;
     }
+
+    @media screen and (max-width: $md3) {
+        font-size: 21px;
+    }
+
+    @media screen and (max-width: $md4) {
+        font-size: 14px;
+    }
 }
 
 .text-regular-error {
@@ -136,6 +192,14 @@
     @media screen and (max-width: $md2) {
         font-size: 18px;
     }
+
+    @media screen and (max-width: $md3) {
+        font-size: 30px;
+    }
+
+    @media screen and (max-width: $md4) {
+        font-size: 20px;
+    }
 }
 
 .title-small {
@@ -163,6 +227,24 @@
 
     @media screen and (max-width: $md2) {
         font-size: 16px;
+    }
+
+    @media screen and (max-width: $md3) {
+        font-size: 32px;
+    }
+
+    @media screen and (max-width: $md4) {
+        font-size: 21px;
+    }
+}
+
+.footer-mobile-text {
+    font-size: 13.5px;
+    font-weight: 500;
+    line-height: 100%;
+
+    @media screen and (max-width: $md4) {
+        font-size: 9px;
     }
 }
 
@@ -197,7 +279,7 @@
 
 .container {
     max-width: $maxWidthContainer;
-    margin: auto;
+    margin: 0 auto;
 
     @media screen and (max-width: $md1) {
         max-width: 990px;
@@ -208,7 +290,7 @@
     }
 
     @media screen and (max-width: $md3) {
-        max-width: 400px;
+        max-width: 450px;
     }
 
     @media screen and (max-width: $md4) {

@@ -9,10 +9,19 @@
         padding: 12.5px;
     }
 
+    @media screen and (max-width: $md3) {
+        padding: 43px 0 0;
+    }
+
     &__list {
         display: flex;
         align-items: center;
         justify-content: space-between;
+
+        @media screen and (max-width: $md3) {
+            flex-direction: column;
+            gap: 40px;
+        }
     }
 
     &__logo {
@@ -33,6 +42,11 @@
             width: 50px;
             height: 20px;
         }
+
+        @media screen and (max-width: $md3) {
+            width: 122px;
+            height: 49px;
+        }
     }
 
     &__content {
@@ -45,6 +59,11 @@
 
         @media screen and (max-width: $md2) {
             gap: 23px;
+        }
+
+        @media screen and (max-width: $md3) {
+            width: 100%;
+            gap: 0;
         }
     }
 
@@ -60,6 +79,11 @@
 
         @media screen and (max-width: $md2) {
             gap: 15px;
+        }
+
+        @media screen and (max-width: $md3) {
+            width: 100%;
+            gap: 0;
         }
     }
 
@@ -83,6 +107,10 @@
             padding: 6px 10px;
             border-radius: 5px;
             gap: 3.5px;
+        }
+
+        @media screen and (max-width: $md3) {
+            display: none;
         }
 
         &:hover {
@@ -180,6 +208,13 @@
             gap: 4.5px;
         }
 
+        @media screen and (max-width: $md3) {
+            padding-left: 24px;
+            width: 100%;
+            border-radius: 13px;
+            gap: 12px;
+        }
+
         &__icon {
             display: flex;
             align-items: center;
@@ -192,6 +227,10 @@
 
             @media screen and (max-width: $md2) {
                 width: 7.5px;
+            }
+
+            @media screen and (max-width: $md3) {
+                width: 20px;
             }
 
             img {
@@ -217,6 +256,10 @@
                 height: 20px;
             }
 
+            @media screen and (max-width: $md3) {
+                height: 53px;
+            }
+
             &:focus-visible {
                 outline: none;
             }
@@ -233,6 +276,14 @@
                 @media screen and (max-width: $md2) {
                     font-size: 8px;
                 }
+
+                @media screen and (max-width: $md3) {
+                    font-size: 15px;
+                }
+
+                @media screen and (max-width: $md4) {
+                    font-size: 10px;
+                }
             }
         }
 
@@ -247,6 +298,10 @@
 
             @media screen and (max-width: $md2) {
                 gap: 11.5px;
+            }
+
+            @media screen and (max-width: $md3) {
+                display: none;
             }
     
             &__item {
@@ -265,6 +320,7 @@
                 }
     
                 svg {
+                    width: auto;
                     height: 19px;
                     color: #fff;
                     transition: all 0.4s ease;
@@ -454,6 +510,10 @@
         @media screen and (max-width: $md2) {
             gap: 6.5px;
         }
+
+        @media screen and (max-width: $md3) {
+            display: none;
+        }
     }
 
     &__btn {
@@ -501,6 +561,10 @@
             gap: 4px;
         }
 
+        @media screen and (max-width: $md3) {
+            display: none;
+        }
+
         &__icon {
             width: 19px;
             height: 19px;
@@ -540,6 +604,10 @@
 
     @media screen and (max-width: $md2) {
         top: 32.5px;
+    }
+
+    @media screen and (max-width: $md3) {
+        display: none;
     }
 
     &__wrapper {

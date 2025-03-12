@@ -13,6 +13,10 @@
                 <a href="{% url 'category' product.category.id %}">{{ product.category.name }}</a> / 
                 {{ product.name }}
             </div>
+            <div class="product__return-mobile">
+                <div class="product__return__category text-medium">{{ product.category.name }}</div>
+                <div class="product__return__title title-mid">{{ product.name }}</div>
+            </div>
         </div>
         <div class="product__wrapper">
             <div class="product__image-block">
@@ -27,14 +31,15 @@
                 <div class="product__title-block">
                     <div class="product__category text-medium-big">{{ product.category }}</div>
                     <div class="product__title title">{{ product.name }}</div>
+                    <div class="product__description-title text-semibold-big">Описание товара</div>
                     <div class="product__description text-main">{{ product.description }}</div>
                 </div>
                 <div class="product__under">
                     {% if product.discount is not None %}
                         <div class="product__discount text-semibold-mid">-{{ product.discount }}%</div>
-                        <div class="product__price title">
-                            <div class="product__price__new">{{ new_price }} ₸</div>
-                            <div class="product__price__old">{{ product.price }} ₸</div>
+                        <div class="product__price">
+                            <div class="product__price__new title">{{ new_price }} ₸</div>
+                            <div class="product__price__old text-regular-big">{{ product.price }} ₸</div>
                         </div>
                     {% else %}
                         <div class="product__price title">{{ product.price }} ₸</div>

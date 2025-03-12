@@ -28,6 +28,7 @@
                 </div>
             </div>
         </div>
+        <div class="banner__image-mobile"><img src="{% static 'images/banner/image-banner-mobile.jpg' %}" alt="Banner image"></div>
     </div>
 </section>
 <section class="popular">
@@ -221,6 +222,16 @@
             var swiper = new Swiper(".popular__slider__swiper", {
                 slidesPerView: 5,
                 spaceBetween: 27.5,
+                loop: true,
+                navigation: {
+                    nextEl: ".popular__slider__swiper__btn-next",
+                    prevEl: ".popular__slider__swiper__btn-prev",
+                },
+            });
+        } else if (screen.width > 480) {
+            var swiper = new Swiper(".popular__slider__swiper", {
+                slidesPerView: "auto",
+                spaceBetween: 18,
                 loop: true,
                 navigation: {
                     nextEl: ".popular__slider__swiper__btn-next",

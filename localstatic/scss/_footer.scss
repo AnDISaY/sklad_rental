@@ -14,6 +14,10 @@
         padding: 22.5px 0 30px;
     }
 
+    @media screen and (max-width: $md3) {
+        display: none;
+    }
+
     &__container {
         display: flex;
         justify-content: space-between;
@@ -168,6 +172,56 @@
 
         @media screen and (max-width: $md2) {
             gap: 8px;
+        }
+    }
+}
+
+
+.footer-mobile {
+    position: fixed;
+    z-index: 99;
+    bottom: 30px;
+    display: none;
+    justify-content: center;
+    width: 100%;
+
+    @media screen and (max-width: $md3) {
+        display: flex;
+    }
+
+    &__wrapper {
+        background-color: #fff;
+        padding: 16px;
+        border-radius: 16px;
+    }
+
+    &__list {
+        display: flex;
+        align-items: end;
+        gap: 24px;
+    }
+
+    &__item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+
+        &__icon {
+            width: 15.7px;
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+
+            &-small {
+                width: 18px;
+            }
+        }
+
+        &__text {
+            color: $black;
         }
     }
 }
