@@ -89,6 +89,10 @@
     }
 
     &__card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
         &__image-block {
             display: flex;
             flex-direction: column;
@@ -239,6 +243,7 @@
             border: 2px solid #fff;
             border-radius: 12px;
             height: 51.2px;
+            width: 100%;
             cursor: default;
 
             @media screen and (max-width: $md1) {
