@@ -34,11 +34,9 @@
                 <div class="edit__text text-semibold-big">Смена пароля</div>
                 <form method="post" action="{% url 'profile_password' %}" class="edit__form">{% csrf_token %}
                     <div class="edit__form__input__block">
-                        <div class="edit__form__input__text text-main">+7</div>
                         <input type="text" class="edit__form__input text-main" name="password" placeholder="Новый пароль" required>
                     </div>
                     <div class="edit__form__input__block">
-                        <div class="edit__form__input__text text-main">+7</div>
                         <input type="text" class="edit__form__input text-main" name="password1" placeholder="Повторите новый пароль" required>
                     </div>
                     <button type="submit" class="edit__form__btn text-main">Сменить пароль</button>

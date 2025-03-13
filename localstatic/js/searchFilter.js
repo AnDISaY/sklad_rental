@@ -66,7 +66,7 @@ function searchSuggestions(response) {
             suggestionsPrice = document.createElement('div')
             suggestionsPrice.classList.add('header__searchbar__suggestions__item__price')
             suggestionsPrice.classList.add('text-medium-small')
-            suggestionsPrice.innerHTML = response[i].price
+            suggestionsPrice.innerHTML = `${response[i].price}₸`
             suggestionsContent.appendChild(suggestionsTitle)
             suggestionsContent.appendChild(suggestionsPrice)
 

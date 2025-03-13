@@ -640,7 +640,7 @@
             .faq-line2 {
                 width: 2px;
                 height: 20px;
-                transition: 0.75s ease;
+                // transition: 0.75s ease;
 
                 @media screen and (max-width: $md1) {
                     width: 1.5px;
@@ -659,7 +659,9 @@
             }
 
             .accordion-icon-active {
-                transform: rotate(90deg);
+                // transform: rotate(90deg);
+                // transform: translateY(10px);
+                opacity: 0;
             }
         }
 
@@ -690,7 +692,7 @@
             filter: brightness(1000%);
             overflow: hidden;
             transform-origin: top;
-            transition: 0.5s ease;
+            // transition: 0.5s ease;
             max-width: 720px;
             color: #929292;
 

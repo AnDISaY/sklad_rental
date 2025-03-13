@@ -191,15 +191,16 @@
             </form>
         </div>
     </div>
-    <div class="forgot popup {% if popup_active %}popup-active{% endif %}" id="forgot-popup">
+    <div class="forgot popup {% if popup_active == 'forgot' or popup_active == 'forgot_code' or popup_active == 'forgot_password' %}popup-active{% endif %}" id="forgot-popup">
         <div class="popup-background"></div>
         <div class="forgot__wrapper popup__wrapper">
             {% if popup_active %}
-                {% if popup_active == 'forgot' %}
-                    <div class="forgot__title title-mid">Введите почту привязанную к аккаунту</div>
+                {% if popup_active == 'forgot_password' %}
+                    <div class="forgot__title title-mid">Введите новый пароль</div>
                     <div class="forgot__close popup-close"><img src="{% static 'images/icon-close.svg' %}" alt="Cross icon"></div>
                     <form method="post" class="forgot__form" action="{% url 'forgot_password' %}">{% csrf_token %}
-                        <input class="forgot__form__input text-main" type="email" name="email" placeholder="Электронная почта" required>
+                        <input class="signin__form__input text-main" type="text" name="password" placeholder="Пароль" required>
+                        <input class="signin__form__input text-main" type="text" name="password2" placeholder="Повторите пароль" required>
                         <button type="submit" class="forgot__form__btn text-medium-big">Отправить</button>
                         {% if error_message %}
                             <div class="error">
@@ -224,18 +225,19 @@
                         {% endif %}
                     </form>
                 {% else %}
-                    <div class="forgot__title title-mid">Введите новый пароль</div>
+                    <div class="forgot__title title-mid">Введите почту привязанную к аккаунту</div>
                     <div class="forgot__close popup-close"><img src="{% static 'images/icon-close.svg' %}" alt="Cross icon"></div>
                     <form method="post" class="forgot__form" action="{% url 'forgot_password' %}">{% csrf_token %}
-                        <input class="signin__form__input text-main" type="text" name="password" placeholder="Пароль" required>
-                        <input class="signin__form__input text-main" type="text" name="password2" placeholder="Повторите пароль" required>
+                        <input class="forgot__form__input text-main" type="email" name="email" placeholder="Электронная почта" required>
                         <button type="submit" class="forgot__form__btn text-medium-big">Отправить</button>
-                        {% if error_message %}
-                            <div class="error">
-                            {% for message in error_message %}
-                                <div class="error__message text-regular error">{{ message }}</div>
-                            {% endfor %}
-                            </div>
+                        {% if popup_active == 'forgot' %}
+                            {% if error_message %}
+                                <div class="error">
+                                {% for message in error_message %}
+                                    <div class="error__message text-regular error">{{ message }}</div>
+                                {% endfor %}
+                                </div>
+                            {% endif %}
                         {% endif %}
                     </form>
                 {% endif %}
