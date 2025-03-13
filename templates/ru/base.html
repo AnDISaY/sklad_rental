@@ -8,6 +8,7 @@
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     {% block extra_styles %}{% endblock %}
 </head>
 <style type="text/css">
@@ -336,7 +337,7 @@
                 </div>
             </div>
             <div class="footer__contact">
-                <a href="https://maps.app.goo.gl/GBvLkJuF4KjLzjML8" class="footer__contact__text text-main">Астана, пр.Мангилик ел, 36</a>
+                <a href="https://go.2gis.com/KJlCV" class="footer__contact__text text-main">Астана, пр.Мангилик ел, 36</a>
                 <a href="tel:+77001080357" class="footer__contact__text text-main">7 700 108 0357</a>
             </div>
         </div>
@@ -371,10 +372,10 @@
         <div class="catalog-mobile__container container">
             <div class="catalog-mobile__list">
                 {% for item in categories %}
-                    <div class="catalog-mobile__item">
+                    <a href="{% url 'category' item.id %}" class="catalog-mobile__item">
                         <div class="catalog-mobile__icon"><img src="{{ item.photo_white.url }}" alt="Category photo"></div>
                         <div class="catalog-mobile__text">{{ item.name }}</div>
-                    </div>
+                    </a>
                 {% endfor %}
             </div>
         </div>

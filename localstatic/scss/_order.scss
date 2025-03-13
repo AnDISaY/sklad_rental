@@ -9,6 +9,10 @@
         margin: 25px 0 67.5px;
     }
 
+    @media screen and (max-width: $md3) {
+        margin: 60px 0 170px;
+    }
+
     &__return {
         display: flex;
         align-items: center;
@@ -25,6 +29,11 @@
             margin-bottom: 12px;
         }
 
+        @media screen and (max-width: $md3) {
+            gap: 54.46px;
+            margin-bottom: 52px;
+        }
+
         &__icon {
             display: flex;
             align-items: center;
@@ -39,14 +48,40 @@
                 width: 8.5px;
             }
 
+            @media screen and (max-width: $md3) {
+                width: 30px;
+                display: none;
+            }
+
             img {
                 width: 100%;
                 height: auto;
+            }
+
+            &__mobile {
+                display: none;
+
+                @media screen and (max-width: $md3) {
+                    display: flex;
+                }
             }
         }
 
         &__text {
             color: #929292;
+
+            @media screen and (max-width: $md3) {
+                display: none;
+            }
+
+            &__mobile {
+                display: none;
+
+                @media screen and (max-width: $md3) {
+                    display: block;
+                    color: #fff;
+                }
+            }
         }
     }
 
@@ -61,6 +96,10 @@
         @media screen and (max-width: $md2) {
             gap: 210px;
         }
+
+        @media screen and (max-width: $md3) {
+            gap: 0;
+        }
     }
 
     &__column {
@@ -74,6 +113,21 @@
 
         @media screen and (max-width: $md2) {
             gap: 30px;
+        }
+
+        @media screen and (max-width: $md3) {
+            gap: 0;
+            width: 100%;
+            
+            &:last-child {
+                display: none;
+            }
+        }
+    }
+
+    &__title {
+        @media screen and (max-width: $md3) {
+            display: none;
         }
     }
 
@@ -94,6 +148,11 @@
             width: 139px;
         }
 
+        @media screen and (max-width: $md3) {
+            gap: 32px;
+            width: 100%;
+        }
+
         &__block {
             display: flex;
             flex-direction: column;
@@ -107,6 +166,24 @@
                 gap: 7.5px;
             }
 
+            @media screen and (max-width: $md3) {
+                gap: 20px;
+            }
+
+            &__text {
+                @media screen and (max-width: $md3) {
+                    display: none;
+                }
+
+                &__mobile {
+                    display: none;
+
+                    @media screen and (max-width: $md3) {
+                        display: block;
+                    }
+                }
+            }
+
             &__wrapper {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
@@ -118,6 +195,10 @@
 
                 @media screen and (max-width: $md2) {
                     gap: 9px;
+                }
+
+                @media screen and (max-width: $md3) {
+                    gap: 6.6px;
                 }
             }
 
@@ -151,13 +232,20 @@
                 border-radius: 6px;
             }
 
+            @media screen and (max-width: $md3) {
+                width: 100%;
+                padding: 22px 17px;
+                border-radius: 16px;
+                box-sizing: border-box;
+            }
+
             &::placeholder {
                 font-family: $ff;
                 color: #929292;
             }
         }
 
-        input[type="date"], input[type="time"], input[type="radio"], input[type="date"]::-webkit-calendar-picker-indicator, input[type="time"]::-webkit-calendar-picker-indicator {
+        input[type="date"], input[type="time"], input[type="radio"], input[type="date"]::-webkit-calendar-picker-indicator, input[type="time"]::-webkit-calendar-picker-indicator, .input-type-date, .input-type-time {
             font-size: 12px;
             font-weight: 600;
             position: absolute;
@@ -175,6 +263,14 @@
 
             @media screen and (max-width: $md2) {
                 font-size: 6px;
+            }
+
+            @media screen and (max-width: $md3) {
+                font-size: 15px;
+            }
+
+            @media screen and (max-width: $md4) {
+                font-size: 10px;
             }
         }
 
@@ -197,25 +293,29 @@
             @media screen and (max-width: $md2) {
                 padding: 8px 6.5px;
             }
+
+            @media screen and (max-width: $md3) {
+                padding: 22px 0;
+            }
         }
 
         &__datetime-label {
             position: relative;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 8px;
             padding: 13px 0 13px 14px;
             border: 1px solid #929292;
             border-radius: 12px;
 
             @media screen and (max-width: $md1) {
-                gap: 9px;
+                gap: 6px;
                 padding: 10px 0 10px 10.5px;
                 border-radius: 9px;
             }
 
             @media screen and (max-width: $md2) {
-                gap: 6px;
+                gap: 4px;
                 padding: 6.5px 0 6.5px 7px;
                 border-radius: 6px;
             }
@@ -267,6 +367,10 @@
             @media screen and (max-width: $md2) {
                 border-radius: 6px;
             }
+
+            @media screen and (max-width: $md3) {
+                border-radius: 16px;
+            }
         }
 
         &__btn {
@@ -286,9 +390,25 @@
                 padding: 7.5px;
                 border-radius: 6px;
             }
+
+            @media screen and (max-width: $md3) {
+                padding: 20px;
+                border-radius: 16px;
+                display: none;
+            }
     
             &:hover {
                 background-color: $orgHover;
+            }
+
+            &__mobile {
+                display: none;
+
+                @media screen and (max-width: $md3) {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
             }
         }
     }
@@ -381,3 +501,61 @@
         }
     }
 }
+
+.flatpickr-day.today {
+    color: $orange !important;
+    border-color: $orange !important;
+}
+
+.flatpickr-day {
+    transition: background 0.25s ease;
+}
+
+.flatpickr-day:hover {
+    background: $orgHover !important; /* Yellow hover effect */
+    color: white !important;
+}
+
+.flatpickr-day.selected {
+    background: $orange !important; /* Custom color */
+    border-color: $orange !important;
+    color: white !important;
+}
+
+.flatpickr-calendar {
+    // background: #929292 !important; /* Light gray */
+    // border-radius: 10px !important;
+}
+
+.flatpickr-months .flatpickr-month {
+    background: $orange !important; /* Red header */
+    color: white !important;
+    border-radius: 5px !important;
+}
+
+.flatpickr-monthDropdown-month {
+    color: $black !important;
+}
+
+.flatpickr-prev-month, .flatpickr-next-month {
+    fill: #fff !important; /* Change arrow color */
+}
+
+.flatpickr-current-month .numInputWrapper span.arrowDown:after {
+    border-top-color: #fff !important;
+}
+
+.flatpickr-current-month .numInputWrapper span.arrowUp:after {
+    border-bottom-color: #fff !important;
+}
+
+.numInput, .flatpickr-monthDropdown-months {
+    color: #fff !important;
+}
+
+/* Change time input colors */
+.flatpickr-time input {
+    background: #fff !important;  /* Dark background */
+    color: $black !important;       /* White text */
+}
+

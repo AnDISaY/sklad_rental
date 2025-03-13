@@ -8,41 +8,17 @@
 {% endblock %}
 
 {% block content %}
-
-<!-- <style>
-    /* Custom styling for the input */
-    input[type="date"], .flatpickr-input {
-        padding: 10px;
-        font-size: 16px;
-        border: 2px solid #ccc;
-        border-radius: 5px;
-        width: 200px;
-    }
-
-    /* Custom styling for the calendar popup */
-    .flatpickr-calendar {
-        background: #222; /* Dark background */
-        border: 1px solid #666;
-        color: white;
-    }
-
-    .flatpickr-day {
-        border-radius: 5px;
-    }
-
-    .flatpickr-day:hover {
-        background: #555;
-    }
-</style> -->
 <section class="order">
     <div class="order__container container">
         <a href="{% url 'cart' %}" class="order__return">
             <div class="order__return__icon"><img src="{% static 'images/profile/icon-return.svg' %}" alt="Arrow icon"></div>
             <div class="order__return__text text-main">Вернуться к корзине</div>
+            <div class="order__return__icon order__return__icon__mobile"><img src="{% static 'images/category/icon-return.svg' %}" alt="Arrow icon"></div>
+            <div class="order__return__text order__return__text__mobile title">Оформление заказа</div>
         </a>
         <div class="order__wrapper">
             <div class="order__column">
-                <div class="order__title title">Оформление заказов</div>
+                <div class="order__title title">Оформление заказа</div>
                 <form method="post" class="order__form">{% csrf_token %}
                     <input type="text" class="order__form__input text-main" name="price" id="priceInput" style="display: none;">
                     <input type="text" class="order__form__input text-main" name="lastname" placeholder="Фамилия" value="{{ user.last_name }}" required>
@@ -50,6 +26,7 @@
                     <input type="text" class="order__form__input text-main" name="phone" placeholder="Номер телефона" value="{{ user.phone }}" required>
                     <div class="order__form__block">
                         <div class="order__form__block__text text-semibold-mid">Способ получения</div>
+                        <div class="order__form__block__text order__form__block__text__mobile text-semibold-big">Способ получения</div>
                         <div class="order__form__block__wrapper">
                             <label class="order__form__delivery-label" for="order-delivery-takeaway">
                                 <input type="radio" class="order__form__input" id="order-delivery-takeaway" name="delivery" value="takeaway" required>
@@ -63,15 +40,17 @@
                     </div>
                     <div class="order__form__block">
                         <div class="order__form__block__text text-main">Начало аренды</div>
+                        <div class="order__form__block__text order__form__block__text__mobile text-semibold-big">Начало аренды</div>
                         <div class="order__form__block__wrapper">
-                            <label class="order__form__datetime-label" for="datepicker">
+                            <label class="order__form__datetime-label" for="order-date-starting">
                                 <!-- <input type="text" class="order__form__input input-hide input-type-date" id="datepicker" name="starting_date" required> -->
-                                <input type="date" class="order__form__input input-hide input-type-date" id="order-date-starting" name="starting_date" required>
+                                <!-- <input type="date" class="order__form__input input-hide input-type-date" id="order-date-starting" name="starting_date" required> -->
+                                <input type="text" class="order__form__input input-hide input-type-date" id="order-date-starting" name="starting_date" required>
                                 <div class="order__form__datetime-label__icon"><img src="{% static 'images/order/icon-calendar.svg' %}" alt="Calendar icon"></div>
                                 <div class="order__form__datetime-label__text text-semibold-mid">--.--.----</div>
                             </label>
                             <label class="order__form__datetime-label" for="order-time-starting">
-                                <input type="time" class="order__form__input input-hide input-type-time" id="order-time-starting" name="starting_time" required>
+                                <input type="text" class="order__form__input input-hide input-type-time" id="order-time-starting" name="starting_time" required>
                                 <div class="order__form__datetime-label__icon form-time-icon"><img src="{% static 'images/order/icon-time.svg' %}" alt="Watch icon"></div>
                                 <div class="order__form__datetime-label__text text-semibold-mid">--:--</div>
                             </label>
@@ -79,20 +58,22 @@
                     </div>
                     <div class="order__form__block">
                         <div class="order__form__block__text text-main">Конец аренды</div>
+                        <div class="order__form__block__text order__form__block__text__mobile text-semibold-big">Конец аренды</div>
                         <div class="order__form__block__wrapper">
                             <label class="order__form__datetime-label" for="order-date-ending">
-                                <input type="date" class="order__form__input input-hide input-type-date" id="order-date-ending" name="ending_date" required>
+                                <input type="text" class="order__form__input input-hide input-type-date" id="order-date-ending" name="ending_date" required>
                                 <div class="order__form__datetime-label__icon"><img src="{% static 'images/order/icon-calendar.svg' %}" alt="Calendar icon"></div>
                                 <div class="order__form__datetime-label__text text-semibold-mid">--.--.----</div>
                             </label>
                             <label class="order__form__datetime-label" for="order-time-ending">
-                                <input type="time" class="order__form__input input-hide input-type-time" id="order-time-ending" name="ending_time" required>
+                                <input type="text" class="order__form__input input-hide input-type-time" id="order-time-ending" name="ending_time" required>
                                 <div class="order__form__datetime-label__icon form-time-icon"><img src="{% static 'images/order/icon-time.svg' %}" alt="Watch icon"></div>
                                 <div class="order__form__datetime-label__text text-semibold-mid">--:--</div>
                             </label>
                         </div>
                     </div>
                     <button type="submit" class="order__form__btn text-main">Оформить заказ</button>
+                    <button type="submit" class="order__form__btn order__form__btn__mobile text-semibold-big">Оформить заказ</button>
                 </form>
             </div>
             <div class="order__column">
@@ -121,10 +102,59 @@
     </div>
 </section>
 <!-- <label for="">Select Date:</label> -->
+ <!-- <label for="datePicker" class="flat-label"> -->
+    <!-- <span style="color: #fff;"></span> -->
+<!-- </label> -->
+<!-- <label for="timePicker" class="flat-label"> -->
+    <!-- <input type="text" id="timePicker" placeholder="Select Time"> -->
+    <!-- <span style="color: #fff;"></span>
+</label> -->
 {% endblock %}
 {% block extra_scripts %}
 <script src="{% static 'js/order_count.js' %}"></script>
 <script src="{% static 'js/order_form.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+    flatpickr("#order-date-starting", {
+        dateFormat: "Y-m-d",  // Format: YYYY-MM-DD
+        allowInput: true,     // Allow manual input
+        minDate: "today",     // Prevent past dates
+        disableMobile: true,  // Ensures proper behavior on mobile
+    })
+    flatpickr("#order-time-starting", {
+        enableTime: true,
+        noCalendar: true,
+        dateFormat: "H:i",
+        time_24hr: true
+    });
+
+    flatpickr("#order-date-ending", {
+        dateFormat: "Y-m-d",  // Format: YYYY-MM-DD
+        allowInput: true,     // Allow manual input
+        minDate: "today",     // Prevent past dates
+        disableMobile: true,  // Ensures proper behavior on mobile
+    })
+    flatpickr("#order-time-ending", {
+        enableTime: true,
+        noCalendar: true,
+        dateFormat: "H:i",
+        time_24hr: true
+    });
+
+    // flatLabel = document.querySelectorAll('.flat-label');
+    // // input = document.querySelector('#datePicker')
+    // console.log(flatLabel)
+    // flatLabel.forEach(label => {
+    //     console.log(label)
+    //     input = label.querySelector('input')
+    //     console.log(input)
+    //     input.addEventListener("input", ()=> {
+    //         console.log(input)
+    //         console.log(input.value)
+    //         label.querySelector('span').innerHTML = input.value
+    //     })
+    // })
+</script>
 <!-- <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script> -->
 <!-- <script src="pikaday.js"></script>
