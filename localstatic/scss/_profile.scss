@@ -9,6 +9,14 @@
         margin: 24px 0 67.5px;
     }
 
+    @media screen and (max-width: $md3) {
+        margin: 60px 0 170px;
+    }
+
+    @media screen and (max-width: $md4) {
+        margin: 40px 0 113px;
+    }
+
     &__return {
         display: flex;
         align-items: center;
@@ -22,7 +30,17 @@
 
         @media screen and (max-width: $md2) {
             gap: 3.5px;
-            margin: 12px;
+            margin-bottom: 12px;
+        }
+
+        @media screen and (max-width: $md3) {
+            gap: 17px;
+            margin-bottom: 52px;
+        }
+
+        @media screen and (max-width: $md4) {
+            gap: 11px;
+            margin-bottom: 35px;
         }
 
         &__icon {
@@ -42,6 +60,23 @@
                 height: 3.75px;
             }
 
+            @media screen and (max-width: $md3) {
+                width: 30px;
+                display: none;
+            }
+
+            @media screen and (max-width: $md4) {
+                width: 20px;
+            }
+
+            &__mobile {
+                display: none;
+
+                @media screen and (max-width: $md3) {
+                    display: flex;
+                }
+            }
+
             img {
                 width: 100%;
                 height: auto;
@@ -50,6 +85,19 @@
 
         &__text {
             color: #929292;
+
+            @media screen and (max-width: $md3) {
+                display: none;
+            }
+
+            &__mobile {
+                color: #fff;
+                display: none;
+
+                @media screen and (max-width: $md3) {
+                    display: block;
+                }
+            }
         }
     }
 
@@ -63,6 +111,10 @@
         @media screen and (max-width: $md2) {
             margin-bottom: 26px;
         }
+
+        @media screen and (max-width: $md3) {
+            display: none;
+        }
     }
 
     &__block {
@@ -75,6 +127,15 @@
 
         @media screen and (max-width: $md2) {
             gap: 190px;
+        }
+
+        @media screen and (max-width: $md3) {
+            flex-direction: column;
+            gap: 80px;
+        }
+
+        @media screen and (max-width: $md4) {
+            gap: 54px;
         }
     }
 
@@ -90,6 +151,14 @@
         @media screen and (max-width: $md2) {
             gap: 18px;
         }
+
+        @media screen and (max-width: $md3) {
+            gap: 20px;
+        }
+
+        @media screen and (max-width: $md4) {
+            gap: 14px;
+        }
     }
 
     &__form {
@@ -103,6 +172,14 @@
 
         @media screen and (max-width: $md2) {
             gap: 12px;
+        }
+
+        @media screen and (max-width: $md3) {
+            gap: 32px;
+        }
+
+        @media screen and (max-width: $md4) {
+            gap: 21px;
         }
 
         &__input {
@@ -126,22 +203,34 @@
                 width: calc(138px - 13px);
             }
 
-            &__text {
-                margin: 0 10px;
-
-                @media screen and (max-width: $md1) {
-                    margin: 0 7.5px;
-                }
-
-                @media screen and (max-width: $md2) {
-                    margin: 0 5px;
-                }
+            @media screen and (max-width: $md3) {
+                padding: 21px 17px;
+                border-radius: 16px;
+                width: 100%;
+                box-sizing: border-box;
             }
 
-            &__block {
-                display: flex;
-                align-items: center;
+            @media screen and (max-width: $md4) {
+                padding: 14px 11px;
+                border-radius: 11px;
             }
+
+            // &__text {
+            //     margin: 0 10px;
+
+            //     @media screen and (max-width: $md1) {
+            //         margin: 0 7.5px;
+            //     }
+
+            //     @media screen and (max-width: $md2) {
+            //         margin: 0 5px;
+            //     }
+            // }
+
+            // &__block {
+            //     display: flex;
+            //     align-items: center;
+            // }
 
             &::placeholder {
                 font-family: $ff;
@@ -155,6 +244,14 @@
 
                 @media screen and (max-width: $md2) {
                     font-size: 8px;
+                }
+
+                @media screen and (max-width: $md3) {
+                    font-size: 15px;
+                }
+
+                @media screen and (max-width: $md4) {
+                    font-size: 10px;
                 }
             }
         }
@@ -178,6 +275,16 @@
                 border-radius: 6px;
             }
 
+            @media screen and (max-width: $md3) {
+                padding: 20px;
+                border-radius: 16px;
+            }
+
+            @media screen and (max-width: $md4) {
+                padding: 14px;
+                border-radius: 12px;
+            }
+
             &:hover {
                 background-color: $orgHover;
             }
@@ -198,6 +305,16 @@
         @media screen and (max-width: $md2) {
             gap: 6.5px;
             max-width: calc(138px - 13px);
+        }
+
+        @media screen and (max-width: $md3) {
+            gap: 10px;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        @media screen and (max-width: $md4) {
+            gap: 7px;
         }
 
         &__message {

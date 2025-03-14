@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import JsonResponse, HttpResponse
 from .models import Product, Category
 from users.models import UserProductFavorites, UserCart, UserRent
@@ -16,7 +16,7 @@ def home(request):
     if 'success_message' in request.session:
         context['success_message'] = request.session.pop('success_message')
         if 'success_message_subtext' in request.session:
-            context['success_message_subtext'] = request.session['success_message_subtext'].pop()
+            context['success_message_subtext'] = request.session.pop('success_message_subtext')
     if 'error_message' in request.session:
         context['error_message'] = request.session.pop('error_message')
     if 'redirect' in request.session:
@@ -90,7 +90,7 @@ def cart(request):
     if 'success_message' in request.session:
         context['success_message'] = request.session.pop('success_message')
         if 'success_message_subtext' in request.session:
-            context['success_message_subtext'] = request.session['success_message_subtext'].pop()
+            context['success_message_subtext'] = request.session.pop('success_message_subtext')
     if 'error_message' in request.session:
         context['error_message'] = request.session.pop('error_message')
     if 'redirect' in request.session:
@@ -177,7 +177,7 @@ def order(request):
     if 'success_message' in request.session:
         context['success_message'] = request.session.pop('success_message')
         if 'success_message_subtext' in request.session:
-            context['success_message_subtext'] = request.session['success_message_subtext'].pop()
+            context['success_message_subtext'] = request.session.pop('success_message_subtext')
     if 'error_message' in request.session:
         context['error_message'] = request.session.pop('error_message')
     if 'redirect' in request.session:
@@ -200,7 +200,8 @@ def order(request):
         for uc in user_cart:
             uc.delete()
         request.session['success_message'] = "Ваш заказ оформлен"
-        request.session['success_message__subtext'] = "В ближайшее время с вами свяжется менеджер для уточнения деталей заказа"
+        request.session['success_message_subtext'] = "В ближайшее время с вами свяжется менеджер для уточнения деталей заказа"
+        return redirect('/home')
     return render(request, 'ru/order.html', context)
 
 
@@ -214,7 +215,7 @@ def category(request, pk):
     if 'success_message' in request.session:
         context['success_message'] = request.session.pop('success_message')
         if 'success_message_subtext' in request.session:
-            context['success_message_subtext'] = request.session['success_message_subtext'].pop()
+            context['success_message_subtext'] = request.session.pop('success_message_subtext')
     if 'error_message' in request.session:
         context['error_message'] = request.session.pop('error_message')
     if 'redirect' in request.session:
@@ -289,7 +290,7 @@ def favorites(request):
     if 'success_message' in request.session:
         context['success_message'] = request.session.pop('success_message')
         if 'success_message_subtext' in request.session:
-            context['success_message_subtext'] = request.session['success_message_subtext'].pop()
+            context['success_message_subtext'] = request.session.pop('success_message_subtext')
     if 'error_message' in request.session:
         context['error_message'] = request.session.pop('error_message')
     if 'redirect' in request.session:
@@ -361,7 +362,7 @@ def product_view(request, pk):
     if 'success_message' in request.session:
         context['success_message'] = request.session.pop('success_message')
         if 'success_message_subtext' in request.session:
-            context['success_message_subtext'] = request.session['success_message_subtext'].pop()
+            context['success_message_subtext'] = request.session.pop('success_message_subtext')
     if 'error_message' in request.session:
         context['error_message'] = request.session.pop('error_message')
     if 'redirect' in request.session:

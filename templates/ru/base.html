@@ -118,15 +118,7 @@
             </div>
         </div>
     </header>
-    {% if popup_active %}
-        {% if popup_active == 'signup' %}
-            <div class="signup popup popup-active" id="signup-popup">
-        {% else %}
-            <div class="signup popup" id="signup-popup">
-        {% endif %}
-    {% else %}
-        <div class="signup popup" id="signup-popup">
-    {% endif %}
+    <div class="signup popup {% if active_popup == 'signup' %}popup-active{% endif %}" id="signup-popup">
         <div class="popup-background"></div>
         <div class="signup__wrapper popup__wrapper">
             <div class="signup__title title-mid">Регистрация</div>
@@ -156,15 +148,7 @@
             </form>
         </div>
     </div>
-    {% if popup_active %}
-        {% if popup_active == 'signin' %}
-            <div class="signin popup popup-active" id="signin-popup">
-        {% else %}
-            <div class="signin popup" id="signin-popup">
-        {% endif %}
-    {% else %}
-        <div class="signin popup" id="signin-popup">
-    {% endif %}
+    <div class="signin popup {% if active_popup == 'signin' %}popup-active{% endif %}" id="signin-popup">
         <div class="popup-background"></div>
         <div class="signin__wrapper popup__wrapper">
             <div class="signin__title title-mid">Войти в профиль</div>
@@ -303,7 +287,7 @@
         <div class="temporary__wrapper">
             <div class="temporary__icon"><img src="{% static 'images/icon-success.svg' %}" alt="Success icon"></div>
             <div class="temporary__message title-small">{{ success_message }}</div>
-            {% if success_message_subtext %}`
+            {% if success_message_subtext %}
             <div class="temporary__message-subtext text-main">{{ success_message_subtext }}</div>
             {% endif %}
         </div>
@@ -389,14 +373,20 @@
                 <div class="profile-mobile__title title">Профиль</div>
             </div>
             <div class="profile-mobile__list">
-                <a href="{% url 'profile_edit' %}" class="profile-mobile__item">
-                    <div class="profile-mobile__item__icon"><img src="{% static 'images/profile/icon-edit.svg' %}" alt="Edit profile icon"></div>
-                    <div class="profile-mobile__item__text text-medium-big">Редактировать профиль</div>
-                </a>
-                <!-- <a href="{% url 'profile_history' %}" class="profile-mobile__item">
-                    <div class="profile-mobile__item__icon"><img src="{% static 'images/profile/icon-history.svg' %}" alt="Order history icon"></div>
-                    <div class="profile-mobile__item__text text-medium-big">История заказов</div>
-                </a> -->
+                {% if user_is_authenticated %}
+                    <a href="{% url 'profile_edit' %}" class="profile-mobile__item">
+                        <div class="profile-mobile__item__icon"><img src="{% static 'images/profile/icon-edit.svg' %}" alt="Edit profile icon"></div>
+                        <div class="profile-mobile__item__text text-medium-big">Редактировать профиль</div>
+                    </a>
+                    <!-- <a href="{% url 'profile_history' %}" class="profile-mobile__item">
+                        <div class="profile-mobile__item__icon"><img src="{% static 'images/profile/icon-history.svg' %}" alt="Order history icon"></div>
+                        <div class="profile-mobile__item__text text-medium-big">История заказов</div>
+                    </a> -->
+                <a href="{% url 'logout' %}" class="profile-mobile__btn text-semibold-big">Выйти</a>
+                {% else %}
+                    <a href="#signin-popup" class="profile-mobile__item profile-mobile__item__anon profile-mobile__item__signin text-semibold-big popup-link">Войти</a>
+                    <a href="#signup-popup" class="profile-mobile__item profile-mobile__item__anon text-semibold-big popup-link">Регистрация</a>
+                {% endif %}
             </div>
         </div>
     </div>

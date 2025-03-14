@@ -13,6 +13,10 @@
         margin: 60px 0 170px;
     }
 
+    @media screen and (max-width: $md4) {
+        margin: 40px 0 113px;
+    }
+
     &__return {
         display: flex;
         align-items: center;
@@ -34,6 +38,11 @@
             margin-bottom: 52px;
         }
 
+        @media screen and (max-width: $md4) {
+            gap: 36.3px;
+            margin-bottom: 24px;
+        }
+
         &__icon {
             display: flex;
             align-items: center;
@@ -51,6 +60,10 @@
             @media screen and (max-width: $md3) {
                 width: 30px;
                 display: none;
+            }
+
+            @media screen and (max-width: $md4) {
+                width: 20px;
             }
 
             img {
@@ -153,6 +166,10 @@
             width: 100%;
         }
 
+        @media screen and (max-width: $md4) {
+            gap: 21px;
+        }
+
         &__block {
             display: flex;
             flex-direction: column;
@@ -168,6 +185,10 @@
 
             @media screen and (max-width: $md3) {
                 gap: 20px;
+            }
+
+            @media screen and (max-width: $md4) {
+                gap: 14px;
             }
 
             &__text {
@@ -199,6 +220,10 @@
 
                 @media screen and (max-width: $md3) {
                     gap: 6.6px;
+                }
+
+                @media screen and (max-width: $md4) {
+                    gap: 4.4px;
                 }
             }
 
@@ -237,6 +262,11 @@
                 padding: 22px 17px;
                 border-radius: 16px;
                 box-sizing: border-box;
+            }
+
+            @media screen and (max-width: $md4) {
+                padding: 14px 11px;
+                border-radius: 10px;
             }
 
             &::placeholder {
@@ -297,6 +327,10 @@
             @media screen and (max-width: $md3) {
                 padding: 22px 0;
             }
+
+            @media screen and (max-width: $md4) {
+                padding: 14px;
+            }
         }
 
         &__datetime-label {
@@ -320,6 +354,18 @@
                 border-radius: 6px;
             }
 
+            @media screen and (max-width: $md3) {
+                gap: 30px;
+                padding: 20px 0 20px 27px;
+                border-radius: 16px;
+            }
+
+            @media screen and (max-width: $md4) {
+                gap: 20px;
+                padding: 13px 0 13px 18px;
+                border-radius: 10px;
+            }
+
             &:last-child {
                 gap: 18px;
 
@@ -329,6 +375,14 @@
 
                 @media screen and (max-width: $md2) {
                     gap: 9px;
+                }
+
+                @media screen and (max-width: $md3) {
+                    gap: 45px;
+                }
+
+                @media screen and (max-width: $md4) {
+                    gap: 30px;
                 }
             }
 
@@ -347,6 +401,16 @@
                 @media screen and (max-width: $md2) {
                     width: 7.5px;
                     height: 7.5px;
+                }
+
+                @media screen and (max-width: $md3) {
+                    width: 16px;
+                    height: 16px;
+                }
+
+                @media screen and (max-width: $md4) {
+                    width: 11px;
+                    height: 11px;
                 }
 
                 img {
@@ -370,6 +434,10 @@
 
             @media screen and (max-width: $md3) {
                 border-radius: 16px;
+            }
+
+            @media screen and (max-width: $md4) {
+                border-radius: 10px;
             }
         }
 
@@ -395,6 +463,11 @@
                 padding: 20px;
                 border-radius: 16px;
                 display: none;
+            }
+
+            @media screen and (max-width: $md4) {
+                padding: 14px;
+                border-radius: 10px;
             }
     
             &:hover {

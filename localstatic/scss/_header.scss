@@ -13,6 +13,10 @@
         padding: 43px 0 0;
     }
 
+    @media screen and (max-width: $md4) {
+        padding: 28px 0 0;
+    }
+
     &__list {
         display: flex;
         align-items: center;
@@ -21,6 +25,10 @@
         @media screen and (max-width: $md3) {
             flex-direction: column;
             gap: 40px;
+        }
+
+        @media screen and (max-width: $md4) {
+            gap: 26px;
         }
     }
 
@@ -46,6 +54,11 @@
         @media screen and (max-width: $md3) {
             width: 122px;
             height: 49px;
+        }
+
+        @media screen and (max-width: $md4) {
+            width: 80px;
+            height: 34px;
         }
     }
 
@@ -215,6 +228,12 @@
             gap: 12px;
         }
 
+        @media screen and (max-width: $md4) {
+            padding-left: 16px;
+            border-radius: 8px;
+            gap: 8px;
+        }
+
         &__icon {
             display: flex;
             align-items: center;
@@ -231,6 +250,10 @@
 
             @media screen and (max-width: $md3) {
                 width: 20px;
+            }
+
+            @media screen and (max-width: $md4) {
+                width: 14px;
             }
 
             img {
@@ -258,6 +281,10 @@
 
             @media screen and (max-width: $md3) {
                 height: 53px;
+            }
+
+            @media screen and (max-width: $md4) {
+                height: 36px;
             }
 
             &:focus-visible {

@@ -206,7 +206,7 @@
     }
 
     @media screen and (max-width: $md4) {
-        font-size: 20px;
+        font-size: 19.5px;
     }
 }
 
@@ -221,6 +221,14 @@
 
     @media screen and (max-width: $md2) {
         font-size: 14px;
+    }
+
+    @media screen and (max-width: $md3) {
+        font-size: 22px;
+    }
+
+    @media screen and (max-width: $md4) {
+        font-size: 15px;
     }
 }
 

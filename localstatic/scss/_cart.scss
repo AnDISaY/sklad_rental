@@ -13,6 +13,10 @@
         margin: 60px 0 160px;
     }
 
+    @media screen and (max-width: $md4) {
+        margin: 40px 0 106px;
+    }
+
     &__container {
         display: flex;
         justify-content: space-between;
@@ -41,10 +45,19 @@
             gap: 136px;
             justify-content: start;
         }
+
+        @media screen and (max-width: $md4) {
+            margin-bottom: 32px;
+            gap: 90px;
+        }
     }
 
     &__return {
         width: 30px;
+
+        @media screen and (max-width: $md4) {
+            width: 20px;
+        }
 
         img {
             width: 100%;
@@ -71,6 +84,10 @@
             gap: 9px;
         }
 
+        @media screen and (max-width: $md4) {
+            gap: 6px;
+        }
+
         &__mobile {
             margin-top: 70px;
             display: none;
@@ -78,6 +95,10 @@
             @media screen and (max-width: $md3) {
                 display: flex;
                 align-self: center;
+            }
+
+            @media screen and (max-width: $md4) {
+                margin-top: 46px;
             }
         }
 
@@ -97,6 +118,10 @@
 
             @media screen and (max-width: $md3) {
                 width: 19px;
+            }
+
+            @media screen and (max-width: $md4) {
+                width: 13px;
             }
 
             img {
@@ -120,6 +145,10 @@
 
         @media screen and (max-width: $md3) {
             margin-bottom: 34px;;
+        }
+
+        @media screen and (max-width: $md4) {
+            margin-bottom: 23px;
         }
     }
 
@@ -147,6 +176,10 @@
             width: 100%;
         }
 
+        @media screen and (max-width: $md4) {
+            padding: 18px 0;
+        }
+
         &:first-child {
             padding-top: 0;
         }
@@ -158,6 +191,10 @@
             @media screen and (max-width: $md3) {
                 padding-bottom: 27px;
                 border-bottom: 1px solid #929292;
+            }
+
+            @media screen and (max-width: $md4) {
+                padding-bottom: 18px;
             }
         }
 
@@ -183,12 +220,21 @@
                     bottom: 27px;
                 }
             }
+
+            @media screen and (max-width: $md4) {
+                gap: 10px;
+
+                &:last-child {
+                    bottom: 18px;
+                }
+            }
         }
 
         &__image {
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-shrink: 0;
             width: 122px;
             height: 93px;
             background-color: #F3F3F3;
@@ -212,6 +258,12 @@
                 border-radius: 9px;
             }
 
+            @media screen and (max-width: $md4) {
+                width: 99px;
+                height: 75px;
+                border-radius: 6px;
+            }
+
             img {
                 width: 80px;
                 height: 50px;
@@ -230,11 +282,17 @@
                     width: 98px;
                     height: 62px;
                 }
+
+                @media screen and (max-width: $md4) {
+                    width: 65px;
+                    height: 41px;
+                }
             }
         }
 
         &__title {
             margin-bottom: 10px;
+            line-height: 120%;
 
             @media screen and (max-width: $md1) {
                 margin-bottom: 7.5px;
@@ -246,6 +304,10 @@
 
             @media screen and (max-width: $md3) {
                 margin-bottom: 13px;
+            }
+
+            @media screen and (max-width: $md4) {
+                margin-bottom: 9px;
             }
         }
 
@@ -264,6 +326,10 @@
             @media screen and (max-width: $md3) {
                 margin-bottom: 48px;
             }
+
+            @media screen and (max-width: $md4) {
+                margin-bottom: 32px;
+            }
         }
 
         &__trash {
@@ -280,6 +346,10 @@
 
             @media screen and (max-width: $md3) {
                 width: 20px;
+            }
+
+            @media screen and (max-width: $md4) {
+                width: 14px;
             }
 
             img {
@@ -319,6 +389,12 @@
                 height: 48px;
             }
 
+            @media screen and (max-width: $md4) {
+                padding: 0 18px;
+                border-radius: 8px;
+                height: 32px;
+            }
+
             &__wrapper {
                 display: flex;
                 align-items: center;
@@ -335,6 +411,10 @@
 
                 @media screen and (max-width: $md3) {
                     width: 101px;
+                }
+
+                @media screen and (max-width: $md4) {
+                    width: 67px;
                 }
             }
 
@@ -378,6 +458,11 @@
             border-radius: 0;
             background-color: transparent;
             width: 100%;
+        }
+
+        @media screen and (max-width: $md4) {
+            margin-top: 35px;
+            gap: 26px;
         }
 
         &__block {
@@ -444,6 +529,11 @@
                 justify-content: center;
                 padding: 25px 0;
                 border-radius: 16px;
+            }
+
+            @media screen and (max-width: $md4) {
+                padding: 16px 0;
+                border-radius: 10px;
             }
 
             &:hover {

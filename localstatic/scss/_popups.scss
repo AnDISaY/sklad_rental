@@ -16,6 +16,15 @@
             gap: 12px;
         }
 
+        @media screen and (max-width: $md3) {
+            gap: 24px;
+            width: 100%;
+        }
+
+        @media screen and (max-width: $md4) {
+            gap: 16px;
+        }
+
         input {
             margin: 0;
             padding-block: 0;
@@ -40,6 +49,18 @@
                 border-radius: 9px;
             }
 
+            @media screen and (max-width: $md3) {
+                width: 100%;
+                border-width: 2px;
+                border-radius: 12px;
+                box-sizing: border-box;
+            }
+
+            @media screen and (max-width: $md4) {
+                border-width: 1.3px;
+                border-radius: 8px;
+            }
+
             &__text {
                 color: $black;
                 margin: 0 10px;
@@ -50,6 +71,14 @@
 
                 @media screen and (max-width: $md2) {
                     margin: 0 5px;
+                }
+
+                @media screen and (max-width: $md3) {
+                    margin: 0 10px;
+                }
+
+                @media screen and (max-width: $md4) {
+                    margin: 0 7px;
                 }
             }
 
@@ -75,6 +104,14 @@
 
                 @media screen and (max-width: $md2) {
                     font-size: 8px;
+                }
+
+                @media screen and (max-width: $md3) {
+                    font-size: 15px;
+                }
+
+                @media screen and (max-width: $md4) {
+                    font-size: 10px;
                 }
             }
         }
@@ -96,10 +133,19 @@
                 padding: 10px 0;
                 border-radius: 6px;
             }
+
+            @media screen and (max-width: $md3) {
+                padding: 20px 0;
+                border-radius: 12px;
+            }
+
+            @media screen and (max-width: $md4) {
+                padding: 14px 0;
+                border-radius: 8px;
+            }
         }
     }
 }
-
 
 .signin {
     &__title {
@@ -109,6 +155,7 @@
     &__form {
         display: flex;
         flex-direction: column;
+        align-items: center;
         gap: 24px;
 
         @media screen and (max-width: $md1) {
@@ -117,6 +164,15 @@
 
         @media screen and (max-width: $md2) {
             gap: 12px;
+        }
+
+        @media screen and (max-width: $md3) {
+            gap: 24px;
+            width: 100%;
+        }
+
+        @media screen and (max-width: $md4) {
+            gap: 16px;
         }
 
         input {
@@ -143,6 +199,18 @@
                 border-radius: 9px;
             }
 
+            @media screen and (max-width: $md3) {
+                width: 100%;
+                border-width: 2px;
+                border-radius: 12px;
+                box-sizing: border-box;
+            }
+
+            @media screen and (max-width: $md4) {
+                border-width: 1.3px;
+                border-radius: 8px;
+            }
+
             &__text {
                 color: $black;
                 margin: 0 10px;
@@ -154,11 +222,20 @@
                 @media screen and (max-width: $md2) {
                     margin: 0 5px;
                 }
+
+                @media screen and (max-width: $md3) {
+                    margin: 0 10px;
+                }
+
+                @media screen and (max-width: $md4) {
+                    margin: 0 7px;
+                }
             }
 
             &__block {
                 display: flex;
                 align-items: center;
+                width: 100%;
 
                 input {
                     width: 100%;
@@ -179,6 +256,14 @@
                 @media screen and (max-width: $md2) {
                     font-size: 8px;
                 }
+
+                @media screen and (max-width: $md3) {
+                    font-size: 15px;
+                }
+
+                @media screen and (max-width: $md4) {
+                    font-size: 10px;
+                }
             }
         }
 
@@ -196,13 +281,24 @@
             }
 
             @media screen and (max-width: $md2) {
-                padding: 10px;
+                padding: 10px 0;
                 border-radius: 6px;
+            }
+
+            @media screen and (max-width: $md3) {
+                padding: 20px 0;
+                border-radius: 12px;
+            }
+
+            @media screen and (max-width: $md4) {
+                padding: 14px 0;
+                border-radius: 8px;
             }
         }
     }
 
     &__link {
+        display: inline-flex;
         color: #929292;
         transition: all 0.4s ease;
 
@@ -232,6 +328,14 @@
             gap: 12px;
         }
 
+        @media screen and (max-width: $md3) {
+            gap: 30px;
+        }
+
+        @media screen and (max-width: $md4) {
+            gap: 20px;
+        }
+
         input {
             margin: 0;
             padding-block: 0;
@@ -256,6 +360,18 @@
                 border-radius: 9px;
             }
 
+            @media screen and (max-width: $md3) {
+                width: 100%;
+                border-width: 2px;
+                border-radius: 12px;
+                box-sizing: border-box;
+            }
+
+            @media screen and (max-width: $md4) {
+                border-width: 1.3px;
+                border-radius: 8px;
+            }
+
             &::placeholder {
                 font-family: $ff;
                 font-size: 16px;
@@ -269,6 +385,14 @@
 
                 @media screen and (max-width: $md2) {
                     font-size: 8px;
+                }
+
+                @media screen and (max-width: $md3) {
+                    font-size: 15px;
+                }
+
+                @media screen and (max-width: $md4) {
+                    font-size: 11px;
                 }
             }
         }
@@ -287,8 +411,18 @@
             }
 
             @media screen and (max-width: $md2) {
-                padding: 10px;
+                padding: 10px 0;
                 border-radius: 6px;
+            }
+
+            @media screen and (max-width: $md3) {
+                padding: 20px 0;
+                border-radius: 12px;
+            }
+
+            @media screen and (max-width: $md4) {
+                padding: 14px 0;
+                border-radius: 8px;
             }
         }
     }
@@ -482,6 +616,16 @@
             padding: 37.5px 22.5px;
             border-radius: 10px;
         }
+
+        @media screen and (max-width: $md3) {
+            padding: 30px 20px;
+            border-radius: 16px;
+        }
+
+        @media screen and (max-width: $md4) {
+            padding: 20px 14px;
+            border-radius: 6px;
+        }
     }
 
     &__icon {
@@ -501,6 +645,16 @@
             margin-bottom: 5px;
         }
 
+        @media screen and (max-width: $md3) {
+            width: 30px;
+            margin-bottom: 10px;
+        }
+
+        @media screen and (max-width: $md4) {
+            width: 20px;
+            margin-bottom: 6px;
+        }
+
         img {
             width: 100%;
             height: auto;
@@ -519,6 +673,14 @@
         @media screen and (max-width: $md2) {
             margin-bottom: 12.5px;
         }
+
+        @media screen and (max-width: $md3) {
+            margin-bottom: 20px;
+        }
+
+        @media screen and (max-width: $md4) {
+            margin-bottom: 12px;
+        }
     }
 
     &__text {
@@ -533,9 +695,16 @@
         @media screen and (max-width: $md2) {
             max-width: 140px;
         }
+
+        @media screen and (max-width: $md3) {
+            max-width: 300px;
+        }
+
+        @media screen and (max-width: $md4) {
+            max-width: 200px;
+        }
     }
 }
-
 
 .orderpopup {
     position: fixed !important;
@@ -555,6 +724,16 @@
             padding: 37.5px 22.5px;
             border-radius: 10px;
         }
+
+        @media screen and (max-width: $md3) {
+            padding: 30px 20px;
+            border-radius: 16px;
+        }
+
+        @media screen and (max-width: $md4) {
+            padding: 20px 14px;
+            border-radius: 6px;
+        }
     }
 
     &__title {
@@ -568,6 +747,14 @@
 
         @media screen and (max-width: $md2) {
             margin-bottom: 12.5px;
+        }
+
+        @media screen and (max-width: $md3) {
+            margin-bottom: 20px;
+        }
+
+        @media screen and (max-width: $md4) {
+            margin-bottom: 12px;
         }
     }
 
@@ -583,6 +770,14 @@
         @media screen and (max-width: $md2) {
             max-width: 140px;
         }
+
+        @media screen and (max-width: $md3) {
+            max-width: 250px;
+        }
+
+        @media screen and (max-width: $md4) {
+            max-width: 200px;
+        }
     }
 }
 
@@ -595,6 +790,10 @@
     top: 200px !important;
     background-color: $black !important;
 
+    @media screen and (max-width: $md4) {
+        top: 134px !important;
+    }
+
     &__list {
         display: flex;
         flex-direction: column;
@@ -602,6 +801,11 @@
         max-height: 430px;
         overflow-y: scroll;
         &::-webkit-scrollbar {display: none;}
+
+        @media screen and (max-width: $md4) {
+            width: 300px;
+            max-height: 286px;
+        }
     }
 
     &__item {
@@ -612,8 +816,17 @@
         border-top: 1px solid #929292;
         border-bottom: 1px solid #929292;
 
+        @media screen and (max-width: $md4) {
+            gap: 20px;
+            padding: 14px;
+        }
+
         &__icon {
             width: 22px;
+
+            @media screen and (max-width: $md4) {
+                width: 14px;
+            }
 
             img {
                 width: 100%;
@@ -631,7 +844,6 @@
     }
 }
 
-
 .profile-mobile {
     position: fixed !important;
     align-items: start !important;
@@ -640,23 +852,40 @@
     top: 130px !important;
     background-color: $black !important;
 
+    @media screen and (max-width: $md4) {
+        top: 86px !important;
+    }
+
     &__container {
         display: flex;
         flex-direction: column;
         gap: 50px;
         padding-top: 14px;
+
+        @media screen and (max-width: $md4) {
+            gap: 32px;
+            padding-top: 8px;
+        }
     }
 
     &__head {
         display: flex;
         align-items: center;
         gap: 136px;
+
+        @media screen and (max-width: $md4) {
+            gap: 90px;
+        }
     }
 
     &__return {
         position: static !important;
         width: 30px !important;
         height: auto !important;
+
+        @media screen and (max-width: $md4) {
+            width: 20px;
+        }
 
         img {
             width: 100%;
@@ -674,6 +903,11 @@
         flex-direction: column;
         gap: 20px;
         width: 450px;
+
+        @media screen and (max-width: $md4) {
+            gap: 14px;
+            width: 300px;
+        }
     }
 
     &__item {
@@ -682,12 +916,22 @@
         width: 100%;
         box-sizing: border-box;
         gap: 27px;
-        padding: 21px 0 21px 51px;
+        padding: 21px 51px;
         background-color: #fff;
         border-radius: 16px;
 
+        @media screen and (max-width: $md4) {
+            gap: 18px;
+            padding: 14px 34px;
+            border-radius: 10px;
+        }
+
         &__icon {
             width: 27px;
+
+            @media screen and (max-width: $md4) {
+                gap: 18px;
+            }
 
             img {
                 width: 100%;
@@ -698,6 +942,38 @@
         &__text {
             color: $black;
         }
+
+        &__anon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $black;
+        }
+
+        &__signin {
+            color: #fff;
+            background-color: $orange;
+            transition: all 0.4s ease;
+
+            &:hover {
+                background-color: $orgHover;
+            }
+        }
+    }
+
+    &__btn {
+        left: 50%;
+        bottom: 135px;
+        transform: translateX(-50%);
+        background-color: $orange;
+        padding: 21px 90px;
+        border-radius: 16px;
+
+        @media screen and (max-width: $md4) {
+            bottom: 90px;
+            padding: 14px 60px;
+            border-radius: 10px;
+        }
     }
 }
 
@@ -705,7 +981,7 @@
 .popup {
     position: absolute;
     top: 0;
-    z-index: 100;
+    z-index: -2;
     width: 100vw;
     display: flex;
     justify-content: center;
@@ -747,6 +1023,20 @@
             padding: 20px 17.5px;
             border-radius: 10px;
         }
+
+        @media screen and (max-width: $md3) {
+            gap: 30px;
+            padding: 46px 34px;
+            border-radius: 20px;
+            width: 450px;
+            box-sizing: border-box;
+        }
+
+        @media screen and (max-width: $md4) {
+            gap: 20px;
+            padding: 30px 22px;
+            width: 300px;
+        }
     }
 
     &-close {
@@ -774,6 +1064,20 @@
             height: 5px;
         }
 
+        @media screen and (max-width: $md3) {
+            top: 16px;
+            right: 16px;
+            width: 10px;
+            height: 10px;
+        }
+
+        @media screen and (max-width: $md4) {
+            top: 11px;
+            right: 11px;
+            width: 7px;
+            height: 7px;
+        }
+
         img {
             width: 100%;
             height: 100%;
@@ -785,7 +1089,16 @@
     opacity: 1;
     overflow: visible;
     height: 100dvh;
+    z-index: 100;
+
+    .profile-mobile__btn {
+        position: fixed;
+    }
 }
+
+// .popup {
+//     z-index: -2;
+// }
 
 .lock {
     overflow: hidden;
@@ -810,6 +1123,14 @@
 
     @media screen and (max-width: $md2) {
         bottom: 50px;
+    }
+
+    @media screen and (max-width: $md3) {
+        bottom: 30px;
+    }
+
+    @media screen and (max-width: $md4) {
+        bottom: 20px;
     }
     
     @keyframes popupFadeOut {
@@ -852,6 +1173,16 @@
             padding: 37.5px 22.5px;
             border-radius: 10px;
         }
+
+        @media screen and (max-width: $md3) {
+            padding: 28px 20px;
+            border-radius: 16px;
+        }
+
+        @media screen and (max-width: $md4) {
+            padding: 20px 16px;
+            border-radius: 12px;
+        }
     }
 
     &__icon {
@@ -870,6 +1201,16 @@
             width: 21px;
             margin-bottom: 5px;
         }
+        
+        @media screen and (max-width: $md3) {
+            width: 35px;
+            margin-bottom: 10px;
+        }
+
+        @media screen and (max-width: $md4) {
+            width: 24px;
+            margin-bottom: 8px;
+        }
 
         img {
             width: 100%;
@@ -884,6 +1225,9 @@
         &-subtext {
             color: #929292;
             text-align: center;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            white-space: normal;
             margin-top: 25px;
 
             @media screen and (max-width: $md1) {
@@ -892,6 +1236,14 @@
 
             @media screen and (max-width: $md2) {
                 margin-top: 12.5px;
+            }
+
+            @media screen and (max-width: $md3) {
+                width: 330px;
+            }
+
+            @media screen and (max-width: $md4) {
+                width: 220px;
             }
         }
     }
@@ -912,6 +1264,16 @@
     @media screen and (max-width: $md2) {
         gap: 6.5px;
         max-width: calc(191px - 18px);
+    }
+
+    @media screen and (max-width: $md3) {
+        gap: 10px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    @media screen and (max-width: $md4) {
+        gap: 6px;
     }
 
     &__message {

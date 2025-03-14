@@ -6,7 +6,10 @@ body = document.querySelector('body')
 
 popupLinks.forEach(link => link.addEventListener("click", (e)=> {
     e.preventDefault()
-    popups.forEach(popup => popup.classList.remove('popup-active'))
+    console.log(link.classList[0])
+    if (link.classList[0] != "profile-mobile__item") {
+        popups.forEach(popup => popup.classList.remove('popup-active'))
+    }
     href = link.href
     if (href) {
         href = href.slice(link.href.indexOf('#'))
