@@ -359,8 +359,8 @@
             <div class="catalog-mobile__list">
                 {% for item in categories %}
                     <a href="{% url 'category' item.id %}" class="catalog-mobile__item">
-                        <div class="catalog-mobile__icon"><img src="{{ item.photo_white.url }}" alt="Category photo"></div>
-                        <div class="catalog-mobile__text">{{ item.name }}</div>
+                        <div class="catalog-mobile__item__icon"><img src="{{ item.photo_white.url }}" alt="Category photo"></div>
+                        <div class="catalog-mobile__item__text">{{ item.name }}</div>
                     </a>
                 {% endfor %}
             </div>
