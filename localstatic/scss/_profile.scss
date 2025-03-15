@@ -14,7 +14,7 @@
     }
 
     @media screen and (max-width: $md4) {
-        margin: 40px 0 113px;
+        margin: 12.5vw 0 35.313vw;
     }
 
     &__return {
@@ -39,8 +39,8 @@
         }
 
         @media screen and (max-width: $md4) {
-            gap: 11px;
-            margin-bottom: 35px;
+            gap: 3.438vw;
+            margin-bottom: 10.938vw;
         }
 
         &__icon {
@@ -66,7 +66,7 @@
             }
 
             @media screen and (max-width: $md4) {
-                width: 20px;
+                width: 6.25vw;
             }
 
             &__mobile {
@@ -135,7 +135,7 @@
         }
 
         @media screen and (max-width: $md4) {
-            gap: 54px;
+            gap: 16.875vw;
         }
     }
 
@@ -157,7 +157,7 @@
         }
 
         @media screen and (max-width: $md4) {
-            gap: 14px;
+            gap: 4.375vw;
         }
     }
 
@@ -179,7 +179,7 @@
         }
 
         @media screen and (max-width: $md4) {
-            gap: 21px;
+            gap: 6.563vw;
         }
 
         &__input {
@@ -211,8 +211,8 @@
             }
 
             @media screen and (max-width: $md4) {
-                padding: 14px 11px;
-                border-radius: 11px;
+                padding: 4.375vw 3.438vw;
+                border-radius: 3.438vw;
             }
 
             // &__text {
@@ -251,7 +251,7 @@
                 }
 
                 @media screen and (max-width: $md4) {
-                    font-size: 10px;
+                    font-size: 3.125vw;
                 }
             }
         }
@@ -281,8 +281,8 @@
             }
 
             @media screen and (max-width: $md4) {
-                padding: 14px;
-                border-radius: 12px;
+                padding: 4.375vw;
+                border-radius: 3.75vw;
             }
 
             &:hover {
@@ -314,7 +314,7 @@
         }
 
         @media screen and (max-width: $md4) {
-            gap: 7px;
+            gap: 2.188vw;
         }
 
         &__message {

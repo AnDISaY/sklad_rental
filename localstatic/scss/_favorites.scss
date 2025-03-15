@@ -14,7 +14,7 @@
     }
 
     @media screen and (max-width: $md4) {
-        margin: 30px 0 113px;
+        margin: 9.375vw 0 35.313vw;
     }
 
     &__container {
@@ -44,8 +44,8 @@
         }
 
         @media screen and (max-width: $md4) {
-            gap: 80px;
-            margin-bottom: 33px;
+            gap: 25vw;
+            margin-bottom: 10.313vw;
         }
 
         &__icon {
@@ -68,7 +68,7 @@
             }
 
             @media screen and (max-width: $md4) {
-                width: 20px;
+                width: 6.25vw;
             }
 
             &__mobile {
@@ -144,7 +144,7 @@
         }
 
         @media screen and (max-width: $md4) {
-            gap: 44px 12px;
+            gap: 13.75vw 3.75vw;
         }
     }
 
@@ -197,12 +197,12 @@
             }
 
             @media screen and (max-width: $md4) {
-                gap: 32px;
-                width: 143px;
-                height: 167px;
-                margin-bottom: 15px;
-                padding: 12px 15px 0;
-                border-radius: 12px;
+                gap: 10vw;
+                width: 44.688vw;
+                height: 52.188vw;
+                margin-bottom: 4.688vw;
+                padding: 3.75vw 4.688vw 0;
+                border-radius: 3.75vw;
             }
         }
 
@@ -226,8 +226,8 @@
             }
 
             @media screen and (max-width: $md4) {
-                width: 18px;
-                height: 16px;
+                width: 5.625vw;
+                height: 5vw;
             }
 
             svg {
@@ -263,8 +263,8 @@
             }
 
             @media screen and (max-width: $md4) {
-                width: 116px;
-                height: 72px;
+                width: 36.25vw;
+                height: 22.5vw;
             }
 
             img {
@@ -292,7 +292,7 @@
             }
 
             @media screen and (max-width: $md4) {
-                margin-bottom: 9px;
+                margin-bottom: 2.813vw;
             }
         }
 
@@ -316,8 +316,8 @@
             }
 
             @media screen and (max-width: $md4) {
-                max-width: 120px;
-                margin-bottom: 19px;
+                max-width: 37.5vw;
+                margin-bottom: 5.938vw;
             }
         }
 
@@ -337,7 +337,7 @@
             }
 
             @media screen and (max-width: $md4) {
-                margin-bottom: 23px;
+                margin-bottom: 7.188vw;
             }
         }
 
@@ -368,8 +368,8 @@
             }
 
             @media screen and (max-width: $md4) {
-                padding: 14px 0;
-                border-radius: 8px;
+                padding: 4.375vw 0;
+                border-radius: 2.5vw;
             }
 
             &:hover {
@@ -407,9 +407,9 @@
             }
 
             @media screen and (max-width: $md4) {
-                border-width: 1.6px;
-                border-radius: 8px;
-                height: 37px;
+                border-width: 0.5vw;
+                border-radius: 2.5vw;
+                height: 11.563vw;
             }
 
             &__wrapper {
@@ -431,7 +431,7 @@
                 }
 
                 @media screen and (max-width: $md4) {
-                    width: 65px;
+                    width: 20.313vw;
                 }
             }
 

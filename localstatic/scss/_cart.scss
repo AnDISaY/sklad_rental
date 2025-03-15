@@ -14,7 +14,7 @@
     }
 
     @media screen and (max-width: $md4) {
-        margin: 40px 0 106px;
+        margin: 12.5vw 0 33.125vw;
     }
 
     &__container {
@@ -47,8 +47,8 @@
         }
 
         @media screen and (max-width: $md4) {
-            margin-bottom: 32px;
-            gap: 90px;
+            margin-bottom: 10vw;
+            gap: 28.125vw;
         }
     }
 
@@ -56,7 +56,7 @@
         width: 30px;
 
         @media screen and (max-width: $md4) {
-            width: 20px;
+            width: 6.25vw;
         }
 
         img {
@@ -85,7 +85,7 @@
         }
 
         @media screen and (max-width: $md4) {
-            gap: 6px;
+            gap: 1.875vw;
         }
 
         &__mobile {
@@ -98,7 +98,7 @@
             }
 
             @media screen and (max-width: $md4) {
-                margin-top: 46px;
+                margin-top: 14.375vw;
             }
         }
 
@@ -121,7 +121,7 @@
             }
 
             @media screen and (max-width: $md4) {
-                width: 13px;
+                width: 4.063vw;
             }
 
             img {
@@ -148,7 +148,7 @@
         }
 
         @media screen and (max-width: $md4) {
-            margin-bottom: 23px;
+            margin-bottom: 7.188vw;
         }
     }
 
@@ -177,7 +177,7 @@
         }
 
         @media screen and (max-width: $md4) {
-            padding: 18px 0;
+            padding: 5.625vw 0;
         }
 
         &:first-child {
@@ -194,7 +194,7 @@
             }
 
             @media screen and (max-width: $md4) {
-                padding-bottom: 18px;
+                padding-bottom: 5.625vw;
             }
         }
 
@@ -222,10 +222,10 @@
             }
 
             @media screen and (max-width: $md4) {
-                gap: 10px;
+                gap: 3.125vw;
 
                 &:last-child {
-                    bottom: 18px;
+                    bottom: 5.625vw;
                 }
             }
         }
@@ -259,9 +259,9 @@
             }
 
             @media screen and (max-width: $md4) {
-                width: 99px;
-                height: 75px;
-                border-radius: 6px;
+                width: 30.938vw;
+                height: 23.438vw;
+                border-radius: 1.875vw;
             }
 
             img {
@@ -284,8 +284,8 @@
                 }
 
                 @media screen and (max-width: $md4) {
-                    width: 65px;
-                    height: 41px;
+                    width: 20.313vw;
+                    height: 12.813vw;
                 }
             }
         }
@@ -307,7 +307,7 @@
             }
 
             @media screen and (max-width: $md4) {
-                margin-bottom: 9px;
+                margin-bottom: 2.813vw;
             }
         }
 
@@ -328,7 +328,7 @@
             }
 
             @media screen and (max-width: $md4) {
-                margin-bottom: 32px;
+                margin-bottom: 10vw;
             }
         }
 
@@ -349,7 +349,7 @@
             }
 
             @media screen and (max-width: $md4) {
-                width: 14px;
+                width: 4.375vw;
             }
 
             img {
@@ -390,9 +390,9 @@
             }
 
             @media screen and (max-width: $md4) {
-                padding: 0 18px;
-                border-radius: 8px;
-                height: 32px;
+                padding: 0 5.625vw;
+                border-radius: 2.5vw;
+                height: 10vw;
             }
 
             &__wrapper {
@@ -414,7 +414,7 @@
                 }
 
                 @media screen and (max-width: $md4) {
-                    width: 67px;
+                    width: 20.938vw;
                 }
             }
 
@@ -461,8 +461,8 @@
         }
 
         @media screen and (max-width: $md4) {
-            margin-top: 35px;
-            gap: 26px;
+            margin-top: 10.938vw;
+            gap: 8.125vw;
         }
 
         &__block {
@@ -496,7 +496,7 @@
             }
 
             @media screen and (max-width: $md4) {
-                font-size: 21px;
+                font-size: 6.563vw;
             }
         }
 
@@ -532,8 +532,8 @@
             }
 
             @media screen and (max-width: $md4) {
-                padding: 16px 0;
-                border-radius: 10px;
+                padding: 5vw 0;
+                border-radius: 3.125vw;
             }
 
             &:hover {

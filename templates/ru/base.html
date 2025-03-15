@@ -356,6 +356,13 @@
     </footer>
     <div class="catalog-mobile popup" id="catalog-mobile">
         <div class="catalog-mobile__container container">
+            <div class="catalog-mobile__head">
+                <a href="{% url 'home' %}" class="catalog-mobile__logo"><img src="{% static 'images/icon-logo.svg' %}" alt="Logo icon"></a>
+                <!-- <div class="catalog-mobile__searchbar">
+                    <div class="catalog-mobile__searchbar__icon"><img src="{% static 'images/icon-search.svg' %}" alt="Search icon"></div>
+                    <input type="text" class="header__searchbar__input text-main" id="search" placeholder="Поиск по каталогу">
+                </div> -->
+            </div>
             <div class="catalog-mobile__list">
                 {% for item in categories %}
                     <a href="{% url 'category' item.id %}" class="catalog-mobile__item">
@@ -368,6 +375,7 @@
     </div>
     <div class="profile-mobile popup" id="profile-mobile">
         <div class="profile-mobile__container container">
+            <a href="{% url 'home' %}" class="profile-mobile__logo"><img src="{% static 'images/icon-logo.svg' %}" alt="Logo icon"></a>
             <div class="profile-mobile__head">
                 <div class="profile-mobile__return popup-close"><img src="{% static 'images/profile/icon-return-mobile.svg' %}" alt="Arrow icon"></div>
                 <div class="profile-mobile__title title">Профиль</div>

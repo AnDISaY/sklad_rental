@@ -14,7 +14,7 @@
     }
 
     @media screen and (max-width: $md4) {
-        margin: 31px 0 calc(50.6px + 36.4px);
+        margin: 9.688vw 0 27.188vw;
     }
 
     &__container {
@@ -35,7 +35,7 @@
         }
 
         @media screen and (max-width: $md4) {
-            gap: 27px;
+            gap: 8.438vw;
         }
     }
 
@@ -59,7 +59,7 @@
         }
 
         @media screen and (max-width: $md4) {
-            gap: 27px;
+            gap: 8.438vw;
         }
     }
 
@@ -82,7 +82,7 @@
         }
 
         @media screen and (max-width: $md4) {
-            gap: 14px;
+            gap: 4.375vw;
         }
 
         &__icon {
@@ -105,7 +105,7 @@
             }
 
             @media screen and (max-width: $md4) {
-                width: 20px;
+                width: 6.25vw;
             }
 
             img {
@@ -150,7 +150,7 @@
             }
 
             @media screen and (max-width: $md4) {
-                gap: 4px;
+                gap: 1.25vw;
             }
         }
 
@@ -184,7 +184,7 @@
         }
 
         @media screen and (max-width: $md4) {
-            gap: 6px;
+            gap: 1.875vw;
         }
     }
 
@@ -216,8 +216,8 @@
         }
 
         @media screen and (max-width: $md4) {
-            height: 247px;
-            border-radius: 18px;
+            height: 77.188vw;
+            border-radius: 5.625vw;
         }
 
         img {
@@ -241,8 +241,8 @@
             }
 
             @media screen and (max-width: $md4) {
-                width: 236px;
-                height: 147px;
+                width: 73.75vw;
+                height: 45.938vw;
             }
         }
     }
@@ -280,9 +280,9 @@
         }
 
         @media screen and (max-width: $md4) {
-            width: 71px;
-            height: 61px;
-            border-radius: 8px;
+            width: 22.188vw;
+            height: 19.063vw;
+            border-radius: 2.5vw;
         }
 
         img {
@@ -307,7 +307,7 @@
             }
 
             @media screen and (max-width: $md4) {
-                width: 47px;
+                width: 14.688vw;
             }
         }
     }
@@ -366,7 +366,7 @@
             }
 
             @media screen and (max-width: $md4) {
-                margin-bottom: 17px;
+                margin-bottom: 5.313vw;
             }
         }
 
@@ -393,7 +393,7 @@
         }
 
         @media screen and (max-width: $md4) {
-            margin-bottom: 45px;
+            margin-bottom: 14.063vw;
         }
     }
 
@@ -422,9 +422,9 @@
         }
 
         @media screen and (max-width: $md4) {
-            padding: 4.5px;
-            border-radius: 5px;
-            margin-bottom: 9px;
+            padding: 1.406vw;
+            border-radius: 1.563vw;
+            margin-bottom: 2.813vw;
         }
     }
 
@@ -450,8 +450,8 @@
         }
 
         @media screen and (max-width: $md4) {
-            gap: 13px;
-            margin-bottom: 35px;
+            gap: 4.063vw;
+            margin-bottom: 10.938vw;
         }
 
         &__old {
@@ -478,7 +478,7 @@
         }
 
         @media screen and (max-width: $md4) {
-            gap: 8px;
+            gap: 2.5vw;
         }
     }
 
@@ -504,8 +504,8 @@
         }
 
         @media screen and (max-width: $md4) {
-            padding: 12px 24px;
-            border-radius: 10px;
+            padding: 3.75vw 7.5vw;
+            border-radius: 3.125vw;
         }
 
         &:hover {
@@ -531,7 +531,7 @@
             }
 
             @media screen and (max-width: $md4) {
-                width: 13px;
+                width: 4.063vw;
             }
 
             img {
@@ -568,9 +568,9 @@
             }
 
             @media screen and (max-width: $md4) {
-                gap: 5px;
-                padding: calc(10px - 0.21px) 7px;
-                border-width: 1.6px;
+                gap: 1.563vw;
+                padding: 3.059vw 2.188vw;
+                border-width: 0.5vw;
             }
 
             &:hover {
@@ -607,9 +607,9 @@
         }
 
         @media screen and (max-width: $md4) {
-            border-width: 1.3px;
-            border-radius: 10px;
-            padding: calc(10.5px - 0.8px) 39px;
+            border-width: 0.406vw;
+            border-radius: 3.125vw;
+            padding: 3.031vw 12.188vw;
         }
 
         &__wrapper {
@@ -631,7 +631,7 @@
             }
 
             @media screen and (max-width: $md4) {
-                width: 61px;
+                width: 19.063vw;
             }
         }
 
