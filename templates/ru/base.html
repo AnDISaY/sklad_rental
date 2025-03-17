@@ -70,7 +70,7 @@
                                 <div class="dropdown__list">
                                     {% for category in categories %}
                                         <a href="{% url 'category' category.id %}" class="dropdown__list__item">
-                                            <div class="dropdown__list__item__icon__wrapper"><div class="dropdown__list__item__icon"><img src="{{ category.photo.url }}" alt="Category icon"></div></div>
+                                            <div class="dropdown__list__item__icon"><img src="{{ category.photo.url }}" alt="Category icon"></div>
                                             <div class="dropdown__list__item__text text-main">{{ category.name }}</div>
                                         </a>
                                     {% endfor %}
@@ -418,7 +418,7 @@
         }
     </script>
     <script>
-        dropIcons = document.querySelectorAll('.dropdown__list__item__icon')
+        dropIcons = document.querySelectorAll('.dropdown__list__item__icon img')
         if (screen.width <= 1080) {
             dropIcons.forEach(icon => icon.style.width = `${icon.getBoundingClientRect().width * 0.5}px`)
         } else if (screen.width <= 1344) {

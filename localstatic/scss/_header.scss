@@ -690,27 +690,20 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                width: auto;
+                width: 26px;
 
-                &__wrapper {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    width: 26px;
-
-                    @media screen and (max-width: $md1) {
-                        width: 19.5px;
-                    }
-
-                    @media screen and (max-width: $md2) {
-                        width: 13px;
-                    }
+                @media screen and (max-width: $md1) {
+                    width: 19.5px;
                 }
 
-                img {
-                    width: 100%;
-                    height: auto;
+                @media screen and (max-width: $md2) {
+                    width: 13px;
                 }
+
+                // img {
+                //     // width: 100%;
+                //     height: auto;
+                // }
             }
 
             &__text {
