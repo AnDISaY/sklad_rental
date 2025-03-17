@@ -1119,6 +1119,22 @@ body button {
   justify-content: center;
   width: auto;
 }
+.dropdown__list__item__icon__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+}
+@media screen and (max-width: 1344px) {
+  .dropdown__list__item__icon__wrapper {
+    width: 19.5px;
+  }
+}
+@media screen and (max-width: 1080px) {
+  .dropdown__list__item__icon__wrapper {
+    width: 13px;
+  }
+}
 .dropdown__list__item__icon img {
   width: 100%;
   height: auto;

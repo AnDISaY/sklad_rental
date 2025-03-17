@@ -692,16 +692,21 @@
                 justify-content: center;
                 width: auto;
 
-                @media screen and (max-width: $md1) {
-                    // width: 20px;
-                    // transform: scale(75%);
+                &__wrapper {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 26px;
+
+                    @media screen and (max-width: $md1) {
+                        width: 19.5px;
+                    }
+
+                    @media screen and (max-width: $md2) {
+                        width: 13px;
+                    }
                 }
 
-                @media screen and (max-width: $md2) {
-                    // width: 13px;
-                    // transform: scale(50%);
-                }
-                
                 img {
                     width: 100%;
                     height: auto;
