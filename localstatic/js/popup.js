@@ -6,7 +6,8 @@ body = document.querySelector('body')
 
 popupLinks.forEach(link => link.addEventListener("click", (e)=> {
     e.preventDefault()
-    console.log(link.classList[0])
+
+
     if (link.classList[0] != "profile-mobile__item") {
         popups.forEach(popup => popup.classList.remove('popup-active'))
     }
@@ -16,14 +17,10 @@ popupLinks.forEach(link => link.addEventListener("click", (e)=> {
     } else {
         href = `#${link.attributes[1].value}`
     }
-    if (href == "#profile-mobile" | href == "#catalog-mobile") {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    }
+
     popup = document.querySelector(href)
     popup.classList.add('popup-active')
-    if (href != '#profile-popup') {
-        body.classList.add('lock')
-    }
+    body.classList.add('lock')
     history.replaceState('', document.title, window.location.origin + window.location.pathname + window.location.search);
 }))
 

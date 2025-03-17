@@ -1,15 +1,23 @@
 prices = document.querySelectorAll('.cart__card__price')
 priceTotal = document.querySelector('.cart__buy__price')
-flush = document.querySelector('.cart__flush')
+flushes = document.querySelectorAll('.cart__flush')
 trash_multiple = document.querySelectorAll('.cart__card__trash')
 total = 0
 
 prices.forEach(price => {
-    total += Number(price.innerHTML.slice(0, -1)) * Number(price.closest('.cart__card').querySelector('.cart__card__quantity__value').innerHTML)
+    discount = Number(price.closest('.cart__card').querySelector('.cart__card__discount__js').innerHTML)
+    priceInt = Number(price.innerHTML.slice(0, -1))
+    if (discount) {
+        priceNew = priceInt - ((priceInt * discount) / 100)
+        price.innerHTML = `${priceNew} ₸`
+        total += priceNew * Number(price.closest('.cart__card').querySelector('.cart__card__quantity__value').innerHTML)
+    } else {
+        total += priceInt * Number(price.closest('.cart__card').querySelector('.cart__card__quantity__value').innerHTML)
+    }
 })
 priceTotal.innerHTML = `${total}₸`
 
-flush.addEventListener("click", (e)=> {
+flushes.forEach(flush => flush.addEventListener("click", (e)=> {
     e.preventDefault()
 
     $.ajax({
@@ -22,10 +30,10 @@ flush.addEventListener("click", (e)=> {
         },
     });
     setTimeout(function () {
-        flush.closest('.cart__content').querySelectorAll('.cart__card').forEach(card => card.remove())
+        flush.closest('.cart').querySelectorAll('.cart__card').forEach(card => card.remove())
         window.location.reload()
     }, 500)
-})
+}))
 
 trash_multiple.forEach(trash => trash.addEventListener('click', (e)=> {
     e.preventDefault()
@@ -36,19 +44,19 @@ trash_multiple.forEach(trash => trash.addEventListener('click', (e)=> {
     quantity_value = quantity_text.innerHTML
     quantity_text.innerHTML = quantity_value.replace(quantity.innerHTML, `${Number(quantity.innerHTML) - 1}`)
     quantity.innerHTML = `${Number(quantity.innerHTML) - 1}`
-    console.log(Number(quantity.innerHTML))
-    console.log(Number(quantity.innerHTML) == 0)
     if (Number(quantity.innerHTML) == 0) {
         document.querySelector('.cart__buy').remove()
+        document.querySelectorAll('.cart__flush').forEach(flush => flush.remove())
     }
 
     price = trash.closest('.cart__card').querySelector('.cart__card__price')
-    priceInt = Number(price.innerHTML.slice(0, -1))
+    productQuantity = trash.closest('.cart__card').querySelector('.cart__card__quantity__value').innerHTML
+    priceInt = Number(price.innerHTML.slice(0, -1)) * Number(productQuantity)
     total -= priceInt
     priceTotal.innerHTML = `${total}₸`
     textCorrection()
 
-    if (quantity_value[16] - 1 == 0) {trash.closest('.cart__content').querySelector('.cart__flush').remove()}
+    // if (quantity_value[16] - 1 == 0) {trash.closest('.cart__content').querySelector('.cart__flush').remove()}
     trash.closest('.cart__card').remove()
 
     $.ajax({
@@ -76,7 +84,6 @@ for (let i=0; i < minuses.length; i++) {
 
 minuses.forEach(minus => minus.addEventListener('click', (e)=> {
     e.preventDefault()
-    console.log('bebebe')
     id = minus.closest('.cart__card').querySelector('.fsd12mjh63').innerHTML
 
     value = minus.closest('.cart__card__quantity__wrapper').querySelector('.cart__card__quantity__value')

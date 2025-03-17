@@ -21,6 +21,7 @@ def home(request):
         context['error_message'] = request.session.pop('error_message')
     if 'redirect' in request.session:
         context['redirect'] = request.session.pop('redirect')
+    # print(request.session['popup_active'])
     if 'popup_active' in request.session:
         context['popup_active'] = request.session.pop('popup_active')
     if user.is_authenticated:
@@ -120,6 +121,7 @@ def cart(request):
                         user_cart.delete()
                 except:
                     quantity = int(request.POST['quantity'])
+                    product = Product.objects.get(id=int(request.POST['productId']))
                     if quantity != 0:
                         if UserCart.objects.filter(user=user, product=product).exists():
                             user_cart_item = UserCart.objects.get(user=user, product=product)
@@ -209,7 +211,7 @@ def category(request, pk):
     user = request.user
     category = Category.objects.get(id=pk)
     categories = Category.objects.all()
-    products = list(category.products.all().values("id", "name", "price", "photo", "category__name", "brand__name", "is_complect"))
+    products = list(category.products.all().values("id", "name", "price", "discount", "photo", "category__name", "brand__name", "is_complect"))
     products = json.dumps(products, ensure_ascii=False)
     context = {"user": user, "user_is_authenticated": user.is_authenticated, "category": category, "products": products, "categories": categories}
     if 'success_message' in request.session:
@@ -306,7 +308,13 @@ def favorites(request):
         favorites = []
         
         for i in user_favorites:
-            products_item = {"id": i.product.id, "name": i.product.name, "price": i.product.price, "photo": i.product.photo.url, "category__name": i.product.category.name, "brand__name": i.product.brand.name, "is_complect": i.product.is_complect}
+            photo_url = ''
+            photo_list = i.product.photo.url.split('/')
+            photo_url = f'{photo_list[2]}/{photo_list[3]}'
+            products_item = {"id": i.product.id, "name": i.product.name, "price": i.product.price, "discount": i.product.discount, "photo": photo_url, "category__name": i.product.category.name, "brand__name": i.product.brand.name, "is_complect": i.product.is_complect}
+            if i.product.discount is not None:
+                products_item['discount'] = i.product.discount
+                products_item['price'] = int(i.product.price - ((i.product.price * i.product.discount) / 100))
             products.append(products_item)
 
         for up in user_products:

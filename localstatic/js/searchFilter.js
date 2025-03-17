@@ -1,8 +1,10 @@
 currentPath = window.location.pathname.split('/')[1]
 let pathname;
 
-if (currentPath == "order" | currentPath == "cart" | currentPath == "profile" /*| currentPath == "order" */) {
-    document.querySelector('.header__content').remove()
+if (screen.width <= 720) {
+    if (currentPath == "order" | currentPath == "cart" | currentPath == "profile" /*| currentPath == "order" */) {
+        document.querySelector('.header__content').remove()
+    }
 }
 
 $('#search').on('input', function(event) {

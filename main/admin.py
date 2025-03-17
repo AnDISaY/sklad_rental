@@ -12,8 +12,8 @@ class PhotoInline(admin.TabularInline):
 
 
 class ProductAdmin(admin.ModelAdmin):
-    fields = ('name', 'price', 'discount', 'category', 'brand', 'photo', 'description')
-    list_display = ['name', 'price', 'discount', 'category', 'brand', 'photo', 'description', 'views']
+    fields = ('name', 'price', 'discount', 'is_complect', 'category', 'brand', 'photo', 'description')
+    list_display = ['name', 'price', 'discount', 'is_complect', 'category', 'brand', 'photo', 'description', 'views']
     inlines = [ParameterInline, PhotoInline]
 
 

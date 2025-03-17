@@ -7,7 +7,7 @@
 <section class="product">
     <div class="product__container container">
         <div class="product__return">
-            <a href="{% url 'home' %}" class="product__return__icon"><img src="{% static 'images/category/icon-return.svg' %}" alt="Arrow icon"></a>
+            <a href="{% url 'category' product.category.id %}" class="product__return__icon"><img src="{% static 'images/category/icon-return.svg' %}" alt="Arrow icon"></a>
             <div class="product__return__text text-main">
                 <a href="{% url 'home' %}">Главная</a> / 
                 <a href="{% url 'category' product.category.id %}">{{ product.category.name }}</a> / 

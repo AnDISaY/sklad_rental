@@ -209,7 +209,6 @@
                 @media screen and (max-width: $md3) {
                     overflow: visible;
                     white-space: nowrap;
-                    // overflow-x: ;
                 }
             }
 
@@ -287,52 +286,93 @@
         &__image-block {
             display: flex;
             flex-direction: column;
-            align-items: end;
-            gap: 50px;
+            justify-content: space-between;
+            box-sizing: border-box;
 
-            width: calc(220px - 44px);
-            height: calc(251px - 17px);
+            width: 220px;
+            height: 251px;
             margin-bottom: 24px;
 
-            padding: 17px 22px 0px;
+            padding: 17px 22px 40px;
             background-color: #F3F3F3;
             border-radius: 20px;
 
             @media screen and (max-width: $md1) {
-                gap: 37.5px;
-                width: calc(165px - 33px);
-                height: calc(188px - 13px);
+                width: 165px;
+                height: 188px;
                 margin-bottom: 18px;
-                padding: 13px 16.5px 0;
+                padding: 13px 16.5px 30px;
                 border-radius: 15px;
             }
 
             @media screen and (max-width: $md2) {
-                gap: 25px;
-                width: calc(110px - 22px);
-                height: calc(125px - 8.5px);
+                width: 110px;
+                height: 125px;
                 margin-bottom: 18px;
-                padding: 8.5px 11px 0;
+                padding: 8.5px 11px 20px;
                 border-radius: 10px;
             }
 
             @media screen and (max-width: $md3) {
-                gap: 45px;
-                width: calc(200px - 40px);
-                height: calc(225px - 15px);
+                width: 200px;
+                height: 225px;
                 margin-bottom: 21px;
-                padding: 15px 20px 0;
+                padding: 15px 20px 35px;
                 border-radius: 18px;
             }
 
             @media screen and (max-width: $md4) {
-                gap: 9.375vw;
                 width: 41.875vw;
                 height: 46.875vw;
                 margin-bottom: 4.375vw;
-                padding: 3.125vw 4.375vw 0;
-                box-sizing: border-box;
+                padding: 3.125vw 4.375vw 6.5vw;
             }
+        }
+
+        &__upper {
+            display: flex;
+            align-items: start;
+            justify-content: space-between;
+
+            &__left {
+                display: flex;
+                flex-wrap: wrap;
+                max-width: 105px;
+                gap: 5px;
+            }
+        }
+
+        &__discount, &__complect {
+            padding: 8px;
+            border-radius: 16px;
+
+            @media screen and (max-width: $md1) {
+                padding: 6px;
+                border-radius: 12px;
+            }
+
+            @media screen and (max-width: $md2) {
+                padding: 4px;
+                border-radius: 6px;
+            }
+
+            @media screen and (max-width: $md3) {
+                padding: 8px;
+                border-radius: 16px;
+            }
+
+            @media screen and (max-width: $md4) {
+                padding: 1.875vw;
+                border-radius: 3.75vw;
+            }
+        }
+
+        &__discount {
+            background-color: $black;
+        }
+
+        &__complect {
+            background-color: $orange;
         }
 
         &__favorite {
@@ -451,22 +491,51 @@
         }
 
         &__price {
+            display: flex;
+            align-items: end;
+            gap: 10px;
             margin-bottom: 36px;
+
+            &__old {
+                font-size: 13px;
+                color: #929292;
+                text-decoration: line-through;
+
+                @media screen and (max-width: $md1) {
+                    font-size: 10px;
+                }
+
+                @media screen and (max-width: $md2) {
+                    font-size: 6px;
+                }
+
+                @media screen and (max-width: $md3) {
+                    font-size: 15px;
+                }
+
+                @media screen and (max-width: $md4) {
+                    font-size: 3.125vw;
+                }
+            }
 
             @media screen and (max-width: $md1) {
                 margin-bottom: 27px;
+                gap: 7.5px;
             }
 
             @media screen and (max-width: $md2) {
                 margin-bottom: 18px;
+                gap: 5px;
             }
 
             @media screen and (max-width: $md3) {
                 margin-bottom: 32px;
+                gap: 10px;
             }
 
             @media screen and (max-width: $md4) {
                 margin-bottom: 6.563vw;
+                gap: 2.5vw;
             }
         }
 
@@ -738,7 +807,7 @@
             .faq-line2 {
                 width: 2px;
                 height: 20px;
-                // transition: 0.75s ease;
+                transition: 0.5s ease;
 
                 @media screen and (max-width: $md1) {
                     width: 1.5px;
@@ -763,7 +832,7 @@
 
             .accordion-icon-active {
                 // transform: rotate(90deg);
-                // transform: translateY(10px);
+                transform: translateY(4px);
                 opacity: 0;
             }
         }

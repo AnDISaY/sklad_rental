@@ -118,7 +118,7 @@
             </div>
         </div>
     </header>
-    <div class="signup popup {% if active_popup == 'signup' %}popup-active{% endif %}" id="signup-popup">
+    <div class="signup popup {% if popup_active == 'signup' %}popup-active{% endif %}" id="signup-popup">
         <div class="popup-background"></div>
         <div class="signup__wrapper popup__wrapper">
             <div class="signup__title title-mid">Регистрация</div>
@@ -148,7 +148,7 @@
             </form>
         </div>
     </div>
-    <div class="signin popup {% if active_popup == 'signin' %}popup-active{% endif %}" id="signin-popup">
+    <div class="signin popup {% if popup_active == 'signin' %}popup-active{% endif %}" id="signin-popup">
         <div class="popup-background"></div>
         <div class="signin__wrapper popup__wrapper">
             <div class="signin__title title-mid">Войти в профиль</div>
@@ -257,7 +257,7 @@
                         <div class="profile__link__text text-main">История заказов</div>
                     </a> -->
                 </div>
-                <a href="{% url 'logout' %}" class="profile__btn">Выйти</a>
+                <a href="{% url 'logout' %}" class="profile__btn text-main">Выйти</a>
             </div>
         </div>
     </div>
@@ -329,28 +329,30 @@
         </div>
     </footer>
     <footer class="footer-mobile">
-        <div class="footer-mobile__wrapper">
-            <div class="footer-mobile__list">
-                <a href="{% url 'home' %}" class="footer-mobile__item">
-                    <div class="footer-mobile__item__icon"><img src="{% static 'images/footer-mobile/home.svg' %}" alt="Home icon"></div>
-                    <div class="footer-mobile__item__text footer-mobile-text">Главная</div>
-                </a>
-                <a href="#catalog-mobile" class="footer-mobile__item popup-link">
-                    <div class="footer-mobile__item__icon"><img src="{% static 'images/footer-mobile/catalog.svg' %}" alt="Catalog icon"></div>
-                    <div class="footer-mobile__item__text footer-mobile-text">Каталог</div>
-                </a>
-                <a href="{% url 'cart' %}" class="footer-mobile__item">
-                    <div class="footer-mobile__item__icon footer-mobile__item__icon-small"><img src="{% static 'images/footer-mobile/cart.svg' %}" alt="Cart icon"></div>
-                    <div class="footer-mobile__item__text footer-mobile-text">Корзина</div>
-                </a>
-                <a href="{% url 'favorites' %}" class="footer-mobile__item">
-                    <div class="footer-mobile__item__icon footer-mobile__item__icon-small"><img src="{% static 'images/footer-mobile/favorites.svg' %}" alt="Favorites icon"></div>
-                    <div class="footer-mobile__item__text footer-mobile-text">Избранное</div>
-                </a>
-                <a href="#profile-mobile" class="footer-mobile__item popup-link">
-                    <div class="footer-mobile__item__icon"><img src="{% static 'images/footer-mobile/profile.svg' %}" alt="Profile icon"></div>
-                    <div class="footer-mobile__item__text footer-mobile-text">Профиль</div>
-                </a>
+        <div class="footer-mobile__container container">
+            <div class="footer-mobile__wrapper">
+                <div class="footer-mobile__list">
+                    <a href="{% url 'home' %}" class="footer-mobile__item">
+                        <div class="footer-mobile__item__icon"><img src="{% static 'images/footer-mobile/home.svg' %}" alt="Home icon"></div>
+                        <div class="footer-mobile__item__text footer-mobile-text">Главная</div>
+                    </a>
+                    <a href="#catalog-mobile" class="footer-mobile__item popup-link">
+                        <div class="footer-mobile__item__icon"><img src="{% static 'images/footer-mobile/catalog.svg' %}" alt="Catalog icon"></div>
+                        <div class="footer-mobile__item__text footer-mobile-text">Каталог</div>
+                    </a>
+                    <a href="{% url 'cart' %}" class="footer-mobile__item">
+                        <div class="footer-mobile__item__icon footer-mobile__item__icon-small"><img src="{% static 'images/footer-mobile/cart.svg' %}" alt="Cart icon"></div>
+                        <div class="footer-mobile__item__text footer-mobile-text">Корзина</div>
+                    </a>
+                    <a href="{% url 'favorites' %}" class="footer-mobile__item">
+                        <div class="footer-mobile__item__icon footer-mobile__item__icon-small"><img src="{% static 'images/footer-mobile/favorites.svg' %}" alt="Favorites icon"></div>
+                        <div class="footer-mobile__item__text footer-mobile-text">Избранное</div>
+                    </a>
+                    <a href="#profile-mobile" class="footer-mobile__item popup-link">
+                        <div class="footer-mobile__item__icon"><img src="{% static 'images/footer-mobile/profile.svg' %}" alt="Profile icon"></div>
+                        <div class="footer-mobile__item__text footer-mobile-text">Профиль</div>
+                    </a>
+                </div>
             </div>
         </div>
     </footer>
@@ -413,6 +415,14 @@
             profilePopupIcon.style.right = `calc(22px + 5.5px + ${parseFloat(headerProfile.getBoundingClientRect().width) / 2}px)`
         } else if (screen.width > 720) {
             profilePopupIcon.style.right = `calc(15px + 3.75px + ${parseFloat(headerProfile.getBoundingClientRect().width) / 2}px)`
+        }
+    </script>
+    <script>
+        dropIcons = document.querySelectorAll('.dropdown__list__item__icon')
+        if (screen.width <= 1080) {
+            dropIcons.forEach(icon => icon.style.width = `${icon.getBoundingClientRect().width * 0.5}px`)
+        } else if (screen.width <= 1344) {
+            dropIcons.forEach(icon => icon.style.width = `${icon.getBoundingClientRect().width * 0.75}px`)
         }
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
