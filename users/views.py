@@ -5,10 +5,11 @@ from django.contrib.auth.hashers import check_password
 from django.core.mail import send_mail
 from django.conf import settings
 
-from .models import UserCart, UserRecovery
+from .models import UserCart, UserRecovery, UserRent
 from main.models import Category
 
 import random
+import json
 
 User = get_user_model()
 
@@ -225,6 +226,20 @@ def profile_new_password(request):
 
 @login_required(login_url='/home')
 def profile_history(request):
+    user = request.user
+    user_cart = UserCart.objects.filter(user=user)
+    user_rent = UserRent.objects.filter(user=user).order_by('-starting_date')
+
     categories = Category.objects.all()
-    context = {"categories": categories}
+    context = {'user': user, 'user_is_authenticated': user.is_authenticated, 'cart_length': len(user_cart), "categories": categories, "user_rent": user_rent}
+    if 'success_message' in request.session:
+        context['success_message'] = request.session.pop('success_message')
+        if 'success_message_subtext' in request.session:
+            context['success_message_subtext'] = request.session['success_message_subtext'].pop()
+    if 'error_message' in request.session:
+        context['error_message'] = request.session.pop('error_message')
+    if 'redirect' in request.session:
+        context['redirect'] = request.session.pop('redirect')
+    if 'popup_active' in request.session:
+        context['popup_active'] = request.session.pop('popup_active')
     return render(request, 'ru/account/profile_history.html', context)

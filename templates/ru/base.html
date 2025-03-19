@@ -252,10 +252,10 @@
                         <div class="profile__link__icon"><img src="{% static 'images/profile/icon-edit.svg' %}" alt="Edit icon"></div>
                         <div class="profile__link__text text-main">Редактировать профиль</div>
                     </a>
-                    <!-- <a href="{% url 'profile_history' %}" class="profile__link">
+                    <a href="{% url 'profile_history' %}" class="profile__link">
                         <div class="profile__link__icon"><img src="{% static 'images/profile/icon-history.svg' %}" alt="Order history icon"></div>
                         <div class="profile__link__text text-main">История заказов</div>
-                    </a> -->
+                    </a>
                 </div>
                 <a href="{% url 'logout' %}" class="profile__btn text-main">Выйти</a>
             </div>
@@ -388,10 +388,10 @@
                         <div class="profile-mobile__item__icon"><img src="{% static 'images/profile/icon-edit.svg' %}" alt="Edit profile icon"></div>
                         <div class="profile-mobile__item__text text-medium-big">Редактировать профиль</div>
                     </a>
-                    <!-- <a href="{% url 'profile_history' %}" class="profile-mobile__item">
+                    <a href="{% url 'profile_history' %}" class="profile-mobile__item">
                         <div class="profile-mobile__item__icon"><img src="{% static 'images/profile/icon-history.svg' %}" alt="Order history icon"></div>
                         <div class="profile-mobile__item__text text-medium-big">История заказов</div>
-                    </a> -->
+                    </a>
                 <a href="{% url 'logout' %}" class="profile-mobile__btn text-semibold-big">Выйти</a>
                 {% else %}
                     <a href="#signin-popup" class="profile-mobile__item profile-mobile__item__anon profile-mobile__item__signin text-semibold-big popup-link">Войти</a>
@@ -409,12 +409,14 @@
         headerProfile = document.querySelector('.header__profile__text')
         profilePopupIcon = document.querySelector('.profile__icon')
         profilePopupWrapper = document.querySelector('.profile__wrapper')
-        if (screen.width > 1344) {
-            profilePopupIcon.style.right = `calc(30px + 7.5px + ${parseFloat(headerProfile.getBoundingClientRect().width) / 2}px)`
-        } else if (screen.width > 1080) {
-            profilePopupIcon.style.right = `calc(22px + 5.5px + ${parseFloat(headerProfile.getBoundingClientRect().width) / 2}px)`
-        } else if (screen.width > 720) {
-            profilePopupIcon.style.right = `calc(15px + 3.75px + ${parseFloat(headerProfile.getBoundingClientRect().width) / 2}px)`
+        if (headerProfile) {
+            if (screen.width > 1344) {
+                profilePopupIcon.style.right = `calc(30px + 7.5px + ${parseFloat(headerProfile.getBoundingClientRect().width) / 2}px)`
+            } else if (screen.width > 1080) {
+                profilePopupIcon.style.right = `calc(22px + 5.5px + ${parseFloat(headerProfile.getBoundingClientRect().width) / 2}px)`
+            } else if (screen.width > 720) {
+                profilePopupIcon.style.right = `calc(15px + 3.75px + ${parseFloat(headerProfile.getBoundingClientRect().width) / 2}px)`
+            }
         }
     </script>
     <script>

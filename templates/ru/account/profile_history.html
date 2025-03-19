@@ -1,5 +1,6 @@
 {% extends 'ru/base.html' %}
 {% load static %}
+{% load counter %}
 
 {% block title %}Личный кабинет{% endblock %}
 
@@ -8,59 +9,50 @@
     <div class="history__container container">
         <a href="{% url 'home' %}" class="history__return">
             <div class="history__return__icon"><img src="{% static 'images/profile/icon-return.svg' %}" alt="Arrow icon"></div>
+            <div class="history__return__icon history__return__icon-mobile"><img src="{% static 'images/category/icon-return.svg' %}" alt="Arrow icon"></div>
             <div class="history__return__text text-main">Вернуться</div>
+            <div class="history__return__text history__return__text-mobile title">История заказов</div>
         </a>
         <div class="history__title title">История заказов</div>
         <div class="history__accordion">
+            {% set 1 as count %}
+            {% for order in user_rent %}
             <div class="history__accordion__item">
                 <div class="history__accordion__question">
-                    <div class="history__accordion__question__btn">Повторить заказ</div>
-                    <div class="history__accordion__question__text text-main">Заказ №3 от 22.02.2025</div>
+                    <div class="history__accordion__question__block">
+                        <div class="history__accordion__question__text text-main">Заказ №{{ count }} от {{ order.starting_date }}</div>
+                        <a href="{% url 'reorder' order.id %}" class="history__accordion__question__btn text-semibold-small">Повторить заказ</a>
+                    </div>
                     <div class="history__accordion__question__icon">
                         <div class="history__accordion__question__line history-line1"></div>
                         <div class="history__accordion__question__line history-line2"></div>
                     </div>
                 </div>
                 <div class="history__accordion__panel">
-                    <div class="history__accordion__panel__text text-medium-small">6 товаров на 95 000₸</div>
+                    <div class="history__accordion__panel__text text-medium-small">{{ order.products|length }} товаров на {{ order.price }} ₸</div>
                     <div class="history__accordion__panel__cards">
-                        <div class="history__accordion__panel__card">
-                            <div class="history__accordion__panel__card__image-block">
-                                <div class="history__accordion__panel__card__image"><img src="" alt=""></div>
+                        {% for product in order.products %}
+                            <div class="history__accordion__panel__card">
+                                <div class="history__accordion__panel__card__image-block">
+                                    <div class="history__accordion__panel__card__image"><img src="{% static 'images/image-camera.png' %}" alt="Product image"></div>
+                                </div>
+                                <div class="history__accordion__panel__card__content">
+                                    <div class="history__accordion__panel__card__title text-medium-small">{{ product.name }}</div>
+                                    <div class="history__accordion__panel__card__price text-medium-small">{{ product.price }} х {{ product.quantity }}шт.</div>
+                                </div>
                             </div>
-                            <div class="history__accordion__panel__card__content">
-                                <div class="history__accordion__panel__card__title">Sony FX3 body</div>
-                                <div class="history__accordion__panel__card__price">15 000 х 1шт.</div>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
-            <div class="history__accordion__item">
-                <div class="history__accordion__question">
-                    <div class="history__accordion__question__btn text-semibold-small">Повторить заказ</div>
-                    <div class="history__accordion__question__text text-main">Заказ №3 от 22.02.2025</div>
-                    <div class="history__accordion__question__icon">
-                        <div class="history__accordion__question__line history-line1"></div>
-                        <div class="history__accordion__question__line history-line2"></div>
-                    </div>
-                </div>
-                <div class="history__accordion__panel">
-                    <div class="history__accordion__panel__text text-medium-small">6 товаров на 95 000₸</div>
-                    <div class="history__accordion__panel__cards">
-                        <div class="history__accordion__panel__card">
-                            <div class="history__accordion__panel__card__image-block">
-                                <div class="history__accordion__panel__card__image"><img src="" alt=""></div>
-                            </div>
-                            <div class="history__accordion__panel__card__content">
-                                <div class="history__accordion__panel__card__title">Sony FX3 body</div>
-                                <div class="history__accordion__panel__card__price">15 000 х 1шт.</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% add count as count %}
+            {% endfor %}
         </div>
     </div>
 </section>
+{% endblock %}
+{% block extra_scripts %}
+<script>
+    document.querySelectorAll('.history__accordion__question__btn').forEach(btn => btn.addEventListener("click", (e)=> {e.stopPropagation()}))
+</script>
 {% endblock %}

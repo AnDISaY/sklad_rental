@@ -191,10 +191,10 @@ def order(request):
         data = request.POST
         products = []
         for uc in user_cart:
-            products.append({'id': uc.product.id, 'name': uc.product.name, 'price': uc.product.price, 'quantity': uc.quantity})
+            products.append({'id': uc.product.id, 'name': uc.product.name, 'price': uc.product.price, 'quantity': uc.quantity, 'photo': uc.product.photo.url})
         user_to_rent = user if user.is_authenticated else None
 
-        user_rent = UserRent(user=user_to_rent, lastname=data['lastname'], name=data['name'], phone=f'+7{data["phone"]}',
+        user_rent = UserRent(user=user_to_rent, lastname=data['lastname'], name=data['name'], phone=data["phone"],
                              delivery=data['delivery'], products=products, price=data['price'],
                              starting_date=data['starting_date'], starting_time=data['starting_time'],
                              ending_date=data['ending_date'], ending_time=data['ending_time'])
@@ -205,6 +205,40 @@ def order(request):
         request.session['success_message_subtext'] = "В ближайшее время с вами свяжется менеджер для уточнения деталей заказа"
         return redirect('/home')
     return render(request, 'ru/order.html', context)
+
+
+@login_required(login_url='/home')
+def reorder(request, order_id):
+    user = request.user
+    user_cart = UserCart.objects.filter(user=user)
+    categories = Category.objects.all()
+    previous_order = UserRent.objects.get(id=order_id)
+    products = previous_order.products
+    context = {"user": user, "user_is_authenticated": user.is_authenticated,'user_cart': user_cart, 'cart_length': len(user_cart), "categories": categories, "products": products, "cartJs": "[]", "favorites": "[]"}
+    if 'success_message' in request.session:
+        context['success_message'] = request.session.pop('success_message')
+        if 'success_message_subtext' in request.session:
+            context['success_message_subtext'] = request.session.pop('success_message_subtext')
+    if 'error_message' in request.session:
+        context['error_message'] = request.session.pop('error_message')
+    if 'redirect' in request.session:
+        context['redirect'] = request.session.pop('redirect')
+    if 'popup_active' in request.session:
+        context['popup_active'] = request.session.pop('popup_active')
+
+    if request.method == 'POST':
+        data = request.POST
+        user_to_rent = user if user.is_authenticated else None
+
+        user_rent = UserRent(user=user_to_rent, lastname=data['lastname'], name=data['name'], phone=data["phone"],
+                             delivery=data['delivery'], products=products, price=data['price'],
+                             starting_date=data['starting_date'], starting_time=data['starting_time'],
+                             ending_date=data['ending_date'], ending_time=data['ending_time'])
+        user_rent.save()
+        request.session['success_message'] = "Ваш заказ оформлен"
+        request.session['success_message_subtext'] = "В ближайшее время с вами свяжется менеджер для уточнения деталей заказа"
+        return redirect('/home')
+    return render(request, 'ru/reorder.html', context)
 
 
 def category(request, pk):

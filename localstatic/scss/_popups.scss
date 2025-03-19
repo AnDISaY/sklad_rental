@@ -1354,17 +1354,21 @@
             overflow-wrap: break-word;
             white-space: normal;
             margin-top: 25px;
+            max-width: 360px;
 
             @media screen and (max-width: $md1) {
                 margin-top: 19px;
+                max-width: 270px;
             }
 
             @media screen and (max-width: $md2) {
                 margin-top: 12.5px;
+                max-width: 180px;
             }
 
             @media screen and (max-width: $md3) {
                 width: 330px;
+                max-width: unset;
             }
 
             @media screen and (max-width: $md4) {

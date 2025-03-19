@@ -807,7 +807,7 @@
             .faq-line2 {
                 width: 2px;
                 height: 20px;
-                transition: 0.5s ease;
+                transition: 0.25s ease;
 
                 @media screen and (max-width: $md1) {
                     width: 1.5px;
@@ -863,12 +863,12 @@
 
         &__answer {
             // font-size: 0;
-            height: 0;
-            transform: scaleY(0);
-            filter: brightness(1000%);
+            max-height: 0;
+            // transform: scaleY(0);
+            // filter: brightness(1000%);
             overflow: hidden;
-            transform-origin: top;
-            transition: transform 0.5s ease;
+            // transform-origin: top;
+            transition: all 0.25s ease-in-out;
             max-width: 720px;
             color: #929292;
 
@@ -918,9 +918,9 @@
         }
 
         .accordion-panel-active {
-            height: auto;
-            transform: scaleY(1);
-            filter: none;
+            // max-height: 1000px;
+            // transform: scaleY(1);
+            // filter: none;
             margin-bottom: 21px;
 
             @media screen and (max-width: $md1) {
@@ -1072,6 +1072,10 @@
                 width: 100%;
                 height: 100%;
             }
+        }
+
+        &__text__last {
+            line-height: 80%;
         }
     }
 

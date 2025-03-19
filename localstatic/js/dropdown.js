@@ -8,7 +8,7 @@ document.querySelector('.header__menu').addEventListener("click", () => {
 
 window.addEventListener('click', function(e){   
     if (!dropdown.contains(e.target) & !menu.contains(e.target)){
-        menu.classList.toggle('menu-active')
-        dropdown.classList.toggle('dropdown-active');
+        menu.classList.remove('menu-active')
+        dropdown.classList.remove('dropdown-active');
     }
   });

@@ -3,8 +3,6 @@
 
 {% block title %}Оформление заказа{% endblock %}
 {% block extra_styles %}
-<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css"> -->
 {% endblock %}
 
 {% block content %}
@@ -43,8 +41,6 @@
                         <div class="order__form__block__text order__form__block__text__mobile text-semibold-big">Начало аренды</div>
                         <div class="order__form__block__wrapper">
                             <label class="order__form__datetime-label" for="order-date-starting">
-                                <!-- <input type="text" class="order__form__input input-hide input-type-date" id="datepicker" name="starting_date" required> -->
-                                <!-- <input type="date" class="order__form__input input-hide input-type-date" id="order-date-starting" name="starting_date" required> -->
                                 <input type="text" class="order__form__input input-hide input-type-date" id="order-date-starting" name="starting_date" required>
                                 <div class="order__form__datetime-label__icon"><img src="{% static 'images/order/icon-calendar.svg' %}" alt="Calendar icon"></div>
                                 <div class="order__form__datetime-label__text text-semibold-mid">--.--.----</div>
@@ -83,15 +79,15 @@
                 </div>
                 <div class="order__cart">
                     <div class="order__cart__cards">
-                        {% for uc in user_cart %}
+                        {% for product in products %}
                             <div class="order__cart__card">
-                                <div class="order__cart__card__image"><img src="{{ uc.product.photo.url }}" alt=""></div>
+                                <div class="order__cart__card__image"><img src="{{ product.photo }}" alt=""></div>
                                 <div class="order__cart__card__content">
-                                    <div class="order__cart__card__id__js" style="display: none;">{{ uc.product.id }}</div>
-                                    <div class="order__cart__card__price__js" style="display: none;">{{ uc.product.price }}</div>
-                                    <div class="order__cart__card__quantity__js" style="display: none;">{{ uc.quantity }}</div>
-                                    <div class="order__cart__card__title text-medium-small">{{ uc.product.name }}</div>
-                                    <div class="order__cart__card__price text-medium-small">{{ uc.product.price }} x {{ uc.quantity }}шт.</div>
+                                    <div class="order__cart__card__id__js" style="display: none;">{{ product.id }}</div>
+                                    <div class="order__cart__card__price__js" style="display: none;">{{ product.price }}</div>
+                                    <div class="order__cart__card__quantity__js" style="display: none;">{{ product.quantity }}</div>
+                                    <div class="order__cart__card__title text-medium-small">{{ product.name }}</div>
+                                    <div class="order__cart__card__price text-medium-small">{{ product.price }} x {{ product.quantity }}шт.</div>
                                 </div>
                             </div>
                         {% endfor %}
@@ -101,119 +97,8 @@
         </div>
     </div>
 </section>
-<style>
-.datepicker-container {
-    position: relative;
-    display: inline-block;
-}
-
-input {
-    width: 200px;
-    padding: 8px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.calendar {
-    position: absolute;
-    top: 40px;
-    left: 0;
-    background: white;
-    border: 1px solid #ddd;
-    padding: 10px;
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 5px;
-    width: 220px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-}
-
-.hidden {
-    display: none;
-}
-
-.calendar button {
-    width: 30px;
-    height: 30px;
-    border: none;
-    background: #f0f0f0;
-    font-size: 14px;
-    cursor: pointer;
-    border-radius: 3px;
-}
-
-.calendar button:hover {
-    background: #007bff;
-    color: white;
-}
-
-.calendar .day-name {
-    font-weight: bold;
-}
-</style>
-
-<div class="datepicker-container">
-    <input type="text" id="datepicker" placeholder="Select Date" readonly>
-    <div id="calendar" class="calendar hidden"></div>
-</div>
-
-<!-- <label for="">Select Date:</label> -->
- <!-- <label for="datePicker" class="flat-label"> -->
-    <!-- <span style="color: #fff;"></span> -->
-<!-- </label> -->
-<!-- <label for="timePicker" class="flat-label"> -->
-    <!-- <input type="text" id="timePicker" placeholder="Select Time"> -->
-    <!-- <span style="color: #fff;"></span>
-</label> -->
 {% endblock %}
 {% block extra_scripts %}
-<script>
-    const input = document.getElementById("datepicker");
-const calendar = document.getElementById("calendar");
-let selectedDate = null;
-
-// Show calendar on input click
-input.addEventListener("click", () => {
-    calendar.classList.toggle("hidden");
-    generateCalendar();
-});
-
-// Generate Calendar
-function generateCalendar() {
-    calendar.innerHTML = "";
-
-    const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-    daysOfWeek.forEach(day => {
-        const dayName = document.createElement("div");
-        dayName.textContent = day;
-        dayName.classList.add("day-name");
-        calendar.appendChild(dayName);
-    });
-
-    const now = new Date();
-    const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
-
-    for (let day = 1; day <= daysInMonth; day++) {
-        const dayButton = document.createElement("button");
-        dayButton.textContent = day;
-        dayButton.addEventListener("click", () => {
-            selectedDate = `${now.getFullYear()}-${now.getMonth() + 1}-${day}`;
-            input.value = selectedDate;
-            calendar.classList.add("hidden"); // Hide calendar after selection
-        });
-        calendar.appendChild(dayButton);
-    }
-}
-
-// Hide calendar when clicking outside
-document.addEventListener("click", (event) => {
-    if (!input.contains(event.target) && !calendar.contains(event.target)) {
-        calendar.classList.add("hidden");
-    }
-});
-
-</script>
 <script src="{% static 'js/order_count.js' %}"></script>
 <script src="{% static 'js/order_form.js' %}"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
@@ -244,34 +129,5 @@ document.addEventListener("click", (event) => {
         time_24hr: true
     });
 
-    // flatLabel = document.querySelectorAll('.flat-label');
-    // // input = document.querySelector('#datePicker')
-    // console.log(flatLabel)
-    // flatLabel.forEach(label => {
-    //     console.log(label)
-    //     input = label.querySelector('input')
-    //     console.log(input)
-    //     input.addEventListener("input", ()=> {
-    //         console.log(input)
-    //         console.log(input.value)
-    //         label.querySelector('span').innerHTML = input.value
-    //     })
-    // })
 </script>
-<!-- <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script> -->
-<!-- <script src="pikaday.js"></script>
-<script>
-    var picker = new Pikaday({ field: document.getElementById('datepicker') });
-</script> -->
-<!-- <script>
-    flatpickr("#datepicker", {
-        dateFormat: "Y-m-d", // Format: YYYY-MM-DD
-        altInput: true, // Shows formatted date in a separate field
-        altFormat: "F j, Y", // Example: "March 7, 2025"
-        theme: "dark", // You can change to "dark", "airbnb", etc.
-        allowInput: true, // Allows manual date entry
-        defaultDate: new Date(), // Sets default to today
-    });
-</script> -->
 {% endblock %}
