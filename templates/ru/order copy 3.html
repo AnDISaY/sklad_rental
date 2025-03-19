@@ -31,10 +31,11 @@
         left: 0;
         background: white;
         color: black;
-        border-radius: 12px;
-        padding: 16px 20px;
+        border-radius: 10px;
+        padding: 15px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
         display: none;
-        width: 206px;
+        width: 280px;
         z-index: 10;
     }
 
@@ -42,45 +43,35 @@
         display: block;
     }
 
-    .calendar-header-wrapper {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
     .calendar-header {
         display: flex;
+        justify-content: space-between;
         align-items: center;
         font-size: 18px;
-        gap: 15px;
+        font-weight: bold;
     }
 
     .calendar-header button {
         background: none;
         border: none;
+        font-size: 18px;
         cursor: pointer;
-        padding: 0;
-    }
-
-    .calendar-header span {
-        font-size: 12px;
-        font-weight: 600;
     }
 
     .calendar-days {
         display: grid;
         grid-template-columns: repeat(7, 1fr);
         gap: 5px;
-        margin-top: 15px;
+        margin-top: 10px;
     }
 
     .day {
-        font-size: 10px;
-        font-weight: 600;
+        width: 35px;
+        height: 35px;
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 3px;
+        border-radius: 5px;
         cursor: pointer;
     }
 
@@ -91,7 +82,6 @@
     .day.selected {
         background: #ff6600;
         color: white;
-        padding: 5px;
     }
 
     .day.disabled {
@@ -100,18 +90,15 @@
     }
 
     .weekdays {
-        font-size: 12px;
-        font-weight: 600;
         display: grid;
         grid-template-columns: repeat(7, 1fr);
         font-weight: bold;
-        margin-top: 15px;
+        margin-top: 10px;
     }
 
     .weekdays div {
         text-align: center;
     }
-
 </style>
 {% endblock %}
 
@@ -150,18 +137,16 @@
                         <div class="order__form__block__text text-main">Начало аренды</div>
                         <div class="order__form__block__text order__form__block__text__mobile text-semibold-big">Начало аренды</div>
                         <div class="order__form__block__wrapper">
-                            <div style="position: relative;">
-                                <label class="order__form__datetime-label" for="order-date-starting">
-                                    <!-- <input type="text" class="order__form__input input-hide input-type-date" id="datepicker" name="starting_date" required> -->
-                                    <!-- <input type="date" class="order__form__input input-hide input-type-date" id="order-date-starting" name="starting_date" required> -->
-                                    <!-- <input type="text" class="order__form__input input-hide input-type-date" id="order-date-starting" name="starting_date" required> -->
-                                    
-                                    <input type="text" class="order__form__input input-hide input-type-date datepicker-button" id="order-date-starting" name="starting_date" autocomplete="off" required>
-                                    <div class="order__form__datetime-label__icon"><img src="{% static 'images/order/icon-calendar.svg' %}" alt="Calendar icon"></div>
-                                    <div class="order__form__datetime-label__text text-semibold-mid" id="selected-date-1">--.--.----</div>
-                                </label>
+                            <label class="order__form__datetime-label" for="order-date-starting">
+                                <!-- <input type="text" class="order__form__input input-hide input-type-date" id="datepicker" name="starting_date" required> -->
+                                <!-- <input type="date" class="order__form__input input-hide input-type-date" id="order-date-starting" name="starting_date" required> -->
+                                <!-- <input type="text" class="order__form__input input-hide input-type-date" id="order-date-starting" name="starting_date" required> -->
+                                
+                                <input type="text" class="order__form__input input-hide input-type-date datepicker-button" id="datepicker-button-1 order-date-starting" name="starting_date" required>
                                 <div class="calendar" id="calendar-1"></div>
-                            </div>
+                                <div class="order__form__datetime-label__icon"><img src="{% static 'images/order/icon-calendar.svg' %}" alt="Calendar icon"></div>
+                                <div class="order__form__datetime-label__text text-semibold-mid">--.--.----</div>
+                            </label>
                             <label class="order__form__datetime-label" for="order-time-starting">
                                 <input type="text" class="order__form__input input-hide input-type-time" id="order-time-starting" name="starting_time" required>
                                 <div class="order__form__datetime-label__icon form-time-icon"><img src="{% static 'images/order/icon-time.svg' %}" alt="Watch icon"></div>
@@ -173,15 +158,11 @@
                         <div class="order__form__block__text text-main">Конец аренды</div>
                         <div class="order__form__block__text order__form__block__text__mobile text-semibold-big">Конец аренды</div>
                         <div class="order__form__block__wrapper">
-                            <div style="position: relative;">
-                                <label class="order__form__datetime-label" for="order-date-ending">
-                                    <!-- <input type="text" class="order__form__input input-hide input-type-date" id="order-date-ending" name="ending_date" required> -->
-                                    <input type="text" class="order__form__input input-hide input-type-date datepicker-button" id="order-date-ending" name="ending_date" autocomplete="off" required>
-                                    <div class="order__form__datetime-label__icon"><img src="{% static 'images/order/icon-calendar.svg' %}" alt="Calendar icon"></div>
-                                    <div class="order__form__datetime-label__text text-semibold-mid" id="selected-date-2">--.--.----</div>
-                                </label>
-                                <div class="calendar" id="calendar-2"></div>
-                            </div>
+                            <label class="order__form__datetime-label" for="order-date-ending">
+                                <input type="text" class="order__form__input input-hide input-type-date" id="order-date-ending" name="ending_date" required>
+                                <div class="order__form__datetime-label__icon"><img src="{% static 'images/order/icon-calendar.svg' %}" alt="Calendar icon"></div>
+                                <div class="order__form__datetime-label__text text-semibold-mid">--.--.----</div>
+                            </label>
                             <label class="order__form__datetime-label" for="order-time-ending">
                                 <input type="text" class="order__form__input input-hide input-type-time" id="order-time-ending" name="ending_time" required>
                                 <div class="order__form__datetime-label__icon form-time-icon"><img src="{% static 'images/order/icon-time.svg' %}" alt="Watch icon"></div>
@@ -200,22 +181,17 @@
                 </div>
                 <div class="order__cart">
                     <div class="order__cart__cards">
-                        {% for product in products %}
-                        <div class="order__cart__card">
-                            <div class="order__cart__card__image"><img src="{{ product.photo }}" alt="Product photo"></div>
-                            <div class="order__cart__card__content">
-                                <div class="order__cart__card__id__js" style="display: none;">{{ product.id }}</div>
-                                <div class="order__cart__card__quantity__js" style="display: none;">{{ product.quantity }}</div>
-                                <div class="order__cart__card__title text-medium-small">{{ product.name }}</div>
-                                {% if product.new_price %}
-                                <div class="order__cart__card__price__js" style="display: none;">{{ product.new_price }}</div>
-                                <div class="order__cart__card__price text-medium-small">{{ product.new_price }} x {{ product.quantity }}шт.</div>
-                                {% else %}
-                                <div class="order__cart__card__price__js" style="display: none;">{{ product.price }}</div>
-                                <div class="order__cart__card__price text-medium-small">{{ product.price }} x {{ product.quantity }}шт.</div>
-                                {% endif %}
+                        {% for uc in user_cart %}
+                            <div class="order__cart__card">
+                                <div class="order__cart__card__image"><img src="{{ uc.product.photo.url }}" alt=""></div>
+                                <div class="order__cart__card__content">
+                                    <div class="order__cart__card__id__js" style="display: none;">{{ uc.product.id }}</div>
+                                    <div class="order__cart__card__price__js" style="display: none;">{{ uc.product.price }}</div>
+                                    <div class="order__cart__card__quantity__js" style="display: none;">{{ uc.quantity }}</div>
+                                    <div class="order__cart__card__title text-medium-small">{{ uc.product.name }}</div>
+                                    <div class="order__cart__card__price text-medium-small">{{ uc.product.price }} x {{ uc.quantity }}шт.</div>
+                                </div>
                             </div>
-                        </div>
                         {% endfor %}
                     </div>
                 </div>
@@ -250,7 +226,7 @@
         let currentDate = new Date();
         let selectedDate = currentDate;
 
-        button.addEventListener("click", (e) => {
+        button.addEventListener("click", () => {
             document.querySelectorAll('.calendar').forEach(cal => cal.classList.remove('active'));
             calendar.classList.toggle("active");
             renderCalendar();
@@ -258,12 +234,10 @@
 
         function renderCalendar() {
             calendar.innerHTML = `
-                <div class="calendar-header-wrapper">
-                    <div class="calendar-header">
-                        <button id="${calendarId}-prev"><img id="${calendarId}-prev-img" src="{% static 'images/icon-calendar-arrow-left.svg' %}" alt="Calendar arrow icon"></button>
-                        <span id="${calendarId}-month-year">${monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}</span>
-                        <button id="${calendarId}-next"><img id="${calendarId}-next-img" src="{% static 'images/icon-calendar-arrow-right.svg' %}" alt="Calendar arrow icon"></button>
-                    </div>
+                <div class="calendar-header">
+                    <button id="${calendarId}-prev">&larr;</button>
+                    <span id="${calendarId}-month-year">${monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}</span>
+                    <button id="${calendarId}-next">&rarr;</button>
                 </div>
                 <div class="weekdays">
                     <div>пн</div><div>вт</div><div>ср</div><div>чт</div><div>пт</div><div>сб</div><div>вс</div>
@@ -275,39 +249,15 @@
             const nextMonthBtn = document.getElementById(`${calendarId}-next`);
             const calendarDays = document.getElementById(`${calendarId}-days`);
 
-            document.addEventListener("click", (event) => {
-                if (!button.contains(event.target) && !calendar.contains(event.target)) {
-                    calendar.classList.remove("active");
-                }
+            prevMonthBtn.addEventListener("click", () => {
+                currentDate.setMonth(currentDate.getMonth() - 1);
+                renderCalendar();
             });
 
-            window.onkeydown = function(event) {
-                if (event.keyCode == 27) {
-                    calendar.classList.remove("active");
-                }
-            };
-
-            document.querySelectorAll(".calendar-header button").forEach(button => {
-                button.addEventListener("click", (event) => {
-                    event.stopPropagation(); // Prevent event from being blocked by <img>
-                    if (button.id === `${calendar.id}-prev`) {
-                        currentDate.setMonth(currentDate.getMonth() - 1);
-                    } else {
-                        currentDate.setMonth(currentDate.getMonth() + 1);
-                    }
-                    renderCalendar();
-                });
+            nextMonthBtn.addEventListener("click", () => {
+                currentDate.setMonth(currentDate.getMonth() + 1);
+                renderCalendar();
             });
-
-            // prevMonthBtn.addEventListener("click", () => {
-            //     currentDate.setMonth(currentDate.getMonth() - 1);
-            //     renderCalendar();
-            // });
-
-            // nextMonthBtn.addEventListener("click", () => {
-            //     currentDate.setMonth(currentDate.getMonth() + 1);
-            //     renderCalendar();
-            // });
 
             const firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1).getDay();
             const lastDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
@@ -320,7 +270,7 @@
             }
 
             // Generate days
-            for (let day = 1; day <= lastDate; day++) {
+            for (let day = 1; day < lastDate; day++) {
                 const dayElement = document.createElement("div");
                 dayElement.classList.add("day");
                 dayElement.textContent = day;
@@ -336,10 +286,8 @@
 
                 dayElement.addEventListener("click", () => {
                     selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
-                    var datestring = selectedDate.getFullYear() + "-" + ("0"+(selectedDate.getMonth()+1)).slice(-2) + "-" + ("0" + selectedDate.getDate()).slice(-2)
                     selectedDateDisplay.textContent = selectedDate.toLocaleDateString("ru-RU");
-                    input = document.querySelector(`#${buttonId}`)
-                    input.value = datestring
+                    calendar.classList.remove("active");
                     renderCalendar();
                 });
 
@@ -347,19 +295,25 @@
             }
         }
 
+        document.addEventListener("click", (event) => {
+            if (!button.contains(event.target) && !calendar.contains(event.target)) {
+                calendar.classList.remove("active");
+            }
+        });
+
         renderCalendar();
     }
 
-    createDatePicker("order-date-starting", "calendar-1", "selected-date-1");
-    createDatePicker("order-date-ending", "calendar-2", "selected-date-2");
+    createDatePicker("datepicker-button-1", "calendar-1", "selected-date-1");
+    createDatePicker("datepicker-button-2", "calendar-2", "selected-date-2");
 </script>
-<script>
-    // flatpickr("#order-date-starting", {
-    //     dateFormat: "Y-m-d",  // Format: YYYY-MM-DD
-    //     allowInput: true,     // Allow manual input
-    //     minDate: "today",     // Prevent past dates
-    //     disableMobile: true,  // Ensures proper behavior on mobile
-    // })
+<!-- <script>
+    flatpickr("#order-date-starting", {
+        dateFormat: "Y-m-d",  // Format: YYYY-MM-DD
+        allowInput: true,     // Allow manual input
+        minDate: "today",     // Prevent past dates
+        disableMobile: true,  // Ensures proper behavior on mobile
+    })
     flatpickr("#order-time-starting", {
         enableTime: true,
         noCalendar: true,
@@ -367,12 +321,12 @@
         time_24hr: true
     });
 
-    // flatpickr("#order-date-ending", {
-    //     dateFormat: "Y-m-d",  // Format: YYYY-MM-DD
-    //     allowInput: true,     // Allow manual input
-    //     minDate: "today",     // Prevent past dates
-    //     disableMobile: true,  // Ensures proper behavior on mobile
-    // })
+    flatpickr("#order-date-ending", {
+        dateFormat: "Y-m-d",  // Format: YYYY-MM-DD
+        allowInput: true,     // Allow manual input
+        minDate: "today",     // Prevent past dates
+        disableMobile: true,  // Ensures proper behavior on mobile
+    })
     flatpickr("#order-time-ending", {
         enableTime: true,
         noCalendar: true,
@@ -393,7 +347,7 @@
     //         label.querySelector('span').innerHTML = input.value
     //     })
     // })
-</script>
+</script> -->
 <!-- <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script> -->
 <!-- <script src="pikaday.js"></script>

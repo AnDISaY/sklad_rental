@@ -38,7 +38,14 @@
                                 </div>
                                 <div class="history__accordion__panel__card__content">
                                     <div class="history__accordion__panel__card__title text-medium-small">{{ product.name }}</div>
+                                    <!-- <div class="history__price__js" style="display: none;">{{ product.price }}</div>
+                                    <div class="history__discount__js" style="display: none;">{{ product.discount }}</div>
+                                    <div class="history__quantity__js" style="display: none;">{{ product.quantity }}</div> -->
+                                    {% if product.new_price %}
+                                    <div class="history__accordion__panel__card__price text-medium-small">{{ product.new_price }} х {{ product.quantity }}шт.</div>
+                                    {% else %}
                                     <div class="history__accordion__panel__card__price text-medium-small">{{ product.price }} х {{ product.quantity }}шт.</div>
+                                    {% endif %}
                                 </div>
                             </div>
                         {% endfor %}
@@ -55,4 +62,5 @@
 <script>
     document.querySelectorAll('.history__accordion__question__btn').forEach(btn => btn.addEventListener("click", (e)=> {e.stopPropagation()}))
 </script>
+<!-- <script src="{% static 'js/history_count.js' %}"></script> -->
 {% endblock %}

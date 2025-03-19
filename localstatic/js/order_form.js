@@ -19,6 +19,3 @@ dateInputs.forEach(input => input.addEventListener("change", ()=> {
 timeInputs.forEach(input => input.addEventListener("change", ()=> {
     input.closest(".order__form__datetime-label").querySelector(".order__form__datetime-label__text").innerHTML = input.value;
 }));
-
-
-

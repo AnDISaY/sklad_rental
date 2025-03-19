@@ -5,6 +5,114 @@
 {% block extra_styles %}
 <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css"> -->
+<style>
+/* 
+    .datepicker-button {
+        background: #111;
+        color: white;
+        border: 2px solid #444;
+        padding: 10px 20px;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+        border-radius: 8px;
+    }
+
+    .datepicker-button img {
+        width: 20px;
+        height: 20px;
+    } */
+
+    .calendar {
+        position: absolute;
+        top: 50px;
+        left: 0;
+        background: white;
+        color: black;
+        border-radius: 12px;
+        padding: 16px 20px;
+        display: none;
+        width: 206px;
+        z-index: 10;
+    }
+
+    .calendar.active {
+        display: block;
+    }
+
+    .calendar-header-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .calendar-header {
+        display: flex;
+        align-items: center;
+        font-size: 18px;
+        gap: 15px;
+    }
+
+    .calendar-header button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+    }
+
+    .calendar-header span {
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .calendar-days {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 5px;
+        margin-top: 15px;
+    }
+
+    .day {
+        font-size: 10px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+
+    .day:hover {
+        background: #ddd;
+    }
+
+    .day.selected {
+        background: #ff6600;
+        color: white;
+        padding: 5px;
+    }
+
+    .day.disabled {
+        color: #929292;
+        pointer-events: none;
+    }
+
+    .weekdays {
+        font-size: 12px;
+        font-weight: 600;
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        font-weight: bold;
+        margin-top: 15px;
+    }
+
+    .weekdays div {
+        text-align: center;
+    }
+
+</style>
 {% endblock %}
 
 {% block content %}
@@ -42,13 +150,18 @@
                         <div class="order__form__block__text text-main">Начало аренды</div>
                         <div class="order__form__block__text order__form__block__text__mobile text-semibold-big">Начало аренды</div>
                         <div class="order__form__block__wrapper">
-                            <label class="order__form__datetime-label" for="order-date-starting">
-                                <!-- <input type="text" class="order__form__input input-hide input-type-date" id="datepicker" name="starting_date" required> -->
-                                <!-- <input type="date" class="order__form__input input-hide input-type-date" id="order-date-starting" name="starting_date" required> -->
-                                <input type="text" class="order__form__input input-hide input-type-date" id="order-date-starting" name="starting_date" required>
-                                <div class="order__form__datetime-label__icon"><img src="{% static 'images/order/icon-calendar.svg' %}" alt="Calendar icon"></div>
-                                <div class="order__form__datetime-label__text text-semibold-mid">--.--.----</div>
-                            </label>
+                            <div style="position: relative;">
+                                <label class="order__form__datetime-label" for="order-date-starting">
+                                    <!-- <input type="text" class="order__form__input input-hide input-type-date" id="datepicker" name="starting_date" required> -->
+                                    <!-- <input type="date" class="order__form__input input-hide input-type-date" id="order-date-starting" name="starting_date" required> -->
+                                    <!-- <input type="text" class="order__form__input input-hide input-type-date" id="order-date-starting" name="starting_date" required> -->
+                                    
+                                    <input type="text" class="order__form__input input-hide input-type-date datepicker-button" id="order-date-starting" name="starting_date" autocomplete="off" required>
+                                    <div class="order__form__datetime-label__icon"><img src="{% static 'images/order/icon-calendar.svg' %}" alt="Calendar icon"></div>
+                                    <div class="order__form__datetime-label__text text-semibold-mid" id="selected-date-1">--.--.----</div>
+                                </label>
+                                <div class="calendar" id="calendar-1"></div>
+                            </div>
                             <label class="order__form__datetime-label" for="order-time-starting">
                                 <input type="text" class="order__form__input input-hide input-type-time" id="order-time-starting" name="starting_time" required>
                                 <div class="order__form__datetime-label__icon form-time-icon"><img src="{% static 'images/order/icon-time.svg' %}" alt="Watch icon"></div>
@@ -60,11 +173,15 @@
                         <div class="order__form__block__text text-main">Конец аренды</div>
                         <div class="order__form__block__text order__form__block__text__mobile text-semibold-big">Конец аренды</div>
                         <div class="order__form__block__wrapper">
-                            <label class="order__form__datetime-label" for="order-date-ending">
-                                <input type="text" class="order__form__input input-hide input-type-date" id="order-date-ending" name="ending_date" required>
-                                <div class="order__form__datetime-label__icon"><img src="{% static 'images/order/icon-calendar.svg' %}" alt="Calendar icon"></div>
-                                <div class="order__form__datetime-label__text text-semibold-mid">--.--.----</div>
-                            </label>
+                            <div style="position: relative;">
+                                <label class="order__form__datetime-label" for="order-date-ending">
+                                    <!-- <input type="text" class="order__form__input input-hide input-type-date" id="order-date-ending" name="ending_date" required> -->
+                                    <input type="text" class="order__form__input input-hide input-type-date datepicker-button" id="order-date-ending" name="ending_date" autocomplete="off" required>
+                                    <div class="order__form__datetime-label__icon"><img src="{% static 'images/order/icon-calendar.svg' %}" alt="Calendar icon"></div>
+                                    <div class="order__form__datetime-label__text text-semibold-mid" id="selected-date-2">--.--.----</div>
+                                </label>
+                                <div class="calendar" id="calendar-2"></div>
+                            </div>
                             <label class="order__form__datetime-label" for="order-time-ending">
                                 <input type="text" class="order__form__input input-hide input-type-time" id="order-time-ending" name="ending_time" required>
                                 <div class="order__form__datetime-label__icon form-time-icon"><img src="{% static 'images/order/icon-time.svg' %}" alt="Watch icon"></div>
@@ -89,6 +206,7 @@
                                 <div class="order__cart__card__content">
                                     <div class="order__cart__card__id__js" style="display: none;">{{ uc.product.id }}</div>
                                     <div class="order__cart__card__price__js" style="display: none;">{{ uc.product.price }}</div>
+                                    <div class="order__cart__card__discount__js" style="display: none;">{{ uc.product.discount }}</div>
                                     <div class="order__cart__card__quantity__js" style="display: none;">{{ uc.quantity }}</div>
                                     <div class="order__cart__card__title text-medium-small">{{ uc.product.name }}</div>
                                     <div class="order__cart__card__price text-medium-small">{{ uc.product.price }} x {{ uc.quantity }}шт.</div>
@@ -115,12 +233,129 @@
 <script src="{% static 'js/order_form.js' %}"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script>
-    flatpickr("#order-date-starting", {
-        dateFormat: "Y-m-d",  // Format: YYYY-MM-DD
-        allowInput: true,     // Allow manual input
-        minDate: "today",     // Prevent past dates
-        disableMobile: true,  // Ensures proper behavior on mobile
-    })
+    const monthNames = [
+        "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь",
+        "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"
+    ];
+
+    function createDatePicker(buttonId, calendarId, selectedDateId) {
+        const button = document.getElementById(buttonId);
+        const calendar = document.getElementById(calendarId);
+        const selectedDateDisplay = document.getElementById(selectedDateId);
+
+        let currentDate = new Date();
+        let selectedDate = currentDate;
+
+        button.addEventListener("click", (e) => {
+            document.querySelectorAll('.calendar').forEach(cal => cal.classList.remove('active'));
+            calendar.classList.toggle("active");
+            renderCalendar();
+        });
+
+        function renderCalendar() {
+            calendar.innerHTML = `
+                <div class="calendar-header-wrapper">
+                    <div class="calendar-header">
+                        <button id="${calendarId}-prev"><img id="${calendarId}-prev-img" src="{% static 'images/icon-calendar-arrow-left.svg' %}" alt="Calendar arrow icon"></button>
+                        <span id="${calendarId}-month-year">${monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}</span>
+                        <button id="${calendarId}-next"><img id="${calendarId}-next-img" src="{% static 'images/icon-calendar-arrow-right.svg' %}" alt="Calendar arrow icon"></button>
+                    </div>
+                </div>
+                <div class="weekdays">
+                    <div>пн</div><div>вт</div><div>ср</div><div>чт</div><div>пт</div><div>сб</div><div>вс</div>
+                </div>
+                <div class="calendar-days" id="${calendarId}-days"></div>
+            `;
+
+            const prevMonthBtn = document.getElementById(`${calendarId}-prev`);
+            const nextMonthBtn = document.getElementById(`${calendarId}-next`);
+            const calendarDays = document.getElementById(`${calendarId}-days`);
+
+            document.addEventListener("click", (event) => {
+                if (!button.contains(event.target) && !calendar.contains(event.target)) {
+                    calendar.classList.remove("active");
+                }
+            });
+
+            window.onkeydown = function(event) {
+                if (event.keyCode == 27) {
+                    calendar.classList.remove("active");
+                }
+            };
+
+            document.querySelectorAll(".calendar-header button").forEach(button => {
+                button.addEventListener("click", (event) => {
+                    event.stopPropagation(); // Prevent event from being blocked by <img>
+                    if (button.id === `${calendar.id}-prev`) {
+                        currentDate.setMonth(currentDate.getMonth() - 1);
+                    } else {
+                        currentDate.setMonth(currentDate.getMonth() + 1);
+                    }
+                    renderCalendar();
+                });
+            });
+
+            // prevMonthBtn.addEventListener("click", () => {
+            //     currentDate.setMonth(currentDate.getMonth() - 1);
+            //     renderCalendar();
+            // });
+
+            // nextMonthBtn.addEventListener("click", () => {
+            //     currentDate.setMonth(currentDate.getMonth() + 1);
+            //     renderCalendar();
+            // });
+
+            const firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1).getDay();
+            const lastDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
+
+            // Fill empty spaces
+            for (let i = 0; i < (firstDay === 0 ? 6 : firstDay - 1); i++) {
+                const emptyDiv = document.createElement("div");
+                emptyDiv.classList.add("day", "disabled");
+                calendarDays.appendChild(emptyDiv);
+            }
+
+            // Generate days
+            for (let day = 1; day <= lastDate; day++) {
+                const dayElement = document.createElement("div");
+                dayElement.classList.add("day");
+                dayElement.textContent = day;
+
+                const dateObj = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
+                if (dateObj.getDate() < new Date().getDate()) {
+                    dayElement.classList.add("disabled");
+                }
+
+                if (day === selectedDate.getDate() && currentDate.getMonth() === selectedDate.getMonth()) {
+                    dayElement.classList.add("selected");
+                }
+
+                dayElement.addEventListener("click", () => {
+                    selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
+                    var datestring = selectedDate.getFullYear() + "-" + ("0"+(selectedDate.getMonth()+1)).slice(-2) + "-" + ("0" + selectedDate.getDate()).slice(-2)
+                    selectedDateDisplay.textContent = selectedDate.toLocaleDateString("ru-RU");
+                    input = document.querySelector(`#${buttonId}`)
+                    input.value = datestring
+                    renderCalendar();
+                });
+
+                calendarDays.appendChild(dayElement);
+            }
+        }
+
+        renderCalendar();
+    }
+
+    createDatePicker("order-date-starting", "calendar-1", "selected-date-1");
+    createDatePicker("order-date-ending", "calendar-2", "selected-date-2");
+</script>
+<script>
+    // flatpickr("#order-date-starting", {
+    //     dateFormat: "Y-m-d",  // Format: YYYY-MM-DD
+    //     allowInput: true,     // Allow manual input
+    //     minDate: "today",     // Prevent past dates
+    //     disableMobile: true,  // Ensures proper behavior on mobile
+    // })
     flatpickr("#order-time-starting", {
         enableTime: true,
         noCalendar: true,
@@ -128,12 +363,12 @@
         time_24hr: true
     });
 
-    flatpickr("#order-date-ending", {
-        dateFormat: "Y-m-d",  // Format: YYYY-MM-DD
-        allowInput: true,     // Allow manual input
-        minDate: "today",     // Prevent past dates
-        disableMobile: true,  // Ensures proper behavior on mobile
-    })
+    // flatpickr("#order-date-ending", {
+    //     dateFormat: "Y-m-d",  // Format: YYYY-MM-DD
+    //     allowInput: true,     // Allow manual input
+    //     minDate: "today",     // Prevent past dates
+    //     disableMobile: true,  // Ensures proper behavior on mobile
+    // })
     flatpickr("#order-time-ending", {
         enableTime: true,
         noCalendar: true,

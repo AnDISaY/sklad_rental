@@ -3,7 +3,16 @@ totalEl = document.querySelector('.order__cart__total')
 let total = 0
 
 prices.forEach(price => {
-    total += Number(price.innerHTML) * Number(price.closest('.order__cart__card').querySelector('.order__cart__card__quantity__js').innerHTML)
+    discount = Number(price.closest('.order__cart__card').querySelector('.order__cart__card__discount__js'))
+    priceInt = Number(price.innerHTML)
+    if (discount) {
+        discount = discount.innerHTML
+        priceNew = priceInt - ((priceInt * discount) / 100)
+        price.closest('.order__cart__card').querySelector('.order__cart__card__price').innerHTML = `${priceNew} x ${price.closest('.order__cart__card').querySelector('.order__cart__card__quantity__js').innerHTML}шт.`
+        total += priceNew * Number(price.closest('.order__cart__card').querySelector('.order__cart__card__quantity__js').innerHTML)
+    } else {
+        total += priceInt * Number(price.closest('.order__cart__card').querySelector('.order__cart__card__quantity__js').innerHTML)
+    }
 })
 totalEl.innerHTML = `${total}₸`
 document.querySelector('#priceInput').value = total
