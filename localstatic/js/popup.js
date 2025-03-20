@@ -10,6 +10,11 @@ popupLinks.forEach(link => link.addEventListener("click", (e)=> {
     if (link.classList[0] != "profile-mobile__item") {
         popups.forEach(popup => popup.classList.remove('popup-active'))
     }
+    allBackground = document.querySelector(".all-background")
+    if (allBackground) {
+        allBackground.remove()
+    }
+
     href = link.href
     if (href) {
         href = href.slice(link.href.indexOf('#'))

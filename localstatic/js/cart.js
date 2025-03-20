@@ -51,7 +51,8 @@ function cartSetup() {
         if (cartItem == "product") {
             btn.closest(`.${cartItem}__card`).prepend(cart)
         } else {
-            btn.closest(`.${cartItem}__card`).appendChild(cart)
+            // console.log(btn.closest(`.${cartItem}__card`))
+            btn.closest(`.${cartItem}__card .popular__card__lastdiv`).appendChild(cart)
         }
         btn.remove()
 

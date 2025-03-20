@@ -362,6 +362,10 @@
         });
 
         function renderCalendar() {
+            const today = new Date();
+            const year = currentDate.getFullYear();
+            const month = currentDate.getMonth();
+            
             calendar.innerHTML = `
                 <div class="calendar-header-wrapper">
                     <div class="calendar-header">
@@ -430,12 +434,18 @@
                 dayElement.classList.add("day");
                 dayElement.textContent = day;
 
-                const dateObj = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
-                if (dateObj.getDate() < new Date().getDate()) {
+                // Gray out past days in current month
+                if (year === today.getFullYear() && month === today.getMonth() && day < today.getDate()) {
                     dayElement.classList.add("disabled");
                 }
 
-                if (day === selectedDate.getDate() && currentDate.getMonth() === selectedDate.getMonth()) {
+                // Gray out all days in past months
+                if (year < today.getFullYear() || (year === today.getFullYear() && month < today.getMonth())) {
+                    dayElement.classList.add("disabled");
+                }
+
+                // Highlight selected date
+                if (year === today.getFullYear() && month === today.getMonth() && day === today.getDate()) {
                     dayElement.classList.add("selected");
                 }
 

@@ -5,10 +5,14 @@ let total = 0
 prices.forEach(price => {
     discount = price.closest('.order__cart__card').querySelector('.order__cart__card__discount__js')
     priceInt = Number(price.innerHTML)
-    if (discount) {
+    if (discount && discount.innerHTML != "None") {
         discount = Number(discount.innerHTML)
         priceNew = priceInt - ((priceInt * discount) / 100)
         price.closest('.order__cart__card').querySelector('.order__cart__card__price').innerHTML = `${priceNew} x ${price.closest('.order__cart__card').querySelector('.order__cart__card__quantity__js').innerHTML}шт.`
+        // console.log(discount)
+        // console.log(priceNew)
+        // console.log(price.innerHTML)
+        // console.log(Number(price.closest('.order__cart__card').querySelector('.order__cart__card__quantity__js').innerHTML))
         total += priceNew * Number(price.closest('.order__cart__card').querySelector('.order__cart__card__quantity__js').innerHTML)
     } else {
         total += priceInt * Number(price.closest('.order__cart__card').querySelector('.order__cart__card__quantity__js').innerHTML)

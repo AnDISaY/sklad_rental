@@ -180,7 +180,7 @@
 .footer-mobile {
     position: fixed;
     z-index: 99;
-    bottom: 30px;
+    bottom: 10px;
     display: none;
     justify-content: center;
     width: 100%;
@@ -190,7 +190,7 @@
     }
 
     @media screen and (max-width: $md4) {
-        bottom: 6.25vw;
+        bottom: 2vw;
     }
 
     &__container {

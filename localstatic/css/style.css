@@ -1240,26 +1240,26 @@ body button {
 }
 .signup__form__input__text {
   color: #1C1C1C;
-  margin: 0 10px;
+  margin-right: 10px;
 }
 @media screen and (max-width: 1344px) {
   .signup__form__input__text {
-    margin: 0 7.5px;
+    margin-right: 7.5px;
   }
 }
 @media screen and (max-width: 1080px) {
   .signup__form__input__text {
-    margin: 0 5px;
+    margin-right: 5px;
   }
 }
 @media screen and (max-width: 720px) {
   .signup__form__input__text {
-    margin: 0 10px;
+    margin-right: 10px;
   }
 }
 @media screen and (max-width: 480px) {
   .signup__form__input__text {
-    margin: 0 2.188vw;
+    margin-right: 2.188vw;
   }
 }
 .signup__form__input__block {
@@ -1401,26 +1401,26 @@ body button {
 }
 .signin__form__input__text {
   color: #1C1C1C;
-  margin: 0 10px;
+  margin: 0 10px 0 0;
 }
 @media screen and (max-width: 1344px) {
   .signin__form__input__text {
-    margin: 0 7.5px;
+    margin: 0 7.5px 0 0;
   }
 }
 @media screen and (max-width: 1080px) {
   .signin__form__input__text {
-    margin: 0 5px;
+    margin: 0 5px 0 0;
   }
 }
 @media screen and (max-width: 720px) {
   .signin__form__input__text {
-    margin: 0 10px;
+    margin: 0 10px 0 0;
   }
 }
 @media screen and (max-width: 480px) {
   .signin__form__input__text {
-    margin: 0 2.188vw;
+    margin: 0 2.188vw 0 0;
   }
 }
 .signin__form__input__block {
@@ -1923,35 +1923,30 @@ body button {
 .orderpopup__wrapper {
   gap: 0 !important;
   background-color: #fff;
-  padding: 75px 45px;
-  border-radius: 20px;
+  padding: 75px 45px !important;
 }
 @media screen and (max-width: 1344px) {
   .orderpopup__wrapper {
-    padding: 56px 34px;
-    border-radius: 15px;
+    padding: 56px 34px !important;
   }
 }
 @media screen and (max-width: 1080px) {
   .orderpopup__wrapper {
-    padding: 37.5px 22.5px;
-    border-radius: 10px;
+    padding: 37.5px 22.5px !important;
   }
 }
 @media screen and (max-width: 720px) {
   .orderpopup__wrapper {
-    padding: 30px 20px;
-    border-radius: 16px;
+    padding: 30px 20px !important;
   }
 }
 @media screen and (max-width: 480px) {
   .orderpopup__wrapper {
-    padding: 6.25vw 4.375vw;
-    border-radius: 1.875vw;
+    padding: 6.25vw 4.375vw !important;
   }
 }
 .orderpopup__title {
-  margin-bottom: 25px;
+  margin-bottom: 15px;
   color: #1C1C1C;
   text-align: center;
 }
@@ -1999,6 +1994,32 @@ body button {
   .orderpopup__text {
     max-width: 62.5vw;
   }
+}
+.orderpopup__links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 20px;
+  width: 100%;
+}
+.orderpopup__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 20px 0;
+  border-radius: 12px;
+  background-color: #FF6400;
+  transition: all 0.5s ease;
+}
+.orderpopup__link:hover {
+  background-color: #FF8333;
+}
+.orderpopup__link:last-child {
+  background-color: #bababa;
+}
+.orderpopup__link:last-child:hover {
+  background-color: #9b9b9b;
 }
 
 .catalog-mobile {
@@ -2312,7 +2333,6 @@ body button {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(28, 28, 28, 0.7);
   opacity: 0;
   height: 0;
   overflow: hidden;
@@ -8071,7 +8091,7 @@ body button {
 .footer-mobile {
   position: fixed;
   z-index: 99;
-  bottom: 30px;
+  bottom: 10px;
   display: none;
   justify-content: center;
   width: 100%;
@@ -8083,7 +8103,7 @@ body button {
 }
 @media screen and (max-width: 480px) {
   .footer-mobile {
-    bottom: 6.25vw;
+    bottom: 2vw;
   }
 }
 .footer-mobile__container {
