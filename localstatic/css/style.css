@@ -4585,12 +4585,12 @@ body button {
 }
 @media screen and (max-width: 720px) {
   .order {
-    margin: 60px 0 200px;
+    margin: 60px 0 170px;
   }
 }
 @media screen and (max-width: 480px) {
   .order {
-    margin: 12.5vw 0 40.313vw;
+    margin: 12.5vw 0 35.313vw;
   }
 }
 .order__return {
