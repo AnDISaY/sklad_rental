@@ -10,3 +10,8 @@ def set(val=None):
 @register.simple_tag
 def add(val=None):
     return (val + 1)
+
+
+@register.filter
+def get_item(dictionary, key):
+    return dictionary.get(key)

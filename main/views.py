@@ -25,6 +25,10 @@ def home(request):
     # print(request.session['popup_active'])
     if 'popup_active' in request.session:
         context['popup_active'] = request.session.pop('popup_active')
+    if 'sign_data_context' in request.session:
+        print(request.session['sign_data_context'])
+        print(request.session['sign_data_context']['last_name'])
+        context['sign_data'] = request.session.pop('sign_data_context')
     if user.is_authenticated:
         user_products = UserProductFavorites.objects.filter(user=user)
         user_cart = UserCart.objects.filter(user=user)

@@ -64,16 +64,17 @@ def sign_up(request):
 
         data = request.POST
         phone = f'+7{data["phone"]}'
+        email = data['email']
+        first_name = data['first_name']
+        last_name = data['last_name']
+        password = data['password']
+        password2 = data['password2']
 
         if User.objects.filter(phone=phone).exists():
             request.session['error_message'] = ["Пользователь с таким номером телефона уже существует"]
             request.session['popup_active'] = "signup"
+            request.session['sign_data_context'] = {"email": email, "first_name": first_name, "last_name": last_name, }
         else:
-            email = data['email']
-            first_name = data['first_name']
-            last_name = data['last_name']
-            password = data['password']
-            password2 = data['password2']
             
             if password == password2:
                 if len(password) >= 8 and any(c.isalpha() for c in password) and any(c.isdigit() for c in password):
@@ -94,9 +95,11 @@ def sign_up(request):
                         messages.append('Пароль должен содержать хотя бы одну цифру')
                     request.session['error_message'] = messages
                     request.session['popup_active'] = "signup"
+                    request.session['sign_data_context'] = {"email": email, "first_name": first_name, "last_name": last_name, "phone": phone, }
             else:
                 request.session['error_message'] = ["Пароли не совпадают"]
                 request.session['popup_active'] = "signup"
+                request.session['sign_data_context'] = {"email": email, "first_name": first_name, "last_name": last_name, "phone": phone, }
                 
     return redirect('/home')
 

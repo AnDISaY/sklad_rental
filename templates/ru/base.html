@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 {% load static %}
+{% load counter %}
 
 <head>
     <meta charset="UTF-8">
@@ -124,13 +125,13 @@
             <div class="signup__title title-mid">Регистрация</div>
             <div class="signup__close popup-close"><img src="{% static 'images/icon-close.svg' %}" alt="Cross icon"></div>
             <form method="post" class="signup__form" action="{% url 'signup' %}">{% csrf_token %}
-                <input class="signup__form__input text-main" type="text" name="last_name" placeholder="Фамилия" required>
-                <input class="signup__form__input text-main" type="text" name="first_name" placeholder="Имя" required>
+                <input class="signup__form__input text-main" type="text" name="last_name" placeholder="Фамилия" required {% if sign_data.last_name %}value="{{ sign_data.last_name }}"{% endif %}>
+                <input class="signup__form__input text-main" type="text" name="first_name" placeholder="Имя" required {% if sign_data.first_name %}value="{{ sign_data.first_name }}"{% endif %}>
                 <div class="signup__form__input__block">
                     <span class="signup__form__input__text text-main">+7</span>
-                    <input class="signup__form__input text-main" type="text" name="phone" placeholder="Номер телефона" required>
+                    <input class="signup__form__input text-main" type="text" name="phone" placeholder="Номер телефона" required {% if sign_data.phone %}value="{{ sign_data.phone }}"{% endif %}>
                 </div>
-                <input class="signup__form__input text-main" type="text" name="email" placeholder="E-mail" required>
+                <input class="signup__form__input text-main" type="text" name="email" placeholder="E-mail" required {% if sign_data.email %}value="{{ sign_data.email }}"{% endif %}>
                 <input class="signup__form__input text-main" type="text" name="password" placeholder="Пароль" required>
                 <input class="signup__form__input text-main" type="text" name="password2" placeholder="Повторите пароль" required>
                 <button type="submit" class="signup__form__btn text-medium-big">Зарегистрироваться</button>
