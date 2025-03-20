@@ -917,12 +917,8 @@
         }
 
         &__answer {
-            // font-size: 0;
             max-height: 0;
-            // transform: scaleY(0);
-            // filter: brightness(1000%);
             overflow: hidden;
-            // transform-origin: top;
             transition: all 0.25s ease-in-out;
             max-width: 720px;
             color: #929292;
@@ -973,9 +969,6 @@
         }
 
         .accordion-panel-active {
-            // max-height: 1000px;
-            // transform: scaleY(1);
-            // filter: none;
             margin-bottom: 21px;
 
             @media screen and (max-width: $md1) {

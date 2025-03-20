@@ -257,7 +257,7 @@ def profile_new_password(request):
 def profile_history(request):
     user = request.user
     user_cart = UserCart.objects.filter(user=user)
-    user_rent = UserRent.objects.filter(user=user).order_by('-starting_date')
+    user_rent = UserRent.objects.filter(user=user).order_by('starting_date')
 
     categories = Category.objects.all()
     context = {'user': user, 'user_is_authenticated': user.is_authenticated, 'cart_length': len(user_cart), "categories": categories, "user_rent": user_rent}

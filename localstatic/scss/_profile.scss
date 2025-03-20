@@ -446,53 +446,53 @@
 
     &__accordion {
         display: flex;
-        flex-direction: column;
+        flex-direction: column-reverse;
 
         &__item {
             max-width: 720px;
-            padding-bottom: 24px;
+            padding-top: 24px;
 
             @media screen and (max-width: $md1) {
                 max-width: 540px;
-                padding-bottom: 18px;
+                padding-top: 18px;
             }
 
             @media screen and (max-width: $md2) {
                 max-width: 360px;
-                padding-bottom: 12px;
+                padding-top: 12px;
             }
 
             @media screen and (max-width: $md3) {
                 max-width: 100%;
-                padding-bottom: 32px;
+                padding-top: 32px;
             }
 
             @media screen and (max-width: $md4) {
-                padding-bottom: 6.563vw;
+                padding-top: 6.563vw;
             }
 
             &:last-child {
-                padding-bottom: 0;
+                padding-top: 0;
             }
             
             & + & {
-                padding-top: 24px;
-                border-top: 1px solid #fff;
+                padding-bottom: 24px;
+                border-bottom: 1px solid #fff;
 
                 @media screen and (max-width: $md1) {
-                    padding-top: 18px;
+                    padding-bottom: 18px;
                 }
 
                 @media screen and (max-width: $md2) {
-                    padding-top: 12px;
+                    padding-bottom: 12px;
                 }
 
                 @media screen and (max-width: $md3) {
-                    padding-top: 32px;
+                    padding-bottom: 32px;
                 }
 
                 @media screen and (max-width: $md4) {
-                    padding-top: 6.563vw;
+                    padding-bottom: 6.563vw;
                 }
             }
         }
@@ -557,8 +557,6 @@
                 top: 50%;
                 left: -19px;
                 transform: translate(50%, -50%);
-                // transform: translateX(50%);
-                // transform: translateY(-50%);
                 height: 2px;
                 width: 20px;
 
@@ -656,12 +654,12 @@
         }
 
         &__panel {
-            height: 0;
-            transform: scaleY(0);
-            filter: brightness(1000%);
+            max-height: 0;
             overflow: hidden;
-            transform-origin: top;
-            transition: transform 0.5s ease;
+            // transform: scaleY(0);
+            // filter: brightness(1000%);
+            // transform-origin: top;
+            transition: all 0.5s ease;
             display: flex;
             flex-direction: column;
             gap: 24px;
@@ -838,9 +836,9 @@
         }
 
         .accordion-panel-active {
-            height: auto;
-            transform: scaleY(1);
-            filter: none;
+            // height: auto;
+            // transform: scaleY(1);
+            // filter: none;
 
             @media screen and (max-width: $md3) {
                 margin-top: -12px;

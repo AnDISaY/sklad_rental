@@ -5674,60 +5674,60 @@ body button {
 }
 .history__accordion {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
 }
 .history__accordion__item {
   max-width: 720px;
-  padding-bottom: 24px;
+  padding-top: 24px;
 }
 @media screen and (max-width: 1344px) {
   .history__accordion__item {
     max-width: 540px;
-    padding-bottom: 18px;
+    padding-top: 18px;
   }
 }
 @media screen and (max-width: 1080px) {
   .history__accordion__item {
     max-width: 360px;
-    padding-bottom: 12px;
+    padding-top: 12px;
   }
 }
 @media screen and (max-width: 720px) {
   .history__accordion__item {
     max-width: 100%;
-    padding-bottom: 32px;
-  }
-}
-@media screen and (max-width: 480px) {
-  .history__accordion__item {
-    padding-bottom: 6.563vw;
-  }
-}
-.history__accordion__item:last-child {
-  padding-bottom: 0;
-}
-.history__accordion__item + .history__accordion__item {
-  padding-top: 24px;
-  border-top: 1px solid #fff;
-}
-@media screen and (max-width: 1344px) {
-  .history__accordion__item + .history__accordion__item {
-    padding-top: 18px;
-  }
-}
-@media screen and (max-width: 1080px) {
-  .history__accordion__item + .history__accordion__item {
-    padding-top: 12px;
-  }
-}
-@media screen and (max-width: 720px) {
-  .history__accordion__item + .history__accordion__item {
     padding-top: 32px;
   }
 }
 @media screen and (max-width: 480px) {
-  .history__accordion__item + .history__accordion__item {
+  .history__accordion__item {
     padding-top: 6.563vw;
+  }
+}
+.history__accordion__item:last-child {
+  padding-top: 0;
+}
+.history__accordion__item + .history__accordion__item {
+  padding-bottom: 24px;
+  border-bottom: 1px solid #fff;
+}
+@media screen and (max-width: 1344px) {
+  .history__accordion__item + .history__accordion__item {
+    padding-bottom: 18px;
+  }
+}
+@media screen and (max-width: 1080px) {
+  .history__accordion__item + .history__accordion__item {
+    padding-bottom: 12px;
+  }
+}
+@media screen and (max-width: 720px) {
+  .history__accordion__item + .history__accordion__item {
+    padding-bottom: 32px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .history__accordion__item + .history__accordion__item {
+    padding-bottom: 6.563vw;
   }
 }
 .history__accordion__question {
@@ -5898,12 +5898,9 @@ body button {
   display: block;
 }
 .history__accordion__panel {
-  height: 0;
-  transform: scaleY(0);
-  filter: brightness(1000%);
+  max-height: 0;
   overflow: hidden;
-  transform-origin: top;
-  transition: transform 0.5s ease;
+  transition: all 0.5s ease;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -6092,11 +6089,6 @@ body button {
 }
 .history__accordion__panel__card__price {
   color: #929292;
-}
-.history__accordion .accordion-panel-active {
-  height: auto;
-  transform: scaleY(1);
-  filter: none;
 }
 @media screen and (max-width: 720px) {
   .history__accordion .accordion-panel-active {
