@@ -10,11 +10,11 @@
     }
 
     @media screen and (max-width: $md3) {
-        margin: 60px 0 170px;
+        margin: 60px 0 200px;
     }
 
     @media screen and (max-width: $md4) {
-        margin: 12.5vw 0 35.313vw;
+        margin: 12.5vw 0 40.313vw;
     }
 
     &__return {
@@ -400,8 +400,6 @@
             }
         }
 
-        
-
         .order__form__time-label {
             gap: 18px;
 
@@ -576,69 +574,3 @@
         }
     }
 }
-
-.flatpickr-day.today {
-    color: $orange !important;
-    border-color: $orange !important;
-}
-
-.flatpickr-day {
-    transition: background 0.25s ease;
-}
-
-.flatpickr-day:hover {
-    background: $orgHover !important; /* Yellow hover effect */
-    color: white !important;
-}
-
-.flatpickr-day.selected {
-    background: $orange !important; /* Custom color */
-    border-color: $orange !important;
-    color: white !important;
-}
-
-.flatpickr-calendar {
-    // background: #929292 !important; /* Light gray */
-    // border-radius: 10px !important;
-}
-
-// .flatpickr-months .flatpickr-month {
-//     background: $orange !important; /* Red header */
-//     color: white !important;
-//     border-radius: 5px !important;
-// }
-
-.flatpickr-monthDropdown-month {
-    color: $black !important;
-}
-
-.flatpickr-prev-month, .flatpickr-next-month {
-    fill: $black !important; /* Change arrow color */
-}
-
-.flatpickr-current-month .numInputWrapper span.arrowDown:after {
-    border-top-color: $black !important;
-}
-
-.flatpickr-current-month .numInputWrapper span.arrowUp:after {
-    border-bottom-color: $black !important;
-}
-
-.numInput, .flatpickr-monthDropdown-months {
-    color: $black !important;
-}
-
-.numInputWrapper span {
-    border: none !important;
-}
-
-.numInputWrapper span:active, .numInputWrapper span:hover {
-    background: transparent !important;
-}
-
-/* Change time input colors */
-.flatpickr-time input {
-    background: #fff !important;  /* Dark background */
-    color: $black !important;       /* White text */
-}
-

@@ -2704,11 +2704,9 @@ body button {
 }
 .banner .swiper-slide {
   width: 100%;
-  height: 410px;
 }
 .banner .swiper-slide img {
   width: 100%;
-  height: 100%;
   border-radius: 20px;
 }
 @media screen and (max-width: 1344px) {
@@ -4587,12 +4585,12 @@ body button {
 }
 @media screen and (max-width: 720px) {
   .order {
-    margin: 60px 0 170px;
+    margin: 60px 0 200px;
   }
 }
 @media screen and (max-width: 480px) {
   .order {
-    margin: 12.5vw 0 35.313vw;
+    margin: 12.5vw 0 40.313vw;
   }
 }
 .order__return {
@@ -5183,60 +5181,6 @@ body button {
 }
 .order__cart__card__price {
   color: #929292;
-}
-
-.flatpickr-day.today {
-  color: #FF6400 !important;
-  border-color: #FF6400 !important;
-}
-
-.flatpickr-day {
-  transition: background 0.25s ease;
-}
-
-.flatpickr-day:hover {
-  background: #FF8333 !important; /* Yellow hover effect */
-  color: white !important;
-}
-
-.flatpickr-day.selected {
-  background: #FF6400 !important; /* Custom color */
-  border-color: #FF6400 !important;
-  color: white !important;
-}
-
-.flatpickr-monthDropdown-month {
-  color: #1C1C1C !important;
-}
-
-.flatpickr-prev-month, .flatpickr-next-month {
-  fill: #1C1C1C !important; /* Change arrow color */
-}
-
-.flatpickr-current-month .numInputWrapper span.arrowDown:after {
-  border-top-color: #1C1C1C !important;
-}
-
-.flatpickr-current-month .numInputWrapper span.arrowUp:after {
-  border-bottom-color: #1C1C1C !important;
-}
-
-.numInput, .flatpickr-monthDropdown-months {
-  color: #1C1C1C !important;
-}
-
-.numInputWrapper span {
-  border: none !important;
-}
-
-.numInputWrapper span:active, .numInputWrapper span:hover {
-  background: transparent !important;
-}
-
-/* Change time input colors */
-.flatpickr-time input {
-  background: #fff !important; /* Dark background */
-  color: #1C1C1C !important; /* White text */
 }
 
 .edit {

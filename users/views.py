@@ -34,10 +34,18 @@ def logout_required(
 @logout_required(login_url='/home')
 def sign_in(request):
     if request.method == 'POST':
+        user_cart = None
+        if 'nonuser' in request.session:
+            nonuser_cart = UserCart.objects.filter(session_id=request.session['nonuser'])
+            if nonuser_cart:
+                user_cart = nonuser_cart
         phone = f'+7{request.POST["phone"]}'
         user = authenticate(request, phone=phone, password=request.POST["password"])
         if user is not None:
             login(request, user)
+            for uc in user_cart:
+                UserCart.objects.create(user=user, product=uc.product, quantity=uc.quantity)
+                uc.delete()
             request.session['success_message'] = 'Вы успешно вошли в аккаунт'
         else:
             request.session['error_message'] = ['Неверные телефон или пароль']
@@ -48,6 +56,12 @@ def sign_in(request):
 @logout_required(login_url='/home')
 def sign_up(request):
     if request.method == "POST":
+        user_cart = None
+        if 'nonuser' in request.session:
+            nonuser_cart = UserCart.objects.filter(session_id=request.session['nonuser'])
+            if nonuser_cart:
+                user_cart = nonuser_cart
+
         data = request.POST
         phone = f'+7{data["phone"]}'
 
@@ -66,6 +80,9 @@ def sign_up(request):
                     user = User.objects.create_user(email=email, phone=phone, first_name=first_name, last_name=last_name, password=password)
                     user.save()
                     login(request, user)
+                    for uc in user_cart:
+                        UserCart.objects.create(user=user, product=uc.product, quantity=uc.quantity)
+                        uc.delete()
                     request.session['success_message'] = "Вы успешно зарегистрировались"
                 else:
                     messages = []
@@ -101,6 +118,12 @@ def generate_code():
 
 def forgot_password(request):
     if request.method == 'POST':
+        user_cart = None
+        if 'nonuser' in request.session:
+            nonuser_cart = UserCart.objects.filter(session_id=request.session['nonuser'])
+            if nonuser_cart:
+                user_cart = nonuser_cart
+        
         if "email" in request.POST:
             email = request.POST['email']
             code = generate_code()
@@ -137,8 +160,14 @@ def forgot_password(request):
                     user.save()
                     login(request, user)
                     user_recovery.delete()
+
                     for ur in UserRecovery.objects.filter(user=user):
                         ur.delete()
+                    
+                    for uc in user_cart:
+                        UserCart.objects.create(user=user, product=uc.product, quantity=uc.quantity)
+                        uc.delete()
+                        
                     request.session['success_message'] = 'Пароль успешно изменен'
                 else:
                     messages = []
