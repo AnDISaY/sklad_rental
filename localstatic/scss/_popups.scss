@@ -931,16 +931,19 @@
         }
 
         &__icon {
-            width: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 27px;
 
             @media screen and (max-width: $md4) {
-                width: 4.375vw;
+                width: 5.625vw;
             }
 
-            img {
-                width: 100%;
-                height: auto;
-            }
+            // img {
+            //     width: 100%;
+            //     height: auto;
+            // }
         }
 
         &__text {

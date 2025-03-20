@@ -7,7 +7,6 @@ body = document.querySelector('body')
 popupLinks.forEach(link => link.addEventListener("click", (e)=> {
     e.preventDefault()
 
-
     if (link.classList[0] != "profile-mobile__item") {
         popups.forEach(popup => popup.classList.remove('popup-active'))
     }
@@ -19,7 +18,20 @@ popupLinks.forEach(link => link.addEventListener("click", (e)=> {
     }
 
     popup = document.querySelector(href)
+
     popup.classList.add('popup-active')
+    if (!popup.classList.contains("profile")) {
+        background = document.createElement("div")
+        background.classList.add("all-background")
+        background.style.position = "absolute"
+        background.style.left = "0"
+        background.style.top = "0"
+        background.style.zIndex = "20"
+        background.style.height = "100%"
+        background.style.width = "100%"
+        background.style.background = "rgba(28, 28, 28, 0.7)"
+        document.querySelector("body").append(background)
+    }
     body.classList.add('lock')
     history.replaceState('', document.title, window.location.origin + window.location.pathname + window.location.search);
 }))
@@ -27,12 +39,14 @@ popupLinks.forEach(link => link.addEventListener("click", (e)=> {
 crosses.forEach(cross => cross.addEventListener("click", ()=> {
     popup = cross.closest('.popup')
     popup.classList.remove('popup-active')
+    document.querySelector(".all-background").remove()
     body.classList.remove('lock')
 }))
 
 window.onkeydown = function(event) {
     if (event.keyCode == 27) {
         popups.forEach(popup => popup.classList.remove('popup-active'))
+        document.querySelector(".all-background").remove()
         body.classList.remove('lock')
     }
 };
@@ -41,9 +55,9 @@ backgrounds = document.querySelectorAll('.popup-background')
 
 backgrounds.forEach(back => back.addEventListener("click", ()=> {
     popups.forEach(popup => popup.classList.remove('popup-active'))
+    document.querySelector(".all-background").remove()
     body.classList.remove('lock')
 }))
-
 
 function reloadPopupScript() {
     let oldScript = document.querySelector("#popupScript");

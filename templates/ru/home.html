@@ -1,5 +1,6 @@
 {% extends 'ru/base.html' %}
 {% load static %}
+{% load counter %}
 
 {% block title %}СКЛАД РЕНТАЛ{% endblock %}
 
@@ -15,10 +16,13 @@
             <div class="banner__slider__container container">
                 <div class="banner__slider__swiper">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img src="{% static 'images/banner/image-banner.jpg' %}" alt="Banner image"></div>
-                        <div class="swiper-slide"><img src="{% static 'images/banner/image-banner.jpg' %}" alt="Banner image"></div>
-                        <div class="swiper-slide"><img src="{% static 'images/banner/image-banner.jpg' %}" alt="Banner image"></div>
-                        <div class="swiper-slide"><img src="{% static 'images/banner/image-banner.jpg' %}" alt="Banner image"></div>
+                        {% for banner in banners %}
+                            <div class="swiper-slide">
+                                <a href="#banner-popup-{{ banner.id }}" class="popup-link">
+                                    <img src="{{ banner.large_photo.url }}" alt="Banner image">
+                                </a>
+                            </div>
+                        {% endfor %}
                     </div>
                     <div class="banner__slider__nav">
                         <div class="banner__slider__btn banner__slider__swiper__btn-prev"><img src="{% static 'images/banner/icon-arrow-left.svg' %}" alt="Next slide button"></div>
@@ -31,6 +35,19 @@
         <div class="banner__image-mobile"><img src="{% static 'images/banner/image-banner-mobile.jpg' %}" alt="Banner image"></div>
     </div>
 </section>
+{% for banner in banners %}
+    <div class="banner-popup popup" id="banner-popup-{{ banner.id }}">
+        <div class="popup-background"></div>
+        <div class="banner-popup__wrapper popup__wrapper">
+            <div class="banner-popup__height">
+                <div class="banner-popup__close popup-close"><img src="{% static 'images/icon-close.svg' %}" alt="Cross icon"></div>
+                <div class="banner-popup__image"><img src="{{ banner.small_photo.url }}" alt="Banner image"></div>
+                <div class="banner-popup__title title">{{ banner.title }}</div>
+                <div class="banner-popup__text">{{ banner.text|linebreaks }}</div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
 <section class="popular">
     <div class="popular__container container">
         <div class="popular__title title">Популярное</div>

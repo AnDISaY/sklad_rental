@@ -146,6 +146,63 @@
     }
 }
 
+.banner-popup {
+    &__wrapper {
+        width: 600px;
+        padding: 56px 20px;
+        box-sizing: border-box;
+    }
+
+    &__height {
+        max-height: 532px;
+        overflow: auto;
+
+        &::-webkit-scrollbar {
+            width: 9px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: #4a4a4a;
+            border-radius: 10px;
+
+            &:hover {
+                background-color: #636363;
+            }
+        }
+    }
+
+    &__image {
+        width: 562px;
+        height: 234px;
+        margin-bottom: 50px;
+
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+        }
+    }
+
+    &__title {
+        color: $black;
+        margin-bottom: 21px;
+    }
+
+    &__text {
+        color: #4a4a4a;
+        font-size: 24px;
+        font-weight: 500;
+
+        @media screen and (max-width: $md1) {
+            font-size: 18px;
+        }
+
+        @media screen and (max-width: $md2) {
+            font-size: 12px;
+        }
+    }
+}
+
 
 .popular {
     margin-bottom: 135px;

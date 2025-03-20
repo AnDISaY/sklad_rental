@@ -53,3 +53,17 @@ class Parameter(models.Model):
     name = models.CharField(max_length=70, verbose_name='Название')
     characteristic = models.CharField(max_length=70, verbose_name='Значение')
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='parameters', verbose_name='Параметр')
+
+
+class Banner(models.Model):
+    large_photo = models.ImageField(upload_to='banner/', verbose_name='Крупное фото')
+    small_photo = models.ImageField(upload_to='banner/', verbose_name='Малое фото')
+    title = models.CharField(max_length=150, verbose_name='Название')
+    text = models.TextField(verbose_name='Текст')
+
+    def __str__(self):
+        return self.title
+    
+    class Meta:
+        verbose_name = 'Баннер'
+        verbose_name_plural = 'Баннеры'

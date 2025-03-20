@@ -2149,16 +2149,15 @@ body button {
   }
 }
 .catalog-mobile__item__icon {
-  width: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 27px;
 }
 @media screen and (max-width: 480px) {
   .catalog-mobile__item__icon {
-    width: 4.375vw;
+    width: 5.625vw;
   }
-}
-.catalog-mobile__item__icon img {
-  width: 100%;
-  height: auto;
 }
 .catalog-mobile__item__text {
   font-size: 19px;
@@ -2764,6 +2763,55 @@ body button {
 @media screen and (max-width: 480px) {
   .banner__image-mobile {
     height: 56.25vw;
+  }
+}
+
+.banner-popup__wrapper {
+  width: 600px;
+  padding: 56px 20px;
+  box-sizing: border-box;
+}
+.banner-popup__height {
+  max-height: 532px;
+  overflow: auto;
+}
+.banner-popup__height::-webkit-scrollbar {
+  width: 9px;
+}
+.banner-popup__height::-webkit-scrollbar-thumb {
+  background-color: #4a4a4a;
+  border-radius: 10px;
+}
+.banner-popup__height::-webkit-scrollbar-thumb:hover {
+  background-color: #636363;
+}
+.banner-popup__image {
+  width: 562px;
+  height: 234px;
+  margin-bottom: 50px;
+}
+.banner-popup__image img {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+}
+.banner-popup__title {
+  color: #1C1C1C;
+  margin-bottom: 21px;
+}
+.banner-popup__text {
+  color: #4a4a4a;
+  font-size: 24px;
+  font-weight: 500;
+}
+@media screen and (max-width: 1344px) {
+  .banner-popup__text {
+    font-size: 18px;
+  }
+}
+@media screen and (max-width: 1080px) {
+  .banner-popup__text {
+    font-size: 12px;
   }
 }
 
@@ -4921,29 +4969,6 @@ body button {
     border-radius: 3.125vw;
   }
 }
-.order__form__datetime-label:last-child {
-  gap: 18px;
-}
-@media screen and (max-width: 1344px) {
-  .order__form__datetime-label:last-child {
-    gap: 13.5px;
-  }
-}
-@media screen and (max-width: 1080px) {
-  .order__form__datetime-label:last-child {
-    gap: 9px;
-  }
-}
-@media screen and (max-width: 720px) {
-  .order__form__datetime-label:last-child {
-    gap: 45px;
-  }
-}
-@media screen and (max-width: 480px) {
-  .order__form__datetime-label:last-child {
-    gap: 9.375vw;
-  }
-}
 .order__form__datetime-label__icon {
   display: flex;
   justify-content: center;
@@ -4978,6 +5003,29 @@ body button {
 .order__form__datetime-label__icon img {
   width: 100%;
   height: auto;
+}
+.order__form .order__form__time-label {
+  gap: 18px;
+}
+@media screen and (max-width: 1344px) {
+  .order__form .order__form__time-label {
+    gap: 13.5px;
+  }
+}
+@media screen and (max-width: 1080px) {
+  .order__form .order__form__time-label {
+    gap: 9px;
+  }
+}
+@media screen and (max-width: 720px) {
+  .order__form .order__form__time-label {
+    gap: 45px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .order__form .order__form__time-label {
+    gap: 9.375vw;
+  }
 }
 .order__form .form-delivery-active {
   border: 1px solid #929292;

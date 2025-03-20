@@ -3,28 +3,7 @@
 
 {% block title %}Оформление заказа{% endblock %}
 {% block extra_styles %}
-<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css"> -->
 <style>
-/* 
-    .datepicker-button {
-        background: #111;
-        color: white;
-        border: 2px solid #444;
-        padding: 10px 20px;
-        font-size: 18px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        cursor: pointer;
-        border-radius: 8px;
-    }
-
-    .datepicker-button img {
-        width: 20px;
-        height: 20px;
-    } */
-
     .calendar {
         position: absolute;
         top: 50px;
@@ -89,7 +68,7 @@
     }
 
     .day.selected {
-        background: #ff6600;
+        background: #FF6400;
         color: white;
         padding: 5px;
     }
@@ -112,6 +91,107 @@
         text-align: center;
     }
 
+    
+    .time-picker {
+        position: absolute;
+        z-index: 3;
+        top: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: white;
+        color: #1c1c1c;
+        border-radius: 12px;
+        padding: 20px 12px;
+        display: none;
+        box-sizing: border-box;
+    }
+
+    .time-picker.active {
+        display: block;
+    }
+
+    .time-list {
+        display: flex;
+        justify-content: center;
+        padding-right: 5px;
+    }
+
+    .time-column {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-height: 200px;
+        overflow-y: auto;
+        padding-right: 6px;
+        margin-right: 1px;
+    }
+
+    .time-column + .time-column {
+        border-left: 0.5px solid #929292;
+    }
+
+    .time-column:last-child {
+        padding: 0 0 0 8px;
+        margin: 0;
+    }
+
+    .time-column::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    .time-column::-webkit-scrollbar-thumb {
+        background: #D9D9D9;
+        border-radius: 8px;
+    }
+
+    .time-column::-webkit-scrollbar-thumb:hover {
+        background: #bdbdbd;
+    }
+
+    .time-option {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        font-weight: 600;
+        text-align: center;
+        width: 40px;
+        padding: 4px 0;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        cursor: pointer;
+    }
+
+    .time-option:hover {
+        background: #ddd;
+        color: #2d2d2d;
+    }
+
+    .time-option.selected {
+        background: #FF6400;
+        color: white;
+    }
+
+    .confirm-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 600;
+        width: 100%;
+        height: 26px;
+        padding: 0;
+        background: #FF6400;
+        border-radius: 5px;
+        margin-top: 24px;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    .confirm-button:hover {
+        background: #FF8333;
+    }
 </style>
 {% endblock %}
 
@@ -152,21 +232,27 @@
                         <div class="order__form__block__wrapper">
                             <div style="position: relative;">
                                 <label class="order__form__datetime-label" for="order-date-starting">
-                                    <!-- <input type="text" class="order__form__input input-hide input-type-date" id="datepicker" name="starting_date" required> -->
-                                    <!-- <input type="date" class="order__form__input input-hide input-type-date" id="order-date-starting" name="starting_date" required> -->
-                                    <!-- <input type="text" class="order__form__input input-hide input-type-date" id="order-date-starting" name="starting_date" required> -->
-                                    
                                     <input type="text" class="order__form__input input-hide input-type-date datepicker-button" id="order-date-starting" name="starting_date" autocomplete="off" required>
                                     <div class="order__form__datetime-label__icon"><img src="{% static 'images/order/icon-calendar.svg' %}" alt="Calendar icon"></div>
                                     <div class="order__form__datetime-label__text text-semibold-mid" id="selected-date-1">--.--.----</div>
                                 </label>
                                 <div class="calendar" id="calendar-1"></div>
                             </div>
-                            <label class="order__form__datetime-label" for="order-time-starting">
-                                <input type="text" class="order__form__input input-hide input-type-time" id="order-time-starting" name="starting_time" required>
-                                <div class="order__form__datetime-label__icon form-time-icon"><img src="{% static 'images/order/icon-time.svg' %}" alt="Watch icon"></div>
-                                <div class="order__form__datetime-label__text text-semibold-mid">--:--</div>
-                            </label>
+                            <div style="position: relative;">
+                                <label class="order__form__datetime-label order__form__time-label" for="order-time-starting">
+                                    <input type="text" class="order__form__input input-hide input-type-time time-input" id="order-time-starting" name="starting_time" autocomplete="off" required>
+                                    <div class="order__form__datetime-label__icon form-time-icon"><img src="{% static 'images/order/icon-time.svg' %}" alt="Watch icon"></div>
+                                    <div class="order__form__datetime-label__text text-semibold-mid">--:--</div>
+                                </label>
+                                
+                                <div class="time-picker" id="time-picker-1">
+                                    <div class="time-list">
+                                        <div class="time-column" id="hours-column-1"></div>
+                                        <div class="time-column" id="minutes-column-1"></div>
+                                    </div>
+                                    <div class="confirm-button" onclick="confirmTime('order-time-starting', 1)">Подтвердить</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="order__form__block">
@@ -175,18 +261,27 @@
                         <div class="order__form__block__wrapper">
                             <div style="position: relative;">
                                 <label class="order__form__datetime-label" for="order-date-ending">
-                                    <!-- <input type="text" class="order__form__input input-hide input-type-date" id="order-date-ending" name="ending_date" required> -->
                                     <input type="text" class="order__form__input input-hide input-type-date datepicker-button" id="order-date-ending" name="ending_date" autocomplete="off" required>
                                     <div class="order__form__datetime-label__icon"><img src="{% static 'images/order/icon-calendar.svg' %}" alt="Calendar icon"></div>
                                     <div class="order__form__datetime-label__text text-semibold-mid" id="selected-date-2">--.--.----</div>
                                 </label>
                                 <div class="calendar" id="calendar-2"></div>
                             </div>
-                            <label class="order__form__datetime-label" for="order-time-ending">
-                                <input type="text" class="order__form__input input-hide input-type-time" id="order-time-ending" name="ending_time" required>
-                                <div class="order__form__datetime-label__icon form-time-icon"><img src="{% static 'images/order/icon-time.svg' %}" alt="Watch icon"></div>
-                                <div class="order__form__datetime-label__text text-semibold-mid">--:--</div>
-                            </label>
+                            <div style="position: relative;">
+                                <label class="order__form__datetime-label order__form__time-label" for="order-time-ending">
+                                    <input type="text" class="order__form__input input-hide input-type-time time-input" id="order-time-ending" name="ending_time" autocomplete="off" required>
+                                    <div class="order__form__datetime-label__icon form-time-icon"><img src="{% static 'images/order/icon-time.svg' %}" alt="Watch icon"></div>
+                                    <div class="order__form__datetime-label__text text-semibold-mid">--:--</div>
+                                </label>
+                                    
+                                <div class="time-picker" id="time-picker-2">
+                                    <div class="time-list">
+                                        <div class="time-column" id="hours-column-2"></div>
+                                        <div class="time-column" id="minutes-column-2"></div>
+                                    </div>
+                                    <div class="confirm-button" onclick="confirmTime('order-time-ending', 2)">Подтвердить</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <button type="submit" class="order__form__btn text-main">Оформить заказ</button>
@@ -219,19 +314,10 @@
         </div>
     </div>
 </section>
-<!-- <label for="">Select Date:</label> -->
- <!-- <label for="datePicker" class="flat-label"> -->
-    <!-- <span style="color: #fff;"></span> -->
-<!-- </label> -->
-<!-- <label for="timePicker" class="flat-label"> -->
-    <!-- <input type="text" id="timePicker" placeholder="Select Time"> -->
-    <!-- <span style="color: #fff;"></span>
-</label> -->
 {% endblock %}
 {% block extra_scripts %}
 <script src="{% static 'js/order_count.js' %}"></script>
 <script src="{% static 'js/order_form.js' %}"></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script>
     const monthNames = [
         "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь",
@@ -350,60 +436,57 @@
     createDatePicker("order-date-ending", "calendar-2", "selected-date-2");
 </script>
 <script>
-    // flatpickr("#order-date-starting", {
-    //     dateFormat: "Y-m-d",  // Format: YYYY-MM-DD
-    //     allowInput: true,     // Allow manual input
-    //     minDate: "today",     // Prevent past dates
-    //     disableMobile: true,  // Ensures proper behavior on mobile
-    // })
-    flatpickr("#order-time-starting", {
-        enableTime: true,
-        noCalendar: true,
-        dateFormat: "H:i",
-        time_24hr: true
-    });
+    function setupTimePicker(inputId, id) {
+        const input = document.getElementById(inputId);
+        const picker = document.getElementById(`time-picker-${id}`);
+        const hoursColumn = document.getElementById(`hours-column-${id}`);
+        const minutesColumn = document.getElementById(`minutes-column-${id}`);
 
-    // flatpickr("#order-date-ending", {
-    //     dateFormat: "Y-m-d",  // Format: YYYY-MM-DD
-    //     allowInput: true,     // Allow manual input
-    //     minDate: "today",     // Prevent past dates
-    //     disableMobile: true,  // Ensures proper behavior on mobile
-    // })
-    flatpickr("#order-time-ending", {
-        enableTime: true,
-        noCalendar: true,
-        dateFormat: "H:i",
-        time_24hr: true
-    });
+        input.addEventListener("click", () => {
+            picker.classList.toggle("active");
+        });
 
-    // flatLabel = document.querySelectorAll('.flat-label');
-    // // input = document.querySelector('#datePicker')
-    // console.log(flatLabel)
-    // flatLabel.forEach(label => {
-    //     console.log(label)
-    //     input = label.querySelector('input')
-    //     console.log(input)
-    //     input.addEventListener("input", ()=> {
-    //         console.log(input)
-    //         console.log(input.value)
-    //         label.querySelector('span').innerHTML = input.value
-    //     })
-    // })
+        document.addEventListener("click", (event) => {
+            if (!input.contains(event.target) && !picker.contains(event.target)) {
+                picker.classList.remove("active");
+            }
+        });
+
+        for (let i = 0; i < 24; i++) {
+            let hourDiv = document.createElement("div");
+            hourDiv.classList.add("time-option");
+            hourDiv.textContent = i.toString().padStart(2, "0");
+            hourDiv.addEventListener("click", function () {
+                document.querySelectorAll(`#hours-column-${id} .time-option`).forEach(el => el.classList.remove("selected"));
+                hourDiv.classList.add("selected");
+            });
+            hoursColumn.appendChild(hourDiv);
+        }
+
+        [0, 15, 30, 45].forEach(min => {
+            let minDiv = document.createElement("div");
+            minDiv.classList.add("time-option");
+            minDiv.textContent = min.toString().padStart(2, "0");
+            minDiv.addEventListener("click", function () {
+                document.querySelectorAll(`#minutes-column-${id} .time-option`).forEach(el => el.classList.remove("selected"));
+                minDiv.classList.add("selected");
+            });
+            minutesColumn.appendChild(minDiv);
+        });
+    }
+
+    function confirmTime(inputId, id) {
+        const selectedHour = document.querySelector(`#hours-column-${id} .time-option.selected`);
+        const selectedMinute = document.querySelector(`#minutes-column-${id} .time-option.selected`);
+        const input = document.getElementById(inputId);
+        if (selectedHour && selectedMinute) {
+            input.value = `${selectedHour.textContent}:${selectedMinute.textContent}`;
+            input.closest(".order__form__datetime-label").querySelector('.order__form__datetime-label__text').innerHTML = `${selectedHour.textContent}:${selectedMinute.textContent}`
+        }
+        document.getElementById(`time-picker-${id}`).classList.remove("active");
+    }
+
+    setupTimePicker("order-time-starting", 1);
+    setupTimePicker("order-time-ending", 2);
 </script>
-<!-- <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script> -->
-<!-- <script src="pikaday.js"></script>
-<script>
-    var picker = new Pikaday({ field: document.getElementById('datepicker') });
-</script> -->
-<!-- <script>
-    flatpickr("#datepicker", {
-        dateFormat: "Y-m-d", // Format: YYYY-MM-DD
-        altInput: true, // Shows formatted date in a separate field
-        altFormat: "F j, Y", // Example: "March 7, 2025"
-        theme: "dark", // You can change to "dark", "airbnb", etc.
-        allowInput: true, // Allows manual date entry
-        defaultDate: new Date(), // Sets default to today
-    });
-</script> -->
 {% endblock %}

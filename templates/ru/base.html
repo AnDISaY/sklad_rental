@@ -426,6 +426,11 @@
         } else if (screen.width <= 1344) {
             dropIcons.forEach(icon => icon.style.width = `${icon.getBoundingClientRect().width * 0.75}px`)
         }
+        
+        dropIcons2 = document.querySelectorAll('.catalog-mobile__item__icon img')
+        if (screen.width <= 480) {
+            dropIcons2.forEach(icon => icon.style.width = `${icon.getBoundingClientRect().width / 1.5 / 3.2}vw`)
+        }
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>

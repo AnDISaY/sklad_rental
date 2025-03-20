@@ -366,26 +366,6 @@
                 border-radius: 3.125vw;
             }
 
-            &:last-child {
-                gap: 18px;
-
-                @media screen and (max-width: $md1) {
-                    gap: 13.5px;
-                }
-
-                @media screen and (max-width: $md2) {
-                    gap: 9px;
-                }
-
-                @media screen and (max-width: $md3) {
-                    gap: 45px;
-                }
-
-                @media screen and (max-width: $md4) {
-                    gap: 9.375vw;
-                }
-            }
-
             &__icon {
                 display: flex;
                 justify-content: center;
@@ -417,6 +397,28 @@
                     width: 100%;
                     height: auto;
                 }
+            }
+        }
+
+        
+
+        .order__form__time-label {
+            gap: 18px;
+
+            @media screen and (max-width: $md1) {
+                gap: 13.5px;
+            }
+
+            @media screen and (max-width: $md2) {
+                gap: 9px;
+            }
+
+            @media screen and (max-width: $md3) {
+                gap: 45px;
+            }
+
+            @media screen and (max-width: $md4) {
+                gap: 9.375vw;
             }
         }
 
