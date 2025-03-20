@@ -230,7 +230,7 @@
                         <div class="order__form__block__text text-main">Начало аренды</div>
                         <div class="order__form__block__text order__form__block__text__mobile text-semibold-big">Начало аренды</div>
                         <div class="order__form__block__wrapper">
-                            <div style="position: relative;">
+                            <div class="picker-wrap" style="position: relative;">
                                 <label class="order__form__datetime-label" for="order-date-starting">
                                     <input type="text" class="order__form__input input-hide input-type-date datepicker-button" id="order-date-starting" name="starting_date" autocomplete="off" readonly required>
                                     <div class="order__form__datetime-label__icon"><img src="{% static 'images/order/icon-calendar.svg' %}" alt="Calendar icon"></div>
@@ -238,7 +238,7 @@
                                 </label>
                                 <div class="calendar" id="calendar-1"></div>
                             </div>
-                            <div style="position: relative;">
+                            <div class="picker-wrap" style="position: relative;">
                                 <label class="order__form__datetime-label order__form__time-label" for="order-time-starting">
                                     <input type="text" class="order__form__input input-hide input-type-time time-input" id="order-time-starting" name="starting_time" autocomplete="off" readonly required>
                                     <div class="order__form__datetime-label__icon form-time-icon"><img src="{% static 'images/order/icon-time.svg' %}" alt="Watch icon"></div>
@@ -259,7 +259,7 @@
                         <div class="order__form__block__text text-main">Конец аренды</div>
                         <div class="order__form__block__text order__form__block__text__mobile text-semibold-big">Конец аренды</div>
                         <div class="order__form__block__wrapper">
-                            <div style="position: relative;">
+                            <div class="picker-wrap" style="position: relative;">
                                 <label class="order__form__datetime-label" for="order-date-ending">
                                     <input type="text" class="order__form__input input-hide input-type-date datepicker-button" id="order-date-ending" name="ending_date" autocomplete="off" readonly required>
                                     <div class="order__form__datetime-label__icon"><img src="{% static 'images/order/icon-calendar.svg' %}" alt="Calendar icon"></div>
@@ -267,7 +267,7 @@
                                 </label>
                                 <div class="calendar" id="calendar-2"></div>
                             </div>
-                            <div style="position: relative;">
+                            <div class="picker-wrap" style="position: relative;">
                                 <label class="order__form__datetime-label order__form__time-label" for="order-time-ending">
                                     <input type="text" class="order__form__input input-hide input-type-time time-input" id="order-time-ending" name="ending_time" autocomplete="off" readonly required>
                                     <div class="order__form__datetime-label__icon form-time-icon"><img src="{% static 'images/order/icon-time.svg' %}" alt="Watch icon"></div>
@@ -434,6 +434,12 @@
 
     createDatePicker("order-date-starting", "calendar-1", "selected-date-1");
     createDatePicker("order-date-ending", "calendar-2", "selected-date-2");
+
+    document.querySelectorAll('.calendar').forEach(picker => {
+        inputHeight = picker.closest('.picker-wrap').querySelector('label').getBoundingClientRect().height
+        topValue = `-${Number(inputHeight) + 170}px`
+        picker.style.top = topValue
+    })
 </script>
 <script>
     function setupTimePicker(inputId, id) {
@@ -488,5 +494,11 @@
 
     setupTimePicker("order-time-starting", 1);
     setupTimePicker("order-time-ending", 2);
+
+    document.querySelectorAll('.time-picker').forEach(picker => {
+        inputHeight = picker.closest('.picker-wrap').querySelector('label').getBoundingClientRect().height
+        topValue = `-${Number(inputHeight) + 260}px`
+        picker.style.top = topValue
+    })
 </script>
 {% endblock %}
