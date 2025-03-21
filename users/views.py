@@ -71,7 +71,7 @@ def sign_up(request):
         password = data['password']
         password2 = data['password2']
 
-        if len(phone) != 11:
+        if len(phone) != 12:
             request.session['error_message'] = ["Вы указали недействительный номер"]
             request.session['popup_active'] = "signup"
             request.session['sign_data_context'] = {"email": email, "first_name": first_name, "last_name": last_name, }
