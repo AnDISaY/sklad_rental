@@ -55,7 +55,7 @@
             <div class="popular__slider__container container">
                 <div class="popular__slider__swiper">
                     <div class="swiper-wrapper">
-                        {% for product in products %}
+                        {% for product in products_popular %}
                         <div class="swiper-slide">
                             <a href="{% url 'product' product.id %}" class="popular__card favorite-card">
                                 <div class="fsd12mjh63" style="display: none;">{{ product.id }}</div>

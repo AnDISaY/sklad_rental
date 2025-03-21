@@ -10,7 +10,7 @@ import uuid
 
 def home(request):
     user = request.user
-    products = Product.objects.all()
+    products_popular = Product.objects.all().order_by('-views')
     categories = Category.objects.all()
     banners = Banner.objects.all()
     context = {}
@@ -46,7 +46,7 @@ def home(request):
             context['cart_length'] = len(user_cart)
         except:
             pass
-    context['products'] = products
+    context['products_popular'] = products_popular
     context['categories'] = categories
     context['banners'] = banners
     context['user_is_authenticated'] = user.is_authenticated
@@ -410,6 +410,9 @@ def favorites(request):
 def product_view(request, pk):
     user = request.user
     product = Product.objects.get(id=pk)
+    if request.method == "GET":
+        product.views += 1
+        product.save()
     categories = Category.objects.all()
     context = {"user": user, "user_is_authenticated": user.is_authenticated, "product": product, "categories": categories}
     if 'success_message' in request.session:
