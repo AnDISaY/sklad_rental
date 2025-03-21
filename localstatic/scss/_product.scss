@@ -41,7 +41,7 @@
 
     &__wrapper {
         display: flex;
-        align-items: stretch;
+        align-items: center;
         gap: 186px;
 
         @media screen and (max-width: $md1) {
