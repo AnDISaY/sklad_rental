@@ -254,6 +254,35 @@
                     font-size: 3.125vw;
                 }
             }
+
+            &__text {
+                margin-right: 10px;
+
+                @media screen and (max-width: $md1) {
+                    margin-right: 7.5px;
+                }
+
+                @media screen and (max-width: $md2) {
+                    margin-right: 5px;
+                }
+
+                @media screen and (max-width: $md3) {
+                    margin-right: 10px;
+                }
+
+                @media screen and (max-width: $md4) {
+                    margin-right: 2.188vw;
+                }
+            }
+
+            &__block {
+                display: flex;
+                align-items: center;
+
+                input {
+                    width: 100%;
+                }
+            }
         }
 
         &__btn {

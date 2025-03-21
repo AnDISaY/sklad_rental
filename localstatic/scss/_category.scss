@@ -422,35 +422,35 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            box-sizing: border-box;
             border: 2px solid #fff;
             border-radius: 12px;
-            height: 51.2px;
+            height: 52px;
             width: 100%;
             cursor: default;
 
             @media screen and (max-width: $md1) {
                 border-width: 1.5px;
                 border-radius: 9px;
-                height: 38.4px;
+                height: 39px;
             }
 
             @media screen and (max-width: $md2) {
                 border-width: 1px;
                 border-radius: 6px;
-                height: 25.6px;
+                height: 26px;
             }
 
             @media screen and (max-width: $md3) {
                 border-width: 2.5px;
                 border-radius: 11px;
                 height: 55px;
-                box-sizing: border-box;
             }
 
             @media screen and (max-width: $md4) {
                 border-width: 0.5vw;
                 border-radius: 2.5vw;
-                height: 11.563vw;
+                height: 11.875vw;
             }
 
             &__wrapper {

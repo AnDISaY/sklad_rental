@@ -71,37 +71,42 @@ def sign_up(request):
         password = data['password']
         password2 = data['password2']
 
-        if User.objects.filter(phone=phone).exists():
-            request.session['error_message'] = ["Пользователь с таким номером телефона уже существует"]
+        if len(phone) != 11:
+            request.session['error_message'] = ["Вы указали недействительный номер"]
             request.session['popup_active'] = "signup"
             request.session['sign_data_context'] = {"email": email, "first_name": first_name, "last_name": last_name, }
         else:
-            
-            if password == password2:
-                if len(password) >= 8 and any(c.isalpha() for c in password) and any(c.isdigit() for c in password):
-                    user = User.objects.create_user(email=email, phone=phone, first_name=first_name, last_name=last_name, password=password)
-                    user.save()
-                    login(request, user)
-                    if user_cart is not None:
-                            for uc in user_cart:
-                                UserCart.objects.create(user=user, product=uc.product, quantity=uc.quantity)
-                                uc.delete()
-                    request.session['success_message'] = "Вы успешно зарегистрировались"
+            if User.objects.filter(phone=phone).exists():
+                request.session['error_message'] = ["Пользователь с таким номером телефона уже существует"]
+                request.session['popup_active'] = "signup"
+                request.session['sign_data_context'] = {"email": email, "first_name": first_name, "last_name": last_name, }
+            else:
+                
+                if password == password2:
+                    if len(password) >= 8 and any(c.isalpha() for c in password) and any(c.isdigit() for c in password):
+                        user = User.objects.create_user(email=email, phone=phone, first_name=first_name, last_name=last_name, password=password)
+                        user.save()
+                        login(request, user)
+                        if user_cart is not None:
+                                for uc in user_cart:
+                                    UserCart.objects.create(user=user, product=uc.product, quantity=uc.quantity)
+                                    uc.delete()
+                        request.session['success_message'] = "Вы успешно зарегистрировались"
+                    else:
+                        messages = []
+                        if len(password) < 8:
+                            messages.append('Пароль должен содержать не менее 8 символов')
+                        if not any(c.isalpha() for c in password):
+                            messages.append('Пароль должен содержать хотя бы одну букву')
+                        if not any(c.isdigit() for c in password):
+                            messages.append('Пароль должен содержать хотя бы одну цифру')
+                        request.session['error_message'] = messages
+                        request.session['popup_active'] = "signup"
+                        request.session['sign_data_context'] = {"email": email, "first_name": first_name, "last_name": last_name, "phone": phone, }
                 else:
-                    messages = []
-                    if len(password) < 8:
-                        messages.append('Пароль должен содержать не менее 8 символов')
-                    if not any(c.isalpha() for c in password):
-                        messages.append('Пароль должен содержать хотя бы одну букву')
-                    if not any(c.isdigit() for c in password):
-                        messages.append('Пароль должен содержать хотя бы одну цифру')
-                    request.session['error_message'] = messages
+                    request.session['error_message'] = ["Пароли не совпадают"]
                     request.session['popup_active'] = "signup"
                     request.session['sign_data_context'] = {"email": email, "first_name": first_name, "last_name": last_name, "phone": phone, }
-            else:
-                request.session['error_message'] = ["Пароли не совпадают"]
-                request.session['popup_active'] = "signup"
-                request.session['sign_data_context'] = {"email": email, "first_name": first_name, "last_name": last_name, "phone": phone, }
                 
     return redirect('/home')
 
@@ -195,6 +200,7 @@ def forgot_password(request):
 @login_required(login_url='/home')
 def profile(request):
     user = request.user
+    user.phone = user.phone[2:]
     user_cart = UserCart.objects.filter(user=user)
     categories = Category.objects.all()
     context = {'user': user, 'user_is_authenticated': user.is_authenticated, 'cart_length': len(user_cart), "categories": categories}
@@ -203,8 +209,10 @@ def profile(request):
         if 'success_message_subtext' in request.session:
             context['success_message_subtext'] = request.session['success_message_subtext'].pop()
     if 'error_message' in request.session:
+        print(request.session['error_message'])
         context['error_message'] = request.session.pop('error_message')
     if 'redirect' in request.session:
+        print(request.session['redirect'])
         context['redirect'] = request.session.pop('redirect')
     if 'popup_active' in request.session:
         context['popup_active'] = request.session.pop('popup_active')
@@ -215,14 +223,27 @@ def profile(request):
 def profile_edit(request):
     if request.method == 'POST':
         data = request.POST
-        user = User.objects.get(phone=request.user.phone)
-        user.last_name = data['last_name']
-        user.first_name = data['first_name']
-        user.email = data['email']
-        user.save()
-        request.session['success_message'] = "Профиль успешно изменен"
-        request.session['redirect'] = "profile_edit"
-        return redirect('/profile')
+        phone = f'+7{data["phone"]}'
+        email = data['email']
+        first_name = data['first_name']
+        last_name = data['last_name']
+
+        if len(phone) != 12:
+            request.session['error_message'] = ["Вы указали недействительный номер"]
+            request.session['redirect'] = "profile_edit"
+        else:
+            if User.objects.filter(phone=phone).exists():
+                request.session['error_message'] = ["Пользователь с таким номером телефона уже существует"]
+                request.session['redirect'] = "profile_edit"
+            else:
+                user = User.objects.get(phone=request.user.phone)
+                user.phone = phone
+                user.last_name = last_name
+                user.first_name = first_name
+                user.email = email
+                user.save()
+                request.session['success_message'] = "Профиль успешно изменен"
+                request.session['redirect'] = "profile_edit"
     return redirect('/profile')
 
 

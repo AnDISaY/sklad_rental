@@ -39,22 +39,26 @@ function openPopup(link) {
         background.style.width = "100%"
         background.style.background = "rgba(28, 28, 28, 0.7)"
         document.querySelector("body").append(background)
+        body.classList.add('lock')
     }
-    body.classList.add('lock')
     history.replaceState('', document.title, window.location.origin + window.location.pathname + window.location.search);
 }
 
 crosses.forEach(cross => cross.addEventListener("click", ()=> {
     popup = cross.closest('.popup')
     popup.classList.remove('popup-active')
-    document.querySelector(".all-background").remove()
+    if (document.querySelector(".all-background")) {
+        document.querySelector(".all-background").remove()
+    }
     body.classList.remove('lock')
 }))
 
 window.onkeydown = function(event) {
     if (event.keyCode == 27) {
         popups.forEach(popup => popup.classList.remove('popup-active'))
-        document.querySelector(".all-background").remove()
+        if (document.querySelector(".all-background")) {
+            document.querySelector(".all-background").remove()
+        }
         body.classList.remove('lock')
     }
 };
@@ -63,7 +67,9 @@ backgrounds = document.querySelectorAll('.popup-background')
 
 backgrounds.forEach(back => back.addEventListener("click", ()=> {
     popups.forEach(popup => popup.classList.remove('popup-active'))
-    document.querySelector(".all-background").remove()
+    if (document.querySelector(".all-background")) {
+        document.querySelector(".all-background").remove()
+    }
     body.classList.remove('lock')
 }))
 

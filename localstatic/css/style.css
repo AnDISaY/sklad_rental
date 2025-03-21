@@ -3267,9 +3267,10 @@ body button {
   display: flex;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
   border: 2px solid #fff;
   border-radius: 12px;
-  height: 51.2px;
+  height: 52px;
   width: 100%;
   cursor: default;
 }
@@ -3277,26 +3278,26 @@ body button {
   .popular__card__cart {
     border-width: 1.5px;
     border-radius: 9px;
-    height: 38px;
+    height: 39px;
   }
 }
 @media screen and (max-width: 1080px) {
   .popular__card__cart {
     border-width: 1px;
     border-radius: 6px;
-    height: 25px;
+    height: 26px;
   }
 }
 @media screen and (max-width: 720px) {
   .popular__card__cart {
     border-radius: 11px;
-    height: 44.4px;
+    height: 49px;
   }
 }
 @media screen and (max-width: 480px) {
   .popular__card__cart {
     border-radius: 2.5vw;
-    height: 10.125vw;
+    height: 10.625vw;
   }
 }
 .popular__card__cart__wrapper {
@@ -5451,6 +5452,36 @@ body button {
     font-size: 3.125vw;
   }
 }
+.edit__form__input__text {
+  margin-right: 10px;
+}
+@media screen and (max-width: 1344px) {
+  .edit__form__input__text {
+    margin-right: 7.5px;
+  }
+}
+@media screen and (max-width: 1080px) {
+  .edit__form__input__text {
+    margin-right: 5px;
+  }
+}
+@media screen and (max-width: 720px) {
+  .edit__form__input__text {
+    margin-right: 10px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .edit__form__input__text {
+    margin-right: 2.188vw;
+  }
+}
+.edit__form__input__block {
+  display: flex;
+  align-items: center;
+}
+.edit__form__input__block input {
+  width: 100%;
+}
 .edit__form__btn {
   padding: 15px 0px;
   background-color: #FF6400;
@@ -6515,9 +6546,10 @@ body button {
   display: flex;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
   border: 2px solid #fff;
   border-radius: 12px;
-  height: 51.2px;
+  height: 52px;
   width: 100%;
   cursor: default;
 }
@@ -6525,14 +6557,14 @@ body button {
   .category__card__cart {
     border-width: 1.5px;
     border-radius: 9px;
-    height: 38.4px;
+    height: 39px;
   }
 }
 @media screen and (max-width: 1080px) {
   .category__card__cart {
     border-width: 1px;
     border-radius: 6px;
-    height: 25.6px;
+    height: 26px;
   }
 }
 @media screen and (max-width: 720px) {
@@ -6540,14 +6572,13 @@ body button {
     border-width: 2.5px;
     border-radius: 11px;
     height: 55px;
-    box-sizing: border-box;
   }
 }
 @media screen and (max-width: 480px) {
   .category__card__cart {
     border-width: 0.5vw;
     border-radius: 2.5vw;
-    height: 11.563vw;
+    height: 11.875vw;
   }
 }
 .category__card__cart__wrapper {
@@ -7087,9 +7118,10 @@ body button {
   display: flex;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
   border: 2px solid #fff;
   border-radius: 12px;
-  height: 51.2px;
+  height: 52px;
   width: 100%;
   cursor: default;
 }
@@ -7097,14 +7129,14 @@ body button {
   .favorites__card__cart {
     border-width: 1.5px;
     border-radius: 9px;
-    height: 38.4px;
+    height: 39px;
   }
 }
 @media screen and (max-width: 1080px) {
   .favorites__card__cart {
     border-width: 1px;
     border-radius: 6px;
-    height: 25.6px;
+    height: 26px;
   }
 }
 @media screen and (max-width: 720px) {
@@ -7112,14 +7144,13 @@ body button {
     border-width: 2.5px;
     border-radius: 11px;
     height: 55px;
-    box-sizing: border-box;
   }
 }
 @media screen and (max-width: 480px) {
   .favorites__card__cart {
     border-width: 0.5vw;
     border-radius: 2.5vw;
-    height: 11.563vw;
+    height: 11.875vw;
   }
 }
 .favorites__card__cart__wrapper {
@@ -7810,37 +7841,43 @@ body button {
   display: flex;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
+  width: 219.88px;
+  height: 52px;
   border: 2px solid #fff;
   border-radius: 12px;
-  padding: 14.8px 60px;
   cursor: default;
 }
 @media screen and (max-width: 1344px) {
   .product__card__cart {
+    width: 164.91px;
+    height: 39px;
     border-width: 1.5px;
     border-radius: 9px;
-    padding: 11.1px 45px;
   }
 }
 @media screen and (max-width: 1080px) {
   .product__card__cart {
+    width: 109.94px;
+    height: 26px;
     border-width: 1px;
     border-radius: 6px;
-    padding: 7.4px 30px;
   }
 }
 @media screen and (max-width: 720px) {
   .product__card__cart {
+    width: 210.64px;
+    height: 51px;
     border-width: 2px;
     border-radius: 16px;
-    padding: 13.9px 57.7px;
   }
 }
 @media screen and (max-width: 480px) {
   .product__card__cart {
+    width: 43.884vw;
+    height: 10.625vw;
     border-width: 0.406vw;
     border-radius: 3.125vw;
-    padding: 3.031vw 12.188vw;
   }
 }
 .product__card__cart__wrapper {
