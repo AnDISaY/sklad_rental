@@ -2026,7 +2026,7 @@ body button {
   position: fixed !important;
   align-items: start !important;
   justify-content: start !important;
-  z-index: 98 !important;
+  z-index: 97 !important;
   background-color: #1C1C1C !important;
 }
 .catalog-mobile__container {
@@ -2193,7 +2193,7 @@ body button {
   position: fixed !important;
   align-items: start !important;
   justify-content: start !important;
-  z-index: 98 !important;
+  z-index: 97 !important;
   background-color: #1C1C1C !important;
 }
 .profile-mobile__container {
@@ -2776,16 +2776,58 @@ body button {
   padding: 56px 20px;
   box-sizing: border-box;
 }
+@media screen and (max-width: 1344px) {
+  .banner-popup__wrapper {
+    width: 450px;
+    padding: 42px 15px;
+  }
+}
+@media screen and (max-width: 1080px) {
+  .banner-popup__wrapper {
+    width: 300px;
+    padding: 28px 10px;
+  }
+}
 .banner-popup__height {
   max-height: 532px;
   overflow: auto;
 }
+@media screen and (max-width: 1344px) {
+  .banner-popup__height {
+    max-height: 399px;
+  }
+}
+@media screen and (max-width: 1080px) {
+  .banner-popup__height {
+    max-height: 266px;
+  }
+}
 .banner-popup__height::-webkit-scrollbar {
   width: 9px;
+}
+@media screen and (max-width: 1344px) {
+  .banner-popup__height::-webkit-scrollbar {
+    width: 6.75px;
+  }
+}
+@media screen and (max-width: 1080px) {
+  .banner-popup__height::-webkit-scrollbar {
+    width: 4.5px;
+  }
 }
 .banner-popup__height::-webkit-scrollbar-thumb {
   background-color: #4a4a4a;
   border-radius: 10px;
+}
+@media screen and (max-width: 1344px) {
+  .banner-popup__height::-webkit-scrollbar-thumb {
+    border-radius: 7.5px;
+  }
+}
+@media screen and (max-width: 1080px) {
+  .banner-popup__height::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+  }
 }
 .banner-popup__height::-webkit-scrollbar-thumb:hover {
   background-color: #636363;
@@ -2795,14 +2837,48 @@ body button {
   height: 234px;
   margin-bottom: 50px;
 }
+@media screen and (max-width: 1344px) {
+  .banner-popup__image {
+    width: 422px;
+    height: 176px;
+    margin-bottom: 37.5px;
+  }
+}
+@media screen and (max-width: 1080px) {
+  .banner-popup__image {
+    width: 281px;
+    height: 117px;
+    margin-bottom: 25px;
+  }
+}
 .banner-popup__image img {
   width: 100%;
   height: auto;
   border-radius: 20px;
 }
+@media screen and (max-width: 1344px) {
+  .banner-popup__image img {
+    border-radius: 15px;
+  }
+}
+@media screen and (max-width: 1080px) {
+  .banner-popup__image img {
+    border-radius: 10px;
+  }
+}
 .banner-popup__title {
   color: #1C1C1C;
   margin-bottom: 21px;
+}
+@media screen and (max-width: 1344px) {
+  .banner-popup__title {
+    margin-bottom: 16px;
+  }
+}
+@media screen and (max-width: 1080px) {
+  .banner-popup__title {
+    margin-bottom: 10px;
+  }
 }
 .banner-popup__text {
   color: #4a4a4a;
@@ -8107,7 +8183,7 @@ body button {
 
 .footer-mobile {
   position: fixed;
-  z-index: 99;
+  z-index: 98;
   bottom: 10px;
   display: none;
   justify-content: center;

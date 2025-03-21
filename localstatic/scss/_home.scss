@@ -156,19 +156,53 @@
         width: 600px;
         padding: 56px 20px;
         box-sizing: border-box;
+
+        @media screen and (max-width: $md1) {
+            width: 450px;
+            padding: 42px 15px;
+        }
+
+        @media screen and (max-width: $md2) {
+            width: 300px;
+            padding: 28px 10px;
+        }
     }
 
     &__height {
         max-height: 532px;
         overflow: auto;
 
+        @media screen and (max-width: $md1) {
+            max-height: 399px;
+        }
+
+        @media screen and (max-width: $md2) {
+            max-height: 266px;
+        }
+
         &::-webkit-scrollbar {
             width: 9px;
+
+            @media screen and (max-width: $md1) {
+                width: 6.75px;
+            }
+
+            @media screen and (max-width: $md2) {
+                width: 4.5px;
+            }
         }
 
         &::-webkit-scrollbar-thumb {
             background-color: #4a4a4a;
             border-radius: 10px;
+
+            @media screen and (max-width: $md1) {
+                border-radius: 7.5px;
+            }
+
+            @media screen and (max-width: $md2) {
+                border-radius: 5px;
+            }
 
             &:hover {
                 background-color: #636363;
@@ -181,16 +215,44 @@
         height: 234px;
         margin-bottom: 50px;
 
+        @media screen and (max-width: $md1) {
+            width: 422px;
+            height: 176px;
+            margin-bottom: 37.5px;
+        }
+
+        @media screen and (max-width: $md2) {
+            width: 281px;
+            height: 117px;
+            margin-bottom: 25px;
+        }
+
         img {
             width: 100%;
             height: auto;
             border-radius: 20px;
+
+            @media screen and (max-width: $md1) {
+                border-radius: 15px;
+            }
+
+            @media screen and (max-width: $md2) {
+                border-radius: 10px;
+            }
         }
     }
 
     &__title {
         color: $black;
         margin-bottom: 21px;
+
+        @media screen and (max-width: $md1) {
+            margin-bottom: 16px;
+        }
+
+        @media screen and (max-width: $md2) {
+            margin-bottom: 10px;
+        }
     }
 
     &__text {

@@ -26,21 +26,32 @@ function openPopup(link) {
     }
 
     popup = document.querySelector(href)
-
     popup.classList.add('popup-active')
-    if (!popup.classList.contains("profile")) {
+
+    popupFlag = true
+    if (popup.classList.contains("catalog-mobile")) {
+        popupFlag = false
+    } else if (popup.classList.contains("profile-mobile")) {
+        popupFlag = false
+    } else if (popup.classList.contains("profile")) {
+        popupFlag = false
+    }
+    if (popupFlag) {
         background = document.createElement("div")
         background.classList.add("all-background")
         background.style.position = "absolute"
         background.style.left = "0"
         background.style.top = "0"
-        background.style.zIndex = "20"
+        background.style.zIndex = "99"
         background.style.height = "100%"
         background.style.width = "100%"
         background.style.background = "rgba(28, 28, 28, 0.7)"
         document.querySelector("body").append(background)
+    }
+    if (!popup.classList.contains("profile")) {
         body.classList.add('lock')
     }
+
     history.replaceState('', document.title, window.location.origin + window.location.pathname + window.location.search);
 }
 
