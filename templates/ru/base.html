@@ -112,14 +112,14 @@
                 </a>
                 {% else %}
                 <div class="header__btns">
-                    <a href="#signin-popup" class="header__btn text-semibold-mid popup-link">Войти</a>
-                    <a href="#signup-popup" class="header__btn text-semibold-mid popup-link">Регистрация</a>
+                    <a href="#signin-popup" class="header__btn text-semibold-mid popup-link" id="signin-popup-link">Войти</a>
+                    <a href="#signup-popup" class="header__btn text-semibold-mid popup-link" id="signup-popup-link">Регистрация</a>
                 </div>
                 {% endif %}
             </div>
         </div>
     </header>
-    <div class="signup popup {% if popup_active == 'signup' %}popup-active{% endif %}" id="signup-popup">
+    <div class="signup popup" id="signup-popup">
         <div class="popup-background"></div>
         <div class="signup__wrapper popup__wrapper">
             <div class="signup__title title-mid">Регистрация</div>
@@ -149,7 +149,7 @@
             </form>
         </div>
     </div>
-    <div class="signin popup {% if popup_active == 'signin' %}popup-active{% endif %}" id="signin-popup">
+    <div class="signin popup" id="signin-popup">
         <div class="popup-background"></div>
         <div class="signin__wrapper popup__wrapper">
             <div class="signin__title title-mid">Войти в профиль</div>
@@ -161,7 +161,7 @@
                 </div>
                 <input class="signin__form__input text-main" type="text" name="password" placeholder="Пароль" required>
                 <button type="submit" class="signin__form__btn text-medium-big">Войти</button>
-                <a href="#forgot-popup" class="signin__link text-main popup-link">Забыл(а) пароль</a>
+                <a href="#forgot-popup" class="signin__link text-main popup-link" id="forgot-popup-link">Забыл(а) пароль</a>
                 {% if popup_active %}
                     {% if popup_active == 'signin' %}
                         {% if error_message %}
@@ -176,7 +176,7 @@
             </form>
         </div>
     </div>
-    <div class="forgot popup {% if popup_active == 'forgot' or popup_active == 'forgot_code' or popup_active == 'forgot_password' %}popup-active{% endif %}" id="forgot-popup">
+    <div class="forgot popup" id="forgot-popup">
         <div class="popup-background"></div>
         <div class="forgot__wrapper popup__wrapper">
             {% if popup_active %}
@@ -405,11 +405,6 @@
             </div>
         </div>
     </div>
-    <!-- <script>
-        window.user_is_authenticated = `{{ user_is_authenticated|safe }}`
-        window.cartArr = {{ cartJs|safe }}
-        window.favArray = {{ favorites }}
-    </script> -->
     <script>
         headerProfile = document.querySelector('.header__profile__text')
         profilePopupIcon = document.querySelector('.profile__icon')
@@ -435,6 +430,21 @@
         dropIcons2 = document.querySelectorAll('.catalog-mobile__item__icon img')
         if (screen.width <= 480) {
             dropIcons2.forEach(icon => icon.style.width = `${icon.getBoundingClientRect().width / 1.5 / 3.2}vw`)
+        }
+    </script>
+    <script>
+        popupLink = null
+        {% if popup_active %}
+            {% if popup_active == "signup" %}
+                popupLink = document.querySelector("#signup-popup-link");
+            {% elif popup_active == "signin" %}
+                popupLink = document.querySelector("#signin-popup-link");
+            {% elif popup_active == "forgot" or popup_active == "forgot_code" or popup_active == "forgot_password" %}
+                popupLink = document.querySelector("#forgot-popup-link");
+            {% endif %}
+        {% endif %}
+        if (popupLink) {
+            setTimeout(() => openPopup(popupLink), 500);  // Open popup with slight delay
         }
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>

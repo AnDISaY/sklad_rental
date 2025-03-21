@@ -1263,29 +1263,13 @@
 .temporary {
     position: fixed;
     z-index: 100;
-    bottom: 100px;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
     opacity: 0;
     height: 0;
     overflow: hidden;
     animation: popupFadeOut 4s;
-
-    @media screen and (max-width: $md1) {
-        bottom: 75px
-    }
-
-    @media screen and (max-width: $md2) {
-        bottom: 50px;
-    }
-
-    @media screen and (max-width: $md3) {
-        bottom: 30px;
-    }
-
-    @media screen and (max-width: $md4) {
-        bottom: 6.25vw;
-    }
     
     @keyframes popupFadeOut {
         40% {

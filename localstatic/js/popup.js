@@ -6,7 +6,10 @@ body = document.querySelector('body')
 
 popupLinks.forEach(link => link.addEventListener("click", (e)=> {
     e.preventDefault()
+    openPopup(link)
+}))
 
+function openPopup(link) {
     if (link.classList[0] != "profile-mobile__item") {
         popups.forEach(popup => popup.classList.remove('popup-active'))
     }
@@ -39,7 +42,7 @@ popupLinks.forEach(link => link.addEventListener("click", (e)=> {
     }
     body.classList.add('lock')
     history.replaceState('', document.title, window.location.origin + window.location.pathname + window.location.search);
-}))
+}
 
 crosses.forEach(cross => cross.addEventListener("click", ()=> {
     popup = cross.closest('.popup')

@@ -29,7 +29,9 @@
                     </div>
                 </div>
                 <div class="history__accordion__panel">
-                    <div class="history__accordion__panel__text text-medium-small">{{ order.products|length }} товаров на {{ order.price }} ₸</div>
+                    <div class="bsdfjl392dm" style="display: none;">{{ order.products|length }}</div>
+                    <div class="spsfvdblvoe" style="display: none;">{{ order.price }}</div>
+                    <div class="history__accordion__panel__text text-medium-small"></div>
                     <div class="history__accordion__panel__cards">
                         {% for product in order.products %}
                             <div class="history__accordion__panel__card">
@@ -61,6 +63,30 @@
 {% block extra_scripts %}
 <script>
     document.querySelectorAll('.history__accordion__question__btn').forEach(btn => btn.addEventListener("click", (e)=> {e.stopPropagation()}))
+    function textCorrectionHistory() {
+        quantity = document.querySelectorAll('.bsdfjl392dm')
+        numArray = [2, 3, 4]
+        numArray2 = [11, 12, 13, 14]
+
+        quantity.forEach(quan => {
+            price = quan.closest('.history__accordion__panel').querySelector('.spsfvdblvoe').innerHTML
+            text = quan.closest('.history__accordion__panel').querySelector('.history__accordion__panel__text')
+            quan_to_if = Number(quan.innerHTML.slice(-1))
+            quan = Number(quan.innerHTML)
+
+            if (numArray2.includes(quan)) {
+                text.innerHTML = `${quan} товаров на ${price} ₸`
+            }
+            else if (numArray.includes(quan_to_if)) {
+                text.innerHTML = `${quan} товара на ${price} ₸`
+            } else if (quan_to_if == 1) {
+                text.innerHTML = `${quan} товар на ${price} ₸`
+            } else {
+                text.innerHTML = `${quan} товаров на ${price} ₸`
+            }
+        })
+    }
+    textCorrectionHistory()
 </script>
 <!-- <script src="{% static 'js/history_count.js' %}"></script> -->
 {% endblock %}

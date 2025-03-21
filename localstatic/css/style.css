@@ -2452,33 +2452,13 @@ body button {
 .temporary {
   position: fixed;
   z-index: 100;
-  bottom: 100px;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   opacity: 0;
   height: 0;
   overflow: hidden;
   animation: popupFadeOut 4s;
-}
-@media screen and (max-width: 1344px) {
-  .temporary {
-    bottom: 75px;
-  }
-}
-@media screen and (max-width: 1080px) {
-  .temporary {
-    bottom: 50px;
-  }
-}
-@media screen and (max-width: 720px) {
-  .temporary {
-    bottom: 30px;
-  }
-}
-@media screen and (max-width: 480px) {
-  .temporary {
-    bottom: 6.25vw;
-  }
 }
 @keyframes popupFadeOut {
   40% {

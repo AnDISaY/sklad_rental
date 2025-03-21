@@ -43,9 +43,10 @@ def sign_in(request):
         user = authenticate(request, phone=phone, password=request.POST["password"])
         if user is not None:
             login(request, user)
-            for uc in user_cart:
-                UserCart.objects.create(user=user, product=uc.product, quantity=uc.quantity)
-                uc.delete()
+            if user_cart is not None:
+                for uc in user_cart:
+                    UserCart.objects.create(user=user, product=uc.product, quantity=uc.quantity)
+                    uc.delete()
             request.session['success_message'] = 'Вы успешно вошли в аккаунт'
         else:
             request.session['error_message'] = ['Неверные телефон или пароль']
@@ -81,9 +82,10 @@ def sign_up(request):
                     user = User.objects.create_user(email=email, phone=phone, first_name=first_name, last_name=last_name, password=password)
                     user.save()
                     login(request, user)
-                    for uc in user_cart:
-                        UserCart.objects.create(user=user, product=uc.product, quantity=uc.quantity)
-                        uc.delete()
+                    if user_cart is not None:
+                            for uc in user_cart:
+                                UserCart.objects.create(user=user, product=uc.product, quantity=uc.quantity)
+                                uc.delete()
                     request.session['success_message'] = "Вы успешно зарегистрировались"
                 else:
                     messages = []
@@ -167,9 +169,10 @@ def forgot_password(request):
                     for ur in UserRecovery.objects.filter(user=user):
                         ur.delete()
                     
-                    for uc in user_cart:
-                        UserCart.objects.create(user=user, product=uc.product, quantity=uc.quantity)
-                        uc.delete()
+                    if user_cart is not None:
+                            for uc in user_cart:
+                                UserCart.objects.create(user=user, product=uc.product, quantity=uc.quantity)
+                                uc.delete()
                         
                     request.session['success_message'] = 'Пароль успешно изменен'
                 else:

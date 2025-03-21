@@ -40,6 +40,7 @@ for (i = 0; i < acc.length; i++) {
         var icon = this.lastChild.previousSibling.children[1];
         var icon2 = this.querySelector('.history__accordion__question__icon');
         var btn = this.querySelector('.history__accordion__question__btn');
+        var caption = this.closest('.history__accordion__item').querySelector('.history__accordion__panel__text')
 
         if (panel.style.maxHeight) {
             panel.style.maxHeight = null; // Close the panel
@@ -47,6 +48,7 @@ for (i = 0; i < acc.length; i++) {
             panel.classList.toggle("accordion-panel-active");
             icon.classList.toggle("accordion-icon-active");
             btn.classList.toggle("accordion-btn-active");
+            caption.style.opacity = "0"
 
             if (screen.width <= 720) {
                 // this.querySelector(".history__accordion__question__block").style.width = "100%"
@@ -56,7 +58,7 @@ for (i = 0; i < acc.length; i++) {
         } else {
             acc.forEach(acc => {acc.classList.remove("accordion-active")});
             document.querySelectorAll('.history__accordion__question__btn').forEach(btn => btn.classList.remove('accordion-btn-active'))
-            // document.querySelectorAll(".history__accordion__panel").forEach(panel => panel.classList.remove("accordion-panel-active"))
+            document.querySelectorAll('.history__accordion__panel__text').forEach(text => text.style.opacity = "0")
             document.querySelectorAll(".history__accordion__panel").forEach(panel => {
                 panel.classList.remove("accordion-panel-active");
                 panel.style.maxHeight = null; // Close the panel
@@ -67,6 +69,7 @@ for (i = 0; i < acc.length; i++) {
             panel.classList.toggle("accordion-panel-active");
             icon.classList.toggle("accordion-icon-active");
             btn.classList.toggle("accordion-btn-active");
+            caption.style.opacity = "1"
 
             if (screen.width <= 720) {
                 document.querySelectorAll('.history__accordion__question__block').forEach(block => block.style.width = "auto")
