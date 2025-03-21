@@ -7596,6 +7596,7 @@ body button {
 }
 .product__description {
   margin: 60px 0;
+  line-height: 160%;
 }
 .product__description-title {
   display: none;
