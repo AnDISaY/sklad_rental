@@ -34,7 +34,7 @@
         </div>
         {% set 1 as count %}
         {% for banner in banners %}
-        {% if not count > 2 %}
+        {% if  count < 2 %}
         <a class="banner__image-mobile popup-link" href="#banner-popup-{{ banner.id }}"><img src="{% static 'images/banner/image-banner-mobile.jpg' %}" alt="Banner image"></a>
         {% endif %}
         {% add count as count %}

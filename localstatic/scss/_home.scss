@@ -90,7 +90,6 @@
         }
 
         @media screen and (max-width: $md1) {
-            height: 307.5px;
 
             img {
                 height: 337.5px;
@@ -99,8 +98,6 @@
         }
 
         @media screen and (max-width: $md2) {
-            height: 205px;
-
             img {
                 height: 225px;
                 border-radius: 10px;
@@ -166,6 +163,16 @@
             width: 300px;
             padding: 28px 10px;
         }
+
+        @media screen and (max-width: $md3) {
+            width: 400px;
+            padding: 36px 14px;
+        }
+
+        @media screen and (max-width: $md4) {
+            width: 84.375vw;
+            padding: 7.5vw 2.813vw;
+        }
     }
 
     &__height {
@@ -180,6 +187,14 @@
             max-height: 266px;
         }
 
+        @media screen and (max-width: $md3) {
+            max-height: 350px;
+        }
+
+        @media screen and (max-width: $md4) {
+            max-height: 73.125vw;
+        }
+
         &::-webkit-scrollbar {
             width: 9px;
 
@@ -189,6 +204,14 @@
 
             @media screen and (max-width: $md2) {
                 width: 4.5px;
+            }
+
+            @media screen and (max-width: $md3) {
+                width: 6px;
+            }
+
+            @media screen and (max-width: $md4) {
+                width: 1.25vw;
             }
         }
 
@@ -204,6 +227,14 @@
                 border-radius: 5px;
             }
 
+            @media screen and (max-width: $md3) {
+                border-radius: 8px;
+            }
+
+            @media screen and (max-width: $md4) {
+                border-radius: 1.563vw;
+            }
+
             &:hover {
                 background-color: #636363;
             }
@@ -211,6 +242,7 @@
     }
 
     &__image {
+        box-sizing: border-box;
         width: 562px;
         height: 234px;
         margin-bottom: 50px;
@@ -227,6 +259,15 @@
             margin-bottom: 25px;
         }
 
+        @media screen and (max-width: $md3) {
+            width: 100%;
+            height: 153px;
+        }
+
+        @media screen and (max-width: $md4) {
+            height: 32.188vw;
+        }
+
         img {
             width: 100%;
             height: auto;
@@ -239,10 +280,19 @@
             @media screen and (max-width: $md2) {
                 border-radius: 10px;
             }
+
+            @media screen and (max-width: $md3) {
+                border-radius: 12px;
+            }
+
+            @media screen and (max-width: $md4) {
+                border-radius: 2.5vw;
+            }
         }
     }
 
     &__title {
+        max-width: 95%;
         color: $black;
         margin-bottom: 21px;
 
@@ -253,9 +303,18 @@
         @media screen and (max-width: $md2) {
             margin-bottom: 10px;
         }
+
+        @media screen and (max-width: $md3) {
+            margin-bottom: 15px;
+        }
+
+        @media screen and (max-width: $md4) {
+            margin-bottom: 3.125vw;
+        }
     }
 
     &__text {
+        max-width: 95%;
         color: #4a4a4a;
         font-size: 24px;
         font-weight: 500;
@@ -266,6 +325,14 @@
 
         @media screen and (max-width: $md2) {
             font-size: 12px;
+        }
+
+        @media screen and (max-width: $md3) {
+            font-size: 16px;
+        }
+
+        @media screen and (max-width: $md4) {
+            font-size: 3.75vw;
         }
     }
 }
