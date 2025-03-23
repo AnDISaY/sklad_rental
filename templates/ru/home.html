@@ -35,7 +35,7 @@
         {% set 1 as count %}
         {% for banner in banners %}
         {% if  count < 2 %}
-        <a class="banner__image-mobile popup-link" href="#banner-popup-{{ banner.id }}"><img src="{% static 'images/banner/image-banner-mobile.jpg' %}" alt="Banner image"></a>
+        <a class="banner__image-mobile popup-link" href="#banner-popup-{{ banner.id }}"><img src="{{ banner.large_photo.url }}" alt="Banner image"></a>
         {% endif %}
         {% add count as count %}
         {% endfor %}
@@ -47,7 +47,7 @@
         <div class="banner-popup__wrapper popup__wrapper">
             <div class="banner-popup__height">
                 <div class="banner-popup__close popup-close"><img src="{% static 'images/icon-close.svg' %}" alt="Cross icon"></div>
-                <div class="banner-popup__image"><img src="{{ banner.small_photo.url }}" alt="Banner image"></div>
+                <div class="banner-popup__image"><img src="{{ banner.large_photo.url }}" alt="Banner image"></div>
                 <div class="banner-popup__title title">{{ banner.title }}</div>
                 <div class="banner-popup__text">{{ banner.text|linebreaks }}</div>
             </div>
@@ -144,61 +144,19 @@
         <div class="faq__title title">F.A.Q.</div>
         <div class="faq__block">
             <div class="faq__accordion">
+                {% for faq in faqs %}
                 <div class="faq__accordion__item">
                     <div class="faq__accordion__question">
-                        <div class="faq__accordion__question__text text-medium-big">Какие документы необходимо предоставить для аренды?</div>
+                        <div class="faq__accordion__question__text text-medium-big">{{ faq.question }}</div>
                         <div class="faq__accordion__question__icon">
                             <div class="faq__accordion__question__line faq-line1"></div>
                             <div class="faq__accordion__question__line faq-line2"></div>
                         </div>
                     </div>
-                    <div class="faq__accordion__answer text-main">Чтобы взять оборудование в аренду, вам необходимо иметь при себе удостоверение личности</div>
+                    <div class="faq__accordion__answer text-main">{{ faq.answer }}</div>
                     <div class="faq__accordion__divider"></div>
                 </div>
-                <div class="faq__accordion__item">
-                    <div class="faq__accordion__question">
-                        <div class="faq__accordion__question__text text-medium-big">Какие документы необходимо предоставить для аренды?</div>
-                        <div class="faq__accordion__question__icon">
-                            <div class="faq__accordion__question__line faq-line1"></div>
-                            <div class="faq__accordion__question__line faq-line2"></div>
-                        </div>
-                    </div>
-                    <div class="faq__accordion__answer text-main">Чтобы взять оборудование в аренду, вам необходимо иметь при себе удостоверение личности</div>
-                    <div class="faq__accordion__divider"></div>
-                </div>
-                <div class="faq__accordion__item">
-                    <div class="faq__accordion__question">
-                        <div class="faq__accordion__question__text text-medium-big">Какие документы необходимо предоставить для аренды?</div>
-                        <div class="faq__accordion__question__icon">
-                            <div class="faq__accordion__question__line faq-line1"></div>
-                            <div class="faq__accordion__question__line faq-line2"></div>
-                        </div>
-                    </div>
-                    <div class="faq__accordion__answer text-main">Чтобы взять оборудование в аренду, вам необходимо иметь при себе удостоверение личности</div>
-                    <div class="faq__accordion__divider"></div>
-                </div>
-                <div class="faq__accordion__item">
-                    <div class="faq__accordion__question">
-                        <div class="faq__accordion__question__text text-medium-big">Какие документы необходимо предоставить для аренды?</div>
-                        <div class="faq__accordion__question__icon">
-                            <div class="faq__accordion__question__line faq-line1"></div>
-                            <div class="faq__accordion__question__line faq-line2"></div>
-                        </div>
-                    </div>
-                    <div class="faq__accordion__answer text-main">Чтобы взять оборудование в аренду, вам необходимо иметь при себе удостоверение личности</div>
-                    <div class="faq__accordion__divider"></div>
-                </div>
-                <div class="faq__accordion__item">
-                    <div class="faq__accordion__question">
-                        <div class="faq__accordion__question__text text-medium-big">Какие документы необходимо предоставить для аренды?</div>
-                        <div class="faq__accordion__question__icon">
-                            <div class="faq__accordion__question__line faq-line1"></div>
-                            <div class="faq__accordion__question__line faq-line2"></div>
-                        </div>
-                    </div>
-                    <div class="faq__accordion__answer text-main">Чтобы взять оборудование в аренду, вам необходимо иметь при себе удостоверение личности</div>
-                    <div class="faq__accordion__divider"></div>
-                </div>
+                {% endfor %}
             </div>
             <div class="faq__photo"><img src="{% static 'images/faq/image-camera.webp' %}" alt="Camera image"></div>
         </div>

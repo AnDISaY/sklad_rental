@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.http import JsonResponse, HttpResponse
-from .models import Product, Category, Banner
+from .models import Product, Category, Banner, Faq
 from users.models import UserProductFavorites, UserCart, UserRent
 
 import json
@@ -13,6 +13,7 @@ def home(request):
     products_popular = Product.objects.all().order_by('-views')
     categories = Category.objects.all()
     banners = Banner.objects.all()
+    faqs = Faq.objects.all()
     context = {}
     if 'success_message' in request.session:
         context['success_message'] = request.session.pop('success_message')
@@ -49,6 +50,7 @@ def home(request):
     context['products_popular'] = products_popular
     context['categories'] = categories
     context['banners'] = banners
+    context['faqs'] = faqs
     context['user_is_authenticated'] = user.is_authenticated
     context['user'] = user
 

@@ -434,16 +434,16 @@
                 flex-direction: column;
                 gap: 20px;
                 overflow-y: auto;
-                max-height: 150px;
+                max-height: 300px;
 
                 @media screen and (max-width: $md1) {
                     gap: 15px;
-                    max-height: 112.5px;
+                    max-height: 220px;
                 }
 
                 @media screen and (max-width: $md2) {
                     gap: 10px;
-                    max-height: 75px;
+                    max-height: 150px;
                 }
 
                 &::-webkit-scrollbar-track-piece {

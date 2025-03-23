@@ -801,10 +801,10 @@
         }
 
         &:last-child {
-            background-color: #bababa;
+            background-color: $black;
 
             &:hover {
-                background-color: #9b9b9b;
+                background-color: #3d3d3d;
             }
         }
     }
@@ -1127,6 +1127,202 @@
             bottom: 28.125vw;
             padding: 4.375vw 18.75vw;
             border-radius: 3.125vw;
+        }
+    }
+}
+
+
+
+
+.banner-popup {
+    &__wrapper {
+        width: 470px;
+        padding: 42px 15px;
+        box-sizing: border-box;
+
+        @media screen and (max-width: $md1) {
+            width: 350px;
+            padding: 30px 12px;
+        }
+
+        @media screen and (max-width: $md2) {
+            width: 280px;
+            padding: 21px 8px;
+        }
+
+        @media screen and (max-width: $md3) {
+            width: 400px;
+            padding: 36px 14px;
+        }
+
+        @media screen and (max-width: $md4) {
+            width: 84.375vw;
+            padding: 7.5vw 2.813vw;
+        }
+    }
+
+    &__height {
+        max-height: 400px;
+        overflow: auto;
+
+        @media screen and (max-width: $md1) {
+            max-height: 300px;
+        }
+
+        @media screen and (max-width: $md2) {
+            max-height: 240px;
+        }
+
+        @media screen and (max-width: $md3) {
+            max-height: 350px;
+        }
+
+        @media screen and (max-width: $md4) {
+            max-height: 73.125vw;
+        }
+
+        &::-webkit-scrollbar {
+            width: 9px;
+
+            @media screen and (max-width: $md1) {
+                width: 6.75px;
+            }
+
+            @media screen and (max-width: $md2) {
+                width: 4.5px;
+            }
+
+            @media screen and (max-width: $md3) {
+                width: 6px;
+            }
+
+            @media screen and (max-width: $md4) {
+                width: 1.25vw;
+            }
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: #4a4a4a;
+            border-radius: 10px;
+
+            @media screen and (max-width: $md1) {
+                border-radius: 7.5px;
+            }
+
+            @media screen and (max-width: $md2) {
+                border-radius: 5px;
+            }
+
+            @media screen and (max-width: $md3) {
+                border-radius: 8px;
+            }
+
+            @media screen and (max-width: $md4) {
+                border-radius: 1.563vw;
+            }
+
+            &:hover {
+                background-color: #636363;
+            }
+        }
+    }
+
+    &__image {
+        box-sizing: border-box;
+        width: 422px;
+        height: 176px;
+        margin-bottom: 30px;
+
+        @media screen and (max-width: $md1) {
+            width: 316px;
+            height: 132px;
+            margin-bottom: 25px;
+        }
+
+        @media screen and (max-width: $md2) {
+            width: 240px;
+            height: 100px;
+            margin-bottom: 20px;
+        }
+
+        @media screen and (max-width: $md3) {
+            width: 100%;
+            height: auto;
+            // height: 153px;
+        }
+
+        @media screen and (max-width: $md4) {
+            // height: 32.188vw;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+            object-fit: cover;
+
+            @media screen and (max-width: $md1) {
+                border-radius: 10px;
+            }
+
+            @media screen and (max-width: $md2) {
+                border-radius: 8px;
+            }
+
+            @media screen and (max-width: $md3) {
+                border-radius: 12px;
+                height: 210px;
+                object-position: 60%;;
+            }
+
+            @media screen and (max-width: $md4) {
+                border-radius: 2.5vw;
+            }
+        }
+    }
+
+    &__title {
+        max-width: 95%;
+        color: $black;
+        margin-bottom: 16px;
+
+        @media screen and (max-width: $md1) {
+            margin-bottom: 10px;
+        }
+
+        @media screen and (max-width: $md2) {
+            margin-bottom: 8px;
+        }
+
+        @media screen and (max-width: $md3) {
+            margin-bottom: 15px;
+        }
+
+        @media screen and (max-width: $md4) {
+            margin-bottom: 3.125vw;
+        }
+    }
+
+    &__text {
+        max-width: 95%;
+        color: #4a4a4a;
+        font-size: 18px;
+        font-weight: 500;
+
+        @media screen and (max-width: $md1) {
+            font-size: 13.5px;
+        }
+
+        @media screen and (max-width: $md2) {
+            font-size: 9px;
+        }
+
+        @media screen and (max-width: $md3) {
+            font-size: 16px;
+        }
+
+        @media screen and (max-width: $md4) {
+            font-size: 3.75vw;
         }
     }
 }

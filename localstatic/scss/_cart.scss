@@ -53,7 +53,12 @@
     }
 
     &__return {
-        width: 30px;
+        display: none;
+
+        @media screen and (max-width: $md3) {
+            display: block;
+            width: 30px;
+        }
 
         @media screen and (max-width: $md4) {
             width: 6.25vw;
@@ -89,7 +94,7 @@
         }
 
         &__mobile {
-            margin-top: 70px;
+            margin-top: 55px;
             display: none;
 
             @media screen and (max-width: $md3) {
@@ -98,7 +103,7 @@
             }
 
             @media screen and (max-width: $md4) {
-                margin-top: 14.375vw;
+                margin-top: 10vw;
             }
         }
 

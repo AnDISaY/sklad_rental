@@ -1,4 +1,4 @@
-from .models import Category, Brand, Product, Parameter, ProductPhoto, Banner
+from .models import Category, Brand, Product, Parameter, ProductPhoto, Banner, Faq
 from django.utils.html import format_html
 from django.contrib import admin
 
@@ -32,3 +32,4 @@ admin.site.register(Category, CategoryAdmin)
 admin.site.register(Brand)
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Banner)
+admin.site.register(Faq)

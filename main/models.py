@@ -56,8 +56,7 @@ class Parameter(models.Model):
 
 
 class Banner(models.Model):
-    large_photo = models.ImageField(upload_to='banner/', verbose_name='Крупное фото')
-    small_photo = models.ImageField(upload_to='banner/', verbose_name='Малое фото')
+    large_photo = models.ImageField(upload_to='banner/', verbose_name='Фото')
     title = models.CharField(max_length=150, verbose_name='Название')
     text = models.TextField(verbose_name='Текст')
 
@@ -67,3 +66,15 @@ class Banner(models.Model):
     class Meta:
         verbose_name = 'Баннер'
         verbose_name_plural = 'Баннеры'
+
+
+class Faq(models.Model):
+    question = models.CharField(max_length=200, verbose_name='Вопрос')
+    answer = models.TextField(verbose_name='Ответ')
+
+    def __str__(self):
+        return self.question
+    
+    class Meta:
+        verbose_name = 'Часто задаваемые вопросы'
+        verbose_name_plural = 'Часто задаваемые вопросы'
