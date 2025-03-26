@@ -377,7 +377,11 @@ def favorites(request):
             photo_list = i.product.photo.url.split('/')
             photo_url = f'{photo_list[2]}/{photo_list[3]}'
             price = "{:,d}".format(i.product.price).replace(',', ' ')
-            products_item = {"id": i.product.id, "name": i.product.name, "price": price, "discount": i.product.discount, "photo": photo_url, "category__name": i.product.category.name, "brand__name": i.product.brand.name, "is_complect": i.product.is_complect}
+            print(i.product.category)
+            print(i.product.category.name)
+            products_item = {"id": i.product.id, "name": i.product.name, "price": price, "discount": i.product.discount, "photo": photo_url, "category__name": i.product.category.name, "is_complect": i.product.is_complect}
+            if i.product.brand:
+                products_item['brand__name'] = i.product.brand.name
             products.append(products_item)
 
         for up in user_products:
