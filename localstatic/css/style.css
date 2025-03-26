@@ -3105,7 +3105,7 @@ body button {
 .popular__card {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: stretch;
   height: 100%;
 }
 @media screen and (max-width: 720px) {
@@ -3123,8 +3123,9 @@ body button {
   flex-direction: column;
   justify-content: space-between;
   box-sizing: border-box;
+  flex: 1;
+  gap: 20px;
   width: 220px;
-  height: 251px;
   margin-bottom: 24px;
   padding: 17px 22px 40px;
   background-color: #F3F3F3;
@@ -3133,7 +3134,6 @@ body button {
 @media screen and (max-width: 1344px) {
   .popular__card__image-block {
     width: 165px;
-    height: 188px;
     margin-bottom: 18px;
     padding: 13px 16.5px 30px;
     border-radius: 15px;
@@ -3142,7 +3142,6 @@ body button {
 @media screen and (max-width: 1080px) {
   .popular__card__image-block {
     width: 110px;
-    height: 125px;
     margin-bottom: 18px;
     padding: 8.5px 11px 20px;
     border-radius: 10px;
@@ -3151,7 +3150,6 @@ body button {
 @media screen and (max-width: 720px) {
   .popular__card__image-block {
     width: 200px;
-    height: 225px;
     margin-bottom: 21px;
     padding: 15px 20px 35px;
     border-radius: 18px;
@@ -3160,7 +3158,6 @@ body button {
 @media screen and (max-width: 480px) {
   .popular__card__image-block {
     width: 41.875vw;
-    height: 46.875vw;
     margin-bottom: 4.375vw;
     padding: 3.125vw 4.375vw 6.5vw;
   }
@@ -3247,35 +3244,32 @@ body button {
   color: #FF6400;
 }
 .popular__card__image {
-  width: 176px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 110px;
 }
 @media screen and (max-width: 1344px) {
   .popular__card__image {
-    width: 132px;
     height: 82px;
   }
 }
 @media screen and (max-width: 1080px) {
   .popular__card__image {
-    width: 88px;
     height: 55px;
   }
 }
 @media screen and (max-width: 720px) {
   .popular__card__image {
-    width: 157px;
     height: 98px;
   }
 }
 @media screen and (max-width: 480px) {
   .popular__card__image {
-    width: 32.813vw;
     height: 20.313vw;
   }
 }
 .popular__card__image img {
-  width: 100%;
   height: 100%;
   object-fit: cover;
 }
@@ -4405,36 +4399,31 @@ body button {
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
-  width: 122px;
-  height: 93px;
+  padding: 20px;
   background-color: #F3F3F3;
   border-radius: 20px;
 }
 @media screen and (max-width: 1344px) {
   .cart__card__image {
-    width: 91.5px;
-    height: 70px;
+    padding: 15px;
     border-radius: 15px;
   }
 }
 @media screen and (max-width: 1080px) {
   .cart__card__image {
-    width: 61px;
-    height: 46.5px;
+    padding: 10px;
     border-radius: 10px;
   }
 }
 @media screen and (max-width: 720px) {
   .cart__card__image {
-    width: 148px;
-    height: 113px;
+    padding: 24px;
     border-radius: 9px;
   }
 }
 @media screen and (max-width: 480px) {
   .cart__card__image {
-    width: 30.938vw;
-    height: 23.438vw;
+    padding: 5vw;
     border-radius: 1.875vw;
   }
 }
@@ -6976,7 +6965,7 @@ body button {
 .favorites__card {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: stretch;
   min-height: 100%;
 }
 .favorites__card__image-block {
@@ -6984,8 +6973,9 @@ body button {
   flex-direction: column;
   justify-content: space-between;
   box-sizing: border-box;
+  flex: 1;
+  gap: 20px;
   width: 220px;
-  height: 251px;
   margin-bottom: 24px;
   padding: 17px 22px 40px;
   background-color: #F3F3F3;
@@ -7108,35 +7098,32 @@ body button {
   color: #FF6400;
 }
 .favorites__card__image {
-  width: 176px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 110px;
 }
 @media screen and (max-width: 1344px) {
   .favorites__card__image {
-    width: 132px;
     height: 82.5px;
   }
 }
 @media screen and (max-width: 1080px) {
   .favorites__card__image {
-    width: 88px;
     height: 55px;
   }
 }
 @media screen and (max-width: 720px) {
   .favorites__card__image {
-    width: 174px;
     height: 108px;
   }
 }
 @media screen and (max-width: 480px) {
   .favorites__card__image {
-    width: 36.25vw;
     height: 22.5vw;
   }
 }
 .favorites__card__image img {
-  width: 100%;
   height: 100%;
   object-fit: cover;
 }

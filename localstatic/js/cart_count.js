@@ -6,16 +6,16 @@ total = 0
 
 prices.forEach(price => {
     discount = Number(price.closest('.cart__card').querySelector('.cart__card__discount__js').innerHTML)
-    priceInt = Number(price.innerHTML.slice(0, -1))
+    priceInt = Number(price.innerHTML.replace(" ", "").replace("₸", ""))
     if (discount) {
         priceNew = priceInt - ((priceInt * discount) / 100)
-        price.innerHTML = `${priceNew} ₸`
+        price.innerHTML = `${numberWithSpaces(priceNew)} ₸`
         total += priceNew * Number(price.closest('.cart__card').querySelector('.cart__card__quantity__value').innerHTML)
     } else {
         total += priceInt * Number(price.closest('.cart__card').querySelector('.cart__card__quantity__value').innerHTML)
     }
 })
-priceTotal.innerHTML = `${total}₸`
+priceTotal.innerHTML = `${numberWithSpaces(total)} ₸`
 
 flushes.forEach(flush => flush.addEventListener("click", (e)=> {
     e.preventDefault()

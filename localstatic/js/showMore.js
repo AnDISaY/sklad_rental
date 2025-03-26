@@ -15,9 +15,9 @@ prices.forEach(price => {
     priceNew = price.querySelector(`.${arrItem}__card__price__new`)
     if (priceOld) {
         discount = Number(price.closest(`.${arrItem}__card`).querySelector(`.${arrItem}__card__discount__js`).innerHTML)
-        priceInt = Number(priceOld.innerHTML.slice(0, -1))
+        priceInt = Number(priceOld.innerHTML.replace(" ", "").replace("₸", ""))
         priceDis = priceInt - ((priceInt * discount) / 100)
-        priceNew.innerHTML = `${priceDis} ₸`
+        priceNew.innerHTML = `${numberWithSpaces(Math.round(priceDis))} ₸`
     }
 })
 
@@ -125,17 +125,22 @@ if (screen.width > 720) {
             imageBlock.appendChild(imageEl)
             card.appendChild(imageBlock)
 
+            wrapContainer = document.createElement("div")
+            wrapContainerInner = document.createElement("div")
+            wrapContainerLast = document.createElement("div")
+            wrapContainerLast.classList.add(`${arrItem}__card__lastdiv`)
+
             categoryEl = document.createElement("div")
             categoryEl.classList.add(`${arrItem}__card__category`)
             categoryEl.classList.add(`text-medium-small`)
             categoryEl.innerHTML = products[i+5].category__name
-            card.appendChild(categoryEl)
+            wrapContainerInner.appendChild(categoryEl)
 
             nameEl = document.createElement("div")
             nameEl.classList.add(`${arrItem}__card__name`)
             nameEl.classList.add(`text-medium-big`)
             nameEl.innerHTML = products[i+5].name
-            card.appendChild(nameEl)
+            wrapContainerInner.appendChild(nameEl)
 
             priceBlock = document.createElement('div')
             priceBlock.classList.add(`${arrItem}__card__price`)
@@ -150,18 +155,18 @@ if (screen.width > 720) {
                 priceOld.innerHTML = `${products[i+5]['price']} ₸`
 
                 discount = Number(products[i+5]['discount'])
-                priceInt = Number(products[i+5]['price'])
+                priceInt = Number(products[i+5]['price'].replace(" ", "").replace("₸", ""))
                 priceDis = priceInt - ((priceInt * discount) / 100)
-                priceNew.innerHTML = `${priceDis} ₸`
+                priceNew.innerHTML = `${numberWithSpaces(Math.round(priceDis))} ₸`
 
                 priceBlock.appendChild(priceNew)
                 priceBlock.appendChild(priceOld)
             } else {
-                priceNew.innerHTML = products[i+5].price
+                priceNew.innerHTML = `${numberWithSpaces(products[i+5].price)} ₸`
                 priceBlock.appendChild(priceNew)
             }
 
-            card.appendChild(priceBlock)
+            wrapContainerLast.appendChild(priceBlock)
 
             if (window.cartArr) {
                 for (let c=0; c < window.cartArr.length; c++) {
@@ -186,7 +191,7 @@ if (screen.width > 720) {
                         cartWrap.appendChild(cartValue)
                         cartWrap.appendChild(cartPlus)
                         cartEl.appendChild(cartWrap)
-                        card.appendChild(cartEl)
+                        wrapContainerLast.appendChild(cartEl)
                     }
                 }
             }
@@ -197,9 +202,12 @@ if (screen.width > 720) {
                 cartBtn.classList.add(`${arrItem}__card__btn`)
                 cartBtn.classList.add(`text-semibold-mid`)
                 cartBtn.innerHTML = "Добавить в корзину"
-                card.appendChild(cartBtn)
+                wrapContainerLast.appendChild(cartBtn)
             }
 
+            wrapContainer.appendChild(wrapContainerInner)
+            wrapContainer.appendChild(wrapContainerLast)
+            card.appendChild(wrapContainer)
             cardsBlock.appendChild(card)
         }
 

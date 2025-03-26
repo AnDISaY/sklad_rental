@@ -407,6 +407,11 @@
         </div>
     </div>
     <script>
+        function numberWithSpaces(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+        }
+    </script>
+    <script>
         headerProfile = document.querySelector('.header__profile__text')
         profilePopupIcon = document.querySelector('.profile__icon')
         profilePopupWrapper = document.querySelector('.profile__wrapper')

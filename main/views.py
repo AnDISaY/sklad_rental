@@ -6,6 +6,9 @@ from users.models import UserProductFavorites, UserCart, UserRent
 
 import json
 import uuid
+import locale
+
+locale.setlocale(locale.LC_ALL, '')
 
 
 def home(request):
@@ -14,6 +17,10 @@ def home(request):
     categories = Category.objects.all()
     banners = Banner.objects.all()
     faqs = Faq.objects.all()
+
+    for product in products_popular:
+        product.price = "{:,d}".format(product.price).replace(',', ' ')
+
     context = {}
     if 'success_message' in request.session:
         context['success_message'] = request.session.pop('success_message')
@@ -27,8 +34,6 @@ def home(request):
     if 'popup_active' in request.session:
         context['popup_active'] = request.session.pop('popup_active')
     if 'sign_data_context' in request.session:
-        print(request.session['sign_data_context'])
-        print(request.session['sign_data_context']['last_name'])
         context['sign_data'] = request.session.pop('sign_data_context')
     if user.is_authenticated:
         user_products = UserProductFavorites.objects.filter(user=user)
@@ -165,11 +170,15 @@ def cart(request):
 
     if user.is_authenticated:
         user_cart = UserCart.objects.filter(user=user)
+        for uc in user_cart:
+            uc.product.price = "{:,d}".format(uc.product.price).replace(',', ' ')
         context['user_cart'] = user_cart
         context['cart_length'] = len(user_cart)
     else:
         try:
             user_cart = UserCart.objects.filter(session_id=request.session['nonuser'])
+            for uc in user_cart:
+                uc.product.price = "{:,d}".format(uc.product.price).replace(',', ' ')
             context['user_cart'] = user_cart
             context['cart_length'] = len(user_cart)
         except:
@@ -182,6 +191,8 @@ def cart(request):
 def order(request):
     user = request.user
     user_cart = UserCart.objects.filter(user=user)
+    for uc in user_cart:
+        uc.product.price = "{:,d}".format(uc.product.price).replace(',', ' ')
     categories = Category.objects.all()
     context = {"user": user, "user_is_authenticated": user.is_authenticated,'user_cart': user_cart, 'cart_length': len(user_cart), "categories": categories, "cartJs": "[]", "favorites": "[]"}
     if 'success_message' in request.session:
@@ -226,7 +237,10 @@ def reorder(request, order_id):
     categories = Category.objects.all()
     previous_order = UserRent.objects.get(id=order_id)
     products = previous_order.products
-    print(products)
+    for product in products:
+        product['price'] = "{:,d}".format(product['price']).replace(',', ' ')
+        product['new_price'] = "{:,d}".format(product['new_price']).replace(',', ' ')
+    
     context = {"user": user, "user_is_authenticated": user.is_authenticated,'user_cart': user_cart, 'cart_length': len(user_cart), "categories": categories, "products": products, "cartJs": "[]", "favorites": "[]"}
     if 'success_message' in request.session:
         context['success_message'] = request.session.pop('success_message')
@@ -259,8 +273,12 @@ def category(request, pk):
     category = Category.objects.get(id=pk)
     categories = Category.objects.all()
     products = list(category.products.all().values("id", "name", "price", "discount", "photo", "category__name", "brand__name", "is_complect"))
-    products = json.dumps(products, ensure_ascii=False)
-    context = {"user": user, "user_is_authenticated": user.is_authenticated, "category": category, "products": products, "categories": categories}
+
+    for product in products:
+        product['price'] = "{:,d}".format(product['price']).replace(',', ' ')
+    products_json = json.dumps(products, ensure_ascii=False)
+        
+    context = {"user": user, "user_is_authenticated": user.is_authenticated, "category": category, "products": products, "products_json": products_json, "categories": categories}
     if 'success_message' in request.session:
         context['success_message'] = request.session.pop('success_message')
         if 'success_message_subtext' in request.session:
@@ -358,17 +376,16 @@ def favorites(request):
             photo_url = ''
             photo_list = i.product.photo.url.split('/')
             photo_url = f'{photo_list[2]}/{photo_list[3]}'
-            products_item = {"id": i.product.id, "name": i.product.name, "price": i.product.price, "discount": i.product.discount, "photo": photo_url, "category__name": i.product.category.name, "brand__name": i.product.brand.name, "is_complect": i.product.is_complect}
-            if i.product.discount is not None:
-                products_item['discount'] = i.product.discount
-                products_item['price'] = int(i.product.price - ((i.product.price * i.product.discount) / 100))
+            price = "{:,d}".format(i.product.price).replace(',', ' ')
+            products_item = {"id": i.product.id, "name": i.product.name, "price": price, "discount": i.product.discount, "photo": photo_url, "category__name": i.product.category.name, "brand__name": i.product.brand.name, "is_complect": i.product.is_complect}
             products.append(products_item)
 
         for up in user_products:
             favorites.append(up.product.pk)
 
         context['user_favorites'] = user_favorites
-        context['products'] = json.dumps(products, ensure_ascii=False)
+        context['products'] = products
+        context['products_json'] = json.dumps(products, ensure_ascii=False)
         context['favorites'] = favorites
         context['cart'] = user_cart
         context['cart_length'] = len(user_cart)
@@ -415,8 +432,15 @@ def product_view(request, pk):
     if request.method == "GET":
         product.views += 1
         product.save()
+    context = {"user": user, "user_is_authenticated": user.is_authenticated}
+    if product.discount is not None:
+        context['new_price'] = "{:,d}".format(int(product.price - ((product.price * product.discount) / 100))).replace(',', ' ')
+    product.price = "{:,d}".format(product.price).replace(',', ' ')
     categories = Category.objects.all()
-    context = {"user": user, "user_is_authenticated": user.is_authenticated, "product": product, "categories": categories}
+
+    context['categories'] = categories
+    context['product'] = product
+
     if 'success_message' in request.session:
         context['success_message'] = request.session.pop('success_message')
         if 'success_message_subtext' in request.session:
@@ -427,9 +451,6 @@ def product_view(request, pk):
         context['redirect'] = request.session.pop('redirect')
     if 'popup_active' in request.session:
         context['popup_active'] = request.session.pop('popup_active')
-    
-    if product.discount is not None:
-        context['new_price'] = int(product.price - ((product.price * product.discount) / 100))
                 
     if user.is_authenticated:
         user_products = UserProductFavorites.objects.filter(user=user)

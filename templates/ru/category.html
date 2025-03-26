@@ -15,7 +15,7 @@
             <div class="category__filt__itmetext-main">Фильтры</div>
         </div> -->
         <div class="category__cards">
-            {% for product in category.products.all %}
+            {% for product in products %}
             <a href="{% url 'product' product.id %}" class="category__card favorite-card">
                 <div class="fsd12mjh63" style="display: none;">{{ product.id }}</div>
                 <div>
@@ -50,7 +50,7 @@
                                 </div>
                             {% endif %}
                         </div>
-                        <div class="category__card__image"><img src="{{ product.photo.url }}" alt="Product image"></div>
+                        <div class="category__card__image"><img src="/media/{{ product.photo }}" alt="Product image"></div>
                     </div>
                     <div class="category__card__category text-medium-small">{{ product.category }}</div>
                     <div class="category__card__name text-medium-big">{{ product.name }}</div>
@@ -90,7 +90,7 @@
 {% block extra_scripts %}
 <script>
     window.user_is_authenticated = `{{ user_is_authenticated }}`
-    window.products = {{ products|safe }}
+    window.products = {{ products_json|safe }}
     window.cartArr = {{ cartJs|safe }}
     window.favArray = {{ favorites }}
 </script>

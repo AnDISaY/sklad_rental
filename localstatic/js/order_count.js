@@ -4,11 +4,11 @@ let total = 0
 
 prices.forEach(price => {
     discount = price.closest('.order__cart__card').querySelector('.order__cart__card__discount__js')
-    priceInt = Number(price.innerHTML)
+    priceInt = Number(price.innerHTML.replace(" ", "").replace("₸", ""))
     if (discount && discount.innerHTML != "None") {
         discount = Number(discount.innerHTML)
         priceNew = priceInt - ((priceInt * discount) / 100)
-        price.closest('.order__cart__card').querySelector('.order__cart__card__price').innerHTML = `${priceNew} x ${price.closest('.order__cart__card').querySelector('.order__cart__card__quantity__js').innerHTML}шт.`
+        price.closest('.order__cart__card').querySelector('.order__cart__card__price').innerHTML = `${numberWithSpaces(priceNew)} x ${price.closest('.order__cart__card').querySelector('.order__cart__card__quantity__js').innerHTML}шт.`
         // console.log(discount)
         // console.log(priceNew)
         // console.log(price.innerHTML)
@@ -18,7 +18,7 @@ prices.forEach(price => {
         total += priceInt * Number(price.closest('.order__cart__card').querySelector('.order__cart__card__quantity__js').innerHTML)
     }
 })
-totalEl.innerHTML = `${total}₸`
+totalEl.innerHTML = `${numberWithSpaces(total)} ₸`
 document.querySelector('#priceInput').value = total
 
 // $('.order__form').on('submit', function(event) {

@@ -51,7 +51,7 @@ function cartSetup() {
         if (cartItem == "product") {
             btn.closest(`.${cartItem}__card`).prepend(cart)
         } else {
-            btn.closest(`.${cartItem}__card .popular__card__lastdiv`).appendChild(cart)
+            btn.closest(`.${cartItem}__card .${cartItem}__card__lastdiv`).appendChild(cart)
         }
         btn.remove()
 
@@ -105,7 +105,7 @@ function cartSetup() {
             if (cartItem == "product") {
                 minus.closest(`.${cartItem}__card`).prepend(btn)
             } else {
-                minus.closest(`.${cartItem}__card .popular__card__lastdiv`).appendChild(btn)
+                minus.closest(`.${cartItem}__card .${cartItem}__card__lastdiv`).appendChild(btn)
             }
             minus.closest(`.${cartItem}__card__cart`).remove()
 

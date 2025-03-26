@@ -29,9 +29,11 @@
 
     .calendar-header {
         display: flex;
+        justify-content: space-between;
         align-items: center;
         font-size: 18px;
-        gap: 15px;
+        width: 100%;
+        margin: 0 7px;
     }
 
     .calendar-header button {
@@ -297,7 +299,7 @@
                     <div class="order__cart__cards">
                         {% for uc in user_cart %}
                             <div class="order__cart__card">
-                                <div class="order__cart__card__image"><img src="{{ uc.product.photo.url }}" alt=""></div>
+                                <div class="order__cart__card__image"><img src="{{ uc.product.photo.url }}" alt="Product photo"></div>
                                 <div class="order__cart__card__content">
                                     <div class="order__cart__card__id__js" style="display: none;">{{ uc.product.id }}</div>
                                     <div class="order__cart__card__price__js" style="display: none;">{{ uc.product.price }}</div>

@@ -240,32 +240,37 @@
             justify-content: center;
             align-items: center;
             flex-shrink: 0;
-            width: 122px;
-            height: 93px;
+            // width: 122px;
+            // height: 93px;
+            padding: 20px;
             background-color: #F3F3F3;
             border-radius: 20px;
 
             @media screen and (max-width: $md1) {
-                width: 91.5px;
-                height: 70px;
+                // width: 91.5px;
+                // height: 70px;
+                padding: 15px;
                 border-radius: 15px;
             }
 
             @media screen and (max-width: $md2) {
-                width: 61px;
-                height: 46.5px;
+                // width: 61px;
+                // height: 46.5px;
+                padding: 10px;
                 border-radius: 10px;
             }
 
             @media screen and (max-width: $md3) {
-                width: 148px;
-                height: 113px;
+                // width: 148px;
+                // height: 113px;
+                padding: 24px;
                 border-radius: 9px;
             }
 
             @media screen and (max-width: $md4) {
-                width: 30.938vw;
-                height: 23.438vw;
+                // width: 30.938vw;
+                // height: 23.438vw;
+                padding: 5vw;
                 border-radius: 1.875vw;
             }
 

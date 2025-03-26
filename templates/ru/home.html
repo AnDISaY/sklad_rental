@@ -65,7 +65,7 @@
                         <div class="swiper-slide">
                             <a href="{% url 'product' product.id %}" class="popular__card favorite-card">
                                 <div class="fsd12mjh63" style="display: none;">{{ product.id }}</div>
-                                <div>
+                                <!-- <div> -->
                                     <div class="popular__card__image-block">
                                         <div class="popular__card__upper">
                                             <div class="popular__card__upper__left">
@@ -99,30 +99,33 @@
                                         </div>
                                         <div class="popular__card__image"><img src="{{ product.photo.url }}" alt="Product image"></div>
                                     </div>
-                                    <div class="popular__card__category text-medium-small">{{ product.category }}</div>
-                                    <div class="popular__card__name text-medium-big">{{ product.name }}</div>
-                                </div>
-                                <div class="popular__card__lastdiv">
-                                    <div class="popular__card__price">
-                                        {% if product.discount %}
-                                        <div class="popular__card__price__new text-regular"></div>
-                                        <div class="popular__card__price__old text-regular">{{ product.price }} ₸</div>
-                                        {% else %}
-                                        <div class="popular__card__price__new text-regular">{{ product.price }} ₸</div>
-                                        {% endif %}
+                                <div>
+                                    <div>
+                                        <div class="popular__card__category text-medium-small">{{ product.category }}</div>
+                                        <div class="popular__card__name text-medium-big">{{ product.name }}</div>
                                     </div>
-                                    <div class="popular__card__btn text-semibold-mid">Добавить в корзину</div>
-                                    {% for item in cart %}
-                                        {% if product.id == item.product.id %}
-                                            <div class="popular__card__cart">
-                                                <div class="popular__card__cart__wrapper">
-                                                    <div class="popular__card__cart__minus text-medium-big">-</div>
-                                                    <div class="popular__card__cart__value text-medium-big">{{ item.quantity }}</div>
-                                                    <div class="popular__card__cart__plus text-medium-big">+</div>
+                                    <div class="popular__card__lastdiv">
+                                        <div class="popular__card__price">
+                                            {% if product.discount %}
+                                            <div class="popular__card__price__new text-regular"></div>
+                                            <div class="popular__card__price__old text-regular">{{ product.price }} ₸</div>
+                                            {% else %}
+                                            <div class="popular__card__price__new text-regular">{{ product.price }} ₸</div>
+                                            {% endif %}
+                                        </div>
+                                        <div class="popular__card__btn text-semibold-mid">Добавить в корзину</div>
+                                        {% for item in cart %}
+                                            {% if product.id == item.product.id %}
+                                                <div class="popular__card__cart">
+                                                    <div class="popular__card__cart__wrapper">
+                                                        <div class="popular__card__cart__minus text-medium-big">-</div>
+                                                        <div class="popular__card__cart__value text-medium-big">{{ item.quantity }}</div>
+                                                        <div class="popular__card__cart__plus text-medium-big">+</div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        {% endif %}
-                                    {% endfor %}
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
                                 </div>
                             </a>
                         </div>
@@ -207,9 +210,9 @@
             priceNew = price.querySelector('.popular__card__price__new')
             if (priceOld) {
                 discount = Number(price.closest('.popular__card').querySelector('.popular__card__discount__js').innerHTML)
-                priceInt = Number(priceOld.innerHTML.slice(0, -1))
+                priceInt = Number(priceOld.innerHTML.replace(" ", "").replace("₸", ""))
                 priceDis = priceInt - ((priceInt * discount) / 100)
-                priceNew.innerHTML = `${priceDis} ₸`
+                priceNew.innerHTML = `${numberWithSpaces(Math.round(priceDis))} ₸`
             }
         })
     </script>
