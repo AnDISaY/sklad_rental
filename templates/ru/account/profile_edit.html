@@ -17,10 +17,10 @@
             <div class="edit__column">
                 <div class="edit__text text-semibold-big">Личная информация</div>
                 <form method="post" action="{% url 'profile_edit' %}" class="edit__form">{% csrf_token %}
-                    <div class="edit__form__input__block">
-                        <div class="edit__form__input__text">+7</div>
-                        <input type="text" class="edit__form__input text-main" name="phone" placeholder="Номер телефона" value="{{ user.phone }}" required>
-                    </div>
+                    <label class="edit__form__input__label" for="edit-phone-input">
+                            <input class="edit__form__input__text text-main"  type="text" value="+7" disabled>
+                            <input class="edit__form__input text-main" id="edit-phone-input" type="text" name="phone" value="{{ user.phone }}" required>
+                    </label>
                     <input type="text" class="edit__form__input text-main" name="last_name" placeholder="Фамилия" value="{{ user.last_name }}" required>
                     <input type="text" class="edit__form__input text-main" name="first_name" placeholder="Имя" value="{{ user.first_name }}" required>
                     <input type="text" class="edit__form__input text-main" name="email" placeholder="E-mail" value="{{ user.email }}" required>

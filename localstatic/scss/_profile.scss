@@ -215,22 +215,45 @@
                 border-radius: 3.438vw;
             }
 
-            // &__text {
-            //     margin: 0 10px;
+            &__text {
+                color: #fff;
+                // margin: 0 10px 0 0;
+                background-color: transparent;
+                border: none;
+                outline: none;
+                width: 18px;
 
-            //     @media screen and (max-width: $md1) {
-            //         margin: 0 7.5px;
-            //     }
+                @media screen and (max-width: $md1) {
+                    // margin: 0 7.5px 0 0;
+                    width: 13.5px;
+                }
 
-            //     @media screen and (max-width: $md2) {
-            //         margin: 0 5px;
-            //     }
-            // }
+                @media screen and (max-width: $md2) {
+                    // margin: 0 5px 0 0;
+                    width: 9px;
+                }
 
-            // &__block {
-            //     display: flex;
-            //     align-items: center;
-            // }
+                @media screen and (max-width: $md3) {
+                    // margin: 0 10px 0 0;
+                    width: 17px;
+                }
+
+                @media screen and (max-width: $md4) {
+                    // margin: 0 2.188vw 0 0;
+                    width: 3.5vw;
+                }
+            }
+
+            &__label {
+                display: flex;
+                align-items: center;
+                justify-content: stretch;
+                box-sizing: border-box;
+                width: 100%;
+                padding: 10px 18px !important;
+                border: 2px solid #929292;
+                border-radius: 12px;
+            }
 
             &::placeholder {
                 font-family: $ff;

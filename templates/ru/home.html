@@ -35,7 +35,7 @@
         {% set 1 as count %}
         {% for banner in banners %}
         {% if  count < 2 %}
-        <a class="banner__image-mobile popup-link" href="#banner-popup-{{ banner.id }}"><img src="{{ banner.large_photo.url }}" alt="Banner image"></a>
+        <a class="banner__image-mobile popup-link" href="#banner-popup-{{ banner.id }}"><img src="{{ banner.small_photo.url }}" alt="Banner image"></a>
         {% endif %}
         {% add count as count %}
         {% endfor %}

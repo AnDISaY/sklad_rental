@@ -64,32 +64,42 @@
 
             &__text {
                 color: $black;
-                margin-right: 10px;
+                // margin: 0 10px 0 0;
+                background-color: transparent;
+                border: none;
+                outline: none;
+                width: 18px;
 
                 @media screen and (max-width: $md1) {
-                    margin-right: 7.5px;
+                    // margin: 0 7.5px 0 0;
+                    width: 13.5px;
                 }
 
                 @media screen and (max-width: $md2) {
-                    margin-right: 5px;
+                    // margin: 0 5px 0 0;
+                    width: 9px;
                 }
 
                 @media screen and (max-width: $md3) {
-                    margin-right: 10px;
+                    // margin: 0 10px 0 0;
+                    width: 17px;
                 }
 
                 @media screen and (max-width: $md4) {
-                    margin-right: 2.188vw;
+                    // margin: 0 2.188vw 0 0;
+                    width: 3.5vw;
                 }
             }
 
-            &__block {
+            &__label {
                 display: flex;
                 align-items: center;
-
-                input {
-                    width: 100%;
-                }
+                justify-content: stretch;
+                box-sizing: border-box;
+                width: 100%;
+                padding: 10px 18px !important;
+                border: 2px solid #929292;
+                border-radius: 12px;
             }
 
             &::placeholder {
@@ -215,33 +225,42 @@
 
             &__text {
                 color: $black;
-                margin: 0 10px 0 0;
+                // margin: 0 10px 0 0;
+                background-color: transparent;
+                border: none;
+                outline: none;
+                width: 18px;
 
                 @media screen and (max-width: $md1) {
-                    margin: 0 7.5px 0 0;
+                    // margin: 0 7.5px 0 0;
+                    width: 13.5px;
                 }
 
                 @media screen and (max-width: $md2) {
-                    margin: 0 5px 0 0;
+                    // margin: 0 5px 0 0;
+                    width: 9px;
                 }
 
                 @media screen and (max-width: $md3) {
-                    margin: 0 10px 0 0;
+                    // margin: 0 10px 0 0;
+                    width: 17px;
                 }
 
                 @media screen and (max-width: $md4) {
-                    margin: 0 2.188vw 0 0;
+                    // margin: 0 2.188vw 0 0;
+                    width: 3.5vw;
                 }
             }
 
-            &__block {
+            &__label {
                 display: flex;
                 align-items: center;
+                justify-content: stretch;
+                box-sizing: border-box;
                 width: 100%;
-
-                input {
-                    width: 100%;
-                }
+                padding: 10px 18px !important;
+                border: 2px solid #929292;
+                border-radius: 12px;
             }
 
             &::placeholder {
@@ -438,6 +457,20 @@
             color: #303030;
         }
     }
+}
+
+#signin-phone-input, #signup-phone-input, #edit-phone-input {
+    display: inline-block;
+    box-sizing: border-box;
+    height: 100%;
+    flex: 1;
+    width: auto;
+    padding: 0 !important;
+    margin: 0;
+    border: none;
+    outline: none;
+    height: auto;
+    border-radius: 0;
 }
 
 

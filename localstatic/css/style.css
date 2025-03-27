@@ -1240,34 +1240,40 @@ body button {
 }
 .signup__form__input__text {
   color: #1C1C1C;
-  margin-right: 10px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  width: 18px;
 }
 @media screen and (max-width: 1344px) {
   .signup__form__input__text {
-    margin-right: 7.5px;
+    width: 13.5px;
   }
 }
 @media screen and (max-width: 1080px) {
   .signup__form__input__text {
-    margin-right: 5px;
+    width: 9px;
   }
 }
 @media screen and (max-width: 720px) {
   .signup__form__input__text {
-    margin-right: 10px;
+    width: 17px;
   }
 }
 @media screen and (max-width: 480px) {
   .signup__form__input__text {
-    margin-right: 2.188vw;
+    width: 3.5vw;
   }
 }
-.signup__form__input__block {
+.signup__form__input__label {
   display: flex;
   align-items: center;
-}
-.signup__form__input__block input {
+  justify-content: stretch;
+  box-sizing: border-box;
   width: 100%;
+  padding: 10px 18px !important;
+  border: 2px solid #929292;
+  border-radius: 12px;
 }
 .signup__form__input::placeholder {
   font-family: "Gilroy", "sans-serif";
@@ -1401,35 +1407,40 @@ body button {
 }
 .signin__form__input__text {
   color: #1C1C1C;
-  margin: 0 10px 0 0;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  width: 18px;
 }
 @media screen and (max-width: 1344px) {
   .signin__form__input__text {
-    margin: 0 7.5px 0 0;
+    width: 13.5px;
   }
 }
 @media screen and (max-width: 1080px) {
   .signin__form__input__text {
-    margin: 0 5px 0 0;
+    width: 9px;
   }
 }
 @media screen and (max-width: 720px) {
   .signin__form__input__text {
-    margin: 0 10px 0 0;
+    width: 17px;
   }
 }
 @media screen and (max-width: 480px) {
   .signin__form__input__text {
-    margin: 0 2.188vw 0 0;
+    width: 3.5vw;
   }
 }
-.signin__form__input__block {
+.signin__form__input__label {
   display: flex;
   align-items: center;
+  justify-content: stretch;
+  box-sizing: border-box;
   width: 100%;
-}
-.signin__form__input__block input {
-  width: 100%;
+  padding: 10px 18px !important;
+  border: 2px solid #929292;
+  border-radius: 12px;
 }
 .signin__form__input::placeholder {
   font-family: "Gilroy", "sans-serif";
@@ -1634,6 +1645,20 @@ body button {
 }
 .forgot__link:hover {
   color: #303030;
+}
+
+#signin-phone-input, #signup-phone-input, #edit-phone-input {
+  display: inline-block;
+  box-sizing: border-box;
+  height: 100%;
+  flex: 1;
+  width: auto;
+  padding: 0 !important;
+  margin: 0;
+  border: none;
+  outline: none;
+  height: auto;
+  border-radius: 0;
 }
 
 .profile {
@@ -5576,6 +5601,43 @@ body button {
     padding: 4.375vw 3.438vw;
     border-radius: 3.438vw;
   }
+}
+.edit__form__input__text {
+  color: #fff;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  width: 18px;
+}
+@media screen and (max-width: 1344px) {
+  .edit__form__input__text {
+    width: 13.5px;
+  }
+}
+@media screen and (max-width: 1080px) {
+  .edit__form__input__text {
+    width: 9px;
+  }
+}
+@media screen and (max-width: 720px) {
+  .edit__form__input__text {
+    width: 17px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .edit__form__input__text {
+    width: 3.5vw;
+  }
+}
+.edit__form__input__label {
+  display: flex;
+  align-items: center;
+  justify-content: stretch;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px 18px !important;
+  border: 2px solid #929292;
+  border-radius: 12px;
 }
 .edit__form__input::placeholder {
   font-family: "Gilroy", "sans-serif";
