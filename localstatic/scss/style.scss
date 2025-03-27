@@ -29,6 +29,9 @@ $black: #1C1C1C;
 //</ПЕРЕМЕННЫЕ>
 
 //<ОБНУЛЕНИЕ>
+section, header, footer {
+    display: none !important;
+}
 html, body {
     min-height: 100%;
 }
@@ -60,6 +63,7 @@ body {
 
 //<ОБЩИЕ КЛАССЫ>
 @import "_sample";
+@import "_preload";
 //</ОБЩИЕ КЛАССЫ>
 
 //<HEADER>

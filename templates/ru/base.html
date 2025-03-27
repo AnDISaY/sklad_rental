@@ -55,7 +55,8 @@
         font-weight: 700;
     }
 </style>
-<body>
+<body class="lock">
+    <div class="loader"><div class="loader__animation"></div></div>
     <header class="header">
         <div class="header__container container">
             <div class="header__list">
@@ -456,6 +457,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="{% static 'js/preload.js' %}"></script>
     <script src="{% static 'js/smoothAnchor.js' %}"></script>
     <script src="{% static 'js/searchFilter.js' %}"></script>
     <script src="{% static 'js/dropdown.js' %}"></script>

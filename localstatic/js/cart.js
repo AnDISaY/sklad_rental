@@ -105,7 +105,7 @@ function cartSetup() {
             if (cartItem == "product") {
                 minus.closest(`.${cartItem}__card`).prepend(btn)
             } else {
-                minus.closest(`.${cartItem}__card .${cartItem}__card__lastdiv`).appendChild(btn)
+                minus.closest(`.${cartItem}__card`).querySelector(`.${cartItem}__card__lastdiv`).appendChild(btn)
             }
             minus.closest(`.${cartItem}__card__cart`).remove()
 
