@@ -126,7 +126,9 @@ if (screen.width > 720) {
             card.appendChild(imageBlock)
 
             wrapContainer = document.createElement("div")
+            wrapContainer.classList.add(`${arrItem}__card__wrapper`)
             wrapContainerInner = document.createElement("div")
+            wrapContainerInner.classList.add(`${arrItem}__card__wrapper__inner`)
             wrapContainerLast = document.createElement("div")
             wrapContainerLast.classList.add(`${arrItem}__card__lastdiv`)
 

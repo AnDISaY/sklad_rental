@@ -1,0 +1,104 @@
+{% extends 'ru/base.html' %}
+{% load static %}
+
+{% block title %}Избранное{% endblock %}
+
+{% block content %}
+<section class="favorites">
+    <div class="favorites__container container">
+        <a href="{% url 'home' %}" class="favorites__return">
+            <div class="favorites__return__icon"><img src="{% static 'images/profile/icon-return.svg' %}" alt="Arrow icon"></div>
+            <div class="favorites__return__text text-main">Вернутьcя</div>
+            <div class="favorites__return__icon favorites__return__icon__mobile"><img src="{% static 'images/category/icon-return.svg' %}" alt="Arrow icon"></div>
+            <div class="favorites__return__text favorites__return__text__mobile title">Избранное</div>
+        </a>
+        <div class="favorites__title title">Избранное</div>
+        <div class="favorites__cards">
+            {% if user_favorites %}
+                {% for product in products %}
+                    <a href="{% url 'product' product.id %}" class="favorites__card favorite-card">
+                        <div class="fsd12mjh63" style="display: none;">{{ product.id }}</div>
+                        <!-- <div> -->
+                        <div class="favorites__card__image-block">
+                            <div class="favorites__card__upper">
+                                <div class="favorites__card__upper__left">
+                                    {% if product.discount %}
+                                        <div class="favorites__card__discount__js" style="display: none;">{{ product.discount }}</div>
+                                        <div class="favorites__card__discount text-semibold-mid">-{{ product.discount }}%</div>
+                                    {% endif %}
+                                    {% if product.is_complect %}
+                                        <div class="favorites__card__complect text-semibold-mid">комплект</div>
+                                    {% endif %}
+                                </div>
+                                {% if user_is_authenticated %}
+                                    <div class="favorites__card__favorite favorite-btn">
+                                        {% if product.id in favorites %}
+                                        <svg class="unfavorite-svg" width="100%" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M11 19C10.8887 19 10.7775 18.9713 10.6778 18.9138C10.5695 18.8514 7.99691 17.3599 5.38743 15.1125C3.84082 13.7805 2.60624 12.4594 1.71808 11.1859C0.568758 9.53795 -0.00921315 7.95286 0.000111035 6.47457C0.0110251 4.75441 0.628011 3.13671 1.73755 1.91942C2.86582 0.681629 4.37152 0 5.97739 0C8.03545 0 9.91709 1.15121 11 2.97486C12.083 1.15125 13.9646 0 16.0227 0C17.5398 0 18.9873 0.615036 20.0986 1.73183C21.3183 2.9574 22.0112 4.68906 21.9999 6.48272C21.9905 7.95844 21.4017 9.54113 20.2498 11.1868C19.3589 12.4596 18.1261 13.7801 16.5855 15.1117C13.9856 17.3589 11.4315 18.8504 11.324 18.9128C11.2256 18.9699 11.1138 19 11 19Z" fill="#FF6400"/>
+                                        </svg>
+                                        {% else %}
+                                        <svg class="favorite-svg" width="100%" viewBox="0 0 22 19" fill="red" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M16.2708 0C13.9755 0 11.8919 1.60413 11 3.77331C10.1081 1.60327 8.0245 0 5.72917 0C2.57033 0 0 2.43003 0 5.41644C0 11.2749 8.94117 17.6099 10.7332 18.8197L11 19L11.2668 18.8197C13.0598 17.6099 22 11.274 22 5.41644C22 2.43003 19.4297 0 16.2708 0ZM11 17.9332C6.28742 14.6963 0.916667 9.552 0.916667 5.41644C0.916667 2.90754 3.07542 0.86663 5.72917 0.86663C8.24817 0.86663 10.5417 3.34519 10.5417 6.06641H11.4583C11.4583 3.34519 13.7518 0.86663 16.2708 0.86663C18.9246 0.86663 21.0833 2.90754 21.0833 5.41644C21.0833 9.552 15.7126 14.6963 11 17.9332Z" fill="currentColor"/>
+                                        </svg>
+                                        {% endif %}
+                                    </div>
+                                {% else %}
+                                    <div class="favorites__card__favorite favorite-btn popup-link" link="favorites-popup">
+                                        <svg class="favorite-svg-inactive" width="100%" viewBox="0 0 22 19" fill="red" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M16.2708 0C13.9755 0 11.8919 1.60413 11 3.77331C10.1081 1.60327 8.0245 0 5.72917 0C2.57033 0 0 2.43003 0 5.41644C0 11.2749 8.94117 17.6099 10.7332 18.8197L11 19L11.2668 18.8197C13.0598 17.6099 22 11.274 22 5.41644C22 2.43003 19.4297 0 16.2708 0ZM11 17.9332C6.28742 14.6963 0.916667 9.552 0.916667 5.41644C0.916667 2.90754 3.07542 0.86663 5.72917 0.86663C8.24817 0.86663 10.5417 3.34519 10.5417 6.06641H11.4583C11.4583 3.34519 13.7518 0.86663 16.2708 0.86663C18.9246 0.86663 21.0833 2.90754 21.0833 5.41644C21.0833 9.552 15.7126 14.6963 11 17.9332Z" fill="currentColor"/>
+                                        </svg>
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="favorites__card__image"><img src="/media/{{ product.photo }}" alt="Product image"></div>
+                        </div>
+                        <div class="favorites__card__wrapper">
+                            <div class="favorites__card__wrapper__inner">
+                                <div class="favorites__card__category text-medium-small">{{ product.category__name }}</div>
+                                <div class="favorites__card__name text-medium-big">{{ product.name }}</div>
+                            </div>
+                            <div class="popular__card__lastdiv">
+                                <div class="favorites__card__price">
+                                    {% if product.discount %}
+                                    <div class="favorites__card__price__new text-regular"></div>
+                                    <div class="favorites__card__price__old text-regular">{{ product.price }} ₸</div>
+                                    {% else %}
+                                    <div class="favorites__card__price__new text-regular">{{ product.price }} ₸</div>
+                                    {% endif %}
+                                </div>
+                                <div class="favorites__card__btn text-main">Добавить в корзину</div>
+                                {% for item in cart %}
+                                    {% if product_item.product.id == item.product.id %}
+                                        <div class="favorites__card__cart">
+                                            <div class="favorites__card__cart__wrapper">
+                                                <div class="favorites__card__cart__minus text-medium-big">-</div>
+                                                <div class="favorites__card__cart__value text-medium-big">{{ item.quantity }}</div>
+                                                <div class="favorites__card__cart__plus text-medium-big">+</div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+            {% else %}
+                <div class="favorites__text text-main">У вас пока нет товаров в избранном</div>
+            {% endif %}
+        </div>
+        {% if favorites|length > 5 %}
+        <div class="favorites__show-more show-more text-semibold-mid">Показать еще</div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    window.user_is_authenticated = `{{ user_is_authenticated }}`
+    window.products = {{ products_json|safe }}
+    window.cartArr = {{ cartJs|safe }}
+    window.favArray = {{ favorites }}
+</script>
+<script src="{% static 'js/showMore.js' %}"></script>
+{% endblock %}
