@@ -57,7 +57,7 @@ class Parameter(models.Model):
 
 class Banner(models.Model):
     large_photo = models.ImageField(upload_to='banner/', verbose_name='Крупное Фото')
-    small_photo = models.ImageField(upload_to='banner/', verbose_name='Малое Фото', null=True, blank=True)
+    small_photo = models.ImageField(upload_to='banner/', verbose_name='Малое Фото')
     title = models.CharField(max_length=150, verbose_name='Название')
     text = models.TextField(verbose_name='Текст')
 

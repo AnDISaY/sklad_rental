@@ -304,7 +304,7 @@
 
             gap: 20px;
             width: 220px;
-            height: 256px;
+            height: 276px;
             margin-bottom: 24px;
 
             padding: 17px 22px 40px;
@@ -312,32 +312,36 @@
             border-radius: 20px;
 
             @media screen and (max-width: $md1) {
+                gap: 15px;
                 width: 165px;
-                height: 192px;
+                height: 205px;
                 margin-bottom: 18px;
                 padding: 13px 16.5px 30px;
                 border-radius: 15px;
             }
 
             @media screen and (max-width: $md2) {
+                gap: 10px;
                 width: 110px;
-                height: 128px;
+                height: 140px;
                 margin-bottom: 18px;
                 padding: 8.5px 11px 20px;
                 border-radius: 10px;
             }
 
             @media screen and (max-width: $md3) {
+                gap: 10px;
                 width: 200px;
-                height: 235px;
+                height: 247px;
                 margin-bottom: 21px;
                 padding: 15px 20px 35px;
                 border-radius: 18px;
             }
 
             @media screen and (max-width: $md4) {
+                gap: 2vw;
                 width: 41.875vw;
-                height: 48.969vw;
+                height: 51.569vw;
                 margin-bottom: 4.375vw;
                 padding: 3.125vw 4.375vw 6.5vw;
             }
@@ -351,7 +355,7 @@
             &__left {
                 display: flex;
                 flex-wrap: wrap;
-                max-width: 105px;
+                max-width: 70px;
                 gap: 5px;
             }
         }
@@ -431,26 +435,26 @@
             justify-content: center;
             align-items: center;
             // width: 176px;
-            height: 110px;
+            height: 130px;
 
             @media screen and (max-width: $md1) {
                 // width: 132px;
-                height: 82px;
+                height: 94px;
             }
 
             @media screen and (max-width: $md2) {
                 // width: 88px;
-                height: 55px;
+                height: 65px;
             }
 
             @media screen and (max-width: $md3) {
                 // width: 157px;
-                height: 98px;
+                height: 120px;
             }
 
             @media screen and (max-width: $md4) {
                 // width: 32.813vw;
-                height: 20.313vw;
+                height: 25vw;
             }
 
             img {
@@ -884,6 +888,7 @@
             overflow: hidden;
             transition: all 0.25s ease-in-out;
             max-width: 720px;
+            line-height: 140%;
             color: #929292;
 
             @media screen and (max-width: $md1) {

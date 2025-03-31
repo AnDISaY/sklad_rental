@@ -3215,7 +3215,7 @@ body button {
   box-sizing: border-box;
   gap: 20px;
   width: 220px;
-  height: 256px;
+  height: 276px;
   margin-bottom: 24px;
   padding: 17px 22px 40px;
   background-color: #F3F3F3;
@@ -3223,8 +3223,9 @@ body button {
 }
 @media screen and (max-width: 1344px) {
   .popular__card__image-block {
+    gap: 15px;
     width: 165px;
-    height: 192px;
+    height: 205px;
     margin-bottom: 18px;
     padding: 13px 16.5px 30px;
     border-radius: 15px;
@@ -3232,8 +3233,9 @@ body button {
 }
 @media screen and (max-width: 1080px) {
   .popular__card__image-block {
+    gap: 10px;
     width: 110px;
-    height: 128px;
+    height: 140px;
     margin-bottom: 18px;
     padding: 8.5px 11px 20px;
     border-radius: 10px;
@@ -3241,8 +3243,9 @@ body button {
 }
 @media screen and (max-width: 720px) {
   .popular__card__image-block {
+    gap: 10px;
     width: 200px;
-    height: 235px;
+    height: 247px;
     margin-bottom: 21px;
     padding: 15px 20px 35px;
     border-radius: 18px;
@@ -3250,8 +3253,9 @@ body button {
 }
 @media screen and (max-width: 480px) {
   .popular__card__image-block {
+    gap: 2vw;
     width: 41.875vw;
-    height: 48.969vw;
+    height: 51.569vw;
     margin-bottom: 4.375vw;
     padding: 3.125vw 4.375vw 6.5vw;
   }
@@ -3264,7 +3268,7 @@ body button {
 .popular__card__upper__left {
   display: flex;
   flex-wrap: wrap;
-  max-width: 105px;
+  max-width: 70px;
   gap: 5px;
 }
 .popular__card__discount, .popular__card__complect {
@@ -3341,26 +3345,26 @@ body button {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 110px;
+  height: 130px;
 }
 @media screen and (max-width: 1344px) {
   .popular__card__image {
-    height: 82px;
+    height: 94px;
   }
 }
 @media screen and (max-width: 1080px) {
   .popular__card__image {
-    height: 55px;
+    height: 65px;
   }
 }
 @media screen and (max-width: 720px) {
   .popular__card__image {
-    height: 98px;
+    height: 120px;
   }
 }
 @media screen and (max-width: 480px) {
   .popular__card__image {
-    height: 20.313vw;
+    height: 25vw;
   }
 }
 .popular__card__image img {
@@ -3821,6 +3825,7 @@ body button {
   overflow: hidden;
   transition: all 0.25s ease-in-out;
   max-width: 720px;
+  line-height: 140%;
   color: #929292;
 }
 @media screen and (max-width: 1344px) {
@@ -7778,7 +7783,32 @@ body button {
 }
 .product__images-small {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 490px;
+  gap: 10px;
+}
+@media screen and (max-width: 1344px) {
+  .product__images-small {
+    max-width: 367px;
+    gap: 7.5px;
+  }
+}
+@media screen and (max-width: 1080px) {
+  .product__images-small {
+    max-width: 245px;
+    gap: 5px;
+  }
+}
+@media screen and (max-width: 720px) {
+  .product__images-small {
+    max-width: 100%;
+    gap: 8px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .product__images-small {
+    gap: 1.55vw;
+  }
 }
 .product__image-small {
   display: flex;
@@ -7820,7 +7850,7 @@ body button {
 .product__image-small img {
   width: 90px;
   height: 56px;
-  object-fit: cover;
+  object-fit: contain;
 }
 @media screen and (max-width: 1344px) {
   .product__image-small img {
@@ -7837,7 +7867,7 @@ body button {
 @media screen and (max-width: 720px) {
   .product__image-small img {
     width: 70px;
-    height: auto;
+    height: 80%;
   }
 }
 @media screen and (max-width: 480px) {

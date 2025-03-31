@@ -211,10 +211,11 @@ def order(request):
         products = []
         for uc in user_cart:
             if uc.product.discount:
-                new_price = int(uc.product.price - ((uc.product.price * uc.product.discount) / 100))
-                products.append({'id': uc.product.id, 'name': uc.product.name, 'price': uc.product.price, 'discount': uc.product.discount, 'new_price': new_price, 'quantity': uc.quantity, 'photo': uc.product.photo.url})
+                old_price = int(uc.product.price.replace(' ', ''))
+                new_price = int(old_price - ((old_price * uc.product.discount) / 100))
+                products.append({'id': uc.product.id, 'name': uc.product.name, 'price': old_price, 'discount': uc.product.discount, 'new_price': new_price, 'quantity': uc.quantity, 'photo': uc.product.photo.url})
             else:
-                products.append({'id': uc.product.id, 'name': uc.product.name, 'price': uc.product.price, 'quantity': uc.quantity, 'photo': uc.product.photo.url})
+                products.append({'id': uc.product.id, 'name': uc.product.name, 'price': old_price, 'quantity': uc.quantity, 'photo': uc.product.photo.url})
         user_to_rent = user if user.is_authenticated else None
 
         user_rent = UserRent(user=user_to_rent, lastname=data['lastname'], name=data['name'], phone=data["phone"],

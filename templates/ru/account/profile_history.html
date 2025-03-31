@@ -36,7 +36,7 @@
                         {% for product in order.products %}
                             <div class="history__accordion__panel__card">
                                 <div class="history__accordion__panel__card__image-block">
-                                    <div class="history__accordion__panel__card__image"><img src="{% static 'images/image-camera.png' %}" alt="Product image"></div>
+                                    <div class="history__accordion__panel__card__image"><img src="{{ product.photo }}" alt="Product image"></div>
                                 </div>
                                 <div class="history__accordion__panel__card__content">
                                     <div class="history__accordion__panel__card__title text-medium-small">{{ product.name }}</div>

@@ -29,8 +29,15 @@ flushes.forEach(flush => flush.addEventListener("click", (e)=> {
             "method": 'deleteAll',
         },
     });
+
+    flush.closest('.cart').querySelectorAll('.cart__card').forEach(card => card.remove())
+    flush.closest('.cart').querySelector('.cart__text').innerHTML = "В вашей корзине 0 товаров:"
+    cartBuy = flush.closest('.cart').querySelector('.cart__buy')
+    if (cartBuy) {
+        cartBuy.remove()
+    }
+    flush.remove()
     setTimeout(function () {
-        flush.closest('.cart').querySelectorAll('.cart__card').forEach(card => card.remove())
         window.location.reload()
     }, 500)
 }))

@@ -8,6 +8,7 @@ if (screen.width <= 720) {
 }
 
 $('#search').on('input', function(event) {
+    inputValue = $(this)[0].value
     event.preventDefault();
     $.ajax({
         url: '/searchbar/',
@@ -17,7 +18,7 @@ $('#search').on('input', function(event) {
                "searchInput": $(this)[0].value,
         },
         success: function(response) {
-            searchSuggestions(response)
+            searchSuggestions(response, inputValue)
         }
     });
 });
@@ -42,7 +43,7 @@ $('.header__searchbar').click(function(e) {
     }
 })
 
-function searchSuggestions(response) {
+function searchSuggestions(response, value) {
     searchBar = document.querySelector('.header__searchbar')
     suggestionsPrevious = searchBar.querySelector('.header__searchbar__suggestions')
     if (suggestionsPrevious) {
@@ -53,45 +54,52 @@ function searchSuggestions(response) {
     suggestionsWrapper = document.createElement('div')
     suggestionsWrapper.classList.add('header__searchbar__suggestions__wrapper')
 
-    if (Object.keys(response).length != 0) {
-        for (let i=0; i < Object.keys(response).length; i++) {
-            suggestionsItem = document.createElement('a')
-            suggestionsItem.setAttribute('href', `/product/${response[i].id}`)
-            suggestionsItem.classList.add('header__searchbar__suggestions__item')
+    // if 
+    console.log(value)
+    console.log(value.length)
+    console.log(typeof(value))
 
-            suggestionsImage = document.createElement('div')
-            suggestionsImage.classList.add('header__searchbar__suggestions__item__image')
-            suggestionsImg = document.createElement('img')
-            suggestionsImg.setAttribute('src', `${response[i].photo}`)
-            suggestionsImg.setAttribute('alt', "Product image")
-            suggestionsImage.appendChild(suggestionsImg)
+    if (value.length > 0) {
+        if (Object.keys(response).length != 0) {
+            for (let i=0; i < Object.keys(response).length; i++) {
+                suggestionsItem = document.createElement('a')
+                suggestionsItem.setAttribute('href', `/product/${response[i].id}`)
+                suggestionsItem.classList.add('header__searchbar__suggestions__item')
 
-            suggestionsContent = document.createElement('div')
-            suggestionsContent.classList.add('header__searchbar__suggestions__item__content')
-            suggestionsTitle = document.createElement('div')
-            suggestionsTitle.classList.add('header__searchbar__suggestions__item__title')
-            suggestionsTitle.classList.add('text-semibold-mid')
-            suggestionsTitle.innerHTML = response[i].name
-            suggestionsPrice = document.createElement('div')
-            suggestionsPrice.classList.add('header__searchbar__suggestions__item__price')
-            suggestionsPrice.classList.add('text-medium-small')
-            suggestionsPrice.innerHTML = `${response[i].price}₸`
-            suggestionsContent.appendChild(suggestionsTitle)
-            suggestionsContent.appendChild(suggestionsPrice)
+                suggestionsImage = document.createElement('div')
+                suggestionsImage.classList.add('header__searchbar__suggestions__item__image')
+                suggestionsImg = document.createElement('img')
+                suggestionsImg.setAttribute('src', `${response[i].photo}`)
+                suggestionsImg.setAttribute('alt', "Product image")
+                suggestionsImage.appendChild(suggestionsImg)
 
-            suggestionsItem.appendChild(suggestionsImage)
-            suggestionsItem.appendChild(suggestionsContent)
-            suggestionsWrapper.appendChild(suggestionsItem)
+                suggestionsContent = document.createElement('div')
+                suggestionsContent.classList.add('header__searchbar__suggestions__item__content')
+                suggestionsTitle = document.createElement('div')
+                suggestionsTitle.classList.add('header__searchbar__suggestions__item__title')
+                suggestionsTitle.classList.add('text-semibold-mid')
+                suggestionsTitle.innerHTML = response[i].name
+                suggestionsPrice = document.createElement('div')
+                suggestionsPrice.classList.add('header__searchbar__suggestions__item__price')
+                suggestionsPrice.classList.add('text-medium-small')
+                suggestionsPrice.innerHTML = `${response[i].price}₸`
+                suggestionsContent.appendChild(suggestionsTitle)
+                suggestionsContent.appendChild(suggestionsPrice)
+
+                suggestionsItem.appendChild(suggestionsImage)
+                suggestionsItem.appendChild(suggestionsContent)
+                suggestionsWrapper.appendChild(suggestionsItem)
+            }
+        } else {
+            text = document.createElement('div')
+            text.classList.add('header__searchbar__suggestions__text')
+            text.classList.add('text-main')
+            text.innerHTML = "Список пуст"
+            suggestionsWrapper.appendChild(text)
+            suggestionsWrapper.style.overflow = 'hidden'
         }
-    } else {
-        text = document.createElement('div')
-        text.classList.add('header__searchbar__suggestions__text')
-        text.classList.add('text-main')
-        text.innerHTML = "Список пуст"
-        suggestionsWrapper.appendChild(text)
-        suggestionsWrapper.style.overflow = 'hidden'
-    }
 
-    suggestions.appendChild(suggestionsWrapper)
-    searchBar.appendChild(suggestions)
+        suggestions.appendChild(suggestionsWrapper)
+        searchBar.appendChild(suggestions)
+    }
 }
