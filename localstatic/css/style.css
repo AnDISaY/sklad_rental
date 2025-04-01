@@ -5065,6 +5065,9 @@ body button {
     gap: 1.375vw;
   }
 }
+.order__form__block__wrapper .picker-wrap {
+  display: block;
+}
 .order__form__block__text-small {
   display: flex;
   justify-content: center;
@@ -7755,7 +7758,7 @@ body button {
 .product__image img {
   width: 384px;
   height: 237px;
-  object-fit: cover;
+  object-fit: contain;
 }
 @media screen and (max-width: 1344px) {
   .product__image img {

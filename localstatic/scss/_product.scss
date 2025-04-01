@@ -223,7 +223,7 @@
         img {
             width: 384px;
             height: 237px;
-            object-fit: cover;
+            object-fit: contain;
 
             @media screen and (max-width: $md1) {
                 width: 288px;
