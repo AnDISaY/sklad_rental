@@ -45,8 +45,9 @@ def sign_in(request):
             login(request, user)
             if user_cart is not None:
                 for uc in user_cart:
-                    UserCart.objects.create(user=user, product=uc.product, quantity=uc.quantity)
-                    uc.delete()
+                    if not UserCart.objects.filter(user=user, product=uc.product):
+                        UserCart.objects.create(user=user, product=uc.product, quantity=uc.quantity)
+                        uc.delete()
             request.session['success_message'] = 'Вы успешно вошли в аккаунт'
         else:
             request.session['error_message'] = ['Неверные телефон или пароль']
@@ -89,8 +90,9 @@ def sign_up(request):
                         login(request, user)
                         if user_cart is not None:
                                 for uc in user_cart:
-                                    UserCart.objects.create(user=user, product=uc.product, quantity=uc.quantity)
-                                    uc.delete()
+                                    if not UserCart.objects.filter(user=user, product=uc.product):
+                                        UserCart.objects.create(user=user, product=uc.product, quantity=uc.quantity)
+                                        uc.delete()
                         request.session['success_message'] = "Вы успешно зарегистрировались"
                     else:
                         messages = []
