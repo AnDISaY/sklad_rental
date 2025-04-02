@@ -252,6 +252,7 @@
         flex-wrap: wrap;
         max-width: 490px;
         gap: 10px;
+        cursor: pointer;
 
         @media screen and (max-width: $md1) {
             max-width: 367px;

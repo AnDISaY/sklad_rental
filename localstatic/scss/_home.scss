@@ -18,9 +18,6 @@
     }
 
     &__slider {
-        @media screen and (max-width: $md3) {
-            display: none;
-        }
         &__swiper {
             display: flex;
             flex-direction: column;
@@ -33,6 +30,14 @@
 
             @media screen and (max-width: $md2) {
                 gap: 16px;
+            }
+
+            @media screen and (max-width: $md3) {
+                gap: 16px;
+            }
+
+            @media screen and (max-width: $md4) {
+                gap: 3.438vw;
             }
         }
 
@@ -48,6 +53,14 @@
 
             @media screen and (max-width: $md2) {
                 gap: 20px;
+            }
+
+            @media screen and (max-width: $md3) {
+                gap: 16px;
+            }
+
+            @media screen and (max-width: $md4) {
+                gap: 3.438vw;
             }
         }
 
@@ -65,6 +78,14 @@
 
             @media screen and (max-width: $md2) {
                 width: 9px;
+            }
+
+            @media screen and (max-width: $md3) {
+                width: 12px;
+            }
+
+            @media screen and (max-width: $md4) {
+                width: 2.5vw;
             }
 
             img {
@@ -90,7 +111,6 @@
         }
 
         @media screen and (max-width: $md1) {
-
             img {
                 height: 337.5px;
                 border-radius: 15px;
@@ -101,6 +121,25 @@
             img {
                 height: 225px;
                 border-radius: 10px;
+            }
+        }
+
+        @media screen and (max-width: $md3) {
+            height: 270px;
+
+            img {
+                height: 100%;
+                object-fit: cover;
+                object-position: 60%;
+                border-radius: 24.5px;
+            }
+        }
+
+        @media screen and (max-width: $md4) {
+            height: 56.25vw;
+
+            img {
+                border-radius: 5vw;
             }
         }
     }
@@ -120,31 +159,8 @@
         background-color: #F3F3F3;
     }
 
-    &__image-mobile {
-        width: 100%;
-        height: 270px;
+    .swiper-notification {
         display: none;
-
-        img {
-            width: 100%;
-            height: 270px;
-            border-radius: 24.5px;
-            object-fit: cover;
-            object-position: 60%;
-
-            @media screen and (max-width: $md4) {
-                height: 56.25vw;
-                border-radius: 5vw;
-            }
-        }
-
-        @media screen and (max-width: $md3) {
-            display: block;
-        }
-
-        @media screen and (max-width: $md4) {
-            height: 56.25vw;
-        }
     }
 }
 
@@ -303,7 +319,7 @@
             box-sizing: border-box;
 
             gap: 20px;
-            width: 220px;
+            width: 240px;
             height: 276px;
             margin-bottom: 24px;
 
@@ -313,7 +329,7 @@
 
             @media screen and (max-width: $md1) {
                 gap: 15px;
-                width: 165px;
+                width: 178px;
                 height: 205px;
                 margin-bottom: 18px;
                 padding: 13px 16.5px 30px;
@@ -322,7 +338,7 @@
 
             @media screen and (max-width: $md2) {
                 gap: 10px;
-                width: 110px;
+                width: 116px;
                 height: 140px;
                 margin-bottom: 18px;
                 padding: 8.5px 11px 20px;

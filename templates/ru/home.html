@@ -32,13 +32,13 @@
                 </div>
             </div>
         </div>
-        {% set 1 as count %}
+        <!-- {% set 1 as count %}
         {% for banner in banners %}
         {% if  count < 2 %}
         <a class="banner__image-mobile popup-link" href="#banner-popup-{{ banner.id }}"><img src="{{ banner.small_photo.url }}" alt="Banner image"></a>
         {% endif %}
         {% add count as count %}
-        {% endfor %}
+        {% endfor %} -->
     </div>
 </section>
 {% for banner in banners %}
@@ -219,8 +219,10 @@
     <script>
         if (screen.width > 1344) {
             var swiper = new Swiper(".popular__slider__swiper", {
+                freeMode: true,
+                mousewheel: true,
                 slidesPerView: 5,
-                spaceBetween: 55,
+                spaceBetween: 30,
                 loop: true,
                 navigation: {
                     nextEl: ".popular__slider__swiper__btn-next",
@@ -229,8 +231,10 @@
             });
         } else if (screen.width > 1080) {
             var swiper = new Swiper(".popular__slider__swiper", {
+                freeMode: true,
+                mousewheel: true,
                 slidesPerView: 5,
-                spaceBetween: 41.25,
+                spaceBetween: 25,
                 loop: true,
                 navigation: {
                     nextEl: ".popular__slider__swiper__btn-next",
@@ -239,8 +243,10 @@
             });
         } else if (screen.width > 720) {
             var swiper = new Swiper(".popular__slider__swiper", {
+                freeMode: true,
+                mousewheel: true,
                 slidesPerView: 5,
-                spaceBetween: 27.5,
+                spaceBetween: 20,
                 loop: true,
                 navigation: {
                     nextEl: ".popular__slider__swiper__btn-next",

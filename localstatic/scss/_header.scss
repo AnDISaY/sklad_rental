@@ -663,9 +663,11 @@
     &__list {
         display: flex;
         flex-direction: column;
+        width: 153px;
         gap: 20px;
 
         @media screen and (max-width: $md1) {
+            width: 115px;
             gap: 15px;
         }
 
