@@ -210,8 +210,8 @@ def order(request):
         data = request.POST
         products = []
         for uc in user_cart:
+            old_price = int(uc.product.price.replace(' ', ''))
             if uc.product.discount:
-                old_price = int(uc.product.price.replace(' ', ''))
                 new_price = int(old_price - ((old_price * uc.product.discount) / 100))
                 products.append({'id': uc.product.id, 'name': uc.product.name, 'price': old_price, 'discount': uc.product.discount, 'new_price': new_price, 'quantity': uc.quantity, 'photo': uc.product.photo.url})
             else:
@@ -239,8 +239,10 @@ def reorder(request, order_id):
     previous_order = UserRent.objects.get(id=order_id)
     products = previous_order.products
     for product in products:
-        product['price'] = "{:,d}".format(product['price']).replace(',', ' ')
-        product['new_price'] = "{:,d}".format(product['new_price']).replace(',', ' ')
+        price = int(product['price'].replace(' ', ''))
+        new_price = int(product['new_price'].replace(' ', ''))
+        product['price'] = "{:,d}".format(price).replace(',', ' ')
+        product['new_price'] = "{:,d}".format(new_price).replace(',', ' ')
     
     context = {"user": user, "user_is_authenticated": user.is_authenticated,'user_cart': user_cart, 'cart_length': len(user_cart), "categories": categories, "products": products, "cartJs": "[]", "favorites": "[]"}
     if 'success_message' in request.session:

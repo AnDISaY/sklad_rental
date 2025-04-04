@@ -257,8 +257,7 @@ def profile_new_password(request):
         if password == data['password1']:
             if not check_password(password, User.objects.get(phone=request.user.phone).password):
                 if len(password) >= 8 and any(c.isalpha() for c in password) and any(c.isdigit() for c in password):
-                    phone = f'+7{request.user.phone}'
-                    user = User.objects.get(phone=phone)
+                    user = User.objects.get(phone=request.user.phone)
                     user.set_password(password)
                     user.save()
                     login(request, user)
