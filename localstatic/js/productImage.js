@@ -1,20 +1,16 @@
 smallImages = document.querySelectorAll(".product__image-small")
-console.log("bebebe")
 smallImages.forEach(image => image.addEventListener("click", (e)=> {
-    console.log("bobobo")
 
     largeImageContainer = image.closest(".product__image-block").querySelector(".product__image")
     largeImage = largeImageContainer.querySelector("img")
-    smallImage = image.querySelector("img")
+    smallImage = image.querySelector("img").cloneNode(true)
 
-    console.log(smallImage)
-    console.log(image)
 
     largeImageContainer.removeChild(largeImage)
     largeImageContainer.appendChild(smallImage)
-
-    // image.removeChild(smallImage)
-    image.appendChild(largeImage)
+    console.log(smallImage)
+    
+    // image.appendChild(smallImage)
 }))
 
 

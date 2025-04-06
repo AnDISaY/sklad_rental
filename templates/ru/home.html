@@ -219,8 +219,14 @@
     <script>
         if (screen.width > 1344) {
             var swiper = new Swiper(".popular__slider__swiper", {
+                direction: "horizontal",
                 freeMode: true,
-                mousewheel: true,
+                mousewheel: {
+                    forceToAxis: true, // allows natural 2D scrolling
+                    sensitivity: 1,
+                    releaseOnEdges: true, // lets user scroll vertically when at slider edges
+                },
+                // mousewheel: true,
                 slidesPerView: 5,
                 spaceBetween: 30,
                 loop: true,
@@ -231,8 +237,13 @@
             });
         } else if (screen.width > 1080) {
             var swiper = new Swiper(".popular__slider__swiper", {
+                direction: "horizontal",
                 freeMode: true,
-                mousewheel: true,
+                mousewheel: {
+                    forceToAxis: true, // allows natural 2D scrolling
+                    sensitivity: 1,
+                    releaseOnEdges: true, // lets user scroll vertically when at slider edges
+                },
                 slidesPerView: 5,
                 spaceBetween: 25,
                 loop: true,
@@ -243,8 +254,13 @@
             });
         } else if (screen.width > 720) {
             var swiper = new Swiper(".popular__slider__swiper", {
+                direction: "horizontal",
                 freeMode: true,
-                mousewheel: true,
+                mousewheel: {
+                    forceToAxis: true, // allows natural 2D scrolling
+                    sensitivity: 1,
+                    releaseOnEdges: true, // lets user scroll vertically when at slider edges
+                },
                 slidesPerView: 5,
                 spaceBetween: 20,
                 loop: true,
