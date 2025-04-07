@@ -6376,7 +6376,7 @@ body button {
 .history__accordion__panel__card__image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 .history__accordion__panel__card__content {
   display: flex;
@@ -6384,15 +6384,18 @@ body button {
   justify-content: space-between;
   box-sizing: border-box;
   height: 100%;
+  gap: 5px;
   padding: 4px 0;
 }
 @media screen and (max-width: 1344px) {
   .history__accordion__panel__card__content {
+    gap: 4px;
     padding: 3px 0;
   }
 }
 @media screen and (max-width: 1080px) {
   .history__accordion__panel__card__content {
+    gap: 3px;
     padding: 2px 0;
   }
 }
@@ -6401,7 +6404,21 @@ body button {
     flex-direction: row;
     align-items: center;
     width: 100%;
+    gap: 0;
     padding: 0;
+  }
+}
+.history__accordion__panel__card__title {
+  max-width: 120px;
+}
+@media screen and (max-width: 1344px) {
+  .history__accordion__panel__card__title {
+    max-width: 90px;
+  }
+}
+@media screen and (max-width: 1080px) {
+  .history__accordion__panel__card__title {
+    max-width: 60px;
   }
 }
 .history__accordion__panel__card__price {
