@@ -854,6 +854,7 @@ body button {
   justify-content: center;
 }
 .header__searchbar__cart__item svg {
+  overflow: visible;
   width: auto;
   height: 19px;
   color: #fff;
@@ -3356,6 +3357,7 @@ body button {
   }
 }
 .popular__card__favorite svg {
+  overflow: visible;
   width: 100%;
   color: #1C1C1C;
   transition: all 0.25s ease;
@@ -6694,6 +6696,7 @@ body button {
   }
 }
 .category__card__favorite svg {
+  overflow: visible;
   width: 100%;
   color: #1C1C1C;
   transition: all 0.25s ease;
@@ -7271,6 +7274,7 @@ body button {
   }
 }
 .favorites__card__favorite svg {
+  overflow: visible;
   width: 100%;
   color: #1C1C1C;
   transition: all 0.25s ease;

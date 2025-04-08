@@ -5,12 +5,11 @@ smallImages.forEach(image => image.addEventListener("click", (e)=> {
     largeImage = largeImageContainer.querySelector("img")
     smallImage = image.querySelector("img").cloneNode(true)
 
+    image.closest(".product__images-small").querySelectorAll(".product__image-small img").forEach(image => image.style.filter = "brightness(100%)")
 
     largeImageContainer.removeChild(largeImage)
     largeImageContainer.appendChild(smallImage)
-    console.log(smallImage)
-    
-    // image.appendChild(smallImage)
+    image.querySelector("img").style.filter = "brightness(60%)"
 }))
 
 

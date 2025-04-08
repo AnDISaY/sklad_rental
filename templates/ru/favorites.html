@@ -57,7 +57,7 @@
                                 <div class="favorites__card__category text-medium-small">{{ product.category__name }}</div>
                                 <div class="favorites__card__name text-medium-big">{{ product.name }}</div>
                             </div>
-                            <div class="popular__card__lastdiv">
+                            <div class="favorites__card__lastdiv">
                                 <div class="favorites__card__price">
                                     {% if product.discount %}
                                     <div class="favorites__card__price__new text-regular"></div>
@@ -68,7 +68,7 @@
                                 </div>
                                 <div class="favorites__card__btn text-main">Добавить в корзину</div>
                                 {% for item in cart %}
-                                    {% if product_item.product.id == item.product.id %}
+                                    {% if product.id == item.product.id %}
                                         <div class="favorites__card__cart">
                                             <div class="favorites__card__cart__wrapper">
                                                 <div class="favorites__card__cart__minus text-medium-big">-</div>
