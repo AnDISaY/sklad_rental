@@ -240,9 +240,10 @@ def reorder(request, order_id):
     products = previous_order.products
     for product in products:
         price = int(str(product['price']).replace(' ', ''))
-        new_price = int(str(product['new_price']).replace(' ', ''))
         product['price'] = "{:,d}".format(price).replace(',', ' ')
-        product['new_price'] = "{:,d}".format(new_price).replace(',', ' ')
+        if 'new_price' in product:
+            new_price = int(str(product['new_price']).replace(' ', ''))
+            product['new_price'] = "{:,d}".format(new_price).replace(',', ' ')
     
     context = {"user": user, "user_is_authenticated": user.is_authenticated,'user_cart': user_cart, 'cart_length': len(user_cart), "categories": categories, "products": products, "cartJs": "[]", "favorites": "[]"}
     if 'success_message' in request.session:
