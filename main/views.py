@@ -239,8 +239,8 @@ def reorder(request, order_id):
     previous_order = UserRent.objects.get(id=order_id)
     products = previous_order.products
     for product in products:
-        price = int(str(product['price'].replace(' ', '')))
-        new_price = int(str(product['new_price'].replace(' ', '')))
+        price = int(str(product['price']).replace(' ', ''))
+        new_price = int(str(product['new_price']).replace(' ', ''))
         product['price'] = "{:,d}".format(price).replace(',', ' ')
         product['new_price'] = "{:,d}".format(new_price).replace(',', ' ')
     
