@@ -13,7 +13,7 @@ locale.setlocale(locale.LC_ALL, '')
 
 def home(request):
     user = request.user
-    products_popular = Product.objects.all().order_by('-views')
+    products_popular = Product.objects.all().order_by('-views')[:8]
     categories = Category.objects.all()
     banners = Banner.objects.all()
     faqs = Faq.objects.all()

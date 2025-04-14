@@ -293,6 +293,13 @@
 
         var swiper = new Swiper(".banner__slider__swiper", {
             loop: true,
+            direction: "horizontal",
+            cssMode: true,
+            mousewheel: {
+                forceToAxis: true, // allows natural 2D scrolling
+                sensitivity: 1,
+                releaseOnEdges: true, // lets user scroll vertically when at slider edges
+            },
             pagination: {
                 el: ".banner__swiper-pagination",
             },
