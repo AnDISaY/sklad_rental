@@ -291,22 +291,35 @@
             });
         }
 
-        var swiper = new Swiper(".banner__slider__swiper", {
-            loop: true,
-            direction: "horizontal",
-            cssMode: true,
-            mousewheel: {
-                forceToAxis: true, // allows natural 2D scrolling
-                sensitivity: 1,
-                releaseOnEdges: true, // lets user scroll vertically when at slider edges
-            },
-            pagination: {
-                el: ".banner__swiper-pagination",
-            },
-            navigation: {
-                nextEl: ".banner__slider__swiper__btn-next",
-                prevEl: ".banner__slider__swiper__btn-prev",
-            },
-        });
+        if (screen.width > 480) {
+            var swiper = new Swiper(".banner__slider__swiper", {
+                loop: true,
+                direction: "horizontal",
+                cssMode: true,
+                mousewheel: {
+                    forceToAxis: true, // allows natural 2D scrolling
+                    sensitivity: 1,
+                    releaseOnEdges: true, // lets user scroll vertically when at slider edges
+                },
+                pagination: {
+                    el: ".banner__swiper-pagination",
+                },
+                navigation: {
+                    nextEl: ".banner__slider__swiper__btn-next",
+                    prevEl: ".banner__slider__swiper__btn-prev",
+                },
+            });
+        } else {
+            var swiper = new Swiper(".banner__slider__swiper", {
+                loop: true,
+                pagination: {
+                    el: ".banner__swiper-pagination",
+                },
+                navigation: {
+                    nextEl: ".banner__slider__swiper__btn-next",
+                    prevEl: ".banner__slider__swiper__btn-prev",
+                },
+            });
+        }
     </script>
 {% endblock %}

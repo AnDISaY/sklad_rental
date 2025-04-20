@@ -132,11 +132,15 @@ if (screen.width > 720) {
             wrapContainerLast = document.createElement("div")
             wrapContainerLast.classList.add(`${arrItem}__card__lastdiv`)
 
-            categoryEl = document.createElement("div")
-            categoryEl.classList.add(`${arrItem}__card__category`)
-            categoryEl.classList.add(`text-medium-small`)
-            categoryEl.innerHTML = products[i+5].category__name
-            wrapContainerInner.appendChild(categoryEl)
+            console.log(arrItem)
+
+            if (arrItem != "category") {
+                categoryEl = document.createElement("div")
+                categoryEl.classList.add(`${arrItem}__card__category`)
+                categoryEl.classList.add(`text-medium-small`)
+                categoryEl.innerHTML = products[i+5].category__name
+                wrapContainerInner.appendChild(categoryEl)
+            }
 
             nameEl = document.createElement("div")
             nameEl.classList.add(`${arrItem}__card__name`)

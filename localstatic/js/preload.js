@@ -2,7 +2,7 @@ function showAnimation () {
     document.body.classList.toggle('loader');
   }
   
-window.addEventListener("load", ()=> {
+window.addEventListener("DOMContentLoaded", ()=> {
     document.querySelector("body").classList.remove("lock")
     document.querySelector(".loader").style.display = "none"
     document.querySelector("header").style.setProperty('display', 'block', 'important')
