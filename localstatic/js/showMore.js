@@ -132,8 +132,6 @@ if (screen.width > 720) {
             wrapContainerLast = document.createElement("div")
             wrapContainerLast.classList.add(`${arrItem}__card__lastdiv`)
 
-            console.log(arrItem)
-
             if (arrItem != "category") {
                 categoryEl = document.createElement("div")
                 categoryEl.classList.add(`${arrItem}__card__category`)
