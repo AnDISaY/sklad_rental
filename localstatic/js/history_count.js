@@ -32,7 +32,6 @@ prices.forEach(price => {
     discount = Number(price.closest('.history__accordion__panel__card').querySelector('.history__discount__js').innerHTML)
     priceInt = Number(price.innerHTML)
     if (discount) {
-        console.log('bebebe')
         priceNew = priceInt - ((priceInt * discount) / 100)
         price.closest('.history__accordion__panel__card').querySelector('.history__accordion__panel__card__price').innerHTML = `${priceNew} x ${price.closest('.history__accordion__panel__card').querySelector('.history__quantity__js').innerHTML}шт.`
         total += priceNew * Number(price.closest('.history__accordion__panel__card').querySelector('.history__quantity__js').innerHTML)

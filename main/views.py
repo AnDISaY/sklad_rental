@@ -47,7 +47,7 @@ def home(request):
         context['cart_length'] = len(user_cart)
     else:
         try:
-            user_cart = UserCart.objects.filter(session_id=request.session['nonuser'])
+            user_cart = UserCart.objects.filter(session_id=request.session.get('nonuser'))
             context['cart'] = user_cart
             context['cart_length'] = len(user_cart)
         except:
@@ -81,19 +81,21 @@ def home(request):
                 else:
                     UserCart.objects.get(user=user, product=product).delete()
             else:
+                session_id = request.session.get('nonuser')
+
+                if not session_id:
+                    session_id = str(uuid.uuid4())
+                    request.session['nonuser'] = session_id
+
                 if quantity != 0:
                     try:
-                        user_cart_item = UserCart.objects.get(session_id=request.session['nonuser'], product=product)
+                        user_cart_item = UserCart.objects.get(session_id=session_id, product=product)
                         user_cart_item.quantity = quantity
                         user_cart_item.save()
                     except:
-                        if 'nonuser' in request.session:
-                            UserCart.objects.create(session_id=request.session['nonuser'], product=product, quantity=quantity)
-                        else:
-                            request.session['nonuser'] = str(uuid.uuid4())
-                            UserCart.objects.create(session_id=request.session['nonuser'], product=product, quantity=quantity)
+                        UserCart.objects.create(session_id=session_id, product=product, quantity=quantity)
                 else:
-                    UserCart.objects.get(session_id=request.session['nonuser'], product=product).delete()
+                    UserCart.objects.get(session_id=session_id, product=product).delete()
     return render(request, 'ru/home.html', context)
 
 
@@ -145,28 +147,33 @@ def cart(request):
                     else:
                         UserCart.objects.get(user=user, product=product).delete()
             else:
+                session_id = request.session.get('nonuser')
+
+                if not session_id:
+                    session_id = str(uuid.uuid4())
+                    request.session['nonuser'] = session_id
+
                 try:
                     method = request.POST['method']
                     if method == "deleteAll":
-                        user_cart = UserCart.objects.filter(session_id=request.session['nonuser'])
+                        user_cart = UserCart.objects.filter(session_id=session_id)
                         for us in user_cart:
                             us.delete()
                     elif method == 'delete':
                         product = Product.objects.get(id=int(request.POST['productId']))
-                        user_cart = UserCart.objects.filter(session_id=request.session['nonuser'], product=product)
+                        user_cart = UserCart.objects.filter(session_id=session_id, product=product)
                         user_cart.delete()
                 except:
                     quantity = int(request.POST['quantity'])
                     if quantity != 0:
                         try:
-                            user_cart_item = UserCart.objects.get(session_id=request.session['nonuser'], product=product)
+                            user_cart_item = UserCart.objects.get(session_id=session_id, product=product)
                             user_cart_item.quantity = quantity
                             user_cart_item.save()
                         except:
-                            request.session['nonuser'] = str(uuid.uuid4())
-                            UserCart.objects.create(session_id=request.session['nonuser'], product=product, quantity=quantity)
+                            UserCart.objects.create(session_id=session_id, product=product, quantity=quantity)
                     else:
-                        UserCart.objects.get(session_id=request.session['nonuser'], product=product).delete()
+                        UserCart.objects.get(session_id=session_id, product=product).delete()
 
     if user.is_authenticated:
         user_cart = UserCart.objects.filter(user=user)
@@ -176,7 +183,7 @@ def cart(request):
         context['cart_length'] = len(user_cart)
     else:
         try:
-            user_cart = UserCart.objects.filter(session_id=request.session['nonuser'])
+            user_cart = UserCart.objects.filter(session_id=request.session.get('nonuser'))
             for uc in user_cart:
                 uc.product.price = "{:,d}".format(uc.product.price).replace(',', ' ')
             context['user_cart'] = user_cart
@@ -308,11 +315,13 @@ def category(request, pk):
         context["cartJs"] = json.dumps(list(UserCart.objects.filter(user=user).values("product__id", "quantity")))
     else:
         try:
-            user_cart = UserCart.objects.filter(session_id=request.session['nonuser'])
+            session_id = request.session.get('nonuser')
+
+            user_cart = UserCart.objects.filter(session_id=session_id)
             context['user_cart'] = user_cart
             context['cart'] = user_cart
             context['cart_length'] = len(user_cart)
-            context["cartJs"] = json.dumps(list(UserCart.objects.filter(session_id=request.session['nonuser']).values("product__id", "quantity")))
+            context["cartJs"] = json.dumps(list(UserCart.objects.filter(session_id=session_id).values("product__id", "quantity")))
         except:
             pass
 
@@ -337,19 +346,21 @@ def category(request, pk):
                 else:
                     UserCart.objects.get(user=user, product=product).delete()
             else:
+                session_id = request.session.get('nonuser')
+
+                if not session_id:
+                    session_id = str(uuid.uuid4())
+                    request.session['nonuser'] = session_id
+
                 if quantity != 0:
                     try:
-                        user_cart_item = UserCart.objects.get(session_id=request.session['nonuser'], product=product)
+                        user_cart_item = UserCart.objects.get(session_id=session_id, product=product)
                         user_cart_item.quantity = quantity
                         user_cart_item.save()
                     except:
-                        if UserCart.objects.filter(session_id=request.session['nonuser']).exists():
-                            UserCart.objects.create(session_id=request.session['nonuser'], product=product, quantity=quantity)
-                        else:
-                            request.session['nonuser'] = str(uuid.uuid4())
-                            UserCart.objects.create(session_id=request.session['nonuser'], product=product, quantity=quantity)
+                        UserCart.objects.create(session_id=session_id, product=product, quantity=quantity)
                 else:
-                    UserCart.objects.get(session_id=request.session['nonuser'], product=product).delete()
+                    UserCart.objects.get(session_id=session_id, product=product).delete()
                 
     return render(request, 'ru/category.html', context)
 
@@ -420,16 +431,21 @@ def favorites(request):
                 else:
                     UserCart.objects.get(user=user, product=product).delete()
             else:
+                session_id = request.session.get('nonuser')
+
+                if not session_id:
+                    session_id = str(uuid.uuid4())
+                    request.session['nonuser'] = session_id
+
                 if quantity != 0:
                     try:
-                        user_cart_item = UserCart.objects.get(session_id=request.session['nonuser'], product=product)
+                        user_cart_item = UserCart.objects.get(session_id=session_id, product=product)
                         user_cart_item.quantity = quantity
                         user_cart_item.save()
                     except:
-                        request.session['nonuser'] = str(uuid.uuid4())
-                        UserCart.objects.create(session_id=request.session['nonuser'], product=product, quantity=quantity)
+                        UserCart.objects.create(session_id=session_id, product=product, quantity=quantity)
                 else:
-                    UserCart.objects.get(session_id=request.session['nonuser'], product=product).delete()
+                    UserCart.objects.get(session_id=session_id, product=product).delete()
                 
     return render(request, 'ru/favorites.html', context)
 
@@ -472,7 +488,7 @@ def product_view(request, pk):
         context['cart_length'] = len(user_cart)
     else:
         try:
-            user_cart = UserCart.objects.filter(session_id=request.session['nonuser'])
+            user_cart = UserCart.objects.filter(session_id=request.session.get('nonuser'))
             context['cart'] = user_cart
             context['cart_length'] = len(user_cart)
         except:
@@ -499,16 +515,21 @@ def product_view(request, pk):
                 else:
                     UserCart.objects.get(user=user, product=product).delete()
             else:
+                session_id = request.session.get('nonuser')
+
+                if not session_id:
+                    session_id = str(uuid.uuid4())
+                    request.session['nonuser'] = session_id
+
                 if quantity != 0:
                     try:
-                        user_cart_item = UserCart.objects.get(session_id=request.session['nonuser'], product=product)
+                        user_cart_item = UserCart.objects.get(session_id=session_id, product=product)
                         user_cart_item.quantity = quantity
                         user_cart_item.save()
                     except:
-                        request.session['nonuser'] = str(uuid.uuid4())
-                        UserCart.objects.create(session_id=request.session['nonuser'], product=product, quantity=quantity)
+                        UserCart.objects.create(session_id=session_id, product=product, quantity=quantity)
                 else:
-                    UserCart.objects.get(session_id=request.session['nonuser'], product=product).delete()
+                    UserCart.objects.get(session_id=session_id, product=product).delete()
 
     return render(request, 'ru/product.html', context)
 

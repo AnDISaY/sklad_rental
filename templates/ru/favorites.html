@@ -97,8 +97,12 @@
 <script>
     window.user_is_authenticated = `{{ user_is_authenticated }}`
     window.products = {{ products_json|safe }}
-    window.cartArr = {{ cartJs|safe }}
-    window.favArray = {{ favorites }}
+    {% if cartJs %}
+        window.cartArr = {{ cartJs|safe }}
+    {% endif %}
+    {% if favorites %}
+        window.favArray = {{ favorites }}
+    {% endif %}
 </script>
 <script src="{% static 'js/showMore.js' %}?v=1.1"></script>
 {% endblock %}

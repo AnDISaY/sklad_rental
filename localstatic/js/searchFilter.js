@@ -54,11 +54,6 @@ function searchSuggestions(response, value) {
     suggestionsWrapper = document.createElement('div')
     suggestionsWrapper.classList.add('header__searchbar__suggestions__wrapper')
 
-    // if 
-    console.log(value)
-    console.log(value.length)
-    console.log(typeof(value))
-
     if (value.length > 0) {
         if (Object.keys(response).length != 0) {
             for (let i=0; i < Object.keys(response).length; i++) {
