@@ -365,28 +365,28 @@
         }
 
         &__input {
-            width: calc(382px - 36px);
+            // width: calc(382px - 36px);
+            width: 100%;
+            box-sizing: border-box;
             padding: 10px 18px !important;
             border: 2px solid #929292;
             border-radius: 12px;
 
             @media screen and (max-width: $md1) {
-                width: calc(286.5px - 27px);
+                // width: calc(286.5px - 27px);
                 border-width: 1.5px;
                 border-radius: 9px;
             }
 
             @media screen and (max-width: $md2) {
-                width: calc(191px - 18px);
+                // width: calc(191px - 18px);
                 border-width: 1px;
                 border-radius: 9px;
             }
 
             @media screen and (max-width: $md3) {
-                width: 100%;
                 border-width: 2px;
                 border-radius: 12px;
-                box-sizing: border-box;
             }
 
             @media screen and (max-width: $md4) {

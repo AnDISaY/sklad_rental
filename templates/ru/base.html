@@ -424,12 +424,32 @@
         profilePopupWrapper = document.querySelector('.profile__wrapper')
         if (headerProfile) {
             if (screen.width > 1344) {
-                profilePopupIcon.style.right = `calc(30px + 7.5px + ${parseFloat(headerProfile.getBoundingClientRect().width) / 2}px)`
+                profilePopupIcon.style.right = `calc(30px + 7.5px + ${parseFloat(headerProfile.getBoundingClientRect().width) / 2}px + ${getScrollbarWidth()}px)`
             } else if (screen.width > 1080) {
-                profilePopupIcon.style.right = `calc(22px + 5.5px + ${parseFloat(headerProfile.getBoundingClientRect().width) / 2}px)`
+                profilePopupIcon.style.right = `calc(22px + 5.5px + ${parseFloat(headerProfile.getBoundingClientRect().width) / 2}px + ${getScrollbarWidth()}px)`
             } else if (screen.width > 720) {
-                profilePopupIcon.style.right = `calc(15px + 3.75px + ${parseFloat(headerProfile.getBoundingClientRect().width) / 2}px)`
+                profilePopupIcon.style.right = `calc(15px + 3.75px + ${parseFloat(headerProfile.getBoundingClientRect().width) / 2}px + ${getScrollbarWidth()}px)`
             }
+        }
+        function getScrollbarWidth() {
+            // Creating invisible container
+            const outer = document.createElement('div');
+            outer.style.visibility = 'hidden';
+            outer.style.overflow = 'scroll'; // forcing scrollbar to appear
+            outer.style.msOverflowStyle = 'scrollbar'; // needed for WinJS apps
+            document.body.appendChild(outer);
+
+            // Creating inner element and placing it in the container
+            const inner = document.createElement('div');
+            outer.appendChild(inner);
+
+            // Calculating difference between container's full width and the child width
+            const scrollbarWidth = (outer.offsetWidth - inner.offsetWidth);
+
+            // Removing temporary elements from the DOM
+            outer.parentNode.removeChild(outer);
+
+            return scrollbarWidth;
         }
     </script>
     <script>

@@ -988,17 +988,19 @@ body button {
 }
 .header__searchbar__suggestions__item__image img {
   width: 50px;
-  height: auto;
-  object-fit: cover;
+  height: 50px;
+  object-fit: contain;
 }
 @media screen and (max-width: 1344px) {
   .header__searchbar__suggestions__item__image img {
     width: 37.5px;
+    height: 37.5px;
   }
 }
 @media screen and (max-width: 1080px) {
   .header__searchbar__suggestions__item__image img {
     width: 25px;
+    height: 25px;
   }
 }
 .header__searchbar__suggestions__item__content {
@@ -1606,31 +1608,28 @@ body button {
   padding-inline: 0;
 }
 .forgot__form__input {
-  width: 346px;
+  width: 100%;
+  box-sizing: border-box;
   padding: 10px 18px !important;
   border: 2px solid #929292;
   border-radius: 12px;
 }
 @media screen and (max-width: 1344px) {
   .forgot__form__input {
-    width: 259.5px;
     border-width: 1.5px;
     border-radius: 9px;
   }
 }
 @media screen and (max-width: 1080px) {
   .forgot__form__input {
-    width: 173px;
     border-width: 1px;
     border-radius: 9px;
   }
 }
 @media screen and (max-width: 720px) {
   .forgot__form__input {
-    width: 100%;
     border-width: 2px;
     border-radius: 12px;
-    box-sizing: border-box;
   }
 }
 @media screen and (max-width: 480px) {
