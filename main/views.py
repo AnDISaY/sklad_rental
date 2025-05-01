@@ -30,7 +30,6 @@ def home(request):
         context['error_message'] = request.session.pop('error_message')
     if 'redirect' in request.session:
         context['redirect'] = request.session.pop('redirect')
-    # print(request.session['popup_active'])
     if 'popup_active' in request.session:
         context['popup_active'] = request.session.pop('popup_active')
     if 'sign_data_context' in request.session:
@@ -47,11 +46,14 @@ def home(request):
         context['cart_length'] = len(user_cart)
     else:
         try:
-            user_cart = UserCart.objects.filter(session_id=request.session.get('nonuser'))
-            context['cart'] = user_cart
-            context['cart_length'] = len(user_cart)
+            if request.session.get('nonuser') is not None:
+                user_cart = UserCart.objects.filter(session_id=request.session.get('nonuser'))
+                context['cart'] = user_cart
+                context['cart_length'] = len(user_cart)
         except:
             pass
+    # print(context['cart'])
+    # print(context['cart_length'])
     context['products_popular'] = products_popular
     context['categories'] = categories
     context['banners'] = banners
@@ -183,7 +185,13 @@ def cart(request):
         context['cart_length'] = len(user_cart)
     else:
         try:
-            user_cart = UserCart.objects.filter(session_id=request.session.get('nonuser'))
+            session_id = request.session.get('nonuser')
+
+            if not session_id:
+                session_id = str(uuid.uuid4())
+                request.session['nonuser'] = session_id
+
+            user_cart = UserCart.objects.filter(session_id=session_id)
             for uc in user_cart:
                 uc.product.price = "{:,d}".format(uc.product.price).replace(',', ' ')
             context['user_cart'] = user_cart
@@ -316,6 +324,10 @@ def category(request, pk):
     else:
         try:
             session_id = request.session.get('nonuser')
+
+            if not session_id:
+                session_id = str(uuid.uuid4())
+                request.session['nonuser'] = session_id
 
             user_cart = UserCart.objects.filter(session_id=session_id)
             context['user_cart'] = user_cart
@@ -488,7 +500,13 @@ def product_view(request, pk):
         context['cart_length'] = len(user_cart)
     else:
         try:
-            user_cart = UserCart.objects.filter(session_id=request.session.get('nonuser'))
+            session_id = request.session.get('nonuser')
+
+            if not session_id:
+                session_id = str(uuid.uuid4())
+                request.session['nonuser'] = session_id
+
+            user_cart = UserCart.objects.filter(session_id=session_id)
             context['cart'] = user_cart
             context['cart_length'] = len(user_cart)
         except:

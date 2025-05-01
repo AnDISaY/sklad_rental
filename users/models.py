@@ -68,8 +68,9 @@ class UserCart(models.Model):
     quantity = models.PositiveSmallIntegerField(default=0)
 
     def __str__(self):
-        return f'{self.user} -- {self.product}({self.quantity})'
-    
+        if self.user is not None:
+            return f'{self.user} -- {self.product}({self.quantity})'
+        return f'{self.session_id} -- {self.product}({self.quantity})'
 
 class UserRent(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='user_rented', null=True, blank=True, verbose_name='Пользователь')

@@ -1,10 +1,10 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import CustomUser, UserRent  # Import your CustomUser model
+from .models import CustomUser, UserRent, UserCart
 
 class CustomUserAdmin(UserAdmin):
     model = CustomUser
-    list_display = ("email", "is_staff", "is_active")  # Customize the columns
+    list_display = ("email", "is_staff", "is_active")
     list_filter = ("is_staff", "is_superuser", "is_active")
     search_fields = ("email",)
     ordering = ("email",)
@@ -22,6 +22,7 @@ class CustomUserAdmin(UserAdmin):
         }),
     )
 
-# Register the model with the custom admin class
+
 admin.site.register(CustomUser, CustomUserAdmin)
 admin.site.register(UserRent)
+admin.site.register(UserCart)
